@@ -12,9 +12,9 @@ TL;DR: Octopress is a tool for building static websites and blogs from plain tex
 <!--more-->
 Rather than reproduce the steps to get up and running (the Octopress site has a wealth of top-notch documentation) I'll just highlight the features which made this worth investigating. Octopress is a framework built on top of Jekyll. Jekyll is the engine which builds your sources into a static site. At this point I'm not sure which feature belongs to which project, so I'm going to lump it all together under the Octopress banner for simplicity.
 
-{% blockquote Octopress http://octopress.org/docs/setup/ %}
-First, I want to stress that Octopress is a blogging framework for hackers. You should be comfortable running shell commands and familiar with the basics of Git. If that sounds daunting, Octopress probably isn’t for you.
-{% endblockquote %}
+<blockquote> 
+First, I want to stress that Octopress is a blogging framework for hackers. You should be comfortable running shell commands and familiar with the basics of Git. If that sounds daunting, Octopress probably isn’t for you.<small>Octopress <cite>http://octopress.org/docs/setup/</cite></small>
+</blockquote>
 
 This warning at the start of the tutorial gave me a warm fuzzy feeling inside. One thing that has long frustrated me about sites like Wordpress is the ease of use for 95% of tasks, and the near impossibility of the remianing 5%. Reading on, the beauty of Octopress's approach is that the website is static, i.e. there's no database, just a collection of files. This means a couple of things:
 

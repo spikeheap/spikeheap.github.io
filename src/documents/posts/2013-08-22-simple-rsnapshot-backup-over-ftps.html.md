@@ -20,9 +20,9 @@ I have tested this on a clean installation of Ubuntu 13.04, but let me know if a
 
 While not technically part of the setup, I didn't have ready access to an FTP server to test these notes. Installing an FTP server for testing is as simple as:
 
-{% codeblock lang:bash %}
+```bash
 apt-get install vsftpd
-{% endcodeblock %}
+```
 
 Out of the box, vsftpd serves your home directory and can be connected to using your standard username and password.
 
@@ -32,22 +32,22 @@ Out of the box, vsftpd serves your home directory and can be connected to using 
 
 We don't want the backup to run as root because it's always a good idea to restrict things as much as possible, so let's create a backup user and group:
 
-{% codeblock lang:bash %}
+```bash
 addgroup backup
 adduser rsnapshot --ingroup backup --disabled-password
-{% endcodeblock %}
+```
 
 # Mounting an FTP folder locally
 
 [CurlFTPfs](http://curlftpfs.sourceforge.net/) presents the FTP server as a local directory using FUSE. It's trivial to install it:
 
-{% codeblock lang:bash %}
+```bash
 apt-get install curlftpfs 
-{% endcodeblock %}
+```
 
 We want to connect to our remote server using credentials, so let's add that to the *.netrc* file in the home directory of the backup user:
 
-{% codeblock lang:bash %}
+```bash
 cat << EOF > /home/rsnapshot/.netrc
 machine ftp.host.com  
 login myuser  
@@ -56,142 +56,70 @@ EOF
 
 # Don't let anyone else see your FTP credentials
 chmod 600 /home/rsnapshot/.netrc
-{% endcodeblock %}
+```
  
 Mounting the remote directory is also straightforward, here we'll use /media/remote\_server. Note that by default the directory is only accessible to the user who mounted it.
 
-{% codeblock lang:bash %}
+```bash
 mkdir /media/remote_server
 chown rsnapshot /media/remote_server
 
 # Ubuntu doesn't have the right permissions on /etc/fuse.conf, so let's fix that
 chmod 644 /etc/fuse.conf
-{% endcodeblock %}
+```
 
 Mounting and unmounting is easy:
 
-{% codeblock lang:bash %}
+```bash
 # mount
 curlftpfs ftps://ftp.host.com /media/remote_server -r -o ssl
 
 # unmount
 fusermount -u /media/remote_server
-{% endcodeblock %}
+```
 
 Now you have the remote folder mounted locally we can move on to the backup solution.
 
 # Rsnapshot configuration
 Right, we'll need to install Rsnapshot first.
 
-{% codeblock lang:bash %}
+```bash
 apt-get install rsnapshot
-{% endcodeblock %}
+```
 
 We're going to keep our backups in */var/rsnapshot* for this example, but feel free to put them wherever you like:
 
-{% codeblock lang:bash %}
+```bash
 mkdir -p /var/rsnapshot/private/snapshots
 chmod 0700 /var/rsnapshot/private
 chmod 0755 /var/rsnapshot/private/snapshots
 chown -R rsnapshot /var/rsnapshot/
-{% endcodeblock %}
+```
 
 While we're at it, let's touch the log file and lock directory:
 
-{% codeblock lang:bash %}
+```bash
 touch /var/log/rsnapshot.log
 chown rsnapshot /var/log/rsnapshot.log
 mkdir /var/run/rsnapshot/
 chown rsnapshot /var/run/rsnapshot/
-{% endcodeblock %}
+```
 
 Next we need to set the configuration file. There are many options, so it's a good idea to [read the documentation](http://www.rsnapshot.org/rsnapshot.html), but this will get you up and running:
 
-{% codeblock lang:bash /etc/rsnapshot.conf %}
-#################################################
-# rsnapshot.conf - rsnapshot configuration file #
-#################################################
-#                                               #
-# PLEASE BE AWARE OF THE FOLLOWING RULES:       #
-#                                               #
-# This file requires tabs between elements      #
-#                                               #
-# Directories require a trailing slash:         #
-#   right: /home/                               #
-#   wrong: /home                                #
-#                                               #
-#################################################
-
-config_version	1.2
-
-snapshot_root	/var/rsnapshot/private/snapshots
-no_create_root	1
-
-cmd_cp		/bin/cp
-cmd_rm		/bin/rm
-cmd_rsync	/usr/bin/rsync
-#cmd_ssh	/usr/bin/ssh
-
-cmd_logger	/usr/bin/logger
-cmd_du		/usr/bin/du
-cmd_rsnapshot_diff	/usr/bin/rsnapshot-diff
-
-# Specify the path to a script (and any optional arguments) to run right
-# before rsnapshot syncs files
-#
-#cmd_preexec	/path/to/preexec/script
-
-# Specify the path to a script (and any optional arguments) to run right
-# after rsnapshot syncs files
-#
-#cmd_postexec	/path/to/postexec/script
-
-
-#########################################
-#           BACKUP INTERVALS            #
-# Must be unique and in ascending order #
-# i.e. hourly, daily, weekly, etc.      #
-#########################################
-
-retain		hourly	24
-retain		daily	7
-retain		weekly	4
-retain		monthly	60
-
-verbose		2
-loglevel	3
-logfile	/var/log/rsnapshot.log
-
-lockfile	/var/run/rsnapshot/rsnapshot.pid
-stop_on_stale_lockfile		0
-
-link_dest	1
-sync_first	1
-
-###############################
-### BACKUP POINTS / SCRIPTS ###
-###############################
-
-# LOCALHOST
-#backup	/home/		localhost/
-#backup	/etc/		localhost/
-
-# Remote SFTP site
-backup	/media/remote_server		remote_server/
-
-{% endcodeblock %}
+<gist>spikeheap/7901408</gis>
 
 Now we can test the configuration (be sure to run as the rsnapshot user):
 
-{% codeblock lang:bash %}
+```bash
 rsnapshot -t sync
-{% endcodeblock %}
+```
 
 We could run it without *-t* to carry out a backup, however that'll fail right now because the FTP directory isn't mounted (yet).
 
-We want to mount the FTP folder every time we do a backup, so we'll need a wrapper script to do that:
+We want to mount the FTP folder every time we do a backup, so we'll need a wrapper script to do that (/var/rsnapshot/doftpsync.sh):
 
-{% codeblock lang:bash /var/rsnapshot/doftpsync.sh %}
+```bash 
 #!/bin/sh
 # -r = mount read-only
 # -o ssl = Force SSL
@@ -204,27 +132,27 @@ curlftpfs ftps://ftp.host.com /media/remote_server -r -o ssl
 
 # Finally, unmount and disconnect from the FTP server
 fusermount -u /media/remote_server
-{% endcodeblock %}
+```
 
 Make the script executable:
 
-{% codeblock lang:bash %}
+```bash
 chmod 755 /var/rsnapshot/doftpsync.sh
-{% endcodeblock %}
+```
 
 And finally run the script to test it. Check the contents of /var/rsnapshot/private/snapshots to check it worked as expected.
 # Running regularly with cron
 
 As the backup user, let's execute the Rsnapshot command at the relevant intervals using cron. To edit the user's crontab just use:
 
-{% codeblock lang:bash %}
+```bash
 su - rsnapshot
 crontab -e
-{% endcodeblock %}
+```
 
 And add in the following commands (feel free to change the intervals to meet your needs of course):
  
-{% codeblock lang:bash %}
+```bash
 # You only need to run 'sync' if the 'syncfirst' option is true
 0 * * * *       /var/rsnapshot/doftpsync.sh
 
@@ -236,7 +164,7 @@ And add in the following commands (feel free to change the intervals to meet you
 30 23 * * 0       /usr/local/bin/rsnapshot weekly
 # The first day of every month at 23:20
 20 23 1 * *       /usr/local/bin/rsnapshot monthly
-{% endcodeblock  %}
+```
 
 
 # Mounting a read-only backup for recovery (optional)
@@ -245,34 +173,34 @@ Having a read-only copy of your backup is a great idea. Having one that even roo
 
 First we need to create a location to mount the read-only snapshots and modify the permissions so that no-one but the rsnapshot user can look inside the private directory:
 
-{% codeblock lang:bash %}
+```bash
 mkdir /var/rsnapshot/readonly
 chmod 0755 /var/rsnapshot/readonly
-{% endcodeblock  %}
+```
 
 Then we add the NFS export of our private directory to */etc/exports*:
 
-{% codeblock lang:bash %}
+```bash
 /var/rsnapshot/private/snapshots/ 127.0.0.1(ro,no_root_squash)
-{% endcodeblock  %}
+```
 
 You'll need to restart the NFS service now:
 
-{% codeblock lang:bash %}
+```bash
 service nfs restart
-{% endcodeblock  %}
+```
 
 Now we have the NFS export, we can mount it. Add the following to */etc/fstab*:
 
-{% codeblock lang:bash %}
+```bash
 localhost:/var/rsnapshot/private/snapshots/ /var/rsnapshot/readonly/ nfs ro 0 0
-{% endcodeblock  %}
+```
 
 Finally you can mount the directory:
 
-{% codeblock lang:bash %}
+```bash
 mount /var/rsnapshot/readonly/
-{% endcodeblock  %}
+```
 
 And of course, to test! Try creating a file inside the */var/rsnapshot/readonly/* directory and watch it fail.
 

@@ -10,7 +10,7 @@ published: true
 
 Here are the slides from a presentation on Puppet I gave at the [Software Alliance Wales](https://twitter.com/SAWBangor) lightning lunch on 27th September 2013:
 
-{% speakerdeck 029e4b5009b90131f52862a257e402f6 %}
+<script async class="speakerdeck-embed" data-id="029e4b5009b90131f52862a257e402f6" data-ratio="1.29456384323641" src="//speakerdeck.com/assets/embed.js"></script>
 
 # Aside: making simple presentations
 The source for those slides is available at https://github.com/spikeheap/saw-meet-puppet-talk. 

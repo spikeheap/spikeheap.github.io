@@ -6,9 +6,9 @@ date: 2013-08-13 21:54
 comments: true
 categories: [technology,puppet,linux]
 ---
-{% blockquote %}
+<blockquote>
 Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!
-{% endblockquote %}
+</blockquote>
 
 Today I re-learned a valuable lesson about the power of Puppet: it can be a force for evil if you forget the little extra things you set up weeks ago. Fortunately it's easy to reproduce, so try it for yourself! If there's ever an obvious reason to keep a remote clone of your Puppet configuration, this is it.
 
@@ -20,7 +20,7 @@ Step two follows a little while later. The need arises to manage a sudoers file 
 
 This package got a [great review from PuppetLabs](https://puppetlabs.com/blog/module-of-the-week-sazsudo-manage-sudo-configuration/) and is easy to configure:
 
-{% codeblock Sudoers definition lang:ruby %}
+``` ruby
 # Manage sudoers with the module
 class { 'sudo': }
 
@@ -29,7 +29,7 @@ sudo::conf { 'bill':
   priority => 10,
   content  => 'bill ALL=(ALL) NOPASSWD: ALL',
 }
-{% endcodeblock %}
+```
 
 The key step here is to run Puppet and see new files created in /etc/sudoers.d/, check the content and think all is well. The *facepalm* moment really happened when I failed to check the run had added the *include* into the sudoers file to make it bother to read the files in *sudoers.d*. Unfortunately for me this hadn't happened, so although the files were there I no longer had sudo privileges on the client.
 
@@ -45,9 +45,9 @@ Building the puppetmaster from only the /etc/puppet configuration is actually su
 
 * Provision the VM and log into it.
 * [Add the newest Puppet repositories to APT](http://apt.puppetlabs.com/README.txt) (my Puppet configuration would do this later, but lets start as we mean to go on).
-* Run the usual {% codeblock lang:bash %}apt-get install puppet git {% endcodeblock %}
+* Run the usual <code>apt-get install puppet git</code>
 * Clone the Git repository of the Puppet configuration (the entirety of /etc/puppet).
-* Use *puppet apply* on *site.pp*. I expected this to fail (and it did raise a couple of errors) but it did a significant enough job to then allow puppetmaster to start and a *puppet agent -t* to be run. {% codeblock lang:bash %} puppet apply /etc/puppet/manifests/site.pp{% endcodeblock %} 
+* Use *puppet apply* on *site.pp*. I expected this to fail (and it did raise a couple of errors) but it did a significant enough job to then allow puppetmaster to start and a *puppet agent -t* to be run. <code>bash puppet apply /etc/puppet/manifests/site.pp </code>
 * Make a cup of tea and bask in the reflected glory. 
 
 ##### Lessons learned 

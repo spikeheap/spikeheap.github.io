@@ -7,9 +7,10 @@ comments: true
 categories: [technology,backup,rsnapshot,automation,puppet,linux]
 ---
 
-{% blockquote Brian Fitzpatrick, Ben Collins-Sussman http://www.youtube.com/watch?v=0SARbwvhupQ %}
+<blockquote>
 People want to be seen as being clever, so the result is people wind up working in a cave.
-{% endblockquote %}
+<small>Brian Fitzpatrick, Ben Collins-Sussman <cite>http://www.youtube.com/watch?v=0SARbwvhupQ</cite></small>
+</blockquote>
 
 I'm often a perfectionist, and after watching [this excellent talk at Google I/O 2009](http://www.youtube.com/watch?v=0SARbwvhupQ) have realised I'm definitely guilty of keeping things under wraps until they're 'ready' (read 'dead and forgotten'). Here's my attempt to rectify that.
 
@@ -21,18 +22,18 @@ The module solves a simple problem: configure a central Rsnapshot system with no
 
 Declaring an Rsnapshot server is as simple as:
 
-{% codeblock lang:ruby %}
+``` ruby
 node{'backup.example.com':
   rsnapshot{'backup':
     sync_first      => true
 		ssh_private_key => YOURSSHKEY
   }
 }
-{% endcodeblock %}
+```
 
 Then declare a client as follows:
 
-{% codeblock lang:ruby %}
+``` ruby
 node{'cleverthing.example.com':
   rsnapshot::client{'cleverthing':
     dirs => [
@@ -41,11 +42,11 @@ node{'cleverthing.example.com':
 		]
   }
 }
-{% endcodeblock %}
+```
 
 It's even simpler if you're using Hiera, where you'd declare the server as follows:
 
-{% codeblock lang:yaml %}
+``` yaml
 ---
 classes:
   - rsnapshot
@@ -69,12 +70,11 @@ rsnapshot::cron_weekly_minute: 0
 rsnapshot::cron_monthly_hour: 21
 rsnapshot::cron_monthly_minute: 0
 rsnapshot::snapshot_root: /backups/rsnapshot/
-
-{% endcodeblock %}
+```
 
 and the client:
 
-{% codeblock lang:yaml %}
+``` yaml
 ---
 classes:
 - rsnapshot::client
@@ -83,7 +83,7 @@ rsnapshot::client::dirs: [
 '/usr/local/myamazingapp/',
 '/var/'
 ]
-{% endcodeblock %}
+```
 
 The module has support for all the configuration options of Rsnapshot, and I'll update the documentation shortly to explain the additional parameters.
 

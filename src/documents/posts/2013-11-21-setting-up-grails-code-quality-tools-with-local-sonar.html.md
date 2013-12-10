@@ -23,19 +23,19 @@ Despite a load of Google results suggesting it would be impossible (or at least 
 ## Setting up Sonar 
 
 Install sonar using brew:
-{% codeblock lang:bash %}
+```bash
 brew install sonar sonar-runner
-{% endcodeblock %}
+```
 
 To have launchd start sonar at login:
-{% codeblock lang:bash %}
+```bash
 ln -sfv /opt/boxen/homebrew/opt/sonar/*.plist ~/Library/LaunchAgents
-{% endcodeblock %}
+```
 
 Then to load sonar now:
-{% codeblock lang:bash %}
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.sonar.plist
-{% endcodeblock %}
+```bash
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.sonar.plist
+```
 
 You can check it's running at http://localhost:9000/, but you can use nginx to give you a prettier URL (I'll cover that in a later post). While you're at it **change the default "admin" user password from "admin"**.
 
@@ -43,31 +43,7 @@ You can check it's running at http://localhost:9000/, but you can use nginx to g
 
 We need to set up Maven to post the results to Sonar. Because we don't want local machine configuration included in the project Git repository, let's add the database connection details to our local Maven settings file (~/.m2/settings.xml) which may not exist yet, so just create it with the following contents:
 
-{% codeblock settings.xml lang:xml  https://gist.github.com/spikeheap/7563286 %}
-<settings>
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Example for MySQL-->
-                <sonar.jdbc.url>
-                  jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8
-                </sonar.jdbc.url>
-                <sonar.jdbc.username>sonar</sonar.jdbc.username>
-                <sonar.jdbc.password>sonar</sonar.jdbc.password>
- 
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                  http://sonar.dev
-                </sonar.host.url>
-            </properties>
-        </profile>
-     </profiles>
-</settings>
-{% endcodeblock %}
+<gist>spikeheap/7563286</gist>
 
 The important elements to check are:
 
@@ -78,60 +54,7 @@ The important elements to check are:
 
 You then need to add a pom.xml file to the project you want to analyse:
 
-{% codeblock pom.xml lang:xml https://gist.github.com/spikeheap/7564644 %}
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.company.yourproject</groupId>
-	<artifactId>YOURPROJECT</artifactId>
-	<version>1.0</version>
-	<packaging>pom</packaging>
-	<name>YOUR PROJECT</name>
-	<build>
-		<sourceDirectory>grails-app</sourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<excludes>
-						<exclude>**/*.*</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src</source>
-								<source>grails-app</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-	<properties>
-		<sonar.language>grvy</sonar.language>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.surefire.reportsPath>test/reports</sonar.surefire.reportsPath>
-		<sonar.cobertura.reportPath>test/reports/cobertura/coverage.xml</sonar.cobertura.reportPath>
-		<sonar.phase>generate-sources</sonar.phase>
-	</properties>
-</project>
-{% endcodeblock %}
+<gist>spikeheap/7564644</gist>
 
 Here the points of interest are:
 

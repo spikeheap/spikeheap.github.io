@@ -19,7 +19,7 @@ The steps I wanted to achieve were:
 
 The simplest way to filter the repository is to clone it, apply the filter to the clone and then push the the filtered repository to your origin server (if you use one). The following example assumes you've created an empty repository ready for the submodule:
 
-{% codeblock lang:bash %}
+``` bash
 git clone $REPO_URL $SUBMODULE_NAME
 cd $SUBMODULE_NAME
 git filter-branch --subdirectory-filter '$PATH_TO_SUBMODULE' --prune-empty -- --all
@@ -33,25 +33,25 @@ git remote add origin $SUBMODULE_REPO_URL
 
 # Push the new submodule
 git push origin master
-{% endcodeblock %}
+```
 
 All that's left to do then is remove the existing directory and add the submodule. Even if you're paranoid the removed directory's history is still in Git, so it's easy to roll back.
 
-{% codeblock lang:bash %}
+``` bash
 git rm $PATH_TO_SUBMODULE
 git commit -m "Removing directory to replace with submodule" $PATH_TO_SUBMODULE
 git submodule add $SUBMODULE_REPO_URL $PATH_TO_SUBMODULE
 git add .gitmodules $PATH_TO_SUBMODULE
 git commit -m "Adding submodule X"
 git push
-{% endcodeblock %}
+```
 
 For the Puppet example the repository resides at /etc/puppet and I used the following variables:
 
-{% codeblock lang:bash %}
+``` bash
 SUBMODULE_NAME = puppet-rsnapshot
 PATH_TO_SUBMODULE = modules/rsnapshot
-{% endcodeblock %}
+```
 
 
 # References

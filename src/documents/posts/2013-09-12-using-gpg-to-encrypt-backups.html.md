@@ -19,42 +19,42 @@ This is commonly used for e-mail, and has a great advantage when you're using it
 
 You can generate a key using the following command. Note that a passphrase is a *really* good idea because it gives you that little bit of extra protection: if you lose your private key it's useless without the passphrase. The passphrase is only needed for the private key, so a script can still encrypt the data without human interaction.
 
-{% codeblock lang:bash %}
+```bash
 gpg --gen-key
-{% endcodeblock %}
+```
 
 Once you've generated your key you can send it to a key server so your other hosts can get at it (XXXXXXXX needs to be replaced with the short ID for your key):
 
-{% codeblock lang:bash %}
+```bash
 gpg --keyserver subkeys.pgp.net --send-key XXXXXXXX
-{% endcodeblock %}
+```
 
 Then it's a really good idea to take a backup of your key (you can also copy your ~/.gnupg directory somewhere safe):
 
-{% codeblock lang:bash %}
+```bash
 gpg --export-secret-keys --armor john@example.com > john-privkey.asc
-{% endcodeblock %}
+```
 
 Make sure to keep the resultant file safe, if you lose your private key *or* forget your passphrase then the contents of any encrypted files are lost forever.
 
 On your remote servers the commands you need to download the public key and set it to be trusted:
 
-{% codeblock lang:bash %}
+```bash
 gpg --keyserver subkeys.pgp.net --recv-keys XXXXXXXX
 gpg --edit XXXXXXX trust # set 5 if you trust it ultimately, and confirm
-{% endcodeblock %}
+```
 
 Then you can encrypt a file: 
 
-{% codeblock lang:bash %}
+```bash
 gpg --encrypt --recipient XXXXXXXX FILENAME
-{% endcodeblock %}
+```
 
 The result is a new file: FILENAME.gpg. Try decrypting it (gpg --decrypt FILENAME). On the remote machine you should see:
 
-{% codeblock lang:bash %}
+```bash
 gpg: decryption failed: secret key not available
-{% endcodeblock %}
+```
 
 But on the machine you created the keys on it will ask you for your passphrase and voila!
 

@@ -37,6 +37,6 @@ I want to edit manifests locally
 
 You can install Vagrant and Puppet-lint using gem:
 
-````
+```
 sudo gem install vagrant puppet puppet-lint
-````
+```
