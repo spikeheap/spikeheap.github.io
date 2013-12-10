@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Pi-powered central heating phase 1"
 date: 2013-12-01 12:48:40 +0000
 comments: true

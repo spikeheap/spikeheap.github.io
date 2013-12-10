@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Some notes on backup"
 date: 2013-08-18 18:18
 comments: true

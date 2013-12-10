@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Testing Octopress and Heroku"
 date: 2013-08-11 18:21
 comments: true

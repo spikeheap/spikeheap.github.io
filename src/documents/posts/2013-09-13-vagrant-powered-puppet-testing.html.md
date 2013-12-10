@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Vagrant-powered Puppet testing"
 date: 2013-09-13 18:39
 comments: true

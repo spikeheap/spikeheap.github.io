@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Setting up Grails code quality tools with local Sonar"
 date: 2013-11-21 13:25
 comments: true

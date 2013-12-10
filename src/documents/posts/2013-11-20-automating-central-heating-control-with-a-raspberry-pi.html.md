@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Plans for automating central heating control with a Raspberry Pi"
 date: 2013-11-20 9:32
 comments: true

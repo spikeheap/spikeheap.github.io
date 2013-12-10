@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Simple Rsnapshot backup over FTPS"
 date: 2013-08-22 20:39
 comments: true

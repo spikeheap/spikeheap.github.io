@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Using GPG to encrypt backups"
 date: 2013-09-12 18:39
 comments: true

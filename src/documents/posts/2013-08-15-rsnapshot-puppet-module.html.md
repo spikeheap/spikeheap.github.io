@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Rsnapshot Puppet module"
 date: 2013-08-15 19:20
 comments: true

@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Puppet talk"
 date: 2013-10-02 15:39
 comments: true

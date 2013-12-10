@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: ['post']
 title: "Managing sudoers with Puppet"
 date: 2013-08-13 21:54
 comments: true
