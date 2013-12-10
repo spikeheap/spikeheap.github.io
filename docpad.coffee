@@ -94,11 +94,15 @@ docpadConfig = {
 
 	# =================================
 	# Plugins
-
+	# The dateurls config is to retain backward compatibility with Octopress links
 	plugins:
+		dateurls:
+			cleanurl: true
+			trailingSlashes: true
+			collectionName: 'posts'
 		ghpages:
-        	deployRemote: 'origin'
-        	deployBranch: 'master'
+			deployRemote: 'origin'
+			deployBranch: 'master'
 		downloader:
 			downloads: [
 				{
