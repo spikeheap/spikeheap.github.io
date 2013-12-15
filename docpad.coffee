@@ -44,7 +44,6 @@ docpadConfig = {
 				"/styles/twitter-bootstrap.css"
 				"/styles/highlightjs_default.css"
 				"/styles/style.css"
-
 			]
 
 			# Scripts
