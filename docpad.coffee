@@ -42,15 +42,31 @@ docpadConfig = {
 			# Styles
 			styles: [
 				"/styles/twitter-bootstrap.css"
+				"/styles/highlightjs_default.css"
 				"/styles/style.css"
+
 			]
 
 			# Scripts
 			scripts: [
 				"//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 				"//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"
-				"/vendor/twitter-bootstrap/dist/js/bootstrap.min.js"
-				"/scripts/script.js"
+				# Standard bootstrap
+				#"/vendor/twitter-bootstrap/dist/js/bootstrap.min.js"
+				# Flat UI
+				"/vendor/flat-ui/js/jquery-1.8.3.min.js"
+				"/vendor/flat-ui/js/jquery-ui-1.10.3.custom.min.js"
+				"/vendor/flat-ui/js/jquery.ui.touch-punch.min.js"
+				"/vendor/flat-ui/js/bootstrap.min.js"
+				"/vendor/flat-ui/js/bootstrap-select.js"
+				"/vendor/flat-ui/js/bootstrap-switch.js"
+				"/vendor/flat-ui/js/flatui-checkbox.js"
+				"/vendor/flat-ui/js/flatui-radio.js"
+				"/vendor/flat-ui/js/jquery.tagsinput.js"
+				"/vendor/flat-ui/js/jquery.placeholder.js"
+				"/vendor/flat-ui/js/jquery.stacktable.js"
+				"//vjs.zencdn.net/4.1/video.js"
+				"/vendor/flat-ui/js/application.js"
 			]
 
 
