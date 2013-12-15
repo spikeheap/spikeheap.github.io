@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','configurationmanagement','puppet','linux','presentations']
 title: "Puppet talk"
 date: 2013-10-02 15:39
 comments: true
-categories: [technology,configurationmanagement,puppet,linux,presentations]
 published: true
 ---
 

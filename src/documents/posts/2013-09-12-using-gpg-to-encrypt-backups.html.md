@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','backup','gpg','linux']
 title: "Using GPG to encrypt backups"
 date: 2013-09-12 18:39
 comments: true
-categories: [technology,backup,gpg,linux]
 ---
 If you're doing off-site backups (and if you're not, you should), you've probably wondered how much you trust the place you're uploading to. Fortunately [public-key cryptography](http://en.wikipedia.org/wiki/Public-key_cryptography) is here to help. 
 

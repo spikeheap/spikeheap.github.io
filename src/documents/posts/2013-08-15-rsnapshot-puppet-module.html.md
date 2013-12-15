@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','backup','rsnapshot','automation','puppet','linux']
 title: "Rsnapshot Puppet module"
 date: 2013-08-15 19:20
 comments: true
-categories: [technology,backup,rsnapshot,automation,puppet,linux]
 ---
 
 <blockquote>

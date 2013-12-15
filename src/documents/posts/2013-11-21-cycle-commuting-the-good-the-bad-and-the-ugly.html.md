@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','cycling', 'commuting']
 title: "Cycle commuting: the good, the bad and the ugly"
 date: 2013-11-21 22:24
 comments: true
-categories: cycling, commuting
 published: true
 ---
 
@@ -35,7 +34,7 @@ Fortunately a good friend had a Boardman Hybrid Team he wanted to get rid of aft
 
 I've got a few things to write about cycling in the dark and protecting your bike, so I'll leave those for another post.
 <!-- UNCOMMENT WHEN POSTS ARE PUBLISHED (AND COMMENT THE ABOVE OUT)
-I've written about [buying and locking your bike so it doesn't get stolen](blog/2013/11/27/how-not-to-get-your-bike-nicked/) and [safe commuting in the dark](blog/2013/11/25/cycle-commuting-in-the-dark/) so I won't ramble on about that here.
+I've written about [buying and locking your bike so it doesn't get stolen](posts/2013-11-27-how-not-to-get-your-bike-nicked/) and [safe commuting in the dark](posts/2013-11-25-cycle-commuting-in-the-dark/) so I won't ramble on about that here.
 -->
 
 After riding the Boardman for the past couple of weeks I'm happy with my choices. The stock saddle isn't amazing, and the brakes need a bit of TLC, but it's a sturdy workhorse. I see loads of people pushing up Headington Hill and hear more coming with the steady squeak-squeak of an unloved bike. Now that I don't need to worry about keeping it on the road I can enjoy the 18 mile round trip to work, particularly the ride home when I can't help but push myself.

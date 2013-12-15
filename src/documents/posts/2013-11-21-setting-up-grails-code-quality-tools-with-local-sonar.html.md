@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology', 'git', 'grails', 'sonar', 'development']
 title: "Setting up Grails code quality tools with local Sonar"
 date: 2013-11-21 13:25
 comments: true
-categories: [technology, git, grails, sonar, development]
 published: true
 ---
 

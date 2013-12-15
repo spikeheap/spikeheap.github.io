@@ -96,6 +96,8 @@ docpadConfig = {
 	# Plugins
 	# The dateurls config is to retain backward compatibility with Octopress links
 	plugins:
+		related:
+			parentCollectionName:'posts'
 		dateurls:
 			cleanurl: true
 			trailingSlashes: true

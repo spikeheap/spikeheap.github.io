@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','backup','rsnapshot','linux']
 title: "Some notes on backup"
 date: 2013-08-18 18:18
 comments: true
-categories: [technology,backup,rsnapshot,linux]
 ---
 
 I've been extolling the virtues of backup a lot recently, which has led to a few interesting conversations (and a lot of people rolling their eyes and going back to talking about climbing). 

@@ -75,6 +75,16 @@
 
 		<!-- Footer -->
 		<footer>
+			<div class="row" class="text-center">
+				<div class="col-lg-4 pull-right">
+					<h1>found on</h1>
+					<a class="btn btn-default" href="http://spikeheap.github.com/">Github</a>
+					<a class="btn btn-default" href="http://twitter.com/spikeheap">Twitter</a>
+					<a class="btn btn-default" href="http://ryanbrooks1.linkedin.com">LinkedIn</a>
+					<a class="btn btn-default" href="http://ryanbrooks.about.me">About.me</a>
+				</div>
+			
+			</div>
 			<p class="pull-left">&copy; Company <%- (new Date()).getFullYear() %></p>
 			<p class="pull-right">
 				This website was last updated at <%= @site.date.toISOString() %>

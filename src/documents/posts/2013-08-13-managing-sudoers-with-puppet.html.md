@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','puppet','linux']
 title: "Managing sudoers with Puppet"
 date: 2013-08-13 21:54
 comments: true
-categories: [technology,puppet,linux]
 ---
 <blockquote>
 Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!

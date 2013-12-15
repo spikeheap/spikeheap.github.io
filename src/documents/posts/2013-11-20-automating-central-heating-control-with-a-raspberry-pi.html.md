@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','raspberry pi', 'home', 'central heating']
 title: "Plans for automating central heating control with a Raspberry Pi"
 date: 2013-11-20 9:32
 comments: true
-categories: raspberrypi, home, central_heating
 published: true
 ---
 Moving into a stone-built cottage with single glazing and bottled gas central heating has been a (good) learning experience. Fortunately we have a combi-boiler so have on-demand hot water, but the central heating timer cuts power to the boiler so no heating = no hot water. Also, the thermostat is by the front door, so provides a wildly different temperature from the rooms! My project is to hack into the thermostat and replace it with a raspberry pi providing timed heat as well as using information from a wireless thermometer located nearby, and then to add some intelligence to try to save money and the environment. 

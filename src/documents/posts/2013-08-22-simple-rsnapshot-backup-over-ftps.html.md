@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','backup','rsnapshot','linux']
 title: "Simple Rsnapshot backup over FTPS"
 date: 2013-08-22 20:39
 comments: true
-categories: [technology,backup,rsnapshot,linux]
 ---
 In this post I'll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.
 

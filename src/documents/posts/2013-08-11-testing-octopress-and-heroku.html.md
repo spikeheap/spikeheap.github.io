@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','git']
 title: "Testing Octopress and Heroku"
 date: 2013-08-11 18:21
 comments: true
-categories: [technology,git]
 ---
 I have vowed to move away from Wordpress. My blog there, ryanbrooks.wordpress.com, isn't exactly the epitome of regular activity (my last post was back in June) but when I do blog I want it to be easy most of the time and hackable when I'm interested. Enter [Jekyll](http://jekyllrb.com/) and [Octopress](http://octopress.org/). 
 

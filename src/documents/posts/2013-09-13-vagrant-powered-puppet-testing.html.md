@@ -1,10 +1,9 @@
 ---
 layout: post
-tags: ['post']
+tags: ['post','technology','testing','configurationmanagement','puppet','vagrant','linux']
 title: "Vagrant-powered Puppet testing"
 date: 2013-09-13 18:39
 comments: true
-categories: [technology,testing,configurationmanagement,puppet,vagrant,linux]
 published: false
 ---
 
