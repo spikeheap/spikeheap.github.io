@@ -14,10 +14,9 @@ Okay, so it's obvious but I have to say it: messing around with mains electricit
 
 ## The set up
 <img src="http://i1367.photobucket.com/albums/r788/spikeheap/stone_walls_zps9aa0e25a.jpg" alt="Thick stone walls and single-glazing. A challenge!" />
-
 The use case for our automatic heating system is a little different to normal. We have the pleasure of having 4 LPG bottles fuelling a Worcester 24CDi combi-boiler. This is controlled by a thermostat mounted in the hallway by the front door as well as a simple programmer located just by the boiler.
 
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/lpg_zpsc04b89c3.jpg" alt="LPG bottles, the bane of a warm house" />
+<img src="http://i1367.photobucket.com/albums/r788/spikeheap/lpg_zpsc04b89c3.jpg" alt="LPG bottles, the bane of a warm house" /><legend>LPG bottles, the bane of a warm house</legend>
 
 The programmer is in-line with the main power supply to the boiler, so outside of the programmed heating times there is also no hot water. The thermostat (thankfully) just controls the heating.
 

@@ -2,50 +2,10 @@
 layout: 'default'
 title: 'Home'
 ---
-
-<!-- Pprimary marketing message or call to action -->
-<div class="jumbotron">
-	<h1>Yet Another Blog</h1>
-	<p>
-		Technical ramblings and rants
-	</p>
-</div>
-
-<div class="row" class="text-center">
-	<div class="col-lg-4">
-	<h1>about me</h1>
-	</div>
-	<div class="col-lg-8">
-	<h1>find me on</h1>
-	<p>
-		<a class="btn btn-default" href="http://spikeheap.github.com/">Github</a>
-		<a class="btn btn-default" href="http://twitter.com/spikeheap">Twitter</a>
-		<a class="btn btn-default" href="http://uk.linkedin.com/in/ryanpbrooks/">LinkedIn</a>
-		<a class="btn btn-default" href="http://about.me/ryan.brooks">About.me</a>
-	</p>
-	</div>
-</div>
-
-<div class="row" class="text-center">
-	<div class="col-lg-12">
-		<% document = @getCollection('posts').toJSON()[0] %>
-
-		<h1><%= document.title %></h1>
-		<small>&raquo;<%= document.date.toDateString() %></small>
-		<div class="post-content"><t render="markdown"><%- document.content %></t></div> 
-	</div>
-</div>
-
-
-
-<div class="row" class="text-center">
-	<!-- FIXME omit the first [pst] because it's above... -->
-	<!-- FIXME limit the following to just 10 posts. Perhaps AJAXy load more? -->
-	<% for document in @getCollection('posts').toJSON(): %>
-		<article class="col-sm-4">
-			<h1><a href="<%= document.url %>"><%= document.title %></a></li></h1>
-			<small>&raquo;<span><%= document.date.toDateString() %></span></small>	
-			<!-- FIXME LIMIT to just excerpt -->
-		</article>
-	<% end %>
-</div>
+	
+<% document = @getCollection('posts').toJSON()[0] %>
+<header>
+	<h1><%= document.title %></h1>
+	<p>&raquo;Published: <time pubdate="pubdate"><%= document.date.toDateString() %></time></p>
+</header>
+<div class="post-content"><t render="markdown"><%- document.content %></t></div> 

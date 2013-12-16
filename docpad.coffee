@@ -7,37 +7,72 @@ docpadConfig = {
 	# These are variables that will be accessible via our templates
 	# To access one of these within our templates, refer to the FAQ: https://github.com/bevry/docpad/wiki/FAQ
 
+	environments:
+    development:
+        templateData:
+            site:
+                services:
+                    googleAnalytics: false
+
 	templateData:
 
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "http://website.com"
+			url: "http://ryanbrooks.co.uk"
 
 			# Here are some old site urls that you would like to redirect from
 			oldUrls: [
-				'www.website.com',
-				'website.herokuapp.com'
+				'www.ryanbrooks.co.uk',
+				'ryanbrooks.herokuapp.com'
+				'spikeheap.github.io'
 			]
 
 			# The default title of our website
-			title: "Your Website"
+			title: "Yet Another Blog"
 
 			# The website description (for SEO)
 			description: """
-				When your website appears in search results in say Google, the text here will be shown underneath your website's title.
+				Ryan's wonderland of software engineering joy, with occasional rants and musings about cycling, mountaineering and the outdoors.
 				"""
 
 			# The website keywords (for SEO) separated by commas
 			keywords: """
-				place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website
+				Oxford, North Wales, Wales, Oxfordshire, software engineering, development, code, grails, groovy, puppet, systems administration, cycling
 				"""
 
 			# The website author's name
-			author: "Your Name"
+			author: "Ryan Brooks"
 
 			# The website author's email
-			email: "your@email.com"
+			email: "ryanbrooksis@gmail.com"
+
+			services:
+            	buttons: ['FacebookLike', 'TwitterTweet', 'TwitterFollow', 'GooglePlusOne', 'GithubFollow']  # used to customise the order of the buttons
+	
+            	facebookLikeButton:
+            	    applicationId: '266367676718271'
+            	facebookFollowButton:
+            	    applicationId: '266367676718271'
+            	    username: 'spikeheap'
+            	twitterTweetButton: 'spikeheap'
+            	twitterFollowButton: 'spikeheap'
+            	githubFollowButton: 'spikeheap'
+            	githubStarButton: 'spikeheap/spikeheap.github.io'
+            	# quoraFollowButton: 'Ryan-Brooks-8'
+            	# travisStatusButton: 'bevry/docpad'
+            	# furyButton: 'docpad'
+            	# gittipButton: 'docpad'
+            	# flattrButton: '344188/balupton-on-Flattr'
+            	# paypalButton: 'QB8GQPZAH84N6'  # paypal button email id
+	
+            	disqus: 'ryanbrooks'
+            	# gauges: 'gauges-id'
+            	googleAnalytics: 'UA-43110335-1'
+            	# inspectlet: 'inspectlet-id'
+            	# mixpanel: 'mixpanel-id'
+            	# reinvigorate: 'reinvigorate-id'
+            	# zopim: 'zopim-id'
 
 			# Styles
 			styles: [
@@ -66,6 +101,9 @@ docpadConfig = {
 				"/vendor/flat-ui/js/jquery.stacktable.js"
 				"//vjs.zencdn.net/4.1/video.js"
 				"/vendor/flat-ui/js/application.js"
+				# Fit Text
+				"/vendor/fittext/jquery.fittext.js"
+				"scripts/main.js"
 			]
 
 
@@ -120,15 +158,15 @@ docpadConfig = {
 		ghpages:
 			deployRemote: 'origin'
 			deployBranch: 'master'
-		downloader:
-			downloads: [
-				{
-					name: 'Twitter Bootstrap'
-					path: 'src/files/vendor/twitter-bootstrap'
-					url: 'https://codeload.github.com/twbs/bootstrap/tar.gz/master'
-					tarExtractClean: true
-				}
-			]
+		#downloader:
+		#	downloads: [
+		#		{
+		#			name: 'Twitter Bootstrap'
+		#			path: 'src/files/vendor/twitter-bootstrap'
+		#			url: 'https://codeload.github.com/twbs/bootstrap/tar.gz/master'
+		#			tarExtractClean: true
+		#		}
+		#	]
     
 
 

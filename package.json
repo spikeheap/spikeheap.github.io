@@ -42,7 +42,8 @@
     "docpad-plugin-text": "~2.3.2",
     "docpad-plugin-ghpages": "~2.4.1",
     "docpad-plugin-gist": "~2.1.1",
-    "docpad-plugin-highlightjs": "~2.1.9"
+    "docpad-plugin-highlightjs": "~2.1.9",
+    "docpad-plugin-services": "~2.5.0"
   },
   "devDependencies": {
     "docpad-plugin-livereload": "~2.5.4"
