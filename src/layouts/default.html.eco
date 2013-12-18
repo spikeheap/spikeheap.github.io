@@ -59,11 +59,10 @@
 				</div>
 				<div class="row" class="text-center">
 					<div class="col-lg-12">
-						<p>find me on
-							<a class="btn btn-default" href="http://spikeheap.github.com/">Github</a>
+						<p>Sometimes loiters on 
+							<a class="btn btn-default" href="http://github.com/spikeheap">Github</a>
 							<a class="btn btn-default" href="http://twitter.com/spikeheap">Twitter</a>
 							<a class="btn btn-default" href="http://uk.linkedin.com/in/ryanpbrooks/">LinkedIn</a>
-							<a class="btn btn-default" href="http://about.me/ryan.brooks">About.me</a>
 						</p>
 					</div>
 				</div>
@@ -88,18 +87,33 @@
 
 	<!-- Footer -->
 	<footer>
-		<div class="container">
-		<span class="pull-left">
-			<p>&copy; Ryan Brooks <%- (new Date()).getFullYear() %>
-			<br/>
-			Theme built around the <a href="http://designmodo.com/">Flat UI framework</a> (<a href="https://github.com/designmodo/Flat-UI">Github</a>)</p>
-		</span>
-		<span class="pull-right">
-				<a class="btn btn-default" href="http://spikeheap.github.com/">Github</a>
+		<div id="following-links" class="row">
+			<div id="recent-posts" class="col-sm-7">
+				<h4>recent posts</h4>
+				<ul>
+				<% for document in  @getCollection('posts').toJSON().slice(0,5): %>
+					<li><a href="<%=document.url%>" title="<%=document.title%>"><%=document.title%></a>
+				<% end %>
+				</ul>
+				<h4><a href="/posts/">to the archives!</a></h4>
+			</div>
+			
+			<div class="col-sm-5">
+				also trawling the blogopipes at <br/>
+				<a class="btn btn-default" href="http://github.com/spikeheap">Github</a>
 				<a class="btn btn-default" href="http://twitter.com/spikeheap">Twitter</a>
-				<a class="btn btn-default" href="http://ryanbrooks1.linkedin.com">LinkedIn</a>
-				<a class="btn btn-default" href="http://ryanbrooks.about.me">About.me</a>	
-		</span>
+				<a class="btn btn-default" href="http://uk.linkedin.com/in/ryanpbrooks/">LinkedIn</a>
+			</div>
+		</div>
+		<div class="footer-attributions row">
+			<div class="col-sm-8">
+				<p>&copy; Ryan Brooks <%- (new Date()).getFullYear() %>
+				<br/>
+				Site design by Ryan Brooks using the <a href="http://designmodo.com/">Flat UI framework</a>
+				<br/>
+				Powered by <a href="http://docpad.org/">docpad</a>
+				</p>
+			</div>
 		</div>
 	</footer>
 
