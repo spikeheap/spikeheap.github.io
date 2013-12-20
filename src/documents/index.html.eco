@@ -2,10 +2,25 @@
 layout: 'default'
 title: 'Home'
 ---
-	
-<% document = @getCollection('posts').toJSON()[0] %>
-<header>
-	<h1><%= document.title %></h1>
-	<p>&raquo;Published: <time pubdate="pubdate"><%= document.date.toDateString() %></time></p>
-</header>
-<div class="post-content"><t render="markdown"><%- document.content %></t></div> 
+
+<% latestPost = @getCollection('posts').toJSON()[0] %>
+<% @document.slug = latestPost.slug %>
+
+<article>
+	<header>
+		<h1><%= latestPost.title %></h1>
+		<p>&raquo;Published: <time pubdate="pubdate"><%= latestPost.date.toDateString() %></time></p>
+	</header>
+	<div class="post-content">
+		<t render="markdown"><%- latestPost.content %></t>
+	</div> 
+
+	<div class="social-buttons"><%- @getSocialButtons() %></div>
+	<div>
+		<h2>Comments</h2>
+		<%- @getDisqus() %>
+	</div>
+</article>
+
+
+

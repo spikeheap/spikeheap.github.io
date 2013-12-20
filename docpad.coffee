@@ -103,7 +103,7 @@ docpadConfig = {
 				"/vendor/flat-ui/js/application.js"
 				# Fit Text
 				"/vendor/fittext/jquery.fittext.js"
-				"scripts/main.js"
+				"/scripts/main.js"
 			]
 
 
@@ -131,7 +131,6 @@ docpadConfig = {
 		getPreparedKeywords: ->
 			# Merge the document keywords with the site keywords
 			@site.keywords.concat(@document.keywords or []).join(', ')
-
 
 	# =================================
 	# Collections

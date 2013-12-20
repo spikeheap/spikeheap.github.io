@@ -71,15 +71,7 @@
 
 		<!-- Content -->
 		<div id="content" class="row content col-lg-12">
-				<article>
-					<%- @content %>
-				
-					<div class="social-buttons"><%- @getSocialButtons() %></div>
-					<div>
-						<h2>Comments</h2>
-						<%- @getDisqus() %>
-					</div>
-				</article>
+			<%- @content %>
 		</div>
 
 
@@ -89,13 +81,13 @@
 	<footer>
 		<div id="following-links" class="row">
 			<div id="recent-posts" class="col-sm-7">
-				<h4>recent posts</h4>
+				<h4><a href="/posts/">recent posts</a></h4>
 				<ul>
-				<% for document in  @getCollection('posts').toJSON().slice(0,5): %>
-					<li><a href="<%=document.url%>" title="<%=document.title%>"><%=document.title%></a>
-				<% end %>
+					<% for document in  @getCollection('posts').toJSON().slice(0,5): %>
+						<li><a href="<%=document.url%>" title="<%=document.title%>"><%=document.title%></a>
+					<% end %>
+					<li><a href="/posts/">&hellip;and some more in the archives&hellip;</a></li>
 				</ul>
-				<h4><a href="/posts/">to the archives!</a></h4>
 			</div>
 			
 			<div class="col-sm-5">
