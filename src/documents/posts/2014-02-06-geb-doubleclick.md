@@ -20,4 +20,11 @@ Fortunately building complex interactions is trivial in Geb, so my updated Spock
 
 Great, on to the next test!
 
+### Update (7/2/2014)
 
+Here's another example, this time using interactions to do a context-click (right-click to you an me!):
+
+<gist>spikeheap/8862048?file=contextClickerSpec.groovy</gist>
+
+If you want to run the test, the following gradle script will sort you out:
+<gist>spikeheap/8862048?file=build.gradle</gist>
