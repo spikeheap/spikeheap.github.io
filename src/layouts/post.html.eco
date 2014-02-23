@@ -10,7 +10,13 @@ layout: default
 
 	<div class="post-content"><%- @content %></div>
 
-	<div class="social-buttons"><%- @getSocialButtons() %></div>
+	<div class="social-buttons">
+    <%- @getTwitterFollowButton() %>
+    <%- @getGithubFollowButton()  %>
+    <br>
+    <%- @getTwitterTweetButton()  %>
+    <%- @getGooglePlusOneButton() %>
+  </div>
 	<div>
 		<h2>Comments</h2>
 		<%- @getDisqus() %>

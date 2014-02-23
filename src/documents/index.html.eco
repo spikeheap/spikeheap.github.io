@@ -15,7 +15,12 @@ title: 'Home'
 		<t render="markdown"><%- latestPost.content %></t>
 	</div> 
 
-	<div class="social-buttons"><%- @getSocialButtons() %></div>
+	<div class="social-buttons">
+    <%- @getTwitterTweetButton()  %>
+    <%- @getTwitterFollowButton() %>
+    <%- @getGooglePlusOneButton() %>
+    <%- @getGithubFollowButton()  %>
+  </div>
 	<div>
 		<h2>Comments</h2>
 		<%- @getDisqus() %>
