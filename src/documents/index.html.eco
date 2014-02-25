@@ -9,7 +9,7 @@ title: 'Home'
 
 <article>
 	<header>
-		<h1><%= latestPost.title %></h1>
+		<h1><a href="<%= latestPost.url %>"><%= latestPost.title %></a></h1>
 		<p>&raquo;Published: <time pubdate="pubdate"><%= latestPost.date.toDateString() %></time></p>
 	</header>
 	<div class="post-content">
