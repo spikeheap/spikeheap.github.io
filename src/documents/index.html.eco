@@ -5,6 +5,7 @@ title: 'Home'
 
 <% latestPost = @getCollection('posts').toJSON()[0] %>
 <% @document.slug = latestPost.slug %>
+<% @document.title = latestPost.title %>
 
 <article>
 	<header>
