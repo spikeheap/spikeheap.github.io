@@ -24,7 +24,7 @@ title: 'Home'
   </div>
 	<div>
 		<h2>Comments</h2>
-		<%- @getDisqus() %>
+		<%- @getPostDisqus(latestPost) %>
 	</div>
 </article>
 

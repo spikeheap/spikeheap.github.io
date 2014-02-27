@@ -111,6 +111,47 @@ docpadConfig = {
 		# -----------------------------
 		# Helper Functions
 
+		getPostDisqus: (post, services) ->
+					# Prepare
+					services ?= @getServices()
+					disqusShortname = services.disqus
+					return ''  unless disqusShortname
+					disqusDeveloper = if 'production' in @getEnvironments() then '0' else '1'
+					pageUrl = (@site.url or '')+post.url
+					disqusIdentifier = post.slug
+					disqusTitle = post.title or post.name
+
+					# Return
+					return """
+						<div id="disqus_thread"></div>
+						<script>
+							(function(){
+								window.disqus_shortname = '#{disqusShortname}';
+								window.disqus_developer = '#{disqusDeveloper}';
+								window.disqus_url = '#{pageUrl}';
+								window.disqus_identifier = '#{disqusIdentifier}';
+								window.disqus_title = '#{disqusTitle}';
+								if ( window.DISQUS ) {
+									return DISQUS.reset({
+										reload: true,
+										config: function () {
+											this.page.identifier = window.disqus_identifier;
+											this.page.url = window.disqus_url;
+											this.page.title = window.disqus_title;
+										}
+									});
+								}
+								else {
+								  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+								  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+								  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+								}
+							})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+						<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						"""
+		
 		# Get the prepared site/document title
 		# Often we would like to specify particular formatting to our page's title
 		# we can apply that formatting here
