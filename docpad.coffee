@@ -198,6 +198,8 @@ docpadConfig = {
 		ghpages:
 			deployRemote: 'origin'
 			deployBranch: 'master'
+		#livereload:
+		#	enabled: false
 		#downloader:
 		#	downloads: [
 		#		{
