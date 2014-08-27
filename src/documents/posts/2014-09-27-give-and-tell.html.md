@@ -26,6 +26,7 @@ Multiple sclerosis is close to my heart because my father has suffered with it f
 
 The [MS Trust](https://www.mstrust.org.uk/donate-online/) is a charity focussed on helping people with multiple sclerosis by providing information and support, and funding research and training for healthcare professionals. I particularly like that they are all about helping sufferers of MS, enabling them to manage the disease and still make the most of their lives. Until a cure is found it's the support networks and education within the healthcare industry that has a huge impact on people living with MS.
 
+So today I have donated to them again, and reminded myself that I need to do more.
 
 ### Just give
 
