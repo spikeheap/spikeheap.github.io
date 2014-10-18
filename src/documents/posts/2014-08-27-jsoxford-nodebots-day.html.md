@@ -1,10 +1,10 @@
 ---
 layout: post
 tags: ['post', 'software', 'development', 'programming', 'hackday', 'event']
-title: "JSOxford NodeBots, September 2014"
+title: "JSOxford NodeBots, August 2014"
 comments: true
 published: true
-standalone: true
+date: 2014-08-27
 ---
 
 On the 23rd of August we ran the last event in the [JSOxford 2014 Summer of Hacks](http://jsoxford.com/2014/summer-of-hacks/), building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.

@@ -4,7 +4,7 @@ tags: ['post', 'charity']
 title: "Give and tell challenge"
 comments: true
 published: true
-standalone: true
+date: 2014-09-27
 ---
 
 ![Ice Bucket Challenge](https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg)
