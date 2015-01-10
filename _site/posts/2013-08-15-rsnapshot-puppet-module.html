@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Rsnapshot Puppet module</h1>
+        <small>15 Aug 2013</small>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <blockquote>
+People want to be seen as being clever, so the result is people wind up working in a cave.
+<small>Brian Fitzpatrick, Ben Collins-Sussman <cite>http://www.youtube.com/watch?v=0SARbwvhupQ</cite></small>
+</blockquote>
+
+<p>I’m often a perfectionist, and after watching <a href="http://www.youtube.com/watch?v=0SARbwvhupQ">this excellent talk at Google I/O 2009</a> have realised I’m definitely guilty of keeping things under wraps until they’re ‘ready’ (read ‘dead and forgotten’). Here’s my attempt to rectify that.</p>
+
+<p>Over the past couple of weeks I’ve been building a full-fledged <a href="http://www.rsnapshot.org/">Rsnapshot</a> module for the <a href="http://projects.puppetlabs.com/">Puppet configuration management platform</a>. What started as a simple puppet-isation of an install turned into a labour of love to build my first publishable Puppet module.</p>
+
+<p>The module can be found here: https://github.com/spikeheap/puppet_rsnapshot and is released under the <a href="http://www.gnu.org/licenses/gpl.html">GPL v3</a>. Pull requests and issues are welcome! <br />
+<!--more--><br />
+The module solves a simple problem: configure a central Rsnapshot system with node-specific backup directories. The module is completely hiera-compatible.</p>
+
+<p>Declaring an Rsnapshot server is as simple as:</p>
+
+<pre><code class="language-ruby">node{'backup.example.com':
+  rsnapshot{'backup':
+    sync_first      =&gt; true
+		ssh_private_key =&gt; YOURSSHKEY
+  }
+}
+</code></pre>
+
+<p>Then declare a client as follows:</p>
+
+<pre><code class="language-ruby">node{'cleverthing.example.com':
+  rsnapshot::client{'cleverthing':
+    dirs =&gt; [
+		  '/usr/local/myamazingapp/',
+		  '/var/'
+		]
+  }
+}
+</code></pre>
+
+<p>It’s even simpler if you’re using Hiera, where you’d declare the server as follows:</p>
+
+<pre><code class="language-yaml">---
+classes:
+  - rsnapshot
+
+rsnapshot::ssh_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  ...
+  -----END RSA PRIVATE KEY-----
+
+# All the following variables are optional, and are just to illustrate configuration 
+rsnapshot::sync_first: true
+rsnapshot::interval_hourly: 24
+rsnapshot::cron_sync_hour: '*'
+rsnapshot::cron_sync_minute: 0
+rsnapshot::cron_hourly_hour: '*'
+rsnapshot::cron_hourly_minute: 30
+rsnapshot::cron_daily_hour: 23
+rsnapshot::cron_daily_minute: 0
+rsnapshot::cron_weekly_hour: 22
+rsnapshot::cron_weekly_minute: 0
+rsnapshot::cron_monthly_hour: 21
+rsnapshot::cron_monthly_minute: 0
+rsnapshot::snapshot_root: /backups/rsnapshot/
+</code></pre>
+
+<p>and the client:</p>
+
+<pre><code class="language-yaml">---
+classes:
+- rsnapshot::client
+
+rsnapshot::client::dirs: [
+'/usr/local/myamazingapp/',
+'/var/'
+]
+</code></pre>
+
+<p>The module has support for all the configuration options of Rsnapshot, and I’ll update the documentation shortly to explain the additional parameters.</p>
+
+<h3 id="limitations">Limitations</h3>
+
+<p>Currently the module doesn’t have any tests, so use it at your peril and test it on a staging environment first. This has also been developed entirely on an Ubuntu platform so your mileage may vary on other systems, though there’s no reason it won’t work with the right paths passed to it.</p>
+
+<p>I haven’t published the module to the <a href="https://forge.puppetlabs.com/">Puppet Forge</a> yet because I want to complete a suite of tests, check it with puppet-lint and get the documentation up to scratch first.</p>
+
+<p>In addition, the following features aren’t yet complete:</p>
+
+<ul>
+  <li>Read-only NFS mount of the backup for recovery</li>
+  <li>Node-defined exclusions (I’m not sure if this is possible with Rsnapshot)</li>
+  <li>Read-only rsync server accessed over SSH. A best-practice setup using restricted SSH access to a read-only rsync daemon to reduce the possibilty of attack through the backup system.</li>
+  <li>Report collection </li>
+  <li>Per-host pre-backup scripts</li>
+  <li>Space checking prior to backup</li>
+</ul>
+
+<p>This is my first foray into Puppet modules, so feedback and (gentle) criticism is invited so I can learn. That link again is https://github.com/spikeheap/puppet_rsnapshot .</p>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->  
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

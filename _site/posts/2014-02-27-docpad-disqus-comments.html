@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Disqus comment threads on a docpad homepage</h1>
+        <small>27 Feb 2014</small>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p>I really do get on well with <a href="http://docpad.org/">docpad</a>. Adding comments to the homepage blog entry was a little tricky though, so here’s the workaround I applied.</p>
+
+<!-- more -->
+
+<p>Despite wanting to move to a JVM-based static site generator, docpad does too many things to make me want to leave. It’s not perfect, but it has plugins to solve mosts of your basic problems, and is nicely hackable. Plus it’s written in CoffeScript, which is always a plus.  The <a href="https://github.com/docpad/docpad-plugin-services">services plugin</a> provides a neat way to inject Disqus comment threads into your pages. It’s almost zero configuration and works reliably, but it doesn’t work when you’re rendering dynamic content, for example the latest blog post on your home page. </p>
+
+<p>Everything worked well until Disqus got confused. First it displayed the comments from a blog post on the homepage when it was no longer correct. Then it just started displaying the comment thread on all pages which didn’t have their own threads already. Not so good. </p>
+
+<p>Fortunately Disqus support were very responsive, and got back to me explaining the problem: the Disqus widget doesn’t just need the title, it also needs a unique URL in its config. The services plugin doesn’t work for this, as it always gets the current page URL, so here’s a modified version of <a href="https://github.com/docpad/docpad-plugin-services/blob/master/src/services.plugin.coffee#L356">the original script</a> which takes a post as a parameter so you can load dynamic comment threads wherever you like.</p>
+
+<p>All you need to do is add the following to your <code>docpad.cofee</code>, I put it in the helpers section:</p>
+
+<gist>spikeheap/9256629?file=docpad.coffee</gist>
+
+<p>Then you can add the comments to your index page, like so:</p>
+
+<gist>spikeheap/9256629?file=index.html.eco</gist>
+
+<p>I will submit this as a pull request just as soon as I figure out how to do it elegantly :), but this will do as a workaround for now.</p>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->  
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

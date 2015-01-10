@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Puppet talk</h1>
+        <small>02 Oct 2013</small>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Here are the slides from a presentation on Puppet I gave at the <a href="https://twitter.com/SAWBangor">Software Alliance Wales</a> lightning lunch on 27th September 2013:</p>
+
+<script async="" class="speakerdeck-embed" data-id="029e4b5009b90131f52862a257e402f6" data-ratio="1.29456384323641" src="//speakerdeck.com/assets/embed.js"></script>
+
+<h1 id="aside-making-simple-presentations">Aside: making simple presentations</h1>
+<p>The source for those slides is available at https://github.com/spikeheap/saw-meet-puppet-talk. </p>
+
+<p>If you need to build a simple presentation I’d definitely recommend <a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a>. There are a good number of open-source presentation engines emerging now, and it’s great to see open tools (finally) competing with Keynote/Powerpoint for simplicity. For simple presentations it blows them out of the water.</p>
+
+<p><em>If you want something swanky or want an open-source competitor to <a href="http://prezi.com/">Prezi</a> check out http://bartaz.github.io/impress.js/#/bored. It’s amazing, but was a little too heavy for the presentation at the top of this post!</em></p>
+
+<p>My requirements were pretty simple: the day before the lightning talk I needed to drop some code examples onto a couple of slides to demonstrate the Puppet syntax. I don’t have Keynote, LibreOffice or Powerpoint installed on my iMac. I also didn’t want to have to take my laptop to the talk.</p>
+
+<p><a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a> was pretty much the top Google hit, and offers a very simple setup: a HTML file which you add slides to, and a bunch of supporting CSS and Javascript. The slideshow is trivial to run because it’s just a webpage. Anyone with a modern browser which goes full screen would do fine to present with.</p>
+
+<p>I really enjoyed throwing the slides together because this process separates the content from the style, so you just get on with making things more interesting.</p>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->  
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+safe: true
+timezone: Europe/London
+future: false
+# Output
+permalink: /posts/:year-:month-:day-:title
+encoding: utf-8 
+
+kramdown:
+  input: GFM
+
+# Should be false for production
+drafts: true
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "default"
+
+
