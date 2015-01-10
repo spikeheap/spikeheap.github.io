@@ -25,7 +25,7 @@ gradle init
 
 And then edit the `build.gradle` file to look something like the following:
 
-<gist>spikeheap/9808514?file=build.gradle</gist>
+{% gist spikeheap/9808514 build.gradle %}
 
 This will ensure we've got Rhino on our classpath, and can use Spock to write our tests. The last `compile` dependency allows us to include JAR files in a `lib` directory, which can be handy if you use libraries not available through Bintray or Maven.
 
@@ -56,7 +56,7 @@ You can now run the tests (even Spock tests) just like normal!
 
 We'll create a sample JavaScript file to test in `src/main/js/littleFunction.js`, containing the following:
 
-<gist>spikeheap/9808514?file=littleFunction.js</gist>
+{% gist spikeheap/9808514 littleFunction.js %}
 
 That code isn't likely to win any awards, but we can check that it works by writing a specification.
 
@@ -64,17 +64,17 @@ That code isn't likely to win any awards, but we can check that it works by writ
 
 Create a Groovy class named `LittleFunctionSpec.groovy` in `src/test/groovy/my/package/`, containing the following:
 
-<gist>spikeheap/9808514?file=LittleFunctionSpec.groovy</gist>
+{% gist spikeheap/9808514 LittleFunctionSpec.groovy %}
 
 This gives us our Rhino environment (context). Note that if you want to use `XML` objects you'll need to use a context version > 1.7. All we need to do now is add a test:
 
-<gist>spikeheap/9808514?file=LittleFunctionSpecPartial1.groovy</gist>
+{% gist spikeheap/9808514 LittleFunctionSpecPartial1.groovy %}
 
 Hopefully that specification is pretty self-explanatory. For more information [Check out the Spock documentation](http://spock-framework.readthedocs.org/en/latest/).
 
 The example above used a single value, but we probably want to check quite a few. Spock's [Data Driven Testing support](http://spock-framework.readthedocs.org/en/latest/data_driven_testing.html) makes this simple, so we can rewrite the test as:
 
-<gist>spikeheap/9808514?file=LittleFunctionSpecPartial2.groovy</gist>
+{% gist spikeheap/9808514 LittleFunctionSpecPartial2.groovy %}
 
 ## Running tests
 

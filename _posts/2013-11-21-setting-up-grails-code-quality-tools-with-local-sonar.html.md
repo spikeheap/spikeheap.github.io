@@ -42,7 +42,7 @@ You can check it's running at http://localhost:9000/, but you can use nginx to g
 
 We need to set up Maven to post the results to Sonar. Because we don't want local machine configuration included in the project Git repository, let's add the database connection details to our local Maven settings file (~/.m2/settings.xml) which may not exist yet, so just create it with the following contents:
 
-<gist>spikeheap/7563286</gist>
+{% gist spikeheap/7563286 %}
 
 The important elements to check are:
 
@@ -53,7 +53,7 @@ The important elements to check are:
 
 You then need to add a pom.xml file to the project you want to analyse:
 
-<gist>spikeheap/7564644</gist>
+{% gist spikeheap/7564644 %}
 
 Here the points of interest are:
 

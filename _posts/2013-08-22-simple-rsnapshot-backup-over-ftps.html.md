@@ -107,7 +107,7 @@ chown rsnapshot /var/run/rsnapshot/
 
 Next we need to set the configuration file. There are many options, so it's a good idea to [read the documentation](http://www.rsnapshot.org/rsnapshot.html), but this will get you up and running:
 
-<gist>spikeheap/7901408</gis>
+{% gist spikeheap/7901408 %}
 
 Now we can test the configuration (be sure to run as the rsnapshot user):
 

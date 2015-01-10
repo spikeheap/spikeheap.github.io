@@ -23,7 +23,7 @@ This is already too much hassle! Grails makes life easier by generating a [Grail
 
 NodeJS is a requirement for development, so I made the assumption that any developer machine would have it present. From there I wanted to use NPM to install Bower and then run Bower to grab the dependencies. There were plenty of options but I'm keen to learn a bit more Gradle so this was a great opportunity. 15 minutes later and we've got a build file (thanks to [Mr Haki](http://mrhaki.blogspot.co.uk/2010/10/gradle-goodness-parse-output-from-exec.html) for the OutputStream processing):
 
-<gist>spikeheap/8558786</gist>
+{% gist spikeheap/8558786 %}
 
 There may well be a better way of doing this, but it worked for me on OSX. There was a path-related error when we tried to run it on Windows, and if anyone can point out why that would be great.
 

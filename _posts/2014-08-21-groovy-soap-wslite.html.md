@@ -76,4 +76,6 @@ println "There are ${memberCount} members initially"
 
 In the following gist I've abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs. 
 
-<gist>spikeheap/b5428f11834a0cea3822</gist>
+{% gist spikeheap/b5428f11834a0cea3822 %}
+
+{% gist parkr/931c1c8d465a04042403 %}

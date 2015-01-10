@@ -18,10 +18,10 @@ Fortunately Disqus support were very responsive, and got back to me explaining t
 
 All you need to do is add the following to your `docpad.cofee`, I put it in the helpers section:
 
-<gist>spikeheap/9256629?file=docpad.coffee</gist>
+{% gist spikeheap/9256629 docpad.coffee %}
 
 Then you can add the comments to your index page, like so:
 
-<gist>spikeheap/9256629?file=index.html.eco</gist>
+{% gist spikeheap/9256629 index.html.eco %}
 
 I will submit this as a pull request just as soon as I figure out how to do it elegantly :), but this will do as a workaround for now.

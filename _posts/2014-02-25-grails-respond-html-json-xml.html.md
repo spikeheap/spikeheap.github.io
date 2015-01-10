@@ -13,25 +13,25 @@ The new(ish) support for `respond` in Grails 2.3 is great, and saves us the hass
 
 The obvious approach is to respond with the object:
 
-<gist>spikeheap/9213738?file=1_obvious_approach.groovy</gist>
+{% gist spikeheap/9213738 1_obvious_approach.groovy %}
 
 The above works great for basic JSON/XML requests, as it returns a 404 status code and no content. The main problem is that it doesn't render HTML responses, so a user is presented with a blank page. Not so nice.
     
 
 The following will quite happily respond with the correct content type for a valid widget, but if the widget doesn't exist a 404 HTML page and 404 status code are returned (even if you requested JSON/XML):
 
-<gist>spikeheap/9213738?file=2_html_only.groovy</gist>
+{% gist spikeheap/9213738 2_html_only.groovy %}
 
     
 We're almost there, but not quite. We can use the <code>respond</code> method and manually pass back the HTTP status and the view:
 
-<gist>spikeheap/9213738?file=3_working_html_json_xml.groovy</gist>
+{% gist spikeheap/9213738 3_working_html_json_xml.groovy %}
 
 Hey presto, 404 error pages for HTML users, and a blank 404 response for JSON/XML requests. Obviously the above assumes you have a view named <code>error404.gsp</code> to display a pretty 404 error page.
 
 It might be a bit nicer if our JSON and XML responses contained a similar amount of information, and if we could pass some contextual information to the view (for example the type of thing we couldn't find). No problem, just define a map with our response objects and then define that same map as the view model, along with the status code and view:
 
-<gist>spikeheap/9213738?file=4_the_full_sausage.groovy</gist>
+{% gist spikeheap/9213738 4_the_full_sausage.groovy %}
 
 Let's break the 404 response down a little.
 

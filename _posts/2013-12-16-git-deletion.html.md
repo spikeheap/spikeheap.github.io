@@ -66,7 +66,7 @@ Ted Naleid has written an excellent article on [finding and purging big files fr
 
 I've dumped the above into a handy little script:
 
-<gist>spikeheap/8019649</gist>
+{% gist spikeheap/8019649 %}
 
 <!-- TODO Overwriting history, or pushing a new repository -->
 
