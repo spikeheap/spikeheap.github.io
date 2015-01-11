@@ -1,7 +1,13 @@
+name: Ryan Brooks' blog
+description: Technical musings and notes from a polyglot developer
+url: http://ryanbrooks.co.uk
 
+safe: true
 timezone: Europe/London
 future: false
-# Output
+
+
+excerpt_separator: <!--more-->
 permalink: /posts/:year-:month-:day-:title
 encoding: utf-8 
 
