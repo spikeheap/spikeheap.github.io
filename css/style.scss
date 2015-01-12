@@ -1,0 +1,51 @@
+---
+---
+@import "_texture_mixin";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
+
+// Variables
+$orange: #d95c2f;
+$grey: #67717a;
+$blue: #6891ad;
+$light-blue: #c2d7e0;
+$almost-white: #f5f5f5;
+
+// See http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+	max-width: 100%;
+}
+
+#header, #footer {
+	background-color: $blue;
+	color: $almost-white;
+	a {
+		color: $almost-white;
+		text-decoration: none;
+	}
+}
+#header {
+	border-bottom: 1px solid $orange;
+}
+#footer {
+	border-top: 1px solid $orange;
+}
+
+
+blockquote {
+	@include texture($light-blue, 7, 1); 
+	font-size: 1.5em;
+	display: block;
+	float: right;
+	max-width: 350px;
+	padding: 25px;
+	margin: 25px;
+	//margin-right: -150px;
+	border-radius: 5px;
+}
