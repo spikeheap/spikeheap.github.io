@@ -1,7 +1,10 @@
 ---
 ---
+$fa-font-path:   "../bower_components/fontawesome/fonts";
+
 @import "_texture_mixin";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "../bower_components/fontawesome/scss/font-awesome.scss";
 
 // Variables
 $orange: #d95c2f;
@@ -30,11 +33,33 @@ img {
 		text-decoration: none;
 	}
 }
-#header {
-	border-bottom: 1px solid $orange;
+.post-date {
+	margin-top: -0.4em;
+	font-weight: bold;
+	color: grey;
 }
-#footer {
-	border-top: 1px solid $orange;
+.date-subtitle {
+	display: block;
+}
+
+.footer--top {
+	h1 {
+		font-size: 1.2em;
+	}
+	@extend .container;
+	margin-top:1em;
+	margin-bottom:1em;
+}
+.footer--middle {
+	h1 {
+		font-size: 1.2em;
+	}
+	border-top: 1px solid $grey;
+	background-color: $orange;
+}
+.footer--bottom {
+	border-top: 1px solid $grey;
+	background-color: $light-blue;
 }
 
 

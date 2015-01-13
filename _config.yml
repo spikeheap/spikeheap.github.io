@@ -13,7 +13,7 @@ permalink: /posts/:year-:month-:day-:title/
 encoding: utf-8 
 
 sass:
-    sass_dir: _scss
+  sass_dir: _scss
 
 kramdown:
   input: GFM
@@ -30,3 +30,12 @@ defaults:
       layout: "default"
 
 
+jekyll-archives:
+  enabled: 'all'
+  layout: 'archive'
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
