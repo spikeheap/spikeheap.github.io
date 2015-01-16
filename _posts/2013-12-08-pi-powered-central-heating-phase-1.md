@@ -14,10 +14,11 @@ Not that long ago I wrote about [planning to set up a basic Raspberry Pi-control
 Okay, so it's obvious but I have to say it: messing around with mains electricity is dangerous and you could end up getting a pretty big shock (literally). If you don't know what you're doing and don't fancy killing yourself (and potentially other people), get someone else to do it! Everything here is provided without any kind of assurance that it will work for you. Basically, don't blame me if you do something that gets someone electrocuted or causes your house to burn down. You have been warned (I do enjoy a bit of melodrama)!
 
 ## The set up
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/stone_walls_zps9aa0e25a.jpg" alt="Thick stone walls and single-glazing. A challenge!" />
+![Thick stone walls and single-glazing. A challenge!](http://i1367.photobucket.com/albums/r788/spikeheap/stone_walls_zps9aa0e25a.jpg)
 The use case for our automatic heating system is a little different to normal. We have the pleasure of having 4 LPG bottles fuelling a Worcester 24CDi combi-boiler. This is controlled by a thermostat mounted in the hallway by the front door as well as a simple programmer located just by the boiler.
 
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/lpg_zpsc04b89c3.jpg" alt="LPG bottles, the bane of a warm house" /><legend>LPG bottles, the bane of a warm house</legend>
+![LPG bottles, the bane of a warm house](http://i1367.photobucket.com/albums/r788/spikeheap/lpg_zpsc04b89c3.jpg)
+<small>LPG bottles, the bane of a warm house</small>
 
 The programmer is in-line with the main power supply to the boiler, so outside of the programmed heating times there is also no hot water. The thermostat (thankfully) just controls the heating.
 
@@ -35,7 +36,7 @@ As we're entering winter and it's pretty cold at the moment we don't actually ne
 
 There are a number of ways to break into the central heating system. Because the boiler also services the hot water system I didn't want to just switch the entire unit on/off, so had to use the thermostat interface of the boiler. There is a handy wireless thermostat fascia for most Worcester boilers, and if you're lucky enough to have one of those you can fairly simply spoof it, which is a much less invasive way to get into the system.
 
- <img src="http://i1367.photobucket.com/albums/r788/spikeheap/installation-and-servicing-instructions-for-24cdi-rsf--discontinued-07pdf__page_12_of_42_-2_zps11b4a374.png" width=167px alt="Worcester 24CDi thermostat wiring" />
+ ![Worcester 24CDi thermostat wiring](http://i1367.photobucket.com/albums/r788/spikeheap/installation-and-servicing-instructions-for-24cdi-rsf--discontinued-07pdf__page_12_of_42_-2_zps11b4a374.png)
  The boiler has a 230V room thermostat connection. I wanted to keep that in the system as a fail-safe. If the clever system dies or becomes self-aware and tries to take over the world we don't want the pipes to freeze (that would be expensive). Keeping the existing thermostat wired in parallel and turned down to ~5°C means that if it gets that cold the heating will come on regardless. Well, assuming we haven't run out of gas (again) at least.
 
 The thermostat is the logical point to tap into the circuit. It has screw-terminals for easier installation and the thermostat is closer to my ideal mounting location than the boiler. Ours is a pretty standard (and old) Honeywell thermostat (see pictures below). Inside the thermostat is a handy wiring diagram showing the boiler uses 4 connections:
@@ -47,7 +48,7 @@ The thermostat is the logical point to tap into the circuit. It has screw-termin
 
 Closing the switch on the thermostat bridges live and switched live. Just because I'm paranoid, I double-checked this with a multimeter before adding anything to the system. Rather than building a complete parallel system, I opted to insert a relay to manually close the circuit between live and switched live, but not yet!
 
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/thermostat_zps1e3c51eb.jpg" alt="The existing thermostat, and wiring points" />
+![The existing thermostat, and wiring points](http://i1367.photobucket.com/albums/r788/spikeheap/thermostat_zps1e3c51eb.jpg)
 
 ## Proof of concept: simple Pi control
 Before plugging into the live system, I wanted to prove the system would work in isolation. The components needed are:
@@ -65,7 +66,7 @@ When my components turned up (Ciseco get points for a very fast turnaround) I ne
 The relay board uses GPIO pins 24 & 25 (as well as the 5V & ground pins). The RTC/temperature sensor runs on 3V3 and ground pins as well as the SDA and SCL pins for i2c communication, so can be safely added on top of the relay.
 
 <!-- TODO photo of the complete unit-->
-[<img src="http://i1367.photobucket.com/albums/r788/spikeheap/completepi_zpseb6b063b.jpg" width=340px alt="The complete unit" />](http://i1367.photobucket.com/albums/r788/spikeheap/completepi_zpseb6b063b.jpg)
+![The complete unit](http://i1367.photobucket.com/albums/r788/spikeheap/completepi_zpseb6b063b.jpg)
 
 
 Later this week I'll be adding the [RFM12B Pi expansion board](http://shop.openenergymonitor.com/rfm12pi-v2-raspberry-pi-expansion-board/), which will take a bit of rejigging. I'll post photos once it's working.
@@ -190,7 +191,7 @@ Some useful addresses for the POD RTC/EEPROM/TEMP board:
 *  Temperature sensor (TMP100NA from TI) I2C address is 0x48
 *  32Kb EEPROM (24LC256) I2C address is 0x50
 
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/pod_zps7e8df616.jpg" alt="The POD RTC EEPROM TEMP sensor" />
+![The POD RTC EEPROM TEMP sensor](http://i1367.photobucket.com/albums/r788/spikeheap/pod_zps7e8df616.jpg)
 
 For the following I created a [Github repository](https://github.com/spikeheap/pi-switch-post) which may provide a good starting point. 
 
@@ -258,7 +259,7 @@ What's the point in building a computer-controlled heating system if you have to
 
 And there we have it, a basic central heating control system, but with the potential for so much more. Obviously the scripts above are pretty rough around the edges, but as a proof of concept I'm pretty happy with it.
 
-<img src="http://i1367.photobucket.com/albums/r788/spikeheap/piinajar_zpsda6f588d.jpg" alt="Stilton Pi?" />
+![Stilton Pi?](http://i1367.photobucket.com/albums/r788/spikeheap/piinajar_zpsda6f588d.jpg)
 
 In the photo above I rested the temperature sensor against the wall. Don't do that normally if you want accurate readings!
 

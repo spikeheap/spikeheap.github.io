@@ -1,6 +1,9 @@
 {% if page.previous %}
     <a href="{{ page.previous.url }}"><i class="fa fa-arrow-circle-left"></i> prev</a> 
 {% endif %}
+{% if page.next && page.next %}
+    |
+{% endif %}
 {% if page.next %}
     <a href="{{ page.next.url }}">next <i class="fa fa-arrow-circle-right"></i></a> 
 {% endif %}

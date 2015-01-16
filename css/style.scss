@@ -16,6 +16,11 @@ $navbar-default-color: $almost-white;
 $navbar-default-bg: $blue;
 $navbar-default-border: $light-blue;
 
+// Grid
+// Large screen / wide desktop - set same as standard desktop.
+$container-large-desktop:      (940px + 30px);
+$container-lg:                 $container-large-desktop;
+
 // Navbar links
 $navbar-default-link-color: $light-blue;
 $navbar-default-link-hover-color: $blue;
@@ -31,7 +36,6 @@ $navbar-default-brand-hover-color: $light-blue;
 $navbar-default-brand-hover-bg: $blue;
 
 // Imports
-@import "_texture-mixin";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
@@ -44,7 +48,10 @@ html {
 }
 
 img {
+	display: block;
 	max-width: 100%;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px #CCC;
 }
 
 #header, #footer {
@@ -86,7 +93,6 @@ img {
 
 
 blockquote {
-	@include texture($light-blue, 7, 1); 
 	font-size: 1.5em;
 	display: block;
 	float: right;
