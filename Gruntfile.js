@@ -252,12 +252,23 @@ module.exports = function (grunt) {
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
             // Explicitly add any files your site needs for distribution here.
-            //'_bower_components/bootstrap-sass/**/fonts/**/*'
+            '_bower_components/**/*'
             //'favicon.ico',
             //'apple-touch*.png'
           ],
           dest: '<%= yeoman.dist %>'
-        }]
+        },
+        {
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_bower_components',
+          src: [
+            // Explicitly add any files your site needs for distribution here.
+            '/**/*'
+          ],
+          dest: '<%= yeoman.dist %>/bower_components'
+        }
+        ]
       },
       // Copy CSS into .tmp directory for Autoprefixer processing
       stageCss: {
