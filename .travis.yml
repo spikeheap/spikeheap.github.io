@@ -11,8 +11,8 @@ before_install:
   - bower install
 
 before:
-	- git config user.name "Travis-CI"
- 	- git config user.email "ryanbrooksis+ci@gmail.com"
+	- git config --global user.name "Travis-CI"
+ 	- git config --global user.email "ryanbrooksis+ci@gmail.com"
 
 script: "grunt deploy"
 
