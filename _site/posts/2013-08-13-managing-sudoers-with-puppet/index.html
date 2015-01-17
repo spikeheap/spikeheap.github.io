@@ -1,0 +1,58 @@
+<blockquote>
+Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!
+</blockquote>
+
+<p>Today I re-learned a valuable lesson about the power of Puppet: it can be a force for evil if you forget the little extra things you set up weeks ago. Fortunately it’s easy to reproduce, so try it for yourself! If there’s ever an obvious reason to keep a remote clone of your Puppet configuration, this is it.</p>
+
+<!--more-->
+
+<p>Step one is easy. To have a good self-managing Puppet setup you really want your clients to auto-configure themselves. That configuration is going to do sane things like (for example) setting ‘pluginsync’ and ensuring the Puppet client daemon is running, configured to start on boot, etc. </p>
+
+<p>Step two follows a little while later. The need arises to manage a sudoers file and rather than reinvent the wheel you install the popular <a href="https://forge.puppetlabs.com/saz/sudo"><em>sudo</em> package by <em>saz</em></a>.</p>
+
+<p>This package got a <a href="https://puppetlabs.com/blog/module-of-the-week-sazsudo-manage-sudo-configuration/">great review from PuppetLabs</a> and is easy to configure:</p>
+
+<pre><code class="language-ruby"># Manage sudoers with the module
+class { 'sudo': }
+
+# Declare a sudoer with the username 'bill'
+sudo::conf { 'bill':
+  priority =&gt; 10,
+  content  =&gt; 'bill ALL=(ALL) NOPASSWD: ALL',
+}
+</code></pre>
+
+<p>The key step here is to run Puppet and see new files created in /etc/sudoers.d/, check the content and think all is well. The <em>facepalm</em> moment really happened when I failed to check the run had added the <em>include</em> into the sudoers file to make it bother to read the files in <em>sudoers.d</em>. Unfortunately for me this hadn’t happened, so although the files were there I no longer had sudo privileges on the client.</p>
+
+<p>No problem! Simply fixing the module to add the <em>include</em> statement would bring the client back online. Unless step three has been done.</p>
+
+<p>Step three closes the loop on this suprisingly vicious circle. A few days prior to step two I was refactoring <em>site.pp</em> and decide to move the puppetmaster into the default node group so I could define it using Hiera. The migration was simple (thanks Hiera!) but in my common definition I had included the puppet client package, which caused the puppetmaster to start updating every 30 minutes like every other node.</p>
+
+<p>I was a couple of minutes too late to prevent the disaster. Locking myself out of the puppetmaster was a little embarrassing, but did give me the opportunity to build the puppetmaster from scratch using Puppet. Oh how a technology can redeem itself.</p>
+
+<h5 id="rebuilding-the-puppetmaster-from-scratch">Rebuilding the puppetmaster from scratch</h5>
+
+<p>Building the puppetmaster from only the /etc/puppet configuration is actually suprisingly easy. After pushing a change to the puppet repository which would prevent the problem above from being deployed to the new instance, the full steps to provision a new VM and go from zero to a full installation were:</p>
+
+<ul>
+  <li>Provision the VM and log into it.</li>
+  <li><a href="http://apt.puppetlabs.com/README.txt">Add the newest Puppet repositories to APT</a> (my Puppet configuration would do this later, but lets start as we mean to go on).</li>
+  <li>Run the usual <code>apt-get install puppet git</code></li>
+  <li>Clone the Git repository of the Puppet configuration (the entirety of /etc/puppet).</li>
+  <li>Use <em>puppet apply</em> on <em>site.pp</em>. I expected this to fail (and it did raise a couple of errors) but it did a significant enough job to then allow puppetmaster to start and a <em>puppet agent -t</em> to be run. <code>bash puppet apply /etc/puppet/manifests/site.pp </code></li>
+  <li>Make a cup of tea and bask in the reflected glory. </li>
+</ul>
+
+<h5 id="lessons-learned">Lessons learned</h5>
+
+<p>So the lessons to be learned from this exercise are many and obvious:</p>
+
+<ol>
+  <li>Always keep a remote clone (or backup) of your Puppet configuration.</li>
+  <li>Check the puppetmaster’s configuration doubly-trebly carefully, especially for the crux items like sudo where you could be locked out.</li>
+  <li>A fully managed Puppet node is trivial to bring up, even if that node is the puppetmaster.</li>
+</ol>
+
+<p>Although I would rather not have been through an hour of pain learning this lesson, I now have a much stronger confidence in our configuration’s resilience, so there’s always a silver lining.</p>
+
+<p>Now, break over, back to the Puppet Rsnapshot module…</p>
