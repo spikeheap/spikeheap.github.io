@@ -8,6 +8,8 @@ layout: default
         </h1>
         <p>{{ page.tagline }}</p>
         {{ content | markdownify}}
+        
+        {% include share_page.html %}
         {% include post_nav.html %}
 
         {% assign disqus_identifier = page.url | remove: ".html" | slugify %}
