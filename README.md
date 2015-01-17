@@ -1,5 +1,7 @@
 This is the personal blog of Ryan Brooks at http://www.ryanbrooks.co.uk. All content in this site are my opinions and not those of my employer or any other organisation I may be affiliated with.
 
+[![Build Status](https://travis-ci.org/spikeheap/spikeheap.github.io.svg)](https://travis-ci.org/spikeheap/spikeheap.github.io)
+
 Please see the [license](LICENSE.md) to see how you can use the content of this site.
 
 If you've found an error, typo or stylistic faux-pas, please feel free to open an issue or create a pull request. 
