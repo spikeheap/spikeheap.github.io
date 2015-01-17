@@ -251,8 +251,6 @@ module.exports = function (grunt) {
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
-            // Explicitly add any files your site needs for distribution here.
-            '_bower_components/**/*'
             //'favicon.ico',
             //'apple-touch*.png'
           ],
@@ -264,7 +262,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>/_bower_components',
           src: [
             // Explicitly add any files your site needs for distribution here.
-            '/**/*'
+            '**/*'
           ],
           dest: '<%= yeoman.dist %>/bower_components'
         }

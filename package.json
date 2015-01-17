@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "description": "Yeoman workflow for spikeheap.github.io",
   "dependencies": {
-    "grunt": "^0.4.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
