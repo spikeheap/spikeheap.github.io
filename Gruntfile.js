@@ -309,7 +309,7 @@ module.exports = function (grunt) {
     buildcontrol: {
       dist: {
         options: {
-          remote: 'git@github.com:spikeheap/spikeheap.github.io',
+          remote: process.env.GH_REMOTE || 'git@github.com:spikeheap/spikeheap.github.io',
           branch: 'master',
           commit: true,
           push: true
