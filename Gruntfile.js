@@ -277,6 +277,18 @@ module.exports = function (grunt) {
           src: '**/*.css',
           dest: '.tmp/css'
         }]
+      },
+      stageBower: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>/_bower_components',
+          src: [
+            // Explicitly add any files your site needs for distribution here.
+            '**/*'
+          ],
+          dest: '.tmp/bower_components'
+        }]
       }
     },
     filerev: {
@@ -330,6 +342,7 @@ module.exports = function (grunt) {
       server: [
         'compass:server',
         'copy:stageCss',
+        'copy:stageBower',
         'jekyll:server'
       ],
       dist: [
