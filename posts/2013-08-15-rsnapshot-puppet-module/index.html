@@ -1,0 +1,80 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js><!--<![endif]--><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title></title><meta name=description content=""><meta name=viewport content="width=device-width, initial-scale=1"><link rel=alternate type=application/rss+xml title="Ryan Brooks' blog" href=http://ryanbrooks.co.uk/feed.xml><link rel=stylesheet href=/css/style.css></head><body><!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--><nav class="navbar navbar-default navbar-top"><div class=container><!-- Brand and toggle get grouped for better mobile display --><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#bs-example-navbar-collapse-1><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href="/">Ryan Brooks</a></div><!-- Collect the nav links, forms, and other content for toggling --><div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1><ul class="nav navbar-nav"><li><a href=/archives.html>Blog archive</a></li></ul><ul class="nav navbar-nav navbar-right"><li><a target=_blank href=https://github.com/spikeheap><i class="fa fa-2x fa-github-square"></i></a></li><li><a target=_blank href=https://twitter.com/spikeheap><i class="fa fa-2x fa-twitter-square"></i></a></li><li><a target=_blank href=http://uk.linkedin.com/in/ryanpbrooks><i class="fa fa-2x fa-linkedin-square"></i></a></li><li><a target=_blank href=mailto:ryanbrooksis+info@gmail.com><i class="fa fa-2x fa-envelope-square"></i></a></li></ul></div><!-- /.navbar-collapse --></div></nav><!-- <div id="header" class="jumbotron">
+	<div class="container">
+		<h1><a href="/">Ryan Brooks' blog</a></h1>
+	</div>
+</div> --><div class=container><div class=row><div class=col-xs-12><a href="/posts/2013-08-13-managing-sudoers-with-puppet/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2013-08-16-refactoring-directory-into-git-submodule/">next <i class="fa fa-arrow-circle-right"></i></a><h1>Rsnapshot Puppet module <small>15 Aug 2013</small></h1><p></p><blockquote>People want to be seen as being clever, so the result is people wind up working in a cave. <small>Brian Fitzpatrick, Ben Collins-Sussman <cite>http://www.youtube.com/watch?v=0SARbwvhupQ</cite></small></blockquote><p>I’m often a perfectionist, and after watching <a href="http://www.youtube.com/watch?v=0SARbwvhupQ">this excellent talk at Google I/O 2009</a> have realised I’m definitely guilty of keeping things under wraps until they’re ‘ready’ (read ‘dead and forgotten’). Here’s my attempt to rectify that.</p><p>Over the past couple of weeks I’ve been building a full-fledged <a href="http://www.rsnapshot.org/">Rsnapshot</a> module for the <a href="http://projects.puppetlabs.com/">Puppet configuration management platform</a>. What started as a simple puppet-isation of an install turned into a labour of love to build my first publishable Puppet module.</p><p>The module can be found here: https://github.com/spikeheap/puppet_rsnapshot and is released under the <a href=http://www.gnu.org/licenses/gpl.html>GPL v3</a>. Pull requests and issues are welcome! <!--more--><br>The module solves a simple problem: configure a central Rsnapshot system with node-specific backup directories. The module is completely hiera-compatible.</p><p>Declaring an Rsnapshot server is as simple as:</p><pre><code class=language-ruby>node{'backup.example.com':
+  rsnapshot{'backup':
+    sync_first      =&gt; true
+		ssh_private_key =&gt; YOURSSHKEY
+  }
+}
+</code></pre><p>Then declare a client as follows:</p><pre><code class=language-ruby>node{'cleverthing.example.com':
+  rsnapshot::client{'cleverthing':
+    dirs =&gt; [
+		  '/usr/local/myamazingapp/',
+		  '/var/'
+		]
+  }
+}
+</code></pre><p>It’s even simpler if you’re using Hiera, where you’d declare the server as follows:</p><pre><code class=language-yaml>---
+classes:
+  - rsnapshot
+
+rsnapshot::ssh_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  ...
+  -----END RSA PRIVATE KEY-----
+
+# All the following variables are optional, and are just to illustrate configuration 
+rsnapshot::sync_first: true
+rsnapshot::interval_hourly: 24
+rsnapshot::cron_sync_hour: '*'
+rsnapshot::cron_sync_minute: 0
+rsnapshot::cron_hourly_hour: '*'
+rsnapshot::cron_hourly_minute: 30
+rsnapshot::cron_daily_hour: 23
+rsnapshot::cron_daily_minute: 0
+rsnapshot::cron_weekly_hour: 22
+rsnapshot::cron_weekly_minute: 0
+rsnapshot::cron_monthly_hour: 21
+rsnapshot::cron_monthly_minute: 0
+rsnapshot::snapshot_root: /backups/rsnapshot/
+</code></pre><p>and the client:</p><pre><code class=language-yaml>---
+classes:
+- rsnapshot::client
+
+rsnapshot::client::dirs: [
+'/usr/local/myamazingapp/',
+'/var/'
+]
+</code></pre><p>The module has support for all the configuration options of Rsnapshot, and I’ll update the documentation shortly to explain the additional parameters.</p><h3 id=limitations>Limitations</h3><p>Currently the module doesn’t have any tests, so use it at your peril and test it on a staging environment first. This has also been developed entirely on an Ubuntu platform so your mileage may vary on other systems, though there’s no reason it won’t work with the right paths passed to it.</p><p>I haven’t published the module to the <a href="https://forge.puppetlabs.com/">Puppet Forge</a> yet because I want to complete a suite of tests, check it with puppet-lint and get the documentation up to scratch first.</p><p>In addition, the following features aren’t yet complete:</p><ul><li>Read-only NFS mount of the backup for recovery</li><li>Node-defined exclusions (I’m not sure if this is possible with Rsnapshot)</li><li>Read-only rsync server accessed over SSH. A best-practice setup using restricted SSH access to a read-only rsync daemon to reduce the possibilty of attack through the backup system.</li><li>Report collection</li><li>Per-host pre-backup scripts</li><li>Space checking prior to backup</li></ul><p>This is my first foray into Puppet modules, so feedback and (gentle) criticism is invited so I can learn. That link again is https://github.com/spikeheap/puppet_rsnapshot .</p><div><a class=twitter-share-button href=https://twitter.com/share data-url="http://ryanbrooks.co.uk/posts/2013-08-15-rsnapshot-puppet-module/" data-via=spikeheap>Tweet</a> <a class=twitter-follow-button href=https://twitter.com/spikeheap data-show-count=false data-lang=en>Follow @spikeheap</a> <!-- set data-annotation to 'bubble' for count --><div class=g-plus data-action=share data-annotation=none></div></div><a href="/posts/2013-08-13-managing-sudoers-with-puppet/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2013-08-16-refactoring-directory-into-git-submodule/">next <i class="fa fa-arrow-circle-right"></i></a><div id=disqus_thread></div><!-- Disqus comments --><script type=text/javascript>/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'ryanbrooks'; // required: replace example with your forum shortname
+    var disqus_identifier = 'posts-2013-08-15-rsnapshot-puppet-module';
+    var disqus_title = 'Rsnapshot Puppet module';
+    var disqus_url = 'http://ryanbrooks.co.uk/posts/2013-08-15-rsnapshot-puppet-module/';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href="/posts/2013-08-13-managing-sudoers-with-puppet/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2013-08-16-refactoring-directory-into-git-submodule/">next <i class="fa fa-arrow-circle-right"></i></a></div></div></div><footer id=footer class=container-fluid><div class=footer--top><div class=row><div class="col-xs-5 col-sm-4 col-md-3 col-lg-2"><h1>Get in touch</h1><div class=contact-icons><a target=_blank href=https://github.com/spikeheap><i class="fa fa-2x fa-github-square"></i></a> <a target=_blank href=https://twitter.com/spikeheap><i class="fa fa-2x fa-twitter-square"></i></a> <a target=_blank href=http://uk.linkedin.com/in/ryanpbrooks><i class="fa fa-2x fa-linkedin-square"></i></a> <a target=_blank href=mailto:ryanbrooksis+info@gmail.com><i class="fa fa-2x fa-envelope-square"></i></a></div></div><div class="col-xs-7 col-sm-6 col-md-5 col-lg-4"><h1>Hi, I'm Ryan</h1><p>I care about code, process and the community. I'm a freelance CTO and full-stack developer, and co-organiser of <a href="http://jsoxford.com/">JSOxford</a>.</p></div></div></div></footer><!-- <footer class="container-fluid footer--middle">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Have a look around
+    				<span>Home</span>
+    				<span>Blog</span>
+    				<span>More about me</span>
+    				</h1>
+			</div>
+		</div>
+	</div>		
+</footer> --><footer class="container-fluid footer--bottom"><div class=container><small>&copy; Ryan Brooks. The content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the Apache 2.</small></div></footer><script src=/bower_components/jquery/dist/jquery.min.js></script><script src=/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js></script><!-- Twitter bits --><script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script><!-- Google plus --><script src=https://apis.google.com/js/platform.js async defer>{lang: 'en-GB'}</script><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');</script></body></html>

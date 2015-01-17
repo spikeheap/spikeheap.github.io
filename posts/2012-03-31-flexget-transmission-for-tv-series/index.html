@@ -1,0 +1,143 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js><!--<![endif]--><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title></title><meta name=description content=""><meta name=viewport content="width=device-width, initial-scale=1"><link rel=alternate type=application/rss+xml title="Ryan Brooks' blog" href=http://ryanbrooks.co.uk/feed.xml><link rel=stylesheet href=/css/style.css></head><body><!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--><nav class="navbar navbar-default navbar-top"><div class=container><!-- Brand and toggle get grouped for better mobile display --><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#bs-example-navbar-collapse-1><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href="/">Ryan Brooks</a></div><!-- Collect the nav links, forms, and other content for toggling --><div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1><ul class="nav navbar-nav"><li><a href=/archives.html>Blog archive</a></li></ul><ul class="nav navbar-nav navbar-right"><li><a target=_blank href=https://github.com/spikeheap><i class="fa fa-2x fa-github-square"></i></a></li><li><a target=_blank href=https://twitter.com/spikeheap><i class="fa fa-2x fa-twitter-square"></i></a></li><li><a target=_blank href=http://uk.linkedin.com/in/ryanpbrooks><i class="fa fa-2x fa-linkedin-square"></i></a></li><li><a target=_blank href=mailto:ryanbrooksis+info@gmail.com><i class="fa fa-2x fa-envelope-square"></i></a></li></ul></div><!-- /.navbar-collapse --></div></nav><!-- <div id="header" class="jumbotron">
+	<div class="container">
+		<h1><a href="/">Ryan Brooks' blog</a></h1>
+	</div>
+</div> --><div class=container><div class=row><div class=col-xs-12><a href="/posts/2011-06-27-pfsense-and-virtualbox/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2012-04-04-blogging-about-software-using-textmate/">next <i class="fa fa-arrow-circle-right"></i></a><h1>Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK <small>31 Mar 2012</small></h1><p></p><p>For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer. The principle applies to pretty much any other series you might want to get hold of too. If you’re just wanting to watch the odd episode, or don’t want to record them all, a more appropriate article is available here.</p><p><strong>NOTE</strong>: TV series (like films) have copyright, and by downloading an episode you may be breaching copyright law. I’m not advising you to flout copyright law, and you shouldn’t really use this method to get around paying for something! <!-- more --><br>It seems that living in the UK and watching political satire is not a compatible mix. Since More4 dropped the Daily Show the Radio Times have collected a petition to get it back to no avail. The Global Edition is still pumped out weekly, but that omits many of the best (and most incisive) bits.</p><p>The problem, as the Radio Times article above explains, is that Channel 4 still own the rights to the Daily Show so they can show the Global Edition, so no-one else can pick it up (and why would they, only to compete with the Global Edition). It doesn’t look like this will change in the foreseeable future.</p><p>No problem (I thought), Comedy Central is available on Sky, which we joined around Christmas. Unfortunately even Comedy Central don’t think their show is good enough for the UK, so I’ve aggregated all the information I found about setting up an automatic BitTorrent server based on RSS feeds into these notes.</p><h1 id=pre-requisites>Pre-requisites</h1><p>This has been set up and tested on an Ubuntu server. The same steps should apply to most Linux distros, and can be fudged a bit to work on OSX. The system consists of two components, which I assume you’ve installed:</p><ol><li>Flexget to read the RSS feeds and download new episodes’ torrent files</li><li>Transmission Daemon to download the torrent files</li></ol><p>MediaTomb is a uPNP media server which can very easily watch the directories containing the downloaded episodes, which gives a very easy way to get the episodes onto your TV if you have an XBox, PS3 or uPNP capable device.</p><h1 id=configuring-flexget>Configuring Flexget</h1><p>Create the locations you want to store the series. In this example I’ve used /var/torrented/Daily_Show and /var/torrented/Colbert_Report. Make sure they belong to the user who runs the Transmission daemon:</p><pre><code class=language-bash>    sudo chown  /var/torrented/Daily_Show
+</code></pre><p>and</p><pre><code class=language-bash>    sudo chown  /var/torrented/Colbert_Report
+</code></pre><p>Create the file ~/.flexget/config.yml. An example configuration is pasted below, and assumes you’re running Transmission on the same box. Make sure you don’t use tabs to indent the items, and use 2 spaces for each level of indentation. The USERNAME and PASSWORD variables are used to connect to Transmission, so you can pick whatever you like, as long as it matches the Transmission configuration lower down.</p><pre><code>    presets:
+      transmissionrpc:
+        transmission:
+          host: localhost
+          port: 9091
+          removewhendone: True
+          username: 
+          password: 
+          ratio: 2.0
+          addpaused: No
+      tv:
+        series:
+          - The Daily Show:
+              set:
+                path: /var/torrented/Daily_Show
+          - The Colbert Report:
+              set:
+                path: /var/torrented/Colbert_Report
+        # configuration of quality parameters
+        # -&gt; I don't need the 720p files &gt; 1 GB in size
+        quality: hdtv
+    
+    feeds:
+      EZRSSDaily:
+        rss: http://www.ezrss.it/search/index.php?show_name=The+Daily+Show&amp;show_name_exact=true&amp;mode=rss
+        preset:
+          - transmissionrpc
+          - tv
+        priority: 10
+      EZRSSColbert:
+        rss: http://www.ezrss.it/search/index.php?show_name=The+Colbert+Report&amp;show_name_exact=true&amp;mode=rss
+        preset:
+          - transmissionrpc
+          - tv
+        priority: 10
+</code></pre><p>You can test the configuration without actually downloading the torrents by running</p><pre><code>flexget --test
+</code></pre><p>You then need to add Flexget to your crontab (crontab -e). Add an entry such as the following:</p><pre><code># m h dom mon dow command
+0 * * * * su mediatomb -c /usr/local/bin/flexget --cron
+</code></pre><p>I would also recommend removing old episodes so they don’t just fill up your hard drive by adding the crontab entries below. The “-mtime +14″ parameter limits the find to files older than 14 days, obviously you can tweak this to meet your requirements.</p><pre><code># Remove old Daily Show and Colbert Reports
+0 0 * * * find /var/torrented/Daily Show/ -type f -mtime +14 -exec rm {} \;
+0 0 * * * find /var/torrented/Colbert_Report/ -type f -mtime +14 -exec rm {} \;
+</code></pre><h1 id=configuring-transmission>Configuring Transmission</h1><p>On Ubuntu the Transmission daemon configuration file is stored in /etc/transmission-daemon/settings.json. The contents of the file can be replaced with the contents below:</p><pre><code>{
+    "alt-speed-down": 50, 
+    "alt-speed-enabled": true, 
+    "alt-speed-time-begin": 540, 
+    "alt-speed-time-day": 127, 
+    "alt-speed-time-enabled": true, 
+    "alt-speed-time-end": 1380, 
+    "alt-speed-up": 50, 
+    "bind-address-ipv4": "0.0.0.0", 
+    "bind-address-ipv6": "::", 
+    "blocklist-enabled": false, 
+    "blocklist-url": "http://www.example.com/blocklist", 
+    "cache-size-mb": 4, 
+    "dht-enabled": true, 
+    "download-dir": "/var/torrented", 
+    "download-limit": 3, 
+    "download-limit-enabled": 1, 
+    "encryption": 1, 
+    "idle-seeding-limit": 3, 
+    "idle-seeding-limit-enabled": false, 
+    "incomplete-dir": "/var/torrented/", 
+    "incomplete-dir-enabled": false, 
+    "lpd-enabled": false, 
+    "max-peers-global": 200, 
+    "message-level": 2, 
+    "peer-congestion-algorithm": "", 
+    "peer-limit-global": 240, 
+    "peer-limit-per-torrent": 60, 
+    "peer-port": 51413, 
+    "peer-port-random-high": 65535, 
+    "peer-port-random-low": 49152, 
+    "peer-port-random-on-start": false, 
+    "peer-socket-tos": "default", 
+    "pex-enabled": true, 
+    "port-forwarding-enabled": false, 
+    "preallocation": 1, 
+    "prefetch-enabled": 1, 
+    "ratio-limit": 2, 
+    "ratio-limit-enabled": true, 
+    "rename-partial-files": true, 
+    "rpc-authentication-required": true, 
+    "rpc-bind-address": "0.0.0.0", 
+    "rpc-enabled": true, 
+    "rpc-password": "", 
+    "rpc-port": 9091, 
+    "rpc-url": "/transmission/", 
+    "rpc-username": "", 
+    "rpc-whitelist": "127.0.0.1,192.168.0.*", 
+    "rpc-whitelist-enabled": true, 
+    "script-torrent-done-enabled": false, 
+    "script-torrent-done-filename": "",
+    "speed-limit-down": 100, 
+    "speed-limit-down-enabled": false, 
+    "speed-limit-up": 100, 
+    "speed-limit-up-enabled": false, 
+    "start-added-torrents": true, 
+    "trash-original-torrent-files": true, 
+    "umask": 18, 
+    "upload-limit": 100, 
+    "upload-limit-enabled": 0, 
+    "upload-slots-per-torrent": 14, 
+    "utp-enabled": true, 
+    "watch-dir": "/var/torrents_to_download", 
+    "watch-dir-enabled": "true"
+}
+</code></pre><p><strong>Important</strong>: Don’t restart Transmission once you’ve updated the settings.json file. Transmission writes its settings on exit, so you’ll just lose your modifications. Instead, either stop Transmission before editing the file, or use “reload” to get Transmission to reload the configuration before restarting.</p><p>A couple of notes about the configuration above:</p><ol><li>Make sure the and variables are replaced with whatever username and password you used in Flexget. You can also use these credentials to connect with the Transmission Remote GUI. When you exit Transmission it will replace your password with an encrypted version of it.</li><li>If you want to connect to Transmission using the Remote GUI from a different machine, you need to update the “rpc-whitelist” to include the IP range you’ll connect from (here it’s preset at 192.168.0.1-255).</li><li>The “watch-dir” and “watch-dir-enabled” settings at the bottom of the file allow you to drop torrent files into the watched directory and Transmission will automatically add them to the download queue.</li><li>The “ratio-limit” is set at 2.00, which means the torrent will only seed to a ratio of 2, and will then be stopped and marked as completed. Once it’s marked as completed it will be removed by Flexget next time it runs.</li><li>This configuration uses the full bandwidth available between 11PM and 9AM. During the day the connection speed is limited to 50Kbps up and down.</li></ol><p>At this point you’re ready to go!</p><div><a class=twitter-share-button href=https://twitter.com/share data-url="http://ryanbrooks.co.uk/posts/2012-03-31-flexget-transmission-for-tv-series/" data-via=spikeheap>Tweet</a> <a class=twitter-follow-button href=https://twitter.com/spikeheap data-show-count=false data-lang=en>Follow @spikeheap</a> <!-- set data-annotation to 'bubble' for count --><div class=g-plus data-action=share data-annotation=none></div></div><a href="/posts/2011-06-27-pfsense-and-virtualbox/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2012-04-04-blogging-about-software-using-textmate/">next <i class="fa fa-arrow-circle-right"></i></a><div id=disqus_thread></div><!-- Disqus comments --><script type=text/javascript>/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'ryanbrooks'; // required: replace example with your forum shortname
+    var disqus_identifier = 'posts-2012-03-31-flexget-transmission-for-tv-series';
+    var disqus_title = 'Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK';
+    var disqus_url = 'http://ryanbrooks.co.uk/posts/2012-03-31-flexget-transmission-for-tv-series/';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href="/posts/2011-06-27-pfsense-and-virtualbox/"><i class="fa fa-arrow-circle-left"></i> prev</a> | <a href="/posts/2012-04-04-blogging-about-software-using-textmate/">next <i class="fa fa-arrow-circle-right"></i></a></div></div></div><footer id=footer class=container-fluid><div class=footer--top><div class=row><div class="col-xs-5 col-sm-4 col-md-3 col-lg-2"><h1>Get in touch</h1><div class=contact-icons><a target=_blank href=https://github.com/spikeheap><i class="fa fa-2x fa-github-square"></i></a> <a target=_blank href=https://twitter.com/spikeheap><i class="fa fa-2x fa-twitter-square"></i></a> <a target=_blank href=http://uk.linkedin.com/in/ryanpbrooks><i class="fa fa-2x fa-linkedin-square"></i></a> <a target=_blank href=mailto:ryanbrooksis+info@gmail.com><i class="fa fa-2x fa-envelope-square"></i></a></div></div><div class="col-xs-7 col-sm-6 col-md-5 col-lg-4"><h1>Hi, I'm Ryan</h1><p>I care about code, process and the community. I'm a freelance CTO and full-stack developer, and co-organiser of <a href="http://jsoxford.com/">JSOxford</a>.</p></div></div></div></footer><!-- <footer class="container-fluid footer--middle">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Have a look around
+    				<span>Home</span>
+    				<span>Blog</span>
+    				<span>More about me</span>
+    				</h1>
+			</div>
+		</div>
+	</div>		
+</footer> --><footer class="container-fluid footer--bottom"><div class=container><small>&copy; Ryan Brooks. The content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the Apache 2.</small></div></footer><script src=/bower_components/jquery/dist/jquery.min.js></script><script src=/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js></script><!-- Twitter bits --><script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script><!-- Google plus --><script src=https://apis.google.com/js/platform.js async defer>{lang: 'en-GB'}</script><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');</script></body></html>
