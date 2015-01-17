@@ -36,5 +36,5 @@
   },
   "scripts": {
     "deploy": "grunt deploy"
-  },
+  }
 }
