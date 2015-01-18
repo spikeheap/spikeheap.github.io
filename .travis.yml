@@ -13,7 +13,3 @@ before_install:
   - git config --global user.email "ryanbrooksis+ci@gmail.com"
 
 script: "grunt deploy"
-
-# GH_REMOTE set as https://{PRIVATE_API_KEY}@github.com/spikeheap/spikeheap.github.io.git
-env:
-  - GH_REMOTE: secure: "D0i7EDoztSLYiYhlsvoYPbrWybrdU95828zQ0pMXSaELj3at2ddn5qoKYcoGb8Z1VagorN8xr25dgx4OpCCq3FJzFQ7jhuD3ZzSBl4MP4+pUsH54HS02L3DQafKV+b3ZblHguX5YOlEu697VW1db6paCgk5QwayGSdoTI859BZs="
