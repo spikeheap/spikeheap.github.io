@@ -10,6 +10,6 @@ If you just disagree with me, let's talk about it in the comments.
 
 # How is this site built?
 
-I've built this site using [Awestruct](http://awestruct.org) with [Bootstrap](http://getbootstrap.com/). I'm slowly getting to grips with [AsciiDoctor](http://asciidoctor.org/) and prefer it as a method of writing blog posts and technical articles.
+I've built this site using Jekyll, with the compilation, watching, livereloading and deployment handled by Grunt. The styles are built on [Bootstrap](http://getbootstrap.com/). 
 
-I host the site on GitHub pages, so deploying a new post or version of the site is as easy as merging to `master`. 
+I host the site on GitHub pages, but build the site on Travis. 
