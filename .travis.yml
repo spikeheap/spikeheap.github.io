@@ -1,15 +1,17 @@
 branches:
   only:
-    - develop
-
+  - develop
 # Install libicu - only required until Travis update end Jan 2015
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y libicu-dev
-  - npm install -g grunt-cli bower
-  - npm install
-  - bower install
-  - git config --global user.name "Travis-CI"
-  - git config --global user.email "ryanbrooksis+ci@gmail.com"
-
-script: "grunt deploy"
+- sudo apt-get update -qq
+- sudo apt-get install -y libicu-dev # Install libicu - only required until Travis update end Jan 2015
+- npm install -g grunt-cli bower
+- npm install
+- bower install
+- git config --global user.name "Travis-CI"
+- git config --global user.email "ryanbrooksis+ci@gmail.com"
+script: grunt deploy
+env:
+  global:
+    GH_REMOTE:
+      secure: UbtsQGLoI/z4QMDsFmn15ZEByPdNR/f3yI0lVOwxe9hz0MHkAMi3kHTKPjHu1RQQBY0Dt1tKt+cZunGOI9A7wVDzaXoXMaM84HPoxKYZrVu4KxOwhV3y//erdz0fSWRG7ot7FZQrx1HTEaNh0PblXEU3+CXuew2NCFi6n7QADbA=
