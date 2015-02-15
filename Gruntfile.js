@@ -309,8 +309,8 @@ module.exports = function (grunt) {
     buildcontrol: {
       dist: {
         options: {
-          login: process.env.GH_LOGIN
-          token: process.env.GH_TOKEN
+          login: process.env.GH_LOGIN,
+          token: process.env.GH_TOKEN,
           remote: 'git@github.com:spikeheap/spikeheap.github.io',
           branch: 'master',
           commit: true,
