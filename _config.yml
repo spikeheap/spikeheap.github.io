@@ -6,12 +6,13 @@ disqus_shortname: ryanbrooks
 safe: true
 timezone: Europe/London
 future: false
+show_drafts: true
 
 exclude: ['/vendor/']
 
 excerpt_separator: <!--more-->
 permalink: /posts/:year-:month-:day-:title/
-encoding: utf-8 
+encoding: utf-8
 
 sass:
   sass_dir: _scss
@@ -19,8 +20,6 @@ sass:
 kramdown:
   input: GFM
 
-# Should be false for production
-drafts: true
 
 defaults:
   -
