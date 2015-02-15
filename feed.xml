@@ -10,7 +10,7 @@
 				<title>Give and tell challenge</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;&lt;img src=&quot;https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg&quot; alt=&quot;Ice Bucket Challenge&quot; /&gt;
+					<description>&lt;p&gt;&lt;img src=&quot;https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg&quot; alt=&quot;Ice Bucket Challenge&quot; /&gt;&lt;br /&gt;
 &lt;small&gt;Image courtesy of &lt;a href=&quot;https://www.flickr.com/photos/quintanomedia/14848287869/&quot;&gt;Quintano Media / Flickr&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;The Ice Bucket Challenge has been a tour-de-force for charitable donations, and has raised a staggering amount of money for the undoubtedly underfunded organisations in the US and here in the UK. If you haven’t already, I’d urge you to &lt;a href=&quot;http://www.mndassociation.org/get-involved/donations&quot;&gt;consider donating&lt;/a&gt; to this worth cause and to find out more about the disease and how it affects people.&lt;/p&gt;
@@ -589,10 +589,10 @@ println &quot;There are ${memberCount} members initially&quot;
 				<title>Testing double-click events using Geb</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;Testing basic interaction with Geb is easy, but the ‘intuitive’ way of doing double-clicks fails silently and without any real indication as to why. Fortunately there’s a simple solution!
+					<description>&lt;p&gt;Testing basic interaction with Geb is easy, but the ‘intuitive’ way of doing double-clicks fails silently and without any real indication as to why. Fortunately there’s a simple solution!&lt;br /&gt;
 &lt;!-- more --&gt;&lt;/p&gt;
 
-&lt;p&gt;My first approach was to use &lt;code&gt;dblClick()&lt;/code&gt; in place of &lt;code&gt;click()&lt;/code&gt;. The result was a test which compiled and ran, but failed to generate the double click event:
+&lt;p&gt;My first approach was to use &lt;code&gt;dblClick()&lt;/code&gt; in place of &lt;code&gt;click()&lt;/code&gt;. The result was a test which compiled and ran, but failed to generate the double click event:&lt;br /&gt;
 &lt;script src=&quot;https://gist.github.com/spikeheap/8845429.js?file=failingSpec.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;It turns out that double-clicking is a “complex interaction”, and because it isn’t used that much on webpages it’s not part of the core functionality of NonEmptyNavigator.&lt;/p&gt;
@@ -609,7 +609,7 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;script src=&quot;https://gist.github.com/spikeheap/8862048.js?file=contextClickerSpec.groovy&quot;&gt; &lt;/script&gt;
 
-&lt;p&gt;If you want to run the test, the following gradle script will sort you out:
+&lt;p&gt;If you want to run the test, the following gradle script will sort you out:&lt;br /&gt;
 &lt;script src=&quot;https://gist.github.com/spikeheap/8862048.js?file=build.gradle&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 </description>
