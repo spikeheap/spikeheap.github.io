@@ -1,8 +1,8 @@
 ---
 layout: post
 tags: ['post', 'blogging','jekyll']
-title: "An (almost) utopian Jekyll setup"
-comments: true
+title: "An (almost) utopian Jekyll setup, the old version"
+comments: false
 ---
 [Jekyll](http://www.jekyllrb.com) is a powerful static site generator and is baked into GitHub pages to provide a pretty straightfoward mechanism to host static sites for free. Jekyll on GitHub has some limitations, so here I describe how to automatically build the site with Travis so we can take advantage of some of the more advanced features of Jekyll and wrap it into a more complete web workflow.
 
