@@ -7,6 +7,19 @@
 		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>App-wide AngularJS alerts</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;Generic alerts are a common requirement in most web applications, and as your Angular application grows in complexity the importance of a standardised way of feeding back to the user gains importance with it. Luckily it’s quite straightforward to leverage Angular services as a system-wide alerting tool.&lt;/p&gt;
+
+</description>
+				
+                        	<pubDate>Tue, 17 Mar 2015 00:00:00 +0000</pubDate>
+				<link>http://ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</link>
+				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</guid>
+			</item>
+		
+			<item>
 				<title>Give and tell challenge</title>
 				<dc:creator></dc:creator>
 				
@@ -583,40 +596,6 @@ println &quot;There are ${memberCount} members initially&quot;
                         	<pubDate>Sat, 22 Feb 2014 22:48:40 +0000</pubDate>
 				<link>http://ryanbrooks.co.uk/posts/2014-02-22-open-data-day-2014/</link>
 				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-22-open-data-day-2014/</guid>
-			</item>
-		
-			<item>
-				<title>Testing double-click events using Geb</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;Testing basic interaction with Geb is easy, but the ‘intuitive’ way of doing double-clicks fails silently and without any real indication as to why. Fortunately there’s a simple solution!&lt;br /&gt;
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;p&gt;My first approach was to use &lt;code&gt;dblClick()&lt;/code&gt; in place of &lt;code&gt;click()&lt;/code&gt;. The result was a test which compiled and ran, but failed to generate the double click event:&lt;br /&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/8845429.js?file=failingSpec.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;It turns out that double-clicking is a “complex interaction”, and because it isn’t used that much on webpages it’s not part of the core functionality of NonEmptyNavigator.&lt;/p&gt;
-
-&lt;p&gt;Fortunately building complex interactions is trivial in Geb, so my updated Spock test only needs one line replacing:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/8845429.js?file=passingSpec.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Great, on to the next test!&lt;/p&gt;
-
-&lt;h3 id=&quot;update-722014&quot;&gt;Update (7/2/2014)&lt;/h3&gt;
-
-&lt;p&gt;Here’s another example, this time using interactions to do a context-click (right-click to you an me!):&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/8862048.js?file=contextClickerSpec.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;If you want to run the test, the following gradle script will sort you out:&lt;br /&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/8862048.js?file=build.gradle&quot;&gt; &lt;/script&gt;&lt;/p&gt;
-
-</description>
-				
-                        	<pubDate>Thu, 06 Feb 2014 22:48:40 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-02-06-geb-doubleclick/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-06-geb-doubleclick/</guid>
 			</item>
 		
 	</channel>
