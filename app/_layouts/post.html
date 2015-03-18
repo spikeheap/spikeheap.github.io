@@ -1,14 +1,15 @@
 ---
 layout: default
----    
+---
 <div class="row">
     <div class="col-xs-12">
+        </div>
         {% include post_nav.html %}
         <h1>{{ page.title }} <small>{{ page.date | date_to_string }}</small>
         </h1>
         <p>{{ page.tagline }}</p>
         {{ content | markdownify}}
-        
+
         {% include share_page.html %}
         {% include post_nav.html %}
 
