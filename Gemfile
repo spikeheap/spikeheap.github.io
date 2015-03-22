@@ -9,4 +9,5 @@ gem 'compass', '>=0.12'
 
 group :jekyll_plugins do
   gem 'jekyll-compose'
+  gem 'jekyll-sitemap'
 end
