@@ -1,7 +1,7 @@
 ---
 layout: post
-tags: ['post', 'contracting','accounting']
-title: "I know you can, but don't"
+tags: ['post', 'contracting']
+title: "Reclaiming my Saturday mornings"
 comments: true
 ---
 You hear it everywhere: 'if you want something doing well, do it yourself'. Maybe the primary source is beleaguered managers in stagnant organisations where delivering on promises is the exception rather than the rule, who knows. 
