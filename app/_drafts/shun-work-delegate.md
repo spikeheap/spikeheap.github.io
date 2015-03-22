@@ -8,7 +8,7 @@ You hear it everywhere: 'if you want something doing well, do it yourself'. Mayb
 
 That message ingrained itself in me as I grew up. When I started managing people and projects it took a huge effort to let go of the critical tasks, and not only to trust people to do the work well, but also to accept that 'doing it well' might actually involve doing it differently to how I would have.  
 
-As a specialising generalist I've forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to (just about) fix things and [hack the physical world](/posts/2013-12-01-pi-powered-central-heating-phase-1/) to meet our needs. Plus, getting outside with and chopping logs or fixing bikes is a nice distraction after a day in front of the computer. 
+As a specialising generalist I've forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to fix (just about) anything and [hack the physical world](/posts/2013-12-01-pi-powered-central-heating-phase-1/) to meet our needs. Plus, getting outside and chopping logs or fixing bikes is a nice distraction after a day in front of the computer. 
 
 In short, I want to do everything, or at least be involved in everything. I want to understand what's going on in the world around me, fuelled by curiosity and the feeling that I _should_ be able to do it.
 
@@ -29,7 +29,7 @@ How many things do you do because you have to, but which don't directly contribu
 
 The problem is that sounds very extravagant, right? I can't imagine paying someone to clean my house so I don't have to, and would almost feel ashamed that I wasn't doing it myself. Yet somehow I don't have a problem with Jennifer doing most of the cooking when I've got a busy stretch.
 
-Second-guessing each thing in my to-do list has been quite helpful, even though it's hard work for me. Do I really need to learn how to repair swimming wetsuits, research and purchase the best materials for it, then spend a couple of hours painstakingly gluing and stitching it, or could I just send it off to [a wetsuit repair company](http://www.bodylinewetsuitrepairs.co.uk/) (who'll certainly do a much better job) for £15 or so? 
+Second-guessing each thing in my to-do list has been quite helpful, even though it's hard work for me. Do I really need to learn how to repair wetsuits, research and purchase the best materials for it, then spend a couple of hours painstakingly gluing and stitching it, or could I just send it off to [a wetsuit repair company](http://www.bodylinewetsuitrepairs.co.uk/) (who'll certainly do a much better job) for £15 or so? 
 
 #### Making dead time work
 
