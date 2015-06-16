@@ -209,7 +209,7 @@ module.exports = function (grunt) {
         },
 
         files: {
-          '<%= yeoman.dist %>/css/style.css': ['<%= yeoman.dist %>/*.html']
+          '<%= yeoman.dist %>/css/style.css': ['<%= yeoman.dist %>/**/*.html']
         }
       }
     },
@@ -410,7 +410,7 @@ module.exports = function (grunt) {
     //'concat',
     'autoprefixer:dist',
     'uncss',
-    //'cssmin',
+    'cssmin',
     //'uglify',
     'imagemin',
     'svgmin',
