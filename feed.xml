@@ -7,6 +7,51 @@
 		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Constraining width for LabKey WebParts and Views</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;Building custom web views within LabKey is pretty straightforward, but if you find yourself needing to constrain the contents of your module horizontally you’ll quickly find that the surrounding tables will gladly stretch to any width. Fortunately restricting the width of hte container is pretty straightforward. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Wrap your contents in a table with &lt;code&gt;table-layout: fixed; width: 100%&lt;/code&gt; and the contents won’t push the surrounding page to wider than the browser window.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;LabKey’s JavaScript API is rich, and allows complex JavaScript applications to be built against it whilst being hosted as web parts or views within the standard LabKey environment. As big fans of &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; we were keen to leverage the structure and base components within our embedded application, but quickly came up against an issue where the web part container would grow infinitely to contain our contents. This made things like &lt;a href=&quot;http://getbootstrap.com/components/#nav-justified&quot;&gt;justified navs&lt;/a&gt; irksome as our content could grow horizontally.&lt;/p&gt;
+
+&lt;p&gt;What we really needed was to constrain the view to 100% of the available space, which we achieved by wrapping it in a table with a specified width:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;table class=&quot;myapp&quot;&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;
+        &amp;lt;h1&amp;gt;My amazing application&amp;lt;/h1&amp;gt;
+      &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&amp;lt;%=contextPath%&amp;gt;/myapp/styles/index.min.css&quot;&amp;gt;
+&amp;lt;script src=&quot;&amp;lt;%=contextPath%&amp;gt;/myapp/js/application.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;…and adding a CSS rule to set the table layout:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;.myapp {
+    table-layout: fixed; 
+    width: 100%
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Table-based layouts are a bit out of fashion these days, but it’s necessary here because of the unbounded tables wrapping the web parts. If there’s a more elegant way of solving it, I’d love to hear about it in the comments.&lt;/p&gt;
+
+&lt;p&gt;With that wrapper in place the standard Bootstrap components went back to behaving as they would in a standalone app, and we’re able to use &lt;code&gt;overflow-x: scroll&lt;/code&gt; where we need to display tables which don’t fit the viewport without breaking the width of the entire LabKey page.&lt;/p&gt;
+
+</description>
+				
+                        	<pubDate>Tue, 16 Jun 2015 00:00:00 +0100</pubDate>
+				<link>http://ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</link>
+				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</guid>
+			</item>
+		
+			<item>
 				<title>Reclaiming my Saturday mornings</title>
 				<dc:creator></dc:creator>
 				
@@ -558,33 +603,6 @@ println &quot;There are ${memberCount} members initially&quot;
                         	<pubDate>Tue, 25 Feb 2014 17:48:40 +0000</pubDate>
 				<link>http://ryanbrooks.co.uk/posts/2014-02-25-grails-respond-html-json-xml/</link>
 				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-25-grails-respond-html-json-xml/</guid>
-			</item>
-		
-			<item>
-				<title>Cycle safely please Oxford</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;Cycling can be dangerous. Most of the time it’s not, and it’s a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who’d just collided with a car and was in a considerable amount of pain.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;By the time I arrived the ambulance had already been called, and I set about talking to the cyclist while doing a basic assessment (those training courses with Cave Rescue came in handy!). Luckily for him we were close to the John Radcliffe hospital, and within 15 minutes he was getting professional attention.&lt;/p&gt;
-
-&lt;p&gt;Even more luckily, he seemed generally intact, despite putting a pretty big dent into the car and not wearing a helmet.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/2014-02-24-cycling-accident.JPG&quot; alt=&quot;Paramedics attending the accident.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The driver was suitably shaken, and you can see why. Turning into the driveway he said the first he knew of the cyclist was seeing his face just before he hit the windscreen. Scary stuff.&lt;/p&gt;
-
-&lt;p&gt;It’s easy to see how the accident happened: an unlit cyclist in dark clothes travelling along a pavement isn’t easy to see in a car, and it was dusk, when everything looks flat and the streetlights haven’t quite kicked in yet. Maybe the driver could have looked harder, maybe the cyclist could have ridden slower. A thousand “maybe”s and they would both be somewhere else now, oblivious to what &lt;em&gt;could&lt;/em&gt; have happened.&lt;/p&gt;
-
-&lt;p&gt;That said, maybe things could have been worse. The cyclist seemed to have come off with only damage to his leg and buttock. He can certainly be thankful for that, even if he doesn’t make it into work tomorrow.&lt;/p&gt;
-
-</description>
-				
-                        	<pubDate>Mon, 24 Feb 2014 23:48:40 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-02-24-cycle-safely-please-oxford/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-24-cycle-safely-please-oxford/</guid>
 			</item>
 		
 	</channel>
