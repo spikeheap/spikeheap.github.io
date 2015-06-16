@@ -410,7 +410,7 @@ module.exports = function (grunt) {
     //'concat',
     'autoprefixer:dist',
     'uncss',
-    'cssmin',
+    //'cssmin',
     //'uglify',
     'imagemin',
     'svgmin',
