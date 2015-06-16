@@ -41,7 +41,22 @@ small {
   font-size: 80%;
 }
 
-code {
+img {
+  border: 0;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+pre {
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -71,6 +86,16 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 
 @media print {
@@ -92,13 +117,34 @@ input::-moz-focus-inner {
     content: " (" attr(href) ")";
   }
 
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
   p,
-  h2 {
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2 {
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 
@@ -160,6 +206,17 @@ a:focus {
   outline-offset: -2px;
 }
 
+img {
+  vertical-align: middle;
+}
+
+hr {
+  margin-top: 22px;
+  margin-bottom: 22px;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -173,13 +230,16 @@ a:focus {
 
 h1,
 h2,
-h4 {
+h3,
+h4,
+h5 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
 
+h1 small,
 h2 small,
 h4 small {
   font-weight: normal;
@@ -188,16 +248,19 @@ h4 small {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin-top: 22px;
   margin-bottom: 11px;
 }
 
+h1 small,
 h2 small {
   font-size: 65%;
 }
 
-h4 {
+h4,
+h5 {
   margin-top: 11px;
   margin-bottom: 11px;
 }
@@ -214,8 +277,16 @@ h2 {
   font-size: 34px;
 }
 
+h3 {
+  font-size: 28px;
+}
+
 h4 {
   font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
 }
 
 p {
@@ -226,12 +297,32 @@ small {
   font-size: 87%;
 }
 
-ul {
+ul,
+ol {
   margin-top: 0;
   margin-bottom: 11px;
 }
 
-code {
+blockquote {
+  padding: 11px 22px;
+  margin: 0 0 22px;
+  font-size: 20px;
+  border-left: 5px solid #eeeeee;
+}
+
+blockquote small {
+  display: block;
+  font-size: 80%;
+  line-height: 1.42857;
+  color: #777777;
+}
+
+blockquote small:before {
+  content: '\2014 \00A0';
+}
+
+code,
+pre {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
@@ -241,6 +332,29 @@ code {
   color: #c7254e;
   background-color: #f9f2f4;
   border-radius: 4px;
+}
+
+pre {
+  display: block;
+  padding: 10.5px;
+  margin: 0 0 11px;
+  font-size: 15px;
+  line-height: 1.42857;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
 }
 
 .container,
@@ -325,7 +439,8 @@ code {
 .col-xs-5,
 .col-md-5,
 .col-sm-6,
-.col-xs-7 {
+.col-xs-7,
+.col-xs-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -333,7 +448,8 @@ code {
 }
 
 .col-xs-5,
-.col-xs-7 {
+.col-xs-7,
+.col-xs-12 {
   float: left;
 }
 
@@ -343,6 +459,10 @@ code {
 
 .col-xs-7 {
   width: 58.33333%;
+}
+
+.col-xs-12 {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -393,6 +513,14 @@ code {
   .col-lg-4 {
     width: 33.33333%;
   }
+}
+
+table {
+  background-color: transparent;
+}
+
+th {
+  text-align: left;
 }
 
 .form-control::-moz-placeholder {
@@ -711,6 +839,14 @@ code {
   content: "";
 }
 
+.fa-arrow-circle-left:before {
+  content: "";
+}
+
+.fa-arrow-circle-right:before {
+  content: "";
+}
+
 .fa-envelope-square:before {
   content: "";
 }
@@ -725,6 +861,13 @@ html {
 *:after {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #CCC;
 }
 
 #footer {
@@ -753,4 +896,147 @@ html {
 .footer--bottom {
   border-top: 1px solid #67717a;
   background-color: #c2d7e0;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+/*** uncss> filename: https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css ***/
+
+.gist {
+  color: #333;
+  font-size: 16px;
+}
+
+.gist .highlight {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+}
+
+.gist .pl-c {
+  color: #969896;
+}
+
+.gist .pl-c1,
+.gist .pl-s3 {
+  color: #0086b3;
+}
+
+.gist .pl-e,
+.gist .pl-en {
+  color: #795da3;
+}
+
+.gist .pl-s1 .pl-s2,
+.gist .pl-smi,
+.gist .pl-smp,
+.gist .pl-vo,
+.gist .pl-vpf {
+  color: #333;
+}
+
+.gist .pl-ent {
+  color: #63a35c;
+}
+
+.gist .pl-k,
+.gist .pl-s,
+.gist .pl-st {
+  color: #a71d5d;
+}
+
+.gist .pl-pds,
+.gist .pl-s1 {
+  color: #df5000;
+}
+
+.gist .pl-v {
+  color: #1d3e81;
+}
+
+.gist pre {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+  white-space: pre;
+}
+
+.gist .gist-file {
+  margin-bottom: 1em;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.gist .gist-meta {
+  padding: 10px;
+  overflow: hidden;
+  font: 12px Helvetica, arial, freesans, clean, sans-serif;
+  color: #999;
+  background-color: #f7f7f7;
+}
+
+.gist .gist-meta a {
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+}
+
+.gist .gist-data {
+  overflow: auto;
+  word-wrap: normal;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.gist .file-data {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.gist .line-data {
+  padding: .5em !important;
+}
+
+.gist .line-pre {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+  font-size: 100% !important;
+  line-height: inherit !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.gist .line-numbers {
+  padding: .5em;
+  color: #aaa;
+  text-align: right;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  line-height: 1.4;
+}
+
+.gist .line-number {
+  display: block;
+  clear: right;
 }
