@@ -111,6 +111,14 @@ aside {
 
 }
 
+.text-overflow {
+  @include text-overflow;
+}
+
+.half-width-max {
+  max-width: 50%;
+}
+
 // From https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
 blockquote {
   background: #f9f9f9;

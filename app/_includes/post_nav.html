@@ -1,11 +1,13 @@
 <div class="post-nav">
 {% if page.previous %}
-    <a class="pull-left btn btn-xs btn-default" href="{{ page.previous.url }}"><i class="fa fa-arrow-circle-left"></i> {{page.previous.title}}</a>
+    <a class="hidden-xs btn btn-sm btn-default pull-left half-width-max text-overflow" href="{{ page.previous.url }}"><i class="fa fa-arrow-circle-left"></i> {{page.previous.title}}</a>
+    <a class="visible-xs-block btn btn-default btn-block text-overflow" href="{{ page.previous.url }}"><i class="fa fa-fw fa-arrow-circle-left"></i> {{page.previous.title}}</a>
 {% endif %}
 
 
 {% if page.next %}
-    <a class="pull-right btn btn-xs btn-default" href="{{ page.next.url }}">{{page.next.title}} <i class="fa fa-arrow-circle-right"></i></a>
+    <a class="btn btn-sm btn-default hidden-xs pull-right half-width-max text-overflow" href="{{ page.next.url }}">{{page.next.title}} <i class="fa fa-arrow-circle-right"></i></a>
+    <a class="visible-xs-block btn btn-default btn-block text-overflow" href="{{ page.next.url }}"><i class="fa fa-fw fa-arrow-circle-right"></i> {{page.next.title}}</a>
 {% endif %}
 <span class="clearfix">
 </span>
