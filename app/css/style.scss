@@ -22,6 +22,21 @@ img {
 	box-shadow: 1px 1px 1px #CCC;
 }
 
+code {
+  // augments the bootstrap style
+  border: 1px solid $pre-border-color;
+  font-size: $code-font-size;
+}
+
+pre {
+  line-height: 1.2;
+  code {
+    // override the border for multi-line blocks of code
+    border: 0;
+    font-size: $code-font-size;
+  }
+}
+
 #header, #footer {
 	background-color: $blue;
 	color: $almost-white;
