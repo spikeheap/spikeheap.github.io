@@ -1,9 +1,12 @@
+<div class="post-nav">
 {% if page.previous %}
-    <a href="{{ page.previous.url }}"><i class="fa fa-arrow-circle-left"></i> prev</a> 
+    <a class="pull-left btn btn-xs btn-default" href="{{ page.previous.url }}"><i class="fa fa-arrow-circle-left"></i> {{page.previous.title}}</a>
 {% endif %}
-{% if page.next && page.next %}
-    |
-{% endif %}
+
+
 {% if page.next %}
-    <a href="{{ page.next.url }}">next <i class="fa fa-arrow-circle-right"></i></a> 
+    <a class="pull-right btn btn-xs btn-default" href="{{ page.next.url }}">{{page.next.title}} <i class="fa fa-arrow-circle-right"></i></a>
 {% endif %}
+<span class="clearfix">
+</span>
+</div>
