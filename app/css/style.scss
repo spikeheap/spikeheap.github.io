@@ -45,6 +45,12 @@ pre {
 		text-decoration: none;
 	}
 }
+
+// Double-size Font Awesome links need special padding
+.navbar-default .navbar-nav > li > a.nav-fa-link {
+  padding: 5px;
+}
+
 .post-date {
 	margin-top: -0.4em;
 	font-weight: bold;
