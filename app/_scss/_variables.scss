@@ -1,0 +1,42 @@
+// Variables
+$font-family-sans-serif:  'Open Sans', Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+$font-size-base:          20px;
+$headings-font-weight:    800;
+
+$orange: #d95c2f;
+$grey: #67717a;
+$blue: #6891ad;
+$light-blue: #c2d7e0;
+$almost-white: #f5f5f5;
+
+// Bootstrap variables
+$navbar-default-color: $almost-white;
+$navbar-default-bg: $blue;
+$navbar-default-border: $light-blue;
+
+// Grid
+// Large screen / wide desktop - set same as standard desktop.
+$container-large-desktop:      (940px + 30px);
+$container-lg:                 $container-large-desktop;
+
+// Navbar links
+$navbar-default-link-color: $light-blue;
+$navbar-default-link-hover-color: $blue;
+$navbar-default-link-hover-bg: $light-blue;
+$navbar-default-link-active-color: $blue;
+$navbar-default-link-active-bg: $almost-white;
+// $navbar-default-link-disabled-color:
+// $navbar-default-link-disabled-bg:
+
+// Navbar brand label
+$navbar-default-brand-color: $almost-white;
+$navbar-default-brand-hover-color: $light-blue;
+$navbar-default-brand-hover-bg: $blue;
+
+
+
+// Fontawesome variables
+$fa-font-path:   "../bower_components/fontawesome/fonts";
