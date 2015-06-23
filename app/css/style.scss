@@ -119,6 +119,13 @@ aside {
   max-width: 50%;
 }
 
+.bio {
+  font-size: 0.75em;
+  h1, h2, h3, h4, h5 {
+    font-weight: 500;
+  }
+}
+
 // From https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
 blockquote {
   background: #f9f9f9;
