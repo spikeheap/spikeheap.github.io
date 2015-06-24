@@ -1,21 +1,23 @@
 ---
 layout: default
 ---
-<div class="row">
-    <div class="col-xs-9">
-        <h1>{{ page.title }}</h1>
-        <span class="text-muted">{{ page.date | date_to_string }}</span>
-        <p>{{ page.tagline }}</p>
-        {{ content | markdownify}}
-        <hr>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-9">
+          <h1>{{ page.title }}</h1>
+          <span class="text-muted">{{ page.date | date_to_string }}</span>
+          <p>{{ page.tagline }}</p>
+          {{ content | markdownify}}
+          <hr>
 
-        {% include share_page.html %}
-        {% include post_nav.html %}
+          {% include share_page.html %}
+          {% include post_nav.html %}
 
-        {% assign disqus_identifier = page.url | remove: ".html" | slugify %}
-        {% include disqus.html %}
-    </div>
-    <div class="col-xs-3">
-      {% include bio.html %}
-    </div>
+          {% assign disqus_identifier = page.url | remove: ".html" | slugify %}
+          {% include disqus.html %}
+      </div>
+      <div class="col-xs-3">
+        {% include bio.html %}
+      </div>
+  </div>
 </div>

@@ -70,22 +70,20 @@ pre {
 }
 
 .footer--top {
+  font-size: 0.75em;
 	h1 {
 		font-size: 1.2em;
     font-weight: 500;
 	}
+  img {
+    margin-top: 20px;
+    border: none;
+  }
 	@extend .container;
 	margin-top:1em;
 	margin-bottom:1em;
 }
-.footer--middle {
-	h1 {
-		font-size: 1.2em;
-    font-weight: 500;
-	}
-	border-top: 1px solid $grey;
-	background-color: $orange;
-}
+
 .footer--bottom {
 	border-top: 1px solid $grey;
 	background-color: $light-blue;
@@ -120,6 +118,7 @@ aside {
 }
 
 .bio {
+  padding-top: 2em;
   font-size: 0.75em;
   h1, h2, h3, h4, h5 {
     font-weight: 500;

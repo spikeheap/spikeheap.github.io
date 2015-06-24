@@ -7,8 +7,7 @@ published: true
 date: 2014-09-27
 ---
 
-![Ice Bucket Challenge](https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg)
-<small>Image courtesy of [Quintano Media / Flickr](https://www.flickr.com/photos/quintanomedia/14848287869/)</small>
+![Ice Bucket Challenge](https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg) <small>Image courtesy of [Quintano Media / Flickr](https://www.flickr.com/photos/quintanomedia/14848287869/)</small>
 
 The Ice Bucket Challenge has been a tour-de-force for charitable donations, and has raised a staggering amount of money for the undoubtedly underfunded organisations in the US and here in the UK. If you haven't already, I'd urge you to [consider donating](http://www.mndassociation.org/get-involved/donations) to this worth cause and to find out more about the disease and how it affects people.
 
