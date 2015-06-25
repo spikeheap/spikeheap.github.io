@@ -2,11 +2,7 @@
 
 @charset "UTF-8";
 
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+/** Override variables with custom ones */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
@@ -182,8 +178,8 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 20px;
   line-height: 1.42857;
   color: #333333;
   background-color: #fff;
@@ -216,9 +212,13 @@ img {
   vertical-align: middle;
 }
 
+.img-circle {
+  border-radius: 50%;
+}
+
 hr {
-  margin-top: 22px;
-  margin-bottom: 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eeeeee;
 }
@@ -240,12 +240,11 @@ h3,
 h4,
 h5 {
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1.1;
   color: inherit;
 }
 
-h1 small,
 h2 small,
 h4 small {
   font-weight: normal;
@@ -256,19 +255,18 @@ h4 small {
 h1,
 h2,
 h3 {
-  margin-top: 22px;
-  margin-bottom: 11px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-h1 small,
 h2 small {
   font-size: 65%;
 }
 
 h4,
 h5 {
-  margin-top: 11px;
-  margin-bottom: 11px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h4 small {
@@ -276,43 +274,47 @@ h4 small {
 }
 
 h1 {
-  font-size: 41px;
+  font-size: 36px;
 }
 
 h2 {
-  font-size: 34px;
+  font-size: 30px;
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h5 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 p {
-  margin: 0 0 11px;
+  margin: 0 0 10px;
 }
 
 small {
-  font-size: 87%;
+  font-size: 60%;
+}
+
+.text-muted {
+  color: #777777;
 }
 
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 }
 
 blockquote {
-  padding: 11px 22px;
-  margin: 0 0 22px;
-  font-size: 20px;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
   border-left: 5px solid #eeeeee;
 }
 
@@ -342,9 +344,9 @@ code {
 
 pre {
   display: block;
-  padding: 10.5px;
-  margin: 0 0 11px;
-  font-size: 15px;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 19px;
   line-height: 1.42857;
   word-break: break-all;
   word-wrap: break-word;
@@ -437,48 +439,55 @@ pre code {
   clear: both;
 }
 
+.col-md-2,
 .col-lg-2,
+.col-xs-3,
+.col-sm-3,
 .col-md-3,
-.col-sm-4,
 .col-md-4,
 .col-lg-4,
 .col-xs-5,
 .col-md-5,
+.col-xs-6,
 .col-sm-6,
-.col-xs-7,
-.col-xs-12 {
+.col-xs-9 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
+.col-xs-3,
 .col-xs-5,
-.col-xs-7,
-.col-xs-12 {
+.col-xs-6,
+.col-xs-9 {
   float: left;
+}
+
+.col-xs-3 {
+  width: 25%;
 }
 
 .col-xs-5 {
   width: 41.66667%;
 }
 
-.col-xs-7 {
-  width: 58.33333%;
+.col-xs-6 {
+  width: 50%;
 }
 
-.col-xs-12 {
-  width: 100%;
+.col-xs-9 {
+  width: 75%;
 }
 
 @media (min-width: 768px) {
-  .col-sm-4,
+  .col-sm-3,
   .col-sm-6 {
     float: left;
   }
 
-  .col-sm-4 {
-    width: 33.33333%;
+  .col-sm-3 {
+    width: 25%;
   }
 
   .col-sm-6 {
@@ -487,10 +496,15 @@ pre code {
 }
 
 @media (min-width: 992px) {
+  .col-md-2,
   .col-md-3,
   .col-md-4,
   .col-md-5 {
     float: left;
+  }
+
+  .col-md-2 {
+    width: 16.66667%;
   }
 
   .col-md-3 {
@@ -538,6 +552,93 @@ th {
   color: #999;
 }
 
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 20px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn:focus,
+.btn:active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+.btn:active {
+  outline: 0;
+  background-image: none;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-default:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default:active {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default:active:hover,
+.btn-default:active:focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+
+.btn-default:active {
+  background-image: none;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
 .collapse {
   display: none;
 }
@@ -578,7 +679,7 @@ th {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   border: 1px solid transparent;
 }
 
@@ -594,7 +695,7 @@ th {
 
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    border-radius: 0;
   }
 }
 
@@ -664,9 +765,9 @@ th {
 
 .navbar-brand {
   float: left;
-  padding: 14px 15px;
-  font-size: 20px;
-  line-height: 22px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
   height: 50px;
 }
 
@@ -716,13 +817,13 @@ th {
 }
 
 .navbar-nav {
-  margin: 7px -15px;
+  margin: 7.5px -15px;
 }
 
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 22px;
+  line-height: 20px;
 }
 
 @media (min-width: 768px) {
@@ -736,8 +837,8 @@ th {
   }
 
   .navbar-nav > li > a {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }
 
@@ -797,8 +898,42 @@ th {
   border-color: #c2d7e0;
 }
 
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
 @-ms-viewport {
   width: device-width;
+}
+
+.visible-xs-block {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .visible-xs-block {
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
 }
 
 /*!
@@ -831,6 +966,19 @@ th {
   font-size: 2em;
 }
 
+.fa-fw {
+  width: 1.28571em;
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen readers do not read off random characters that represent icons */
 
 .fa-twitter-square:before {
@@ -843,6 +991,10 @@ th {
 
 .fa-github-square:before {
   content: "";
+}
+
+.fa-twitter:before {
+  content: "";
 }
 
 .fa-arrow-circle-left:before {
@@ -860,6 +1012,7 @@ th {
 html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-weight: 300;
 }
 
 *,
@@ -876,6 +1029,20 @@ img {
   box-shadow: 1px 1px 1px #CCC;
 }
 
+code {
+  border: 1px solid #ccc;
+  font-size: 80%;
+}
+
+pre {
+  line-height: 1.2;
+}
+
+pre code {
+  border: 0;
+  font-size: 80%;
+}
+
 #footer {
   background-color: #6891ad;
   color: #f5f5f5;
@@ -886,22 +1053,62 @@ img {
   text-decoration: none;
 }
 
+.navbar {
+  border: 0;
+}
+
+.navbar-default .navbar-nav > li > a.nav-fa-link {
+  padding: 5px;
+}
+
 .date-subtitle {
   display: block;
 }
 
+.post-nav {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
 .footer--top {
+  font-size: 0.75em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
 .footer--top h1 {
   font-size: 1.2em;
+  font-weight: 500;
+}
+
+.footer--top img {
+  margin-top: 20px;
+  border: none;
 }
 
 .footer--bottom {
   border-top: 1px solid #67717a;
   background-color: #c2d7e0;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.half-width-max {
+  max-width: 50%;
+}
+
+.bio {
+  padding-top: 2em;
+  font-size: 0.75em;
+}
+
+.bio h3,
+.bio h4 {
+  font-weight: 500;
 }
 
 blockquote {
@@ -919,6 +1126,10 @@ blockquote:before {
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
 }
 
 /*** uncss> filename: https://gist-assets.github.com/assets/embed-b8c853f42bc1486a246eca98739ff795.css ***/
