@@ -441,7 +441,6 @@ pre code {
 
 .col-md-2,
 .col-lg-2,
-.col-xs-3,
 .col-sm-3,
 .col-md-3,
 .col-md-4,
@@ -450,22 +449,16 @@ pre code {
 .col-md-5,
 .col-xs-6,
 .col-sm-6,
-.col-xs-9 {
+.col-sm-9 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.col-xs-3,
 .col-xs-5,
-.col-xs-6,
-.col-xs-9 {
+.col-xs-6 {
   float: left;
-}
-
-.col-xs-3 {
-  width: 25%;
 }
 
 .col-xs-5 {
@@ -476,13 +469,10 @@ pre code {
   width: 50%;
 }
 
-.col-xs-9 {
-  width: 75%;
-}
-
 @media (min-width: 768px) {
   .col-sm-3,
-  .col-sm-6 {
+  .col-sm-6,
+  .col-sm-9 {
     float: left;
   }
 
@@ -492,6 +482,10 @@ pre code {
 
   .col-sm-6 {
     width: 50%;
+  }
+
+  .col-sm-9 {
+    width: 75%;
   }
 }
 
