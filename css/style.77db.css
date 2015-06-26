@@ -1022,6 +1022,14 @@ html {
   box-sizing: inherit;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -1100,6 +1108,10 @@ pre code {
 
 .half-width-max {
   max-width: 50%;
+}
+
+.page-title {
+  font-weight: 700;
 }
 
 .bio {
