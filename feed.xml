@@ -7,6 +7,45 @@
 		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Kitematic for boot2docker users</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;A while ago I switched from using boot2docker directly to the Kitematic Mac app. Although Kitematic generally makes life a bit easier when managing Docker containers, it was a bit of a pain to get it running.&lt;/p&gt;
+
+&lt;p&gt;After the Kitematic installation, the VM started but Kitematic had trouble connecting to it. The error messages showed &lt;code&gt;boot2docker&lt;/code&gt; paths so I made the assumption they’d got in a tangle. Uninstalling boot2docker didn’t entirely solve the problem, as I was still unable to connect using the terminal. The error pointed us in the right direction:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FATA[0000] Couldn&#39;t read ca cert /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: open /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: no such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The other error I was hitting was a bit more vague, but still points to a certificate issue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Get http://192.168.99.102:2376/v1.17/containers/json: malformed HTTP response &quot;\x15\x03\x01\x00\x02\x02&quot;. Are you trying to connect to a TLS-enabled daemon without TLS?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You may find it’s because the boot2docker environment variables are being set in your &lt;code&gt;.profile&lt;/code&gt;, &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.zshenv&lt;/code&gt;, something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To get the docker CLI playing nicely with our shiny new Kitematic instance, we just need to replace those lines with the following:&lt;br /&gt;
+&lt;code&gt;bash
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.60.102:2376
+export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that if (like me) you’ve already removed/reinstalled Kitematic, you may find the IP (and possibly subnet) has moved from &lt;code&gt;192.168.60.103&lt;/code&gt;. In my case it is now &lt;code&gt;192.168.99.102&lt;/code&gt;.&lt;/p&gt;
+
+</description>
+				
+                        	<pubDate>Fri, 28 Aug 2015 00:00:00 +0100</pubDate>
+				<link>http://ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</link>
+				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</guid>
+			</item>
+		
+			<item>
 				<title>Constraining width for LabKey WebParts and Views</title>
 				<dc:creator></dc:creator>
 				
@@ -552,56 +591,6 @@ println &quot;There are ${memberCount} members initially&quot;
                         	<pubDate>Thu, 27 Feb 2014 18:58:40 +0000</pubDate>
 				<link>http://ryanbrooks.co.uk/posts/2014-02-27-docpad-disqus-comments/</link>
 				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-27-docpad-disqus-comments/</guid>
-			</item>
-		
-			<item>
-				<title>Using Grails respond for HTML, JSON and XML responses</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;The new(ish) support for &lt;code&gt;respond&lt;/code&gt; in Grails 2.3 is great, and saves us the hassle of specifying different render/response calls depending on the content type. Surpisingly it falters when it comes to returning exceptions and errors, for example &lt;code&gt;404 NOT FOUND&lt;/code&gt;. This post describes a simple workaround which provides a meaningful response to a JSON/XML request as well as a user-friendly rendered 404 exception for humans.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;The obvious approach is to respond with the object:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9213738.js?file=1_obvious_approach.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;The above works great for basic JSON/XML requests, as it returns a 404 status code and no content. The main problem is that it doesn’t render HTML responses, so a user is presented with a blank page. Not so nice.&lt;/p&gt;
-
-&lt;p&gt;The following will quite happily respond with the correct content type for a valid widget, but if the widget doesn’t exist a 404 HTML page and 404 status code are returned (even if you requested JSON/XML):&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9213738.js?file=2_html_only.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;We’re almost there, but not quite. We can use the &lt;code&gt;respond&lt;/code&gt; method and manually pass back the HTTP status and the view:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9213738.js?file=3_working_html_json_xml.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Hey presto, 404 error pages for HTML users, and a blank 404 response for JSON/XML requests. Obviously the above assumes you have a view named &lt;code&gt;error404.gsp&lt;/code&gt; to display a pretty 404 error page.&lt;/p&gt;
-
-&lt;p&gt;It might be a bit nicer if our JSON and XML responses contained a similar amount of information, and if we could pass some contextual information to the view (for example the type of thing we couldn’t find). No problem, just define a map with our response objects and then define that same map as the view model, along with the status code and view:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9213738.js?file=4_the_full_sausage.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Let’s break the 404 response down a little.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;if(!widget)&lt;/code&gt; is a Groovy way of checking for null/empty values&lt;/li&gt;
-  &lt;li&gt;The model we’re going to return has an obvious failure notification because we’ve set &lt;code&gt;success&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;, but we’ve added a little more information by saying the widget couldn’t be found.&lt;/li&gt;
-  &lt;li&gt;The first argument to &lt;code&gt;respond&lt;/code&gt; is &lt;code&gt;model as Object&lt;/code&gt;. This tells &lt;code&gt;respond&lt;/code&gt; to use &lt;code&gt;model&lt;/code&gt; for the JSON and XML responses. The coercion is required to prevent an error because of ambiguous arguments.&lt;/li&gt;
-  &lt;li&gt;The second argument to &lt;code&gt;respond&lt;/code&gt; is &lt;code&gt;[model: model, status: 404, view: &#39;error404&#39;]&lt;/code&gt;, which provides the view arguments so the correct 404 GSP is loaded. The &lt;code&gt;model&lt;/code&gt; specified here is the same as is used for the JSON/XML response, so the GSP has access to the same information to render to the user.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;So there we have it: a simple way to &lt;code&gt;respond&lt;/code&gt; and please all our sources. It’s not quite elegant, and I’m going to see how easy it would be to roll this into the &lt;code&gt;respond&lt;/code&gt; method itself. &lt;/p&gt;
-
-&lt;p&gt;Is there a better way? Let me know in the comments!&lt;/p&gt;
-
-</description>
-				
-                        	<pubDate>Tue, 25 Feb 2014 17:48:40 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-02-25-grails-respond-html-json-xml/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-25-grails-respond-html-json-xml/</guid>
 			</item>
 		
 	</channel>

@@ -1145,30 +1145,20 @@ blockquote p {
   display: inline;
 }
 
-/*** uncss> filename: https://gist-assets.github.com/assets/embed-b8c853f42bc1486a246eca98739ff795.css ***/
+/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-3313cb70789df61d3bb75cd878325a1266ccab50b6aac9b80f1691ae0694a216.css ***/
 
 .gist {
-  color: #333;
   font-size: 16px;
-}
-
-.gist .highlight {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.4;
-  margin: 0;
-  padding: 0;
-  background: #fff;
   color: #333;
+  direction: ltr;
+  text-align: left;
 }
 
 .gist .pl-c {
   color: #969896;
 }
 
-.gist .pl-c1,
-.gist .pl-s3 {
+.gist .pl-c1 {
   color: #0086b3;
 }
 
@@ -1177,11 +1167,8 @@ blockquote p {
   color: #795da3;
 }
 
-.gist .pl-s1 .pl-s2,
-.gist .pl-smi,
-.gist .pl-smp,
-.gist .pl-vo,
-.gist .pl-vpf {
+.gist .pl-s .pl-s1,
+.gist .pl-smi {
   color: #333;
 }
 
@@ -1189,24 +1176,103 @@ blockquote p {
   color: #63a35c;
 }
 
-.gist .pl-k,
-.gist .pl-s,
-.gist .pl-st {
+.gist .pl-k {
   color: #a71d5d;
 }
 
 .gist .pl-pds,
-.gist .pl-s1 {
-  color: #df5000;
+.gist .pl-s {
+  color: #183691;
 }
 
 .gist .pl-v {
-  color: #1d3e81;
+  color: #ed6a43;
 }
 
-.gist pre {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+.gist .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.gist .blob-num {
+  width: 1%;
+  min-width: 50px;
+  white-space: nowrap;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0,0,0,0.3);
+  vertical-align: top;
+  text-align: right;
+  border: solid #eee;
+  border-width: 0 1px 0 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.gist .blob-num:hover {
+  color: rgba(0,0,0,0.6);
+}
+
+.gist .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.gist .blob-code {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: top;
+}
+
+.gist .blob-code-inner {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+  color: #333;
   white-space: pre;
+  overflow: visible;
+  word-wrap: normal;
+}
+
+.gist .highlight {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.4;
+  color: #333;
+  background: #fff;
+}
+
+.gist .gist-meta {
+  padding: 10px;
+  overflow: hidden;
+  font: 12px Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #767676;
+  background-color: #f7f7f7;
+}
+
+.gist .gist-meta a {
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+  border: 0;
+}
+
+.gist .gist-data {
+  overflow: auto;
+  word-wrap: normal;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
 .gist .gist-file {
@@ -1217,56 +1283,23 @@ blockquote p {
   border-radius: 3px;
 }
 
-.gist .gist-meta {
-  padding: 10px;
-  overflow: hidden;
-  font: 12px Helvetica, arial, freesans, clean, sans-serif;
-  color: #999;
-  background-color: #f7f7f7;
+.gist .blob-num {
+  min-width: inherit;
+  padding: 1px 10px !important;
+  background: transparent;
 }
 
-.gist .gist-meta a {
-  font-weight: bold;
-  color: #666;
-  text-decoration: none;
+.gist .blob-code {
+  border: 0;
+  padding: 1px 10px !important;
+  background: transparent;
+  text-align: left;
 }
 
-.gist .gist-data {
-  overflow: auto;
-  word-wrap: normal;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+.gist .blob-wrapper table {
+  border-collapse: collapse;
 }
 
-.gist .file-data {
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.gist .line-data {
-  padding: .5em !important;
-}
-
-.gist .line-pre {
-  padding: 0 !important;
-  margin: 0 !important;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
-  font-size: 100% !important;
-  line-height: inherit !important;
-  background: transparent !important;
-  border: 0 !important;
-}
-
-.gist .line-numbers {
-  padding: .5em;
-  color: #aaa;
-  text-align: right;
-  background-color: #fff;
-  border-right: 1px solid #eee;
-  line-height: 1.4;
-}
-
-.gist .line-number {
-  display: block;
-  clear: right;
+.gist .blob-wrapper tr:first-child td {
+  padding-top: 4px;
 }
