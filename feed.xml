@@ -7,6 +7,96 @@
 		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Migrating user avatars to circular crops, with ImageMagick</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.&lt;br /&gt;
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s imagine our current approach to user avatars is to accept any size and shape image. Because we’re sensible, we retain the originally uploaded image and generate a thumbnail to be used on the site which maintains the proportions but constrains the longest side to 100 pixels.&lt;/p&gt;
+
+&lt;p&gt;Our new UI requires circular images at three different sizes (icon, default and large avatars). We want to take this opportunity to generate thumbnails at these sizes (and x2 for Retina screens) so we can keep file sizes small and our site as fast as possible. Because we can &lt;a href=&quot;http://www.abeautifulsite.net/how-to-make-rounded-images-with-css/&quot;&gt;easily create circular masks with CSS&lt;/a&gt;, we just need create square versions of the images, and we have a few options:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Stretch the image to fit a square. This is obviously a bad idea.&lt;/li&gt;
+  &lt;li&gt;Crop the top/bottom or left/right of the longest side to make the image square.&lt;/li&gt;
+  &lt;li&gt;Fit the entire image within the square, and pad the excess.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In this case I believe option 2 gives the best outcome – no excess whitespace and wholly-filled circles, but our users didn’t have any of this in mind when they uploaded their images in the dim and distant past so we need to get an idea of how these changes will affect their existing images.&lt;/p&gt;
+
+&lt;h4 id=&quot;image-dimensions&quot;&gt;Image dimensions&lt;/h4&gt;
+&lt;p&gt;The first thing we can do is calculate the distribution of image proportions. This is useful alongside the assumption that squarer images are more likely to crop without losing the subject in the image.&lt;/p&gt;
+
+&lt;p&gt;ImageMagick has a set of handy command-line tools to help us with this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;find avatar_images \
+  -type f \
+  -not -name &quot;thumb_*&quot; \
+  -exec identify \
+  -format %w\ %h\\n {} \; | awk &#39;{ print $1/$2 }&#39; | sort | cut -c1,2,3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above example we search the &lt;code&gt;avatar_images&lt;/code&gt; directory, include all files, but filter out images we’ve generated in the past (prefixed with &lt;code&gt;thumb_&lt;/code&gt;). The output will be a list of the image propotions as double values (e.g. 4/3 → 1.333, 6/9 → 0.666).&lt;/p&gt;
+
+&lt;p&gt;You can dump this list into Excel and &lt;a href=&quot;http://www.excel-easy.com/examples/histogram.html&quot;&gt;generate a histogram&lt;/a&gt;, or just use it to highlight how many values are outside of ‘squarish’.&lt;/p&gt;
+
+&lt;p&gt;This approach can help if you have a very large set of user avatar images, but it doesn’t help us with the qualitative task of checking that they look ‘okay’ with the new circular crop.&lt;/p&gt;
+
+&lt;h4 id=&quot;creating-an-avatar-montage-for-quick-visual-checking&quot;&gt;Creating an avatar montage for quick visual checking&lt;/h4&gt;
+
+&lt;p&gt;Humans are really (really) good at recognising faces. They’re not so good at monotony, so walking through 10,000 users’ profile pages isn’t going to work very well. A montage of all the avatars on a single image works surprisingly well – even at smaller sizes the headless avatars or dodgy crops jumped out at us.&lt;/p&gt;
+
+&lt;p&gt;ImageMagick is all set up to generate our rounded avatar images:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;#/bin/sh
+convert $1 \
+        -resize x800 -resize &#39;800x&amp;lt;&#39;   -resize 50% \
+        -gravity center  -crop 400x400+0+0 +repage \
+        \( +clone -threshold -1 -negate -fill white -draw &quot;circle 200,200 200,0&quot; \) \
+                -alpha off -compose copy_opacity -composite \
+                \-auto-orient \
+    cropped_${1}.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This generates a circular mask, and overlays that on the cropped, centred image. Wrapping the above with &lt;code&gt;find&lt;/code&gt; allows us to loop through and process all our images:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;# assumes we&#39;ve placed the above snippet crop_avatars.sh
+mkdir cropped_images
+find ./images -type f -exec ./crop_avatars.sh {} \;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We now have a &lt;code&gt;cropped_images/&lt;/code&gt; directory containing smaller, rounder versions of the images. All we need to do then is stitch them together, and once again ImageMagick is there for us:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;montage cropped_images/* avatar_montage.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After all of that you should end up with something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/2015-08-28_montage.jpg&quot; alt=&quot;A montage of user avatars&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Have fun with it, but don’t be surprised when everyone wants to see your new creation. For many organisations this could well be the first chance they’ve had to see many of their users, and a huge grid of (hopefully smiling) faces can be quite powerful.&lt;/p&gt;
+
+&lt;h4 id=&quot;references&quot;&gt;References&lt;/h4&gt;
+
+&lt;p&gt;The following pages were hugely helpful for figuring out how to achieve the different portions of ImageMagic magic:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://daemonsandagents.tumblr.com/post/108369306151/imagemagick-ways-of-cropping-an-image-to-a&lt;/li&gt;
+  &lt;li&gt;http://www.imagemagick.org/Usage/resize/#space_fill&lt;/li&gt;
+  &lt;li&gt;http://www.imagemagick.org/Usage/thumbnails/#fit_summery&lt;/li&gt;
+  &lt;li&gt;http://www.imagemagick.org/Usage/crop/#crop_gravity&lt;/li&gt;
+  &lt;li&gt;http://www.imagemagick.org/Usage/montage/&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				
+                        	<pubDate>Sat, 05 Sep 2015 00:00:00 +0100</pubDate>
+				<link>http://ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</link>
+				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</guid>
+			</item>
+		
+			<item>
 				<title>Kitematic for boot2docker users</title>
 				<dc:creator></dc:creator>
 				
@@ -560,37 +650,6 @@ println &quot;There are ${memberCount} members initially&quot;
                         	<pubDate>Thu, 27 Mar 2014 15:58:40 +0000</pubDate>
 				<link>http://ryanbrooks.co.uk/posts/2014-03-27-testing-rhino-js-spock/</link>
 				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-03-27-testing-rhino-js-spock/</guid>
-			</item>
-		
-			<item>
-				<title>Disqus comment threads on a docpad homepage</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;I really do get on well with &lt;a href=&quot;http://docpad.org/&quot;&gt;docpad&lt;/a&gt;. Adding comments to the homepage blog entry was a little tricky though, so here’s the workaround I applied.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Despite wanting to move to a JVM-based static site generator, docpad does too many things to make me want to leave. It’s not perfect, but it has plugins to solve mosts of your basic problems, and is nicely hackable. Plus it’s written in CoffeScript, which is always a plus.  The &lt;a href=&quot;https://github.com/docpad/docpad-plugin-services&quot;&gt;services plugin&lt;/a&gt; provides a neat way to inject Disqus comment threads into your pages. It’s almost zero configuration and works reliably, but it doesn’t work when you’re rendering dynamic content, for example the latest blog post on your home page. &lt;/p&gt;
-
-&lt;p&gt;Everything worked well until Disqus got confused. First it displayed the comments from a blog post on the homepage when it was no longer correct. Then it just started displaying the comment thread on all pages which didn’t have their own threads already. Not so good. &lt;/p&gt;
-
-&lt;p&gt;Fortunately Disqus support were very responsive, and got back to me explaining the problem: the Disqus widget doesn’t just need the title, it also needs a unique URL in its config. The services plugin doesn’t work for this, as it always gets the current page URL, so here’s a modified version of &lt;a href=&quot;https://github.com/docpad/docpad-plugin-services/blob/master/src/services.plugin.coffee#L356&quot;&gt;the original script&lt;/a&gt; which takes a post as a parameter so you can load dynamic comment threads wherever you like.&lt;/p&gt;
-
-&lt;p&gt;All you need to do is add the following to your &lt;code&gt;docpad.cofee&lt;/code&gt;, I put it in the helpers section:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9256629.js?file=docpad.coffee&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Then you can add the comments to your index page, like so:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/spikeheap/9256629.js?file=index.html.eco&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;I will submit this as a pull request just as soon as I figure out how to do it elegantly :), but this will do as a workaround for now.&lt;/p&gt;
-
-</description>
-				
-                        	<pubDate>Thu, 27 Feb 2014 18:58:40 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-02-27-docpad-disqus-comments/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-02-27-docpad-disqus-comments/</guid>
 			</item>
 		
 	</channel>
