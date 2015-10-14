@@ -5,10 +5,11 @@ tags: ['post', 'events', 'accessibility']
 comments: true
 ---
 Before the [2015 Full Stack Fest](TODO), I hadn't really given any thought to how accessible a conference is past whether or not it had wheelchair ramps and lifts. It turns out there's _way_ more to making an event inclusive than that.
+<!- more -->
 
 ![A live-captioned talk at Full Stack Fest](TODO-add-image)
 
-For the Full Stack Fest, [Kickstarter](TODO) sponsored live-captioning for all the talks, transcribing the speakers' words into a space below the slides and allowing anyone to follow along with the talk in. 
+For the Full Stack Fest, [Kickstarter](TODO) sponsored live-captioning for all the talks, transcribing the speakers' words into a space below the slides and allowing anyone to follow along with the talk in.
 
 If you've not experienced live captioning before, it's easy to be skeptical. The text changes frequently, which could be distracting, there's no chance the technical terms and product names being picked up, and there's almost no way the captions could keep up with the speakers (especially anyone who's nervous!).
 
