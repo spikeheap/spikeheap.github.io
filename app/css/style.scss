@@ -162,10 +162,16 @@ aside {
 }
 
 .bio {
-  padding-top: 2em;
   font-size: 0.888em;
   h1, h2, h3, h4, h5 {
     font-weight: 500;
+  }
+
+  img {
+    border-bottom-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
 }
 
