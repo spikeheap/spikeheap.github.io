@@ -7,7 +7,7 @@ comments: true
 
 Hosted blog sites such as Wordpress have lowered the barrier to entry for blogging and creating online content, but if you've started craving a little more control over your site and its content you've probably looked at [Jekyll](http://jekyllrb.com/). Here's how I use Jekyll to host this blog.
 
-<!--more-->
+<!-- more -->
 
 When I first [moved from Wordpress](https://ryanbrooks.wordpress.com/2013/08/24/ive-moved/) way back in the deep and distant past of 2013 my main motivation was control: control over my content, style and interaction. After meandering through [Octopress](http://octopress.org/) (whose 3.0 development looks really promising), [DocPad](https://docpad.org/) and [Awestruct](http://awestruct.org/) I settled on [Jekyll](http://jekyllrb.com/) because of its community, ubiquity, and because it's written in Ruby so hacking on it isn't too onerous.
 

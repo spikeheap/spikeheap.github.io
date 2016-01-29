@@ -6,7 +6,7 @@ comments: true
 ---
 Generic alerts are a common requirement in most web applications, and as your Angular application grows in complexity the importance of a standardised way of feeding back to the user gains importance with it. Luckily it's quite straightforward to leverage Angular services as a system-wide alerting tool.
 
-<!--more-->
+<!-- more -->
 
 There are a number of articles covering Angular user alerting, but each one relied on `$rootScope` or nested scopes. I try to avoid use of the root scope where possible, in the same way we shun the use of the global namespace in JavaScript in general. 
 

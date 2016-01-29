@@ -11,7 +11,7 @@ Managing the sudoers file of the puppetmaster with Puppet is like playing with f
 
 Today I re-learned a valuable lesson about the power of Puppet: it can be a force for evil if you forget the little extra things you set up weeks ago. Fortunately it's easy to reproduce, so try it for yourself! If there's ever an obvious reason to keep a remote clone of your Puppet configuration, this is it.
 
-<!--more-->
+<!-- more -->
 
 Step one is easy. To have a good self-managing Puppet setup you really want your clients to auto-configure themselves. That configuration is going to do sane things like (for example) setting 'pluginsync' and ensuring the Puppet client daemon is running, configured to start on boot, etc. 
 

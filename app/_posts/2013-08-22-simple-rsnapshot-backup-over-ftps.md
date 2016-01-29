@@ -10,7 +10,7 @@ In this post I'll walk you through setting up a simple backup solution using Rsn
 *Note that while this example will work with FTP it is not recommended because the protocol is not encrypted.*
 
 **Update 23/08/2013:** There were a hundred other things I wanted to talk about in this post but decided to leave out for the sake of simplicity, but as [@m0untainpenguin](https://twitter.com/m0untainpenguin) [points out](https://twitter.com/m0untainpenguin/statuses/370901452648374272) the feeling of safety that hard links give you is misleading. There is only ever one copy of the file on disk, so if that gets corrupted you're out of luck. A great reason to do regular full backups, but that's a walkthrough for another post!
-<!--more-->
+<!-- more -->
 
 I have tested this on a clean installation of Ubuntu 13.04, but let me know if anything doesn't work as expected in the comments.
 

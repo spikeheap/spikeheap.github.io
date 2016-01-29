@@ -6,7 +6,7 @@ comments: false
 ---
 [Jekyll](http://www.jekyllrb.com) is a powerful static site generator and is baked into GitHub pages to provide a pretty straightfoward mechanism to host static sites for free. Jekyll on GitHub has some limitations, so here I describe how to automatically build the site with Travis so we can take advantage of some of the more advanced features of Jekyll and wrap it into a more complete web workflow.
 
-<!--more-->
+<!-- more -->
 
 #### Rationale
 As a professional software developer I'm used to complex build workflows: linting, compiling, concatenating and minifying JavaScript and SCSS, optimising images, running tests, etc., so when I'm developing the blog I want access to the same tooling.

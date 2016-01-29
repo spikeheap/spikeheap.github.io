@@ -4,6 +4,9 @@ tags: ['post', 'remote']
 title: "A beginner's guide to remote working"
 comments: true
 ---
+ 
+Lots of TODOs here !
+<!-- more -->
 
 TODO headline image (+CSS)
 # intro

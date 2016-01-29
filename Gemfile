@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '2.5.3'
+gem 'jekyll'
 #gem 'github-pages'
-gem 'github-markdown'
 gem 'github-linguist'
-#gem 'redcarpet'
 gem 'compass', '>=0.12'
 
 group :jekyll_plugins do
   gem 'jekyll-compose'
   gem 'jekyll-sitemap'
+  gem 'jekyll-gist'
+  gem 'jekyll-paginate'
+  #gem 'redcarpet'
+  gem 'github-markdown'
+  gem 'jekyll-watch'
 end

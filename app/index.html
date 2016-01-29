@@ -1,36 +1,29 @@
 ---
 layout: default
 ---
-
 <div class="container">
   <div class="row">
-      {% for post in site.posts limit:3 %}
-  	    <div class="col-md-4">
-  		    <h2><a href="{{post.url}}">{{ post.title}}</a>
-  		    <small class="date-subtitle">{{ post.date | date_to_string}}</small></h2>
-  		    {{ post.content | markdownify | truncatewords: 100, "&hellip;" }}
-  		    <a href="{{post.url}}">Read more</a>
-  	    </div>
-      {% endfor %}
+      <div class="col-sm-9">
+        {% for post in site.posts limit:5 %}
+          <div class="clearfix margin-bottom">
+            <h3 class="post-title">
+              <a href="{{post.url}}">{{ post.title}}</a>
+            </h3>
+            <div class="clearfix">
+              <small class="pull-right date-subtitle">{{ post.date | date_to_string}}</small>
+            </div>
+            {% if post.content contains "<!-- more -->" %}
+              {{ post.content | split:"<!-- more -->" |  first | markdownify % }}
+            {% else %}
+              {{ post.content | markdownify | truncatewords:75, "&hellip;" }}
+            {% endif %}
+            <a href="{{post.url}}" class="btn btn-sm btn-success">Read more</a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="col-sm-3 border-left">
+        {% include bio.html %}
+      </div>
   </div>
 </div>
 
-<footer id="footer" class="container-fluid">
-    <div class="footer--top">
-      <div class="row">
-        <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2">
-          <h1>Get in touch</h1>
-          {% include contact.html %}
-        </div>
-        <div class="hidden-xs col-sm-3 col-md-2 col-lg-2">
-          <img class="img-circle" src="/images/profile-400px.jpg">
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
-          <h3>Hi, I'm Ryan</h3>
-          <p>
-              I care about code, building great teams and the community. I'm a freelance CTO and full-stack developer, and co-organiser of <a href="http://jsoxford.com/">JSOxford</a> and <a href="http://oxrug.org/">OxRUG</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-</footer>

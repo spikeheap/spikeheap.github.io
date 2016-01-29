@@ -1,10 +1,9 @@
 // Core variables and mixins
-@import "../_bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
-
 /**
  * Override variables with custom ones
  */
 @import '_variables.scss';
+@import "../_bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 
 @import "../_bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 
