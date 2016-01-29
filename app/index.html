@@ -13,9 +13,9 @@ layout: default
               <small class="pull-right date-subtitle">{{ post.date | date_to_string}}</small>
             </div>
             {% if post.content contains "<!-- more -->" %}
-              {{ post.content | split:"<!-- more -->" |  first | markdownify % }}
+              {{ post.content | split:"<!-- more -->" |  first % }}
             {% else %}
-              {{ post.content | markdownify | truncatewords:75, "&hellip;" }}
+              {{ post.content | truncatewords:75, "&hellip;" }}
             {% endif %}
             <a href="{{post.url}}" class="btn btn-sm btn-success">Read more</a>
           </div>

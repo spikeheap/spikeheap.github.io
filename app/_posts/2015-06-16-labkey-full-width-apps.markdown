@@ -15,17 +15,17 @@ LabKey's JavaScript API is rich, and allows complex JavaScript applications to b
 
 What we really needed was to constrain the view to 100% of the available space, which we achieved by wrapping it in a table with a specified width:
 
-```html
-<table class="myapp">
-    <tr>
-      <td>
-        <h1>My amazing application</h1>
-      </td>
-    </tr>
-</table>
+```
+&gt;table class="myapp"&lt;
+    &gt;tr&lt;
+      &gt;td&lt;
+        &gt;h1&lt;My amazing application&gt;/h1&lt;
+      &gt;/td&lt;
+    &gt;/tr&lt;
+&gt;/table&lt;
 
-<link rel="stylesheet" type="text/css" href="<%=contextPath%>/myapp/styles/index.min.css">
-<script src="<%=contextPath%>/myapp/js/application.min.js"></script>
+&gt;link rel="stylesheet" type="text/css" href="<%=contextPath%&lt;/myapp/styles/index.min.css"&lt;
+&gt;script src="&gt;%=contextPath%&lt;/myapp/js/application.min.js"&lt;&gt;/script&lt;
 ```
 
 …and adding a CSS rule to set the table layout:

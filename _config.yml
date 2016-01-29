@@ -14,12 +14,14 @@ excerpt_separator: <!--more-->
 permalink: /posts/:year-:month-:day-:title/
 encoding: utf-8
 
-sass:
-  sass_dir: _scss
+markdown: kramdown
 
 kramdown:
   input: GFM
+  hard_wrap: false
 
+sass:
+  sass_dir: _scss
 
 defaults:
   -
