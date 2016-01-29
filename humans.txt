@@ -3,13 +3,14 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Ryan Brooks -- Owner -- @spikeheap
 
 # THANKS
 
-    <name>
+    Jennifer Gallagher
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     jQuery, Modernizr
+    Jekyll

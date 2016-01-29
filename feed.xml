@@ -10,7 +10,7 @@
 				<title>Migrating user avatars to circular crops, with ImageMagick</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.&lt;br /&gt;
+					<description>&lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.
 &lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s imagine our current approach to user avatars is to accept any size and shape image. Because we’re sensible, we retain the originally uploaded image and generate a thumbnail to be used on the site which maintains the proportions but constrains the longest side to 100 pixels.&lt;/p&gt;
@@ -119,7 +119,7 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To get the docker CLI playing nicely with our shiny new Kitematic instance, we just need to replace those lines with the following:&lt;br /&gt;
+&lt;p&gt;To get the docker CLI playing nicely with our shiny new Kitematic instance, we just need to replace those lines with the following:
 &lt;code&gt;bash
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.60.102:2376
@@ -139,7 +139,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 				<title>Constraining width for LabKey WebParts and Views</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;Building custom web views within LabKey is pretty straightforward, but if you find yourself needing to constrain the contents of your module horizontally you’ll quickly find that the surrounding tables will gladly stretch to any width. Fortunately restricting the width of hte container is pretty straightforward. &lt;/p&gt;
+					<description>&lt;p&gt;Building custom web views within LabKey is pretty straightforward, but if you find yourself needing to constrain the contents of your module horizontally you’ll quickly find that the surrounding tables will gladly stretch to any width. Fortunately restricting the width of hte container is pretty straightforward.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Wrap your contents in a table with &lt;code&gt;table-layout: fixed; width: 100%&lt;/code&gt; and the contents won’t push the surrounding page to wider than the browser window.&lt;/p&gt;
 
@@ -184,19 +184,19 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 				<title>Reclaiming my Saturday mornings</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;You hear it everywhere: ‘if you want something doing well, do it yourself’. Maybe the primary source is beleaguered managers in stagnant organisations where delivering on promises is the exception rather than the rule, who knows. &lt;/p&gt;
+					<description>&lt;p&gt;You hear it everywhere: ‘if you want something doing well, do it yourself’. Maybe the primary source is beleaguered managers in stagnant organisations where delivering on promises is the exception rather than the rule, who knows.&lt;/p&gt;
 
-&lt;p&gt;That message ingrained itself in me as I grew up. When I started managing people and projects it took a huge effort to let go of the critical tasks, and not only to trust people to do the work well, but also to accept that ‘doing it well’ might actually involve doing it differently to how I would have.  &lt;/p&gt;
+&lt;p&gt;That message ingrained itself in me as I grew up. When I started managing people and projects it took a huge effort to let go of the critical tasks, and not only to trust people to do the work well, but also to accept that ‘doing it well’ might actually involve doing it differently to how I would have.&lt;/p&gt;
 
-&lt;p&gt;As a specialising generalist I’ve forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to fix (just about) anything and &lt;a href=&quot;/posts/2013-12-01-pi-powered-central-heating-phase-1/&quot;&gt;hack the physical world&lt;/a&gt; to meet our needs. Plus, getting outside and chopping logs or fixing bikes is a nice distraction after a day in front of the computer. &lt;/p&gt;
+&lt;p&gt;As a specialising generalist I’ve forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to fix (just about) anything and &lt;a href=&quot;/posts/2013-12-01-pi-powered-central-heating-phase-1/&quot;&gt;hack the physical world&lt;/a&gt; to meet our needs. Plus, getting outside and chopping logs or fixing bikes is a nice distraction after a day in front of the computer.&lt;/p&gt;
 
 &lt;p&gt;In short, I want to do everything, or at least be involved in everything. I want to understand what’s going on in the world around me, fuelled by curiosity and the feeling that I &lt;em&gt;should&lt;/em&gt; be able to do it.&lt;/p&gt;
 
 &lt;p&gt;The problem I’ve faced recently, though, is that I don’t have enough time. Or rather, I don’t do enough of the things I &lt;strong&gt;really&lt;/strong&gt; care about. Moving to contract work has opened up a whole new world of things for me to learn and take on: accounting, law, marketing, operations; and all of that happens outside of the 9-to-5, when I’m working with clients.&lt;/p&gt;
 
-&lt;p&gt;The Internet is full of answers, though they seem to primarily revolve around sleeping less or cutting out TV. I’m sure getting up earlier works for many, but I like my 8 hours sleep (when I get it) and don’t want to lose productivity later on as it catches up with me. &lt;/p&gt;
+&lt;p&gt;The Internet is full of answers, though they seem to primarily revolve around sleeping less or cutting out TV. I’m sure getting up earlier works for many, but I like my 8 hours sleep (when I get it) and don’t want to lose productivity later on as it catches up with me.&lt;/p&gt;
 
-&lt;p&gt;If I end up in front of the TV it’s usually because I’ve run out of cognitive capacity and need a bit of downtime, so while watching less TV is a good idea, the benefit is in spending more time with the ones I love and getting outside. &lt;/p&gt;
+&lt;p&gt;If I end up in front of the TV it’s usually because I’ve run out of cognitive capacity and need a bit of downtime, so while watching less TV is a good idea, the benefit is in spending more time with the ones I love and getting outside.&lt;/p&gt;
 
 &lt;p&gt;I may be painting a bleak picture, but over the past few weeks a couple of things have had a positive impact on how much I ‘get stuff done’:&lt;/p&gt;
 
@@ -211,11 +211,11 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;The problem is that sounds very extravagant, right? I can’t imagine paying someone to clean my house so I don’t have to, and would almost feel ashamed that I wasn’t doing it myself. Yet somehow I don’t have a problem with Jennifer doing most of the cooking when I’ve got a busy stretch.&lt;/p&gt;
 
-&lt;p&gt;Second-guessing each thing in my to-do list has been quite helpful, even though it’s hard work for me. Do I really need to learn how to repair wetsuits, research and purchase the best materials for it, then spend a couple of hours painstakingly gluing and stitching it, or could I just send it off to &lt;a href=&quot;http://www.bodylinewetsuitrepairs.co.uk/&quot;&gt;a wetsuit repair company&lt;/a&gt; (who’ll certainly do a much better job) for £15 or so? &lt;/p&gt;
+&lt;p&gt;Second-guessing each thing in my to-do list has been quite helpful, even though it’s hard work for me. Do I really need to learn how to repair wetsuits, research and purchase the best materials for it, then spend a couple of hours painstakingly gluing and stitching it, or could I just send it off to &lt;a href=&quot;http://www.bodylinewetsuitrepairs.co.uk/&quot;&gt;a wetsuit repair company&lt;/a&gt; (who’ll certainly do a much better job) for £15 or so?&lt;/p&gt;
 
 &lt;h4 id=&quot;making-dead-time-work&quot;&gt;Making dead time work&lt;/h4&gt;
 
-&lt;p&gt;I used to spend Saturday mornings working through a list of small, 5-minute jobs I’d built up during the week. Then I realised how many times I pulled out my phone and read BBC News for 5-10 minutes: on the bus, waiting for a meeting. I’d got to a point where anything less than a clear hour free and it didn’t seem worth starting something. &lt;/p&gt;
+&lt;p&gt;I used to spend Saturday mornings working through a list of small, 5-minute jobs I’d built up during the week. Then I realised how many times I pulled out my phone and read BBC News for 5-10 minutes: on the bus, waiting for a meeting. I’d got to a point where anything less than a clear hour free and it didn’t seem worth starting something.&lt;/p&gt;
 
 &lt;p&gt;Creating a new to-do list, containing only things that can be done in 5-30 minute bursts, has helped me reclaim this time. Technical podcasts (I thoroughly recommend &lt;a href=&quot;http://devchat.tv/ruby-rogues/&quot;&gt;the Ruby Rogues&lt;/a&gt; and &lt;a href=&quot;http://devchat.tv/adventures-in-angular&quot;&gt;Adventures in Angular&lt;/a&gt;) replace music while I’m walking around Oxford, expenses and timekeeping get done on the bus ride back into Oxford when I’m not cycling (so when I arrive home my work day is completely finished), and replying to Facebook and Twitter conversations get a few minutes before lunch or a cup of tea. Taking the bus for 20 minutes each morning last week enabled me write 80% of this blog post.&lt;/p&gt;
 
@@ -237,6 +237,76 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 				<dc:creator></dc:creator>
 				
 					<description>&lt;p&gt;Generic alerts are a common requirement in most web applications, and as your Angular application grows in complexity the importance of a standardised way of feeding back to the user gains importance with it. Luckily it’s quite straightforward to leverage Angular services as a system-wide alerting tool.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;There are a number of articles covering Angular user alerting, but each one relied on &lt;code&gt;$rootScope&lt;/code&gt; or nested scopes. I try to avoid use of the root scope where possible, in the same way we shun the use of the global namespace in JavaScript in general.&lt;/p&gt;
+
+&lt;p&gt;Th first problem we need to solve is to collect and manage the list of alerts. to do this we can create a very simple Angular service:&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;; (function (angular) {
+  &amp;#39;use strict&amp;#39;;
+  angular
+    .module(&amp;#39;pageAlerts&amp;#39;)
+    .factory(&amp;#39;PageAlertsService&amp;#39;, [ &amp;#39;$timeout&amp;#39;, function($timeout) {
+
+      // Private functions and internal state
+      var internal = {
+
+        alerts: [],
+
+        addAlert: function(type, message, autoClose) {
+          var newAlert = {
+            type: type,
+            message: message,
+            close: function() { internal.removeAlert(this) }
+          };
+          internal.alerts.push( newAlert );
+          if(autoClose){
+            $timeout(function() { newAlert.close() }, 5000)
+          }
+        },
+
+        removeAlert: function(alert) {
+          internal.alerts.splice( internal.alerts.indexOf(alert), 1);
+        }
+      };
+
+      // Return the public API for the service
+      // We&amp;#39;ll expose the `alerts` array for convenience
+      return {
+        addError: function(message, autoClose) {
+          internal.addAlert(&amp;#39;danger&amp;#39;, message, autoClose);
+        },
+        addWarning: function(message, autoClose) {
+          internal.addAlert(&amp;#39;warning&amp;#39;, message, autoClose);
+        },
+        addSuccess: function(message, autoClose) {
+          internal.addAlert(&amp;#39;success&amp;#39;, message, autoClose);
+        },
+
+        alerts: internal.alerts
+      };
+    } ])
+})(window.angular);
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9709d80f14bf63050d6c.js?file=PageAlertsService.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;We can then create a directive to interact with the service:&lt;/p&gt;
+
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9709d80f14bf63050d6c.js?file=PageAlerts.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;&amp;lt;div&amp;gt;
+  &amp;lt;alert ng-repeat=&amp;quot;alert in alerts&amp;quot; type=&amp;quot;{{alert.type}}&amp;quot; close=&amp;quot;alert.close()&amp;quot;&amp;gt;{{alert.message}}&amp;lt;/alert&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9709d80f14bf63050d6c.js?file=PageAlerts.html&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;The above example uses &lt;a href=&quot;TODO&quot;&gt;Angular Bootstrap&lt;/a&gt; alerts, but you can obviously roll your own within the directive.&lt;/p&gt;
+
+&lt;p&gt;To add the alerts to your page all you need is &lt;code&gt;&amp;lt;my-page-alerts&amp;gt;&amp;lt;/my-page-alerts&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The service/directive pair results in a globally accessible alerting service without the need to pollute the &lt;code&gt;$rootScope&lt;/code&gt;. One criticism of this approach is that the service and directive are tightly coupled, but this can be remedied by passing in the service as an attribute to the directive, an exercise I’ll leave to the reader (but grab me in the comments or &lt;a href=&quot;https://twitter.com/spikeheap&quot;&gt;on Twitter&lt;/a&gt; if you want a hand ;) ).&lt;/p&gt;
 
 </description>
 				
@@ -263,7 +333,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;Multiple sclerosis is a disease which affects &lt;a href=&quot;http://www.mstrust.org.uk/information/aboutms/keyfacts.jsp&quot;&gt;over 100,000&lt;/a&gt; people in the UK alone, and has no known cure. It’s a degenerative disease of the nervous system and affects people in a myriad different ways but often affects vision, sleep and mobility.&lt;/p&gt;
 
-&lt;p&gt;Multiple sclerosis is close to my heart because my father has suffered with it for over 10 years. Last year I &lt;a href=&quot;http://teampedal.com&quot;&gt;cycled from Bangor to Switzerland&lt;/a&gt; to raise money for the MS Trust and awareness of multiple sclerosis in general, and hope to do an even bigger challenge in the near future. &lt;/p&gt;
+&lt;p&gt;Multiple sclerosis is close to my heart because my father has suffered with it for over 10 years. Last year I &lt;a href=&quot;http://teampedal.com&quot;&gt;cycled from Bangor to Switzerland&lt;/a&gt; to raise money for the MS Trust and awareness of multiple sclerosis in general, and hope to do an even bigger challenge in the near future.&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://www.mstrust.org.uk/donate-online/&quot;&gt;MS Trust&lt;/a&gt; is a charity focussed on helping people with multiple sclerosis by providing information and support, and funding research and training for healthcare professionals. I particularly like that they are all about helping sufferers of MS, enabling them to manage the disease and still make the most of their lives. Until a cure is found it’s the support networks and education within the healthcare industry that has a huge impact on people living with MS.&lt;/p&gt;
 
@@ -275,7 +345,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;h3 id=&quot;nominating-others&quot;&gt;Nominating others&lt;/h3&gt;
 
-&lt;p&gt;So it’s my turn to hand on the baton and nominate three more people to highlight a charity they care about or give to a charity and tell us about them. But why stop at three? Three’s to few. &lt;/p&gt;
+&lt;p&gt;So it’s my turn to hand on the baton and nominate three more people to highlight a charity they care about or give to a charity and tell us about them. But why stop at three? Three’s to few.&lt;/p&gt;
 
 &lt;p&gt;Instead I nominate you, the reader, to take up this challenge. I know you’re there, so don’t shirk your responsibility. Let me know when you’ve done it in the comments. Or don’t if you’re a bit bitter that I got you into this mess.&lt;/p&gt;
 
@@ -317,7 +387,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/2014-08-27_09.jpg&quot; alt=&quot;NodeBots presentation&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;We purchased 10 &lt;a href=&quot;http://oomlout.co.uk/&quot;&gt;oomlout starter kits&lt;/a&gt; and had a few servos, Arduino Uno boards and a load of wires kicking around, so there was plenty of kit and the day started with most people running through the introductory blinking LED lessons. Some chose to start with Arduino and some went straight to using the Johnny Five library, a JS library for controlling the Arduino inputs/outputs over the USB cable. &lt;/p&gt;
+&lt;p&gt;We purchased 10 &lt;a href=&quot;http://oomlout.co.uk/&quot;&gt;oomlout starter kits&lt;/a&gt; and had a few servos, Arduino Uno boards and a load of wires kicking around, so there was plenty of kit and the day started with most people running through the introductory blinking LED lessons. Some chose to start with Arduino and some went straight to using the Johnny Five library, a JS library for controlling the Arduino inputs/outputs over the USB cable.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/2014-08-27_04.jpg&quot; alt=&quot;npm install johnny-five (t-shirt)&quot; /&gt;&lt;/p&gt;
 
@@ -336,7 +406,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/2014-08-27_10.jpg&quot; alt=&quot;Marcus, Chris and sensors&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After Oli and Alan had got us all excited about the possibilities they set about linking a Logitech gaming joypad with the CrazyFlie, a cool but twitchy little quadcopter with a death-wish. These little devices are quite exciting (there’s nothing boring about flying) but can pick up a lot of speed and cause a lot of damage to themselves with a bit of errant programming. &lt;/p&gt;
+&lt;p&gt;After Oli and Alan had got us all excited about the possibilities they set about linking a Logitech gaming joypad with the CrazyFlie, a cool but twitchy little quadcopter with a death-wish. These little devices are quite exciting (there’s nothing boring about flying) but can pick up a lot of speed and cause a lot of damage to themselves with a bit of errant programming.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/2014-08-27_06.jpg&quot; alt=&quot;Crazyflie quadcopter&quot; /&gt;&lt;/p&gt;
 
@@ -345,7 +415,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 &lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p&gt;...annnnd the &lt;a href=&quot;https://twitter.com/hashtag/crazyflie?src=hash&quot;&gt;#crazyflie&lt;/a&gt; is broken :( &lt;a href=&quot;https://twitter.com/JSOxford&quot;&gt;@JSOxford&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/nodebots?src=hash&quot;&gt;#nodebots&lt;/a&gt;&lt;/p&gt;&amp;mdash; Alan Shaw (@_alanshaw) &lt;a href=&quot;https://twitter.com/_alanshaw/statuses/503178382201618433&quot;&gt;August 23, 2014&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;Fortunately there was plenty of other kit to get overly enthusiastic about. &lt;/p&gt;
+&lt;p&gt;Fortunately there was plenty of other kit to get overly enthusiastic about.&lt;/p&gt;
 
 &lt;p&gt;One limitation of johnny-five is that you need a connection to a laptop to run the JavaScript, so roving machines or fighting bots can be a problem. The &lt;a href=&quot;http://www.espruino.com/&quot;&gt;Espruino&lt;/a&gt; and &lt;a href=&quot;https://tessel.io/&quot;&gt;Tessel&lt;/a&gt; boards look really promising because they take different approaches to enabling developers to write JS and end up with a standalone board.&lt;/p&gt;
 
@@ -381,7 +451,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.b2m-solutions.com/&quot;&gt;B2M Solutions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt; &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.haybrook.co.uk/&quot;&gt;Haybrook IT Resourcing&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://teamtreehouse.com/&quot;&gt;Treehouse&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.whiteoctober.co.uk/&quot;&gt;White October&lt;/a&gt;&lt;/li&gt;
@@ -411,7 +481,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 				<title>Groovy SOAP clients with ws-lite</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: “this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain”. I was almost right.  &lt;/p&gt;
+					<description>&lt;p&gt;When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: “this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain”. I was almost right.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt; My client script is &lt;a href=&quot;https://gist.github.com/spikeheap/b5428f11834a0cea3822&quot;&gt;available as a GitHub gist&lt;/a&gt; for cannibalisation.&lt;/p&gt;
 
@@ -421,7 +491,7 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;So, the top result is &lt;a href=&quot;http://groovy.codehaus.org/Groovy+SOAP&quot;&gt;the Groovy SOAP documentation&lt;/a&gt;, which does say (although not very obviously) that it’s deprecated. That’s fine, it suggests its replacement, &lt;a href=&quot;http://groovy.codehaus.org/GroovyWS&quot;&gt;GroovyWS&lt;/a&gt;. But that page tells you to ‘be careful’ because the project is dormant. Not to worry, because it suggests looking at &lt;a href=&quot;https://github.com/jwagenleitner/groovy-wslite&quot;&gt;groovy-wslite&lt;/a&gt;. I’m already feeling like I’m entering the rabbit hole.&lt;/p&gt;
 
-&lt;p&gt;Fortunately groovy-wslite is an active project and has commits (at the time of writing) from just over a month ago. The DSL is pretty straightforward so I set about connecting to the target WSDL and then added basic authentication. The documentation for the project is quite sparse, so this post is an attempt to bring together the bits that I needed. &lt;/p&gt;
+&lt;p&gt;Fortunately groovy-wslite is an active project and has commits (at the time of writing) from just over a month ago. The DSL is pretty straightforward so I set about connecting to the target WSDL and then added basic authentication. The documentation for the project is quite sparse, so this post is an attempt to bring together the bits that I needed.&lt;/p&gt;
 
 &lt;p&gt;If you need anything other than ‘Basic’ HTTP autentication, stop right there. The project doesn’t seem to support ‘Digest’ or ‘NTLM’ authentication, so you might be better going for &lt;a href=&quot;http://stackoverflow.com/questions/15940234/how-to-do-a-soap-web-service-call-from-java-class&quot;&gt;plain Java SOAP&lt;/a&gt;.&lt;/p&gt;
 
@@ -474,9 +544,9 @@ if(response.httpResponse.statusMessage==&quot;OK&quot;) {
 println &quot;There are ${memberCount} members initially&quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;In the following gist I’ve abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs. &lt;/p&gt;
+&lt;p&gt;In the following gist I’ve abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs.&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/b5428f11834a0cea3822.js&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/b5428f11834a0cea3822.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 </description>
 				
@@ -512,13 +582,13 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;h5 id=&quot;tdd--pair-programming&quot;&gt;TDD &amp;amp; pair programming&lt;/h5&gt;
 
-&lt;p&gt;All my planning had been around the idea that we’d done TDD/pair-programming as a focus in the first Code Retreat, so it was old-hat and would be boring to push it a second time. Wrong! There were quite a few attendees who hadn’t really used TDD in anger or who were just experiencing pair-programming for the first time, so I had quite a few discussions about how it worked ‘in real life’ and whether it was just a construct which is nice for events but isn’t really practical. &lt;/p&gt;
+&lt;p&gt;All my planning had been around the idea that we’d done TDD/pair-programming as a focus in the first Code Retreat, so it was old-hat and would be boring to push it a second time. Wrong! There were quite a few attendees who hadn’t really used TDD in anger or who were just experiencing pair-programming for the first time, so I had quite a few discussions about how it worked ‘in real life’ and whether it was just a construct which is nice for events but isn’t really practical.&lt;/p&gt;
 
 &lt;p&gt;This accurately reflects the experiences I’ve had recruiting for developers at all levels, and I’m much less surprised when I hear people describe testing as a secondary activity or something that would be nice if there was more time. In fairness most developers seem to agree that tests are necessary, and there is still a big debate about what constitutes the right amount of testing, and if it should be part of the design/development process. Either way it was good to be part of the discussion!&lt;/p&gt;
 
 &lt;h5 id=&quot;defensive-programming&quot;&gt;Defensive programming&lt;/h5&gt;
 
-&lt;p&gt;Our second session was to have a development battle. When writing tests it followed the standard TDD mantra of write as little as possible to get the test to fail, but when implementing the function the approach had to be to do it in the most obscure or wrong way possible, whilst still making the test pass. &lt;/p&gt;
+&lt;p&gt;Our second session was to have a development battle. When writing tests it followed the standard TDD mantra of write as little as possible to get the test to fail, but when implementing the function the approach had to be to do it in the most obscure or wrong way possible, whilst still making the test pass.&lt;/p&gt;
 
 &lt;p&gt;The resultant code was (obviously) atrocious and tended towards micro-methods, but it was interesting to see how everyone perceived it: was it a poor activity or a chance to think about one of the purposes of writing tests in a collaborative environment? Some of the code I saw closely resembled production code I’ve seen from projects that I won’t name here which had been running for much longer than 20 minutes, but no-one sets out to produce code that poor, right?&lt;/p&gt;
 
@@ -529,14 +599,14 @@ println &quot;There are ${memberCount} members initially&quot;
 &lt;h3 id=&quot;what-could-have-gone-better&quot;&gt;What could have gone better&lt;/h3&gt;
 
 &lt;h5 id=&quot;focus-on-the-meaning&quot;&gt;Focus on the meaning&lt;/h5&gt;
-&lt;p&gt;When we set the kata and planned the sessions the focus was on what we were trying to get the attendees to think about, working backwards to find constraints which would exercise that. It all (sort of) went to plan, but during the event I completely forgot to focus on that same end goal! As a result I think a few people were left wondering why (for example) there wasn’t a planning session before the round-table programming session. &lt;/p&gt;
+&lt;p&gt;When we set the kata and planned the sessions the focus was on what we were trying to get the attendees to think about, working backwards to find constraints which would exercise that. It all (sort of) went to plan, but during the event I completely forgot to focus on that same end goal! As a result I think a few people were left wondering why (for example) there wasn’t a planning session before the round-table programming session.&lt;/p&gt;
 
 &lt;h5 id=&quot;the-venue&quot;&gt;The venue&lt;/h5&gt;
 &lt;p&gt;The &lt;a href=&quot;http://www.thejamfactoryoxford.com/&quot;&gt;Jam Factory&lt;/a&gt; is a great pub with a friendly feel and lots of light, and it would be great for an evening party or talk. In the height of summer the Boiler Room really is that, a glass-roofed hotbox. All that light streaming in also meant our projectors were useless. Fortunately we had a backup 40” TV, but that was really a little too small while still taking up a load of space.&lt;/p&gt;
 
 &lt;p&gt;Being an (almost) free event meant we had to fund the venue and catering through sponsorship. Our sponsors &lt;a href=&quot;http://www.haybrook.co.uk/&quot;&gt;Haybrook IT Recruitment&lt;/a&gt; and &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; were amazing, but we struggled to make their contributions, along with the £5 entry fee, cover all the things. Lesson learned: figure out the constraints of the venue in advance (like not being able to bring our own refreshments &amp;amp; snacks) and either work with them to compromise, ask for more sponsorship or change the venue.&lt;/p&gt;
 
-&lt;p&gt;We were keen to host things at the Jam Factory so it didn’t feel like work, and was more friendly and informal than the standard conference-style event, and I think it almost achieved that. &lt;/p&gt;
+&lt;p&gt;We were keen to host things at the Jam Factory so it didn’t feel like work, and was more friendly and informal than the standard conference-style event, and I think it almost achieved that.&lt;/p&gt;
 
 &lt;h5 id=&quot;the-testing-wrappers&quot;&gt;The testing wrappers&lt;/h5&gt;
 
@@ -545,7 +615,7 @@ println &quot;There are ${memberCount} members initially&quot;
 &lt;p&gt;Since the event Uxebu have open-sourced &lt;a href=&quot;https://github.com/uxebu/tddbin-frontend&quot;&gt;TDDBin&lt;/a&gt;, which we’ve used with great success for previous events. It’s great to see them open up the code, and we’ll certainly build on that for future events.&lt;/p&gt;
 
 &lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-&lt;p&gt;Each time I’ve run a Code Retreat there are things I’d do completely differently next time, and to be honest it would be boring if that weren’t the case. As always it was an interesting event, and hopefully the attendees got as much out of it as I did. &lt;/p&gt;
+&lt;p&gt;Each time I’ve run a Code Retreat there are things I’d do completely differently next time, and to be honest it would be boring if that weren’t the case. As always it was an interesting event, and hopefully the attendees got as much out of it as I did.&lt;/p&gt;
 
 &lt;p&gt;A few people have written up the day. If you’ve done the same let me know and I’ll add you to the list below:&lt;/p&gt;
 
@@ -566,7 +636,7 @@ println &quot;There are ${memberCount} members initially&quot;
 				<title>Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Rhino&quot;&gt;Rhino JS engine&lt;/a&gt;. After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn’t be arduous. &lt;/p&gt;
+					<description>&lt;p&gt;A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Rhino&quot;&gt;Rhino JS engine&lt;/a&gt;. After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn’t be arduous.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -583,7 +653,7 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;And then edit the &lt;code&gt;build.gradle&lt;/code&gt; file to look something like the following:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=build.gradle&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=build.gradle&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;This will ensure we’ve got Rhino on our classpath, and can use Spock to write our tests. The last &lt;code&gt;compile&lt;/code&gt; dependency allows us to include JAR files in a &lt;code&gt;lib&lt;/code&gt; directory, which can be handy if you use libraries not available through Bintray or Maven.&lt;/p&gt;
 
@@ -596,7 +666,7 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;h2 id=&quot;eclipse&quot;&gt;Eclipse&lt;/h2&gt;
 
-&lt;p&gt;There are a couple of plugins we need for Eclipse &lt;/p&gt;
+&lt;p&gt;There are a couple of plugins we need for Eclipse&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;The &lt;a href=&quot;http://groovy.codehaus.org/Eclipse+Plugin&quot;&gt;Groovy-Eclipse plugin&lt;/a&gt; (requires the http://dist.springsource.org/release/GRECLIPSE/e4.3/ update site).&lt;/li&gt;
@@ -615,7 +685,7 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;We’ll create a sample JavaScript file to test in &lt;code&gt;src/main/js/littleFunction.js&lt;/code&gt;, containing the following:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=littleFunction.js&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=littleFunction.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;That code isn’t likely to win any awards, but we can check that it works by writing a specification.&lt;/p&gt;
 
@@ -623,17 +693,17 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;Create a Groovy class named &lt;code&gt;LittleFunctionSpec.groovy&lt;/code&gt; in &lt;code&gt;src/test/groovy/my/package/&lt;/code&gt;, containing the following:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;This gives us our Rhino environment (context). Note that if you want to use &lt;code&gt;XML&lt;/code&gt; objects you’ll need to use a context version &amp;gt; 1.7. All we need to do now is add a test:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial1.groovy&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial1.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Hopefully that specification is pretty self-explanatory. For more information &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/&quot;&gt;Check out the Spock documentation&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The example above used a single value, but we probably want to check quite a few. Spock’s &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/data_driven_testing.html&quot;&gt;Data Driven Testing support&lt;/a&gt; makes this simple, so we can rewrite the test as:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial2.groovy&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial2.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;running-tests-1&quot;&gt;Running tests&lt;/h2&gt;
 
@@ -641,9 +711,9 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 
-&lt;p&gt;Using a few simple steps we’ve set up a Gradle project to run Spock tests over Rhino JavaScript, with the added bonus of being able to use Eclipse. &lt;/p&gt;
+&lt;p&gt;Using a few simple steps we’ve set up a Gradle project to run Spock tests over Rhino JavaScript, with the added bonus of being able to use Eclipse.&lt;/p&gt;
 
-&lt;p&gt;Because we can now run tests with a single command and interpret the result with most tools (either through the Gradle exit code or the JUnit output), adding this to a continuous build system like &lt;a href=&quot;http://travis-ci.org&quot;&gt;Travis&lt;/a&gt; or &lt;a href=&quot;http://jenkins-ci.org/&quot;&gt;Jenkins&lt;/a&gt; is simple! &lt;/p&gt;
+&lt;p&gt;Because we can now run tests with a single command and interpret the result with most tools (either through the Gradle exit code or the JUnit output), adding this to a continuous build system like &lt;a href=&quot;http://travis-ci.org&quot;&gt;Travis&lt;/a&gt; or &lt;a href=&quot;http://jenkins-ci.org/&quot;&gt;Jenkins&lt;/a&gt; is simple!&lt;/p&gt;
 
 </description>
 				

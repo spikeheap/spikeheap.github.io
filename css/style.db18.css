@@ -4,7 +4,7 @@
 
 /** Override variables with custom ones */
 
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 html {
   font-family: sans-serif;
@@ -158,7 +158,7 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 
 * {
@@ -179,7 +179,7 @@ html {
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.42857;
   color: #333333;
   background-color: #fff;
@@ -192,13 +192,13 @@ button {
 }
 
 a {
-  color: #337ab7;
+  color: #6891ad;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #476a82;
   text-decoration: underline;
 }
 
@@ -217,8 +217,8 @@ img {
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   border: 0;
   border-top: 1px solid #eeeeee;
 }
@@ -240,12 +240,11 @@ h3,
 h4,
 h5 {
   font-family: inherit;
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
 
-h2 small,
 h4 small {
   font-weight: normal;
   line-height: 1;
@@ -255,18 +254,14 @@ h4 small {
 h1,
 h2,
 h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-h2 small {
-  font-size: 65%;
+  margin-top: 25px;
+  margin-bottom: 12.5px;
 }
 
 h4,
 h5 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 12.5px;
+  margin-bottom: 12.5px;
 }
 
 h4 small {
@@ -278,7 +273,7 @@ h1 {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 29px;
 }
 
 h3 {
@@ -286,19 +281,19 @@ h3 {
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0 0 12.5px;
 }
 
 small {
-  font-size: 60%;
+  font-size: 77%;
 }
 
 .text-muted {
@@ -308,13 +303,13 @@ small {
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 12.5px;
 }
 
 blockquote {
-  padding: 10px 20px;
-  margin: 0 0 20px;
-  font-size: 17.5px;
+  padding: 12.5px 25px;
+  margin: 0 0 25px;
+  font-size: 22.5px;
   border-left: 5px solid #eeeeee;
 }
 
@@ -344,9 +339,9 @@ code {
 
 pre {
   display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 19px;
+  padding: 12px;
+  margin: 0 0 12.5px;
+  font-size: 17px;
   line-height: 1.42857;
   word-break: break-all;
   word-wrap: break-word;
@@ -365,8 +360,7 @@ pre code {
   border-radius: 0;
 }
 
-.container,
-.footer--top {
+.container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
@@ -374,35 +368,29 @@ pre code {
 }
 
 .container:before,
-.footer--top:before,
-.container:after,
-.footer--top:after {
+.container:after {
   content: " ";
   display: table;
 }
 
-.container:after,
-.footer--top:after {
+.container:after {
   clear: both;
 }
 
 @media (min-width: 768px) {
-  .container,
-  .footer--top {
+  .container {
     width: 750px;
   }
 }
 
 @media (min-width: 992px) {
-  .container,
-  .footer--top {
+  .container {
     width: 970px;
   }
 }
 
 @media (min-width: 1200px) {
-  .container,
-  .footer--top {
+  .container {
     width: 970px;
   }
 }
@@ -439,42 +427,17 @@ pre code {
   clear: both;
 }
 
-.col-md-2,
-.col-lg-2,
 .col-sm-3,
-.col-md-3,
-.col-md-4,
-.col-lg-4,
-.col-xs-5,
-.col-md-5,
-.col-xs-6,
-.col-sm-6,
-.col-sm-9,
-.col-sm-12 {
+.col-sm-9 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.col-xs-5,
-.col-xs-6 {
-  float: left;
-}
-
-.col-xs-5 {
-  width: 41.66667%;
-}
-
-.col-xs-6 {
-  width: 50%;
-}
-
 @media (min-width: 768px) {
   .col-sm-3,
-  .col-sm-6,
-  .col-sm-9,
-  .col-sm-12 {
+  .col-sm-9 {
     float: left;
   }
 
@@ -482,56 +445,8 @@ pre code {
     width: 25%;
   }
 
-  .col-sm-6 {
-    width: 50%;
-  }
-
   .col-sm-9 {
     width: 75%;
-  }
-
-  .col-sm-12 {
-    width: 100%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-md-2,
-  .col-md-3,
-  .col-md-4,
-  .col-md-5 {
-    float: left;
-  }
-
-  .col-md-2 {
-    width: 16.66667%;
-  }
-
-  .col-md-3 {
-    width: 25%;
-  }
-
-  .col-md-4 {
-    width: 33.33333%;
-  }
-
-  .col-md-5 {
-    width: 41.66667%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .col-lg-2,
-  .col-lg-4 {
-    float: left;
-  }
-
-  .col-lg-2 {
-    width: 16.66667%;
-  }
-
-  .col-lg-4 {
-    width: 33.33333%;
   }
 }
 
@@ -564,7 +479,7 @@ th {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.42857;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -598,38 +513,39 @@ th {
   border-color: #ccc;
 }
 
-.btn-default:focus {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #8c8c8c;
-}
-
-.btn-default:hover {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
-}
-
+.btn-default:hover,
+.btn-default:focus,
 .btn-default:active {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
-}
-
-.btn-default:active:hover,
-.btn-default:active:focus {
-  color: #333;
-  background-color: #d4d4d4;
-  border-color: #8c8c8c;
 }
 
 .btn-default:active {
   background-image: none;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-success:active {
+  background-image: none;
+}
+
 .btn-sm {
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 3px;
 }
@@ -641,6 +557,7 @@ th {
 
 .collapse {
   display: none;
+  visibility: hidden;
 }
 
 .nav {
@@ -679,7 +596,7 @@ th {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border: 1px solid transparent;
 }
 
@@ -743,6 +660,7 @@ th {
 
   .navbar-collapse.collapse {
     display: block !important;
+    visibility: visible !important;
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
@@ -765,9 +683,9 @@ th {
 
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  padding: 12.5px 15px;
+  font-size: 20px;
+  line-height: 25px;
   height: 50px;
 }
 
@@ -817,13 +735,13 @@ th {
 }
 
 .navbar-nav {
-  margin: 7.5px -15px;
+  margin: 6.25px -15px;
 }
 
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 20px;
+  line-height: 25px;
 }
 
 @media (min-width: 768px) {
@@ -837,8 +755,8 @@ th {
   }
 
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
   }
 }
 
@@ -1051,16 +969,6 @@ pre code {
   font-size: 80%;
 }
 
-#footer {
-  background-color: #6891ad;
-  color: #f5f5f5;
-}
-
-#footer a {
-  color: #f5f5f5;
-  text-decoration: none;
-}
-
 .navbar {
   border: 0;
 }
@@ -1069,30 +977,49 @@ pre code {
   padding: 5px;
 }
 
+.post-title {
+  color: #FFFFFF;
+  background-color: #6891ad;
+  border-top-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.post-title a {
+  color: #f5f5f5;
+}
+
+.post-title a:hover {
+  color: #c2d7e0;
+}
+
+@media screen and (min-width: 767px) {
+  .post-title {
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    margin-left: -28px;
+    padding-left: 28px;
+    padding-right: 0.5em;
+  }
+}
+
 .date-subtitle {
-  display: block;
+  color: white;
+  background-color: #6891ad;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .post-nav {
   margin-top: 0.6em;
   margin-bottom: 0.6em;
-}
-
-.footer--top {
-  font-size: 0.75em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.footer--top h1 {
-  font-size: 1.2em;
-  font-weight: 500;
-}
-
-.footer--top img {
-  margin-top: 20px;
-  border: none;
-  box-shadow: none;
 }
 
 .footer--bottom {
@@ -1115,13 +1042,19 @@ pre code {
 }
 
 .bio {
-  padding-top: 2em;
-  font-size: 0.75em;
+  font-size: 0.888em;
 }
 
 .bio h3,
 .bio h4 {
   font-weight: 500;
+}
+
+.bio img {
+  border-bottom-left-radius: 75px;
+  border-top-right-radius: 75px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 blockquote {
@@ -1145,7 +1078,15 @@ blockquote p {
   display: inline;
 }
 
-/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-6b3bd46de2166ad150897feac7d3739854b51f494305b58db15d5d80eec4509f.css ***/
+.border-left {
+  border-left: 1px solid #6891ad;
+}
+
+.margin-bottom {
+  margin-bottom: 2em;
+}
+
+/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-71a8843d2a25cadbc5fcce2bf963d78f84a777059c9b09d1cf4ae145530de820.css ***/
 
 .gist {
   font-size: 16px;
@@ -1221,7 +1162,7 @@ blockquote p {
   color: rgba(0,0,0,0.6);
 }
 
-.gist .blob-num:before {
+.gist .blob-num::before {
   content: attr(data-line-number);
 }
 
@@ -1241,7 +1182,7 @@ blockquote p {
   word-wrap: normal;
 }
 
-.gist .blob-code-inner:before {
+.gist .blob-code-inner::before {
   content: "";
 }
 
@@ -1260,9 +1201,10 @@ blockquote p {
 .gist .gist-meta {
   padding: 10px;
   overflow: hidden;
-  font: 12px Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 12px Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #767676;
   background-color: #f7f7f7;
+  border-radius: 0 0 2px 2px;
 }
 
 .gist .gist-meta a {
@@ -1277,6 +1219,7 @@ blockquote p {
   word-wrap: normal;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+  border-radius: 2px 2px 0 0;
 }
 
 .gist .gist-file {
