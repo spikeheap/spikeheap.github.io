@@ -212,10 +212,6 @@ img {
   vertical-align: middle;
 }
 
-.img-circle {
-  border-radius: 50%;
-}
-
 hr {
   margin-top: 25px;
   margin-bottom: 25px;
@@ -1086,13 +1082,13 @@ blockquote p {
   margin-bottom: 2em;
 }
 
-/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-71a8843d2a25cadbc5fcce2bf963d78f84a777059c9b09d1cf4ae145530de820.css ***/
+/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-7346e9a735aaeeacede51d1efaad6208f95d9edbc222155878bfddc2da28fa87.css ***/
 
 .gist {
   font-size: 16px;
   color: #333;
-  direction: ltr;
   text-align: left;
+  direction: ltr;
 }
 
 .gist .pl-c {
@@ -1133,29 +1129,29 @@ blockquote p {
 .gist .blob-wrapper {
   overflow-x: auto;
   overflow-y: hidden;
-  border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .gist .blob-num {
   width: 1%;
   min-width: 50px;
-  white-space: nowrap;
+  padding-right: 10px;
+  padding-left: 10px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
   line-height: 18px;
   color: rgba(0,0,0,0.3);
-  vertical-align: top;
   text-align: right;
-  border: solid #eee;
-  border-width: 0 1px 0 0;
+  white-space: nowrap;
+  vertical-align: top;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding-left: 10px;
-  padding-right: 10px;
+  border: solid #eee;
+  border-width: 0 1px 0 0;
 }
 
 .gist .blob-num:hover {
@@ -1168,18 +1164,18 @@ blockquote p {
 
 .gist .blob-code {
   position: relative;
-  padding-left: 10px;
   padding-right: 10px;
+  padding-left: 10px;
   vertical-align: top;
 }
 
 .gist .blob-code-inner {
+  overflow: visible;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
   color: #333;
-  white-space: pre;
-  overflow: visible;
   word-wrap: normal;
+  white-space: pre;
 }
 
 .gist .blob-code-inner::before {
@@ -1187,7 +1183,6 @@ blockquote p {
 }
 
 .gist .highlight {
-  border: 0;
   padding: 0;
   margin: 0;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -1196,6 +1191,7 @@ blockquote p {
   line-height: 1.4;
   color: #333;
   background: #fff;
+  border: 0;
 }
 
 .gist .gist-meta {
@@ -1237,10 +1233,10 @@ blockquote p {
 }
 
 .gist .blob-code {
-  border: 0;
   padding: 1px 10px !important;
-  background: transparent;
   text-align: left;
+  background: transparent;
+  border: 0;
 }
 
 .gist .blob-wrapper table {

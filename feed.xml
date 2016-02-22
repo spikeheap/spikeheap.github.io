@@ -294,7 +294,22 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 
 &lt;p&gt;We can then create a directive to interact with the service:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9709d80f14bf63050d6c.js?file=PageAlerts.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;; (function (angular) {
+  &amp;#39;use strict&amp;#39;;
+  angular
+    .module(&amp;#39;pageAlerts&amp;#39;)
+    .directive(&amp;#39;pageAlerts&amp;#39;, [&amp;#39;PageAlertsService&amp;#39;, function(PageAlertsService) {
+      return {
+        templateUrl: &amp;#39;/directives/PageAlerts/PageAlerts.html&amp;#39;,
+        replace: true,
+        link: function (scope) {
+          scope.alerts = PageAlertsService.alerts;
+        }
+      }
+    }]);
+}(window.angular));
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9709d80f14bf63050d6c.js?file=PageAlerts.js&quot;&gt; &lt;/script&gt;
 
 &lt;noscript&gt;&lt;pre&gt;&amp;lt;div&amp;gt;
   &amp;lt;alert ng-repeat=&amp;quot;alert in alerts&amp;quot; type=&amp;quot;{{alert.type}}&amp;quot; close=&amp;quot;alert.close()&amp;quot;&amp;gt;{{alert.message}}&amp;lt;/alert&amp;gt;
@@ -546,7 +561,99 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;In the following gist I’ve abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs.&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/b5428f11834a0cea3822.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;@Grab(group=&amp;#39;com.github.groovy-wslite&amp;#39;, module=&amp;#39;groovy-wslite&amp;#39;, version=&amp;#39;1.1.0&amp;#39;)
+
+import groovy.xml.*
+import wslite.soap.*
+import wslite.http.auth.*
+
+def client = new SOAPClient(&amp;#39;https://dummy:11443/ClinicalDocumentWSService/ClinicalDocumentWS?wsdl&amp;#39;)
+client.authorization = new HTTPBasicAuthorization(&amp;quot;mirth&amp;quot;, &amp;quot;password&amp;quot;)
+
+// Grab the latest member list
+def members = getSubjectGroupMemberIds(client, &amp;#39;GROUP001&amp;#39;, &amp;#39;NEW&amp;#39;).results
+def memberCount = members.list.size()
+println &amp;quot;There are ${memberCount} members initially&amp;quot;
+
+// Get a patient
+def retrievedSubject = getPatientsByFilterWithoutClinicalItems(client, {
+    firstName(&amp;quot;Bob&amp;quot;)
+    lastName(&amp;quot;Bunting&amp;quot;)
+    numRows(1)
+  }) 
+def subjectId = retrievedSubject.results.list.id
+println &amp;quot;Subject ID: ${subjectId}, name: ${retrievedSubject.results.list.name.first} ${retrievedSubject.results.list.name.middle} ${retrievedSubject.results.list.name.last}&amp;quot;
+
+// Add the patient to the subjects of interest list (NEW, ACTIVE, EXCLUDED, RETIRED)
+println XmlUtil.serialize( createSubjectGroupMember(client, &amp;#39;GROUP001&amp;#39;, &amp;#39;NEW&amp;#39;, &amp;#39;MYSTATUS&amp;#39;, subjectId) )
+
+// Grab the latest member list
+members = getSubjectGroupMemberIds(client, &amp;#39;GROUP001&amp;#39;, &amp;#39;NEW&amp;#39;).results
+assert  members.list.size() == (memberCount + 1)
+
+println XmlUtil.serialize(members)
+
+
+// SOAP call methods
+
+def getSubjectGroupMemberIds(client, groupId, groupStatusId){
+  doSOAPRequest( client, &amp;#39;getSubjectGroupMemberIds&amp;#39;, {
+    subjectGroupId( groupId )
+    subjectGroupStatusId( groupStatusId )
+  })
+}
+
+/**
+ * Typically search by forename, surname, dob and gender
+ * also by patient alias (NHS # or MRN #)
+ **/
+def getPatientsByFilterWithoutClinicalItems(client, subjectFilter){
+  doSOAPRequest( client, &amp;#39;getPatientsByFilterWithoutClinicalItems&amp;#39;, {
+    subjectFilterModel subjectFilter
+  })
+}
+
+
+def createSubjectGroupMember(client, groupId, groupStatusId, recFacilityId, patientId){
+  doSOAPRequest( client, &amp;#39;createSubjectGroupMember&amp;#39;, {
+    subjectGroupId( groupId )
+    subjectGroupStatusId( groupStatusId )
+    subjectId( patientId )
+    receivingFacilityId ( recFacilityId )
+    createSubjectGroupMemberExt( 0 ) // &amp;#39;0&amp;#39; causes an update to fail silently if it exists already.
+  })
+}
+
+
+/**
+ * Do a SOAP request with the given command and payload.
+ * Doesn&amp;#39;t massage the payload, this method is just to reduce copy/paste for the SOAP request.
+ **/
+def doSOAPRequest(client, command, commandBody){
+  def response = client.send(
+                           connectTimeout:5000,
+                           readTimeout:20000,
+                           useCaches:false,
+                           followRedirects:false,
+                           sslTrustAllCerts:true) {
+    envelopeAttributes &amp;quot;xmlns:ejb&amp;quot;:&amp;quot;http://ejb.results.mirth.com/&amp;quot;
+    body {
+        &amp;quot;ejb:${command}&amp;quot;(commandBody)
+    }
+  }
+  okStatus(response) ? response.&amp;quot;${command}Response&amp;quot;.&amp;#39;return&amp;#39; : null
+}
+
+
+/**
+ * Check that the HTTP response is good.
+ * Shamelessly lifted from https://confluence.sakaiproject.org/display/WEBSVCS/WS-Groovy
+ **/
+def okStatus( SOAPResponse response ){
+  return response.httpResponse.statusMessage==&amp;quot;OK&amp;quot;
+}
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/b5428f11834a0cea3822.js&quot;&gt; &lt;/script&gt;
 
 </description>
 				
@@ -653,7 +760,22 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;And then edit the &lt;code&gt;build.gradle&lt;/code&gt; file to look something like the following:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=build.gradle&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;apply plugin: &amp;#39;java&amp;#39;
+apply plugin: &amp;#39;groovy&amp;#39;
+apply plugin: &amp;#39;eclipse&amp;#39;
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile &amp;#39;org.codehaus.groovy:groovy-all:2.1.5&amp;#39;
+    testCompile &amp;quot;org.spockframework:spock-core:0.7-groovy-2.0&amp;quot; 
+	
+    compile &amp;#39;org.mozilla:rhino:1.7R4&amp;#39;
+    compile fileTree(dir: &amp;#39;lib&amp;#39;, include: &amp;#39;*.jar&amp;#39;)
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=build.gradle&quot;&gt; &lt;/script&gt;
 
 &lt;p&gt;This will ensure we’ve got Rhino on our classpath, and can use Spock to write our tests. The last &lt;code&gt;compile&lt;/code&gt; dependency allows us to include JAR files in a &lt;code&gt;lib&lt;/code&gt; directory, which can be handy if you use libraries not available through Bintray or Maven.&lt;/p&gt;
 
@@ -685,7 +807,10 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;We’ll create a sample JavaScript file to test in &lt;code&gt;src/main/js/littleFunction.js&lt;/code&gt;, containing the following:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=littleFunction.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;function addTogether(a, b, c){
+	return a + b + c;
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=littleFunction.js&quot;&gt; &lt;/script&gt;
 
 &lt;p&gt;That code isn’t likely to win any awards, but we can check that it works by writing a specification.&lt;/p&gt;
 
@@ -693,17 +818,91 @@ println &quot;There are ${memberCount} members initially&quot;
 
 &lt;p&gt;Create a Groovy class named &lt;code&gt;LittleFunctionSpec.groovy&lt;/code&gt; in &lt;code&gt;src/test/groovy/my/package/&lt;/code&gt;, containing the following:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;package my.package
+
+class LittleFunctionSpec extends Specification{
+	Context context
+	Scriptable scope
+	
+	/**
+	 * Setup, prior to every spec test
+	 */
+	void setup(){
+		 context = Context.enter()
+
+		// Set version to JavaScript1.2 so that we get object-literal style
+		// printing instead of &amp;quot;[object Object]&amp;quot;
+		context.setLanguageVersion(Context.VERSION_1_8)
+
+		// Initialize the standard objects (Object, Function, etc.)
+		// This must be done before scripts can be executed.
+		scope = context.initStandardObjects()
+	}
+	
+	/**
+	 * Teardown method, run after each test. This just ensures we&amp;#39;ve left the Rhino context.
+	 */
+	void cleanup(){
+		Context.exit();
+	}
+	
+	/**
+	 * Load a JavaScript file into the Rhino engine. For resources held within the project you will probably want a filename like:
+	 * 		&amp;quot;src/main/js/componentX/script.js&amp;quot;
+	 * @param fileName The name of the file to be loaded.
+	 */
+	void loadJSIntoContext(String fileName) {
+		File emulatorFile = fileName as File
+		context.evaluateString(scope, emulatorFile.text, emulatorFile.name, 1, null)
+	}
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy&quot;&gt; &lt;/script&gt;
 
 &lt;p&gt;This gives us our Rhino environment (context). Note that if you want to use &lt;code&gt;XML&lt;/code&gt; objects you’ll need to use a context version &amp;gt; 1.7. All we need to do now is add a test:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial1.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;// Add into LittleFunctionSpec.groovy
+def &amp;quot;check little function adds numbers together&amp;quot;(){
+	given: &amp;quot;I have littleFunction.js loaded&amp;quot;
+	loadJSIntoContext(&amp;quot;src/main/js/littleFunction.js&amp;quot;)
+	
+	when: &amp;quot;I run the addTogether function for 1, 2, and 3&amp;quot;
+	String jsExercise = &amp;quot;var result = addTogether(1,2,3);&amp;quot;
+	context.evaluateString(scope, jsExercise, &amp;quot;TestScript&amp;quot;, 1, null)
+	
+	then: &amp;quot;The result is 6&amp;quot;
+	scope.get(&amp;quot;result&amp;quot;, scope) == 6
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial1.groovy&quot;&gt; &lt;/script&gt;
 
 &lt;p&gt;Hopefully that specification is pretty self-explanatory. For more information &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/&quot;&gt;Check out the Spock documentation&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The example above used a single value, but we probably want to check quite a few. Spock’s &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/data_driven_testing.html&quot;&gt;Data Driven Testing support&lt;/a&gt; makes this simple, so we can rewrite the test as:&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial2.groovy&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;// Add into LittleFunctionSpec.groovy
+@Unroll
+def &amp;quot;check addTogether behaves for #a, #b, #c&amp;quot;(){
+	given: &amp;quot;I have littleFunction.js loaded&amp;quot;
+	loadJSIntoContext(&amp;quot;src/main/js/littleFunction.js&amp;quot;)
+	
+	when: &amp;quot;I run the addTogether function for 1, 2, and 3&amp;quot;
+	String jsExercise = &amp;quot;var result = addTogether(&amp;quot;+a+&amp;quot;,&amp;quot;+b+&amp;quot;,&amp;quot;+c+&amp;quot;);&amp;quot;
+	context.evaluateString(scope, jsExercise, &amp;quot;TestScript&amp;quot;, 1, null)
+	
+	then: &amp;quot;The result is #c&amp;quot;
+	scope.get(&amp;quot;result&amp;quot;, scope) == (a + b + c)
+	
+	where:
+	a   | b   | c
+	0   | 0   | 0
+	9   | 1   | 0
+	5   | 0   | 5
+	1   | 1   | 1
+	0   | 4   | 24
+	1231| 0   | 0
+	9999| 0   | 4325
+	0   | 035 | 230
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial2.groovy&quot;&gt; &lt;/script&gt;
 
 &lt;h2 id=&quot;running-tests-1&quot;&gt;Running tests&lt;/h2&gt;
 
