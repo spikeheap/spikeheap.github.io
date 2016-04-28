@@ -8,20 +8,23 @@ Docker is great for building portable applications, modelling complex environmen
 
 <!-- more -->
 
-# What we have already / what's the problem?
-## Thoughtbot post
-### Good start but slow when gemfile changes
-## Follow-on post with volumes, speeds up incremental changes
-### Immutable build artefacts
+### A quick note on terms
 
-# Immutable build artefacts?
-## Runnable containers without dependencies
-## Github/rubygems offline
-## Promotable builds
+This post talks about a `Gemfile` and Ruby's gems, but this post applies equally to libraries and dependencies in pretty much any other language. If you're not familiar, the `Gemfile` is the list of libraries, frameworks, and other 3rd party dependencies.
 
-# A new solution: bundle known point in past before thoughtbot approach
+### Rebuilding gems/NPM from scratch is slow
 
-We can work around this behaviour of invalidating the cache on any change to the dependencies list by referring by seeding the image with a known static point in time. 
+Docker images should contain all of the dependencies required to run your application. If we can guarantee that all our Bundler, NPM and Bower dependencies are already built into the image, we no longer need to worry about outages of `rubygems.org` or `github.com`. No contention there, right? However, building your dependencies into the Docker image comes at a cost: every time your dependency installation step happens there's a good chance you're blowing away every dependency you downloaded in the last build. 
+
+The [Thoughtbot Rails on Docker post](https://robots.thoughtbot.com/rails-on-docker) demonstrates how to only bundle your gems when your `Gemfile` changes, which at least means your dependencies aren't re-downloaded every time the code changes. If your dependencies change regularly you're still a bit stuck. Every time you add, remove or update a gem, the cache is invalidated and the `bundle install` step runs again, downloading every gem from scratch.
+
+[Brad Gessler built on that approach](http://bradgessler.com/articles/docker-bundler/) to leverage data volumes as a cross-container gem store. By updating the dependencies in a container you no longer need to re-build your image each time, which speeds up your development cycle immensely. This comes at a cost: by using volumes we're maintaining state for the container which may not be obvious later on. This _may_ be fine, after all we don't rebuild the image every time we change the code. However if we're pushing towards immutable infrastructure it's reasonable to treat your gems in the same way as your OS and system dependencies. This approach also allows our environments to diverge, so a piece of code can't be expected to behave the same way for the same container if we run it on different machines with different sets of gems installed. 
+
+The intention is solid, so how can we apply the same principles to the image build process instead?
+
+## A new solution: cache dependencies from a point in the past
+
+We can work around Docker's behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies a static point in time. Once we have the majority of our dependencies cached, subsequent `bundle install`s will only need to grab the newer gems.
 
 We'll start with an example and then pick it apart:
 
@@ -84,34 +87,45 @@ The point you cache in step [1] can make all the difference to your build times,
 
 ### Getting the historical dependency list
 
-In the above examples we've just referenced a public GitHub repository, but chances are you're working with private repositories or outside of GitHub. Fear not, we've got you covered.
+In the above examples, we have just referenced a public GitHub repository, but chances are you're working with private repositories or outside of GitHub. Fear not, we've got you covered.
 
 #### Private GitHub repostories
 
 If you're using GitHub private repositories you're in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:
 
-https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/Readme.md?token=AAcTYrCCgOS9dBSyTPBWlx_6a0hs9Q2qks5XFJOwwA%3D%3D
+```
+https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+```
 
 You can get the token for your files by viewing the file on GitHub and clicking 'Raw' before copying the URL from your address bar. 
 
-#### BitBucket, GitLab (and most other) repositories
+Note that the tokens are __per commit reference__, so you should use commit-specific URLs in preference to branch references. The following link will break and return `404` as soon as `develop` is updated:
+
+
+```
+https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+```
+
+
+#### Private repositories on BitBucket, GitLab, etc.
+
+Most other services provide token-based access to raw files, and I'll leave it as an exercise for the reader to work out their intricacies. [This StackOverflow answer](http://stackoverflow.com/a/34499948/384693) demonstrates it working for BitBucket.
+
+Be sure to consider where your keys/tokens may be exposed. The GitHub example uses tokens specific to each file/revision pair, so the cost of an exposed key is quite small. If you're exposing your private API key which gives write-access to your repository, things are a little different 😱😨😰.
 
 #### Fallback
 
 If you're using something completely esoteric, you can use Docker's `RUN` command in preference to `ADD`ing them as we have above. Through `RUN` you can curl your files down, install a custom client, or whatever you need.
 
+## Summary / TL;DR
 
-# Other options
-## Check in a second set of Gemfile / Gemfile.lock files
-## Generate the files from a local git repo. Is this even possible?
-
-# Other bits
-<!-- 
 Using the above approach we get the benefits of cached dependencies with the benefits of quick builds and deployable artefacts.
 
 Deployments are hard. Striking a balance between stable production builds, fast development cycles and keeping development and production as close as possible is even harder.
 
-### The paradox
+1. Speed up your Docker image build time by using a version of your dependencies list which changes less frequently to leverage Dockers caching mechanism.
+2. One good source for the more-stable dependencies list is your GitHub repository.
+3. Be careful not to expose your keys and secrets.
+4. Only do this is image build time is impacting some part of your life!
 
-Docker images should contain all of the dependencies required to run your application. If we can guarantee that all our Bundler, NPM and Bower dependencies are already built into the image, we no longer need to worry about outages of `rubygems.org` or `github.com`.
--->
+
