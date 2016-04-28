@@ -32,24 +32,17 @@ defaults:
     values:
       layout: "default"
 
-# prose:
-#   siteurl: 'http://www.ryanbrooks.co.uk'
-#   media: "app/images
-#   metadata:
-#     _posts:
-#       - name: "layout"
-#         field:
-#           element: "hidden"
-#           value: "post"
-#       - name: "title"
-#         field:
-#           element: "text"
-#           label: "title"
-#       - name: "comments"
-#         field:
-#           element: "select"
-#           options:
-#             - name: 'true'
-#               value: 'true'
-#             - name: 'false'
-#               value: 'false'
+assets:
+  # compress:
+  #   css: false | true | default - development: false, production: true
+  #   js: false | true | default - development: false, production: true
+  # cache: false | directory | default: .asset-cache
+  digest: true
+  sources:
+    - _assets/css
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/fonts
+    - _assets/img
+    - _assets/js

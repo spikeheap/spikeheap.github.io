@@ -1,10 +1,8 @@
----
-layout: null
----
+@import "_variables.scss";
+@import "bootstrap";
 
-// Imports
-@import "../_scss/_bootstrap"; //this loads the variables too
-@import "../_bower_components/fontawesome/scss/font-awesome.scss";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 // See http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 html {
@@ -20,10 +18,10 @@ h1, h2, h3, h4, h5 {
 }
 
 img {
-	display: block;
-	max-width: 100%;
-	border-radius: 2px;
-	box-shadow: 1px 1px 1px #CCC;
+  display: block;
+  max-width: 100%;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #CCC;
 }
 
 code {
@@ -42,12 +40,12 @@ pre {
 }
 
 #header, #footer {
-	background-color: $blue;
-	color: $almost-white;
-	a {
-		color: $almost-white;
-		text-decoration: none;
-	}
+  background-color: $blue;
+  color: $almost-white;
+  a {
+    color: $almost-white;
+    text-decoration: none;
+  }
 }
 
 .navbar{
@@ -60,9 +58,9 @@ pre {
 }
 
 .post-date {
-	margin-top: -0.4em;
-	font-weight: bold;
-	color: grey;
+  margin-top: -0.4em;
+  font-weight: bold;
+  color: grey;
 }
 
 .post-title {
@@ -110,23 +108,23 @@ pre {
 
 .footer--top {
   font-size: 0.75em;
-	h1 {
-		font-size: 1.2em;
+  h1 {
+    font-size: 1.2em;
     font-weight: 500;
-	}
+  }
   img {
     margin-top: 20px;
     border: none;
     box-shadow: none;
   }
-	@extend .container;
-	margin-top:1em;
-	margin-bottom:1em;
+  @extend .container;
+  margin-top:1em;
+  margin-bottom:1em;
 }
 
 .footer--bottom {
-	border-top: 1px solid $grey;
-	background-color: $light-blue;
+  border-top: 1px solid $grey;
+  background-color: $light-blue;
 }
 
 
@@ -144,7 +142,7 @@ aside {
   }
   @media (min-width: $screen-desktop) {
     float: right;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
 }
