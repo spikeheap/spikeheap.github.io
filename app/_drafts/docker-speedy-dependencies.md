@@ -24,7 +24,7 @@ The intention is solid, so how can we apply the same principles to the image bui
 
 ## A new solution: cache dependencies from a point in the past
 
-We can work around Docker's behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies a static point in time. Once we have the majority of our dependencies cached, subsequent `bundle install`s will only need to grab the newer gems.
+We can work around Docker's behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies from a static point in time. Once we have the majority of our dependencies cached, subsequent `bundle install`s will only need to grab the newer gems.
 
 We'll start with an example and then pick it apart:
 
@@ -49,7 +49,7 @@ ADD . $APP
 
 What we're doing here is fairly straightforward:
 
-1. Install your dependencies from a source which changes infrequently. Here we've used the master branch of our repository, but you could use a tag or static commit and update it when your builds slow down too much.
+1. Install your dependencies from a source which changes infrequently. Here we've used the master branch of our repository, but you could use a tag or static commit and update it when your build takes too long.
 2. Install any dependencies we didn't get in [1]. This will just be new dependencies added in your current branch.
 3. Add our source code (and do the rest of the build).
 
@@ -109,7 +109,7 @@ https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.m
 
 #### Private repositories on BitBucket, GitLab, etc.
 
-Most other services provide token-based access to raw files, and I'll leave it as an exercise for the reader to work out their intricacies. [This StackOverflow answer](http://stackoverflow.com/a/34499948/384693) demonstrates it working for BitBucket.
+Most other services provide token-based access to raw files, and an exercise for the reader to work out their intricacies. [This StackOverflow answer](http://stackoverflow.com/a/34499948/384693) demonstrates it working for BitBucket.
 
 Be sure to consider where your keys/tokens may be exposed. The GitHub example uses tokens specific to each file/revision pair, so the cost of an exposed key is quite small. If you're exposing your private API key which gives write-access to your repository, things are a little different 😱😨😰.
 
