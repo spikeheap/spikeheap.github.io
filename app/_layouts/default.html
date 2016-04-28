@@ -1,3 +1,5 @@
+{% assign wordCount = content | number_of_words) %}
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,8 +8,28 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        <title>{{page.title}}</title>
+        {% if page.description %}
+          <meta name="description" content="{{ page.description }}" />
+        {% endif %}
+
+        {% if page.path contains '_posts' %}
+          <!-- facebook open graph tags -->
+          <meta property="og:type" content="article" />
+          <meta property="og:site_name" content="{{ site.name }}">
+          <meta property="og:url" content="{{ page.url }}" />
+          <meta property="og:title" content="{{page.title}}" />
+          <meta property="og:description" content="{{ page.description }}" />
+
+          <!-- twitter card tags additive with the og: tags -->
+          <meta name="twitter:card" content="summary">
+          <meta name="twitter:site" content="{{site.author_twitter}}" />
+          <meta name="twitter:url" value="{{ page.url }}" />
+          <meta name="twitter:title" value="{{page.title}}" />
+          <meta name="twitter:description" value="{{ page.description }}" />
+          <meta name="twitter:label1" value="🕒" />
+          <meta name="twitter:data1" value="{{ wordCount | divided_by: 200 }} minutes" />
+        {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
         <!-- build:css /css/style.css -->
