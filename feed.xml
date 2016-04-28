@@ -3,8 +3,8 @@
 	<channel>
 		<title>Ryan Brooks&#39; blog</title>
 		<description>Technical musings and notes from a polyglot developer</description>		
-		<link>http://ryanbrooks.co.uk</link>
-		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://www.ryanbrooks.co.uk</link>
+		<atom:link href="https://www.ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Speedier dependencies with Docker</title>
@@ -134,8 +134,8 @@ RUN bower install
 </description>
 				
                         	<pubDate>Thu, 28 Apr 2016 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</guid>
 			</item>
 		
 			<item>
@@ -224,8 +224,8 @@ find ./images -type f -exec ./crop_avatars.sh {} \;
 </description>
 				
                         	<pubDate>Sat, 05 Sep 2015 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</guid>
 			</item>
 		
 			<item>
@@ -263,8 +263,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Fri, 28 Aug 2015 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2015-08-28-kitematic-for-boot2docker-users/</guid>
 			</item>
 		
 			<item>
@@ -308,8 +308,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Tue, 16 Jun 2015 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2015-06-16-labkey-full-width-apps/</guid>
 			</item>
 		
 			<item>
@@ -360,8 +360,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Sun, 22 Mar 2015 00:00:00 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2015-03-22-reclaiming-my-saturday-mornings/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-03-22-reclaiming-my-saturday-mornings/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2015-03-22-reclaiming-my-saturday-mornings/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2015-03-22-reclaiming-my-saturday-mornings/</guid>
 			</item>
 		
 			<item>
@@ -458,8 +458,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Tue, 17 Mar 2015 00:00:00 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2015-03-17-angular-user-alerts/</guid>
 			</item>
 		
 			<item>
@@ -512,8 +512,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Sat, 27 Sep 2014 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-09-27-give-and-tell/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-09-27-give-and-tell/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2014-09-27-give-and-tell/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-09-27-give-and-tell/</guid>
 			</item>
 		
 			<item>
@@ -620,8 +620,8 @@ export DOCKER_CERT_PATH=~/.docker/machine/machines/dev
 </description>
 				
                         	<pubDate>Wed, 27 Aug 2014 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day/</guid>
 			</item>
 		
 			<item>
@@ -790,8 +790,8 @@ def okStatus( SOAPResponse response ){
 </description>
 				
                         	<pubDate>Thu, 21 Aug 2014 00:00:00 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</guid>
 			</item>
 		
 			<item>
@@ -867,8 +867,8 @@ def okStatus( SOAPResponse response ){
 </description>
 				
                         	<pubDate>Wed, 06 Aug 2014 16:58:40 +0100</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</guid>
+				<link>https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</guid>
 			</item>
 		
 	</channel>
