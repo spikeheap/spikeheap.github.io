@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</loc>
+<lastmod>2016-04-28T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://ryanbrooks.co.uk/posts/2015-09-05-imagemagick-circular-avatars/</loc>
 <lastmod>2015-09-05T00:00:00+01:00</lastmod>
 </url>
@@ -192,6 +196,6 @@
 </url>
 <url>
 <loc>http://ryanbrooks.co.uk/404.html</loc>
-<lastmod>2016-01-29T21:22:31+00:00</lastmod>
+<lastmod>2015-11-27T21:47:41+00:00</lastmod>
 </url>
 </urlset>

@@ -7,6 +7,138 @@
 		<atom:link href="http://ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Speedier dependencies with Docker</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;Docker is great for building portable applications, modelling complex environments locally, and helping us bridge the gap between development and production, but installing your Bundler, Bower, NPM, Maven (and so on) dependencies can make builds slow. This post explains how to speed up your builds by seeding the image with most of your dependencies, so subsequent builds aren’t hampered by the ‘all-or-nothing’ approach to updating dependencies.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;a-quick-note-on-terms&quot;&gt;A quick note on terms&lt;/h3&gt;
+
+&lt;p&gt;This post talks about a &lt;code&gt;Gemfile&lt;/code&gt; and Ruby’s gems, but this post applies equally to libraries and dependencies in pretty much any other language. If you’re not familiar, the &lt;code&gt;Gemfile&lt;/code&gt; is the list of libraries, frameworks, and other 3rd party dependencies.&lt;/p&gt;
+
+&lt;h3 id=&quot;rebuilding-gemsnpm-from-scratch-is-slow&quot;&gt;Rebuilding gems/NPM from scratch is slow&lt;/h3&gt;
+
+&lt;p&gt;Docker images should contain all of the dependencies required to run your application. If we can guarantee that all our Bundler, NPM and Bower dependencies are already built into the image, we no longer need to worry about outages of &lt;code&gt;rubygems.org&lt;/code&gt; or &lt;code&gt;github.com&lt;/code&gt;. No contention there, right? However, building your dependencies into the Docker image comes at a cost: every time your dependency installation step happens there’s a good chance you’re blowing away every dependency you downloaded in the last build.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://robots.thoughtbot.com/rails-on-docker&quot;&gt;Thoughtbot Rails on Docker post&lt;/a&gt; demonstrates how to only bundle your gems when your &lt;code&gt;Gemfile&lt;/code&gt; changes, which at least means your dependencies aren’t re-downloaded every time the code changes. If your dependencies change regularly you’re still a bit stuck. Every time you add, remove or update a gem, the cache is invalidated and the &lt;code&gt;bundle install&lt;/code&gt; step runs again, downloading every gem from scratch.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://bradgessler.com/articles/docker-bundler/&quot;&gt;Brad Gessler built on that approach&lt;/a&gt; to leverage data volumes as a cross-container gem store. By updating the dependencies in a container you no longer need to re-build your image each time, which speeds up your development cycle immensely. This comes at a cost: by using volumes we’re maintaining state for the container which may not be obvious later on. This &lt;em&gt;may&lt;/em&gt; be fine, after all we don’t rebuild the image every time we change the code. However if we’re pushing towards immutable infrastructure it’s reasonable to treat your gems in the same way as your OS and system dependencies. This approach also allows our environments to diverge, so a piece of code can’t be expected to behave the same way for the same container if we run it on different machines with different sets of gems installed.&lt;/p&gt;
+
+&lt;p&gt;The intention is solid, so how can we apply the same principles to the image build process instead?&lt;/p&gt;
+
+&lt;h2 id=&quot;a-new-solution-cache-dependencies-from-a-point-in-the-past&quot;&gt;A new solution: cache dependencies from a point in the past&lt;/h2&gt;
+
+&lt;p&gt;We can work around Docker’s behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies from a static point in time. Once we have the majority of our dependencies cached, subsequent &lt;code&gt;bundle install&lt;/code&gt;s will only need to grab the newer gems.&lt;/p&gt;
+
+&lt;p&gt;We’ll start with an example and then pick it apart:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;ENV APP=/usr/src/app
+RUN mkdir $APP
+WORKDIR $APP
+
+# [1]
+ADD https://raw.githubusercontent.com/user/repository/master/Gemfile .
+ADD https://raw.githubusercontent.com/user/repository/master/Gemfile.lock .
+RUN bundle install
+
+# [2]
+ADD Gemfile .
+ADD Gemfile.lock .
+RUN bundle install
+
+# [3]
+ADD . $APP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What we’re doing here is fairly straightforward:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Install your dependencies from a source which changes infrequently. Here we’ve used the master branch of our repository, but you could use a tag or static commit and update it when your build takes too long.&lt;/li&gt;
+  &lt;li&gt;Install any dependencies we didn’t get in [1]. This will just be new dependencies added in your current branch.&lt;/li&gt;
+  &lt;li&gt;Add our source code (and do the rest of the build).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By grabbing our Gemfile from the &lt;code&gt;master&lt;/code&gt; branch we get most of our dependencies up-front. The subsequent &lt;code&gt;bundle install&lt;/code&gt; [2] then only needs to download dependencies that have been added as part of the feature branch. This means we can add and remove dependencies without fearing Docker invalidating the cache and downloading everything from scratch. Note that [2] and [3] are the popular approach to caching you’re probably already using, so all you need to do is add [1].&lt;/p&gt;
+
+&lt;p&gt;Suddenly Docker on rubbish hotel wifi is fun again!&lt;/p&gt;
+
+&lt;h3 id=&quot;an-aside-this-isnt-all-about-ruby&quot;&gt;An aside: this isn’t all about Ruby!&lt;/h3&gt;
+
+&lt;p&gt;This approach isn’t Ruby specific, so you can speed up your NPM dependencies too:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;ADD https://raw.githubusercontent.com/user/repository/master/package.json .
+RUN npm install
+
+ADD package.json .
+RUN npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or your bower dependencies:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;ADD https://raw.githubusercontent.com/user/repository/master/bower.json .
+RUN bower install
+
+ADD bower.json .
+RUN bower install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You get the idea!&lt;/p&gt;
+
+&lt;h3 id=&quot;picking-a-seed-point&quot;&gt;Picking a seed point&lt;/h3&gt;
+
+&lt;p&gt;The point you cache in step [1] can make all the difference to your build times, particularly if your dependencies change regularly. We’ve chosen to minimise manual intervention by using the &lt;code&gt;master&lt;/code&gt; branch, ensuring the cache point will follow our deployed code closely. It’s also completely reasonable to use &lt;code&gt;develop&lt;/code&gt; if you have a slower release cadence.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-the-historical-dependency-list&quot;&gt;Getting the historical dependency list&lt;/h3&gt;
+
+&lt;p&gt;In the above examples, we have just referenced a public GitHub repository, but chances are you’re working with private repositories or outside of GitHub. Fear not, we’ve got you covered.&lt;/p&gt;
+
+&lt;h4 id=&quot;private-github-repostories&quot;&gt;Private GitHub repostories&lt;/h4&gt;
+
+&lt;p&gt;If you’re using GitHub private repositories you’re in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can get the token for your files by viewing the file on GitHub and clicking ‘Raw’ before copying the URL from your address bar.&lt;/p&gt;
+
+&lt;p&gt;Note that the tokens are &lt;strong&gt;per commit reference&lt;/strong&gt;, so you should use commit-specific URLs in preference to branch references. The following link will break and return &lt;code&gt;404&lt;/code&gt; as soon as &lt;code&gt;develop&lt;/code&gt; is updated:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;private-repositories-on-bitbucket-gitlab-etc&quot;&gt;Private repositories on BitBucket, GitLab, etc.&lt;/h4&gt;
+
+&lt;p&gt;Most other services provide token-based access to raw files, and an exercise for the reader to work out their intricacies. &lt;a href=&quot;http://stackoverflow.com/a/34499948/384693&quot;&gt;This StackOverflow answer&lt;/a&gt; demonstrates it working for BitBucket.&lt;/p&gt;
+
+&lt;p&gt;Be sure to consider where your keys/tokens may be exposed. The GitHub example uses tokens specific to each file/revision pair, so the cost of an exposed key is quite small. If you’re exposing your private API key which gives write-access to your repository, things are a little different 😱😨😰.&lt;/p&gt;
+
+&lt;h4 id=&quot;fallback&quot;&gt;Fallback&lt;/h4&gt;
+
+&lt;p&gt;If you’re using something completely esoteric, you can use Docker’s &lt;code&gt;RUN&lt;/code&gt; command in preference to &lt;code&gt;ADD&lt;/code&gt;ing them as we have above. Through &lt;code&gt;RUN&lt;/code&gt; you can curl your files down, install a custom client, or whatever you need.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary--tldr&quot;&gt;Summary / TL;DR&lt;/h2&gt;
+
+&lt;p&gt;Using the above approach we get the benefits of cached dependencies with the benefits of quick builds and deployable artefacts.&lt;/p&gt;
+
+&lt;p&gt;Deployments are hard. Striking a balance between stable production builds, fast development cycles and keeping development and production as close as possible is even harder.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Speed up your Docker image build time by using a version of your dependencies list which changes less frequently to leverage Dockers caching mechanism.&lt;/li&gt;
+  &lt;li&gt;One good source for the more-stable dependencies list is your GitHub repository.&lt;/li&gt;
+  &lt;li&gt;Be careful not to expose your keys and secrets.&lt;/li&gt;
+  &lt;li&gt;Only do this is image build time is impacting some part of your life!&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+				
+                        	<pubDate>Thu, 28 Apr 2016 00:00:00 +0100</pubDate>
+				<link>http://ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</link>
+				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2016-04-28-docker-speedy-dependencies/</guid>
+			</item>
+		
+			<item>
 				<title>Migrating user avatars to circular crops, with ImageMagick</title>
 				<dc:creator></dc:creator>
 				
@@ -737,188 +869,6 @@ def okStatus( SOAPResponse response ){
                         	<pubDate>Wed, 06 Aug 2014 16:58:40 +0100</pubDate>
 				<link>http://ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</link>
 				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</guid>
-			</item>
-		
-			<item>
-				<title>Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Rhino&quot;&gt;Rhino JS engine&lt;/a&gt;. After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn’t be arduous.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;other-potential-solutions&quot;&gt;Other potential solutions&lt;/h2&gt;
-
-&lt;p&gt;There are a number of ways of tackling this problem. Initially we attempted to use one of the many existing JavaScript testing libraries, running on Rhino. Jasmine running on Karma was my first choice, but we soon hit issues with &lt;code&gt;require&lt;/code&gt; not being present. Since giving up on that avenue I’ve discovered &lt;a href=&quot;http://www.angrycoding.com/2011/09/mozilla-rhino-commonjs-module-support.html&quot;&gt;CommonJS for Rhino&lt;/a&gt;. That solution may be preferable because it allows you to write your tests in JavaScript, but I love Spock’s data driven capabilities and the cleanness of spec tests, so I’m not disappointed with our result.&lt;/p&gt;
-
-&lt;h2 id=&quot;configuring-gradle&quot;&gt;Configuring Gradle&lt;/h2&gt;
-
-&lt;p&gt;We need Gradle to download our dependencies and run the tests, so the first thing to do is initialise a Gradle project:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;gradle init
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And then edit the &lt;code&gt;build.gradle&lt;/code&gt; file to look something like the following:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;apply plugin: &amp;#39;java&amp;#39;
-apply plugin: &amp;#39;groovy&amp;#39;
-apply plugin: &amp;#39;eclipse&amp;#39;
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    compile &amp;#39;org.codehaus.groovy:groovy-all:2.1.5&amp;#39;
-    testCompile &amp;quot;org.spockframework:spock-core:0.7-groovy-2.0&amp;quot; 
-	
-    compile &amp;#39;org.mozilla:rhino:1.7R4&amp;#39;
-    compile fileTree(dir: &amp;#39;lib&amp;#39;, include: &amp;#39;*.jar&amp;#39;)
-}&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=build.gradle&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;This will ensure we’ve got Rhino on our classpath, and can use Spock to write our tests. The last &lt;code&gt;compile&lt;/code&gt; dependency allows us to include JAR files in a &lt;code&gt;lib&lt;/code&gt; directory, which can be handy if you use libraries not available through Bintray or Maven.&lt;/p&gt;
-
-&lt;p&gt;We’ll use the standard Maven source locations, which we need to create manually:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mkdir -p src/{main,test}/{groovy,js}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We’ve now got a Gradle project which we can test with &lt;code&gt;gradle check&lt;/code&gt;, although there’s not much to see at the moment.&lt;/p&gt;
-
-&lt;h2 id=&quot;eclipse&quot;&gt;Eclipse&lt;/h2&gt;
-
-&lt;p&gt;There are a couple of plugins we need for Eclipse&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The &lt;a href=&quot;http://groovy.codehaus.org/Eclipse+Plugin&quot;&gt;Groovy-Eclipse plugin&lt;/a&gt; (requires the http://dist.springsource.org/release/GRECLIPSE/e4.3/ update site).&lt;/li&gt;
-  &lt;li&gt;The &lt;a href=&quot;https://github.com/spring-projects/eclipse-integration-gradle/&quot;&gt;Gradle IDE plugin&lt;/a&gt; (requires the http://dist.springsource.com/release/TOOLS/gradle update site).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once they’re installed run &lt;code&gt;gradle eclipse&lt;/code&gt; in the terminal to generate the Eclipse settings files, and then import it into Eclipse with &lt;code&gt;File &amp;gt; Import... &amp;gt; General &amp;gt; Existing Projects into Workspace&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;running-tests&quot;&gt;Running tests&lt;/h3&gt;
-
-&lt;p&gt;In the &lt;code&gt;Run &amp;gt; Run Configurations&lt;/code&gt; configuration, add a JUnit run configuration set to Run all tests in the selected project, package or source folder (selecting the root of tests).&lt;/p&gt;
-
-&lt;p&gt;You can now run the tests (even Spock tests) just like normal!&lt;/p&gt;
-
-&lt;h1 id=&quot;testable-javascript&quot;&gt;Testable JavaScript&lt;/h1&gt;
-
-&lt;p&gt;We’ll create a sample JavaScript file to test in &lt;code&gt;src/main/js/littleFunction.js&lt;/code&gt;, containing the following:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;function addTogether(a, b, c){
-	return a + b + c;
-}&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=littleFunction.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;That code isn’t likely to win any awards, but we can check that it works by writing a specification.&lt;/p&gt;
-
-&lt;h2 id=&quot;writing-tests&quot;&gt;Writing tests&lt;/h2&gt;
-
-&lt;p&gt;Create a Groovy class named &lt;code&gt;LittleFunctionSpec.groovy&lt;/code&gt; in &lt;code&gt;src/test/groovy/my/package/&lt;/code&gt;, containing the following:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;package my.package
-
-class LittleFunctionSpec extends Specification{
-	Context context
-	Scriptable scope
-	
-	/**
-	 * Setup, prior to every spec test
-	 */
-	void setup(){
-		 context = Context.enter()
-
-		// Set version to JavaScript1.2 so that we get object-literal style
-		// printing instead of &amp;quot;[object Object]&amp;quot;
-		context.setLanguageVersion(Context.VERSION_1_8)
-
-		// Initialize the standard objects (Object, Function, etc.)
-		// This must be done before scripts can be executed.
-		scope = context.initStandardObjects()
-	}
-	
-	/**
-	 * Teardown method, run after each test. This just ensures we&amp;#39;ve left the Rhino context.
-	 */
-	void cleanup(){
-		Context.exit();
-	}
-	
-	/**
-	 * Load a JavaScript file into the Rhino engine. For resources held within the project you will probably want a filename like:
-	 * 		&amp;quot;src/main/js/componentX/script.js&amp;quot;
-	 * @param fileName The name of the file to be loaded.
-	 */
-	void loadJSIntoContext(String fileName) {
-		File emulatorFile = fileName as File
-		context.evaluateString(scope, emulatorFile.text, emulatorFile.name, 1, null)
-	}
-}&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;This gives us our Rhino environment (context). Note that if you want to use &lt;code&gt;XML&lt;/code&gt; objects you’ll need to use a context version &amp;gt; 1.7. All we need to do now is add a test:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;// Add into LittleFunctionSpec.groovy
-def &amp;quot;check little function adds numbers together&amp;quot;(){
-	given: &amp;quot;I have littleFunction.js loaded&amp;quot;
-	loadJSIntoContext(&amp;quot;src/main/js/littleFunction.js&amp;quot;)
-	
-	when: &amp;quot;I run the addTogether function for 1, 2, and 3&amp;quot;
-	String jsExercise = &amp;quot;var result = addTogether(1,2,3);&amp;quot;
-	context.evaluateString(scope, jsExercise, &amp;quot;TestScript&amp;quot;, 1, null)
-	
-	then: &amp;quot;The result is 6&amp;quot;
-	scope.get(&amp;quot;result&amp;quot;, scope) == 6
-}&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial1.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Hopefully that specification is pretty self-explanatory. For more information &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/&quot;&gt;Check out the Spock documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The example above used a single value, but we probably want to check quite a few. Spock’s &lt;a href=&quot;http://spock-framework.readthedocs.org/en/latest/data_driven_testing.html&quot;&gt;Data Driven Testing support&lt;/a&gt; makes this simple, so we can rewrite the test as:&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;// Add into LittleFunctionSpec.groovy
-@Unroll
-def &amp;quot;check addTogether behaves for #a, #b, #c&amp;quot;(){
-	given: &amp;quot;I have littleFunction.js loaded&amp;quot;
-	loadJSIntoContext(&amp;quot;src/main/js/littleFunction.js&amp;quot;)
-	
-	when: &amp;quot;I run the addTogether function for 1, 2, and 3&amp;quot;
-	String jsExercise = &amp;quot;var result = addTogether(&amp;quot;+a+&amp;quot;,&amp;quot;+b+&amp;quot;,&amp;quot;+c+&amp;quot;);&amp;quot;
-	context.evaluateString(scope, jsExercise, &amp;quot;TestScript&amp;quot;, 1, null)
-	
-	then: &amp;quot;The result is #c&amp;quot;
-	scope.get(&amp;quot;result&amp;quot;, scope) == (a + b + c)
-	
-	where:
-	a   | b   | c
-	0   | 0   | 0
-	9   | 1   | 0
-	5   | 0   | 5
-	1   | 1   | 1
-	0   | 4   | 24
-	1231| 0   | 0
-	9999| 0   | 4325
-	0   | 035 | 230
-}&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpecPartial2.groovy&quot;&gt; &lt;/script&gt;
-
-&lt;h2 id=&quot;running-tests-1&quot;&gt;Running tests&lt;/h2&gt;
-
-&lt;p&gt;Running the tests is as easy as &lt;code&gt;gradle check&lt;/code&gt;, or pushing the &lt;code&gt;run&lt;/code&gt; button in Eclipse. Doing the former, your test results will be output into an easy-to-read HTML file as well as JUnit XML.&lt;/p&gt;
-
-&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;Using a few simple steps we’ve set up a Gradle project to run Spock tests over Rhino JavaScript, with the added bonus of being able to use Eclipse.&lt;/p&gt;
-
-&lt;p&gt;Because we can now run tests with a single command and interpret the result with most tools (either through the Gradle exit code or the JUnit output), adding this to a continuous build system like &lt;a href=&quot;http://travis-ci.org&quot;&gt;Travis&lt;/a&gt; or &lt;a href=&quot;http://jenkins-ci.org/&quot;&gt;Jenkins&lt;/a&gt; is simple!&lt;/p&gt;
-
-</description>
-				
-                        	<pubDate>Thu, 27 Mar 2014 15:58:40 +0000</pubDate>
-				<link>http://ryanbrooks.co.uk/posts/2014-03-27-testing-rhino-js-spock/</link>
-				<guid isPermaLink="true">http://ryanbrooks.co.uk/posts/2014-03-27-testing-rhino-js-spock/</guid>
 			</item>
 		
 	</channel>

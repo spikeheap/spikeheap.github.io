@@ -4,7 +4,7 @@
 
 /** Override variables with custom ones */
 
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
   font-family: sans-serif;
@@ -158,7 +158,7 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 
 * {
@@ -463,6 +463,11 @@ th {
   color: #999;
 }
 
+.form-control::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -509,12 +514,29 @@ th {
   border-color: #ccc;
 }
 
-.btn-default:hover,
-.btn-default:focus,
+.btn-default:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
 .btn-default:active {
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
+}
+
+.btn-default:active:hover,
+.btn-default:active:focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
 }
 
 .btn-default:active {
@@ -527,12 +549,29 @@ th {
   border-color: #4cae4c;
 }
 
-.btn-success:hover,
-.btn-success:focus,
+.btn-success:focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
 .btn-success:active {
   color: #fff;
   background-color: #449d44;
   border-color: #398439;
+}
+
+.btn-success:active:hover,
+.btn-success:active:focus {
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
 }
 
 .btn-success:active {
@@ -553,7 +592,6 @@ th {
 
 .collapse {
   display: none;
-  visibility: hidden;
 }
 
 .nav {
@@ -656,7 +694,6 @@ th {
 
   .navbar-collapse.collapse {
     display: block !important;
-    visibility: visible !important;
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
@@ -1082,7 +1119,7 @@ blockquote p {
   margin-bottom: 2em;
 }
 
-/*** uncss> filename: https://assets-cdn.github.com/assets/gist/embed-7346e9a735aaeeacede51d1efaad6208f95d9edbc222155878bfddc2da28fa87.css ***/
+/*** uncss> filename: https://assets-cdn.github.com/assets/gist-embed-884f19b3583b1e92322e0e2db74f61434ccecbbef4b63a457e2127972ca01a01.css ***/
 
 .gist {
   font-size: 16px;
