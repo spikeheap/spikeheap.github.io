@@ -21,9 +21,6 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-sass:
-  sass_dir: _scss
-
 defaults:
   -
     scope:
