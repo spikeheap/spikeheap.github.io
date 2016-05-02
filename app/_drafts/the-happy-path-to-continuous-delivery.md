@@ -15,17 +15,29 @@ Okay, so maybe my lead-in makes it sound quite bleak. Let me backtrack a litte. 
 
 ### What's in a name?
 
-We'll use the term 'migration' in this article to mean "a change to the database schema/underlying data structure". It explicitly _doesn't include_ data migrations[^data-migrations]. 
+`TODO what does CD mean?`
+
+We'll use the term 'migration' in this article to mean "a change to the database schema/underlying data structure". It explicitly _doesn't include_ data migrations[^data-migrations].
 
 ### Let's get started
 
-Continuous Delivery is a significant departure from the working practices of many software teams.
+Continuous Delivery is a significant departure from the working practices of many software teams. 
 
-`TODO expand! The text, not yourself`
+`TODO expand, and make it positive!`
 
 
 ### Prerequisite #1: team fit
 
+Continuous Delivery isn't a silver bullet to fix all existing political and technical problems. Think carefully about the motivations behind moving to CD, and ensure that the whole team is on-board with the shift. The process is likely to involve at least a little pain, and that can create a toxic environment if members of your team don't believe the pain is worthwhile for the goal.
+
+There are plenty of environments where continuously deployed code would harm the development team and the business, particularly the following:
+
+1. Teams where there isn't a strong focus on code quality. Most teams claim this is the case, but validate it against your levels of code coverage, documentation and technical debt, as well as your practices for managing them.
+2. Teams with a focus on velocity. Whether the focus is self-imposed or driven by external managers, Continuous Delivery is likely to exacerbate the feeling of urgency, as stakeholders grow to expect to see features delivered in ever-decreasing cycles. This is arguably the same group as [1].
+
+Before embarking on implementing CD, take some time to get consensus on the best approach, and to work through how your existing projects might look if they were deployed continuously. Try to think about the personality types in your team and the positive _and_ negative behaviours and experiences it might promote.
+
+`TODO is this section helpful?`
 
 ### Prerequisite #2: senior management buy-in
 
@@ -38,9 +50,7 @@ Moving to Continuous Delivery is a cultural transition for the entire company. A
 > Don't dive straight in. Test the water and check for rocks just beneath the surface.
 
 ### Step #0: addition-only, short-running migrations
-<aside>
-When we talk about migrations, we mean changes to the database. Migrations shouldn't include changes to the data itself. `TODO citation`
-</aside>
+
 Code changes are much easier to manage than changes to your underlying data structure, and the more in-flux your database is, the harder continuous delivery is.  Think of it like your APIs: each destructive change (renaming/removing attributes) breaks compatibility with previous versions of the code. This closely ties your database with your code, and makes rolling back from failed deploys more expensive.
  
 `TODO add citations to back up above`
@@ -83,7 +93,8 @@ So you're deploying the majority of your code changes as hotfixes, and hiding ma
 
 ### Going for gold: the blue-green deploy
 
+`TODO`
 
 ### Footnotes
 
-[data-migrations] See [this article](https://robots.thoughtbot.com/data-migrations-in-rails) for a bit of background on why it's good to keep them separate.
+[^data-migrations]: See [this article](https://robots.thoughtbot.com/data-migrations-in-rails) for a bit of background on why it's good to keep them separate.
