@@ -202,3 +202,9 @@ blockquote p {
 .margin-bottom {
   margin-bottom: 2em;
 }
+
+.reading-time {
+  &:before {
+    content: "🕓 ";
+  }
+}
