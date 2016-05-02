@@ -206,3 +206,16 @@ blockquote p {
     content: "🕓 ";
   }
 }
+
+.discussion {
+  // floating left-hand-side bar
+  margin-left: -30px;
+  padding-left: 20px;
+  border-left-style: outset;
+  border-left-width: 10px;
+  border-left-color: $brand-primary;
+
+  h1 {
+    font-size: 1.2em;
+  }
+}
