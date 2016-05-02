@@ -7,27 +7,47 @@ comments: true
 ---
 
 
-TL;DR it doesn't exist. For most teams the move to CD requires a buy-in from technical and non-technical stateholders, and (generally) a significant amount of up-front work on infrastructure, the existing codebase, and company culture.
+__TL;DR__ it doesn't exist. For most teams the move to CD requires a buy-in from technical and non-technical stateholders, and (generally) a significant amount of up-front work on infrastructure, the existing codebase, and company culture.
 
 <!-- more -->
 
 Okay, so maybe my lead-in makes it sound quite bleak. Let me backtrack a litte. Continuous Delivery! It's great! Whoop! Right, are we excited again?
 
+### What's in a name?
+
+We'll use the term 'migration' in this article to mean "a change to the database schema/underlying data structure". It explicitly _doesn't include_ data migrations[^data-migrations]. 
+
+### Let's get started
+
 Continuous Delivery is a significant departure from the working practices of many software teams.
+
+`TODO expand! The text, not yourself`
 
 
 ### Prerequisite #1: team fit
 
-### Prerequisite #2: management buy-in
+
+### Prerequisite #2: senior management buy-in
+
+Moving to Continuous Delivery is a cultural transition for the entire company. Although a lot of the obvious changes are technical, the effects are far-reaching.  Sales and customer support will need to contend with a (potentially) more fluid system, and there will no longer be the obvious release cycle. It's critical to have support from stakeholders outside of the development team. 
 
 ### Making the shift
 
-<blockquote>
-<p>Don't dive straight in. Test the water and check for rocks just beneath the surface.</p>
-</blockquote>
+`TODO expand! The text, not yourself`
+
+> Don't dive straight in. Test the water and check for rocks just beneath the surface.
 
 ### Step #0: addition-only, short-running migrations
+<aside>
+When we talk about migrations, we mean changes to the database. Migrations shouldn't include changes to the data itself. `TODO citation`
+</aside>
+Code changes are much easier to manage than changes to your underlying data structure, and the more in-flux your database is, the harder continuous delivery is.  Think of it like your APIs: each destructive change (renaming/removing attributes) breaks compatibility with previous versions of the code. This closely ties your database with your code, and makes rolling back from failed deploys more expensive.
+ 
+`TODO add citations to back up above`
 
+By adopting an addition-only strategy you decouple your database from the codebase, which means the migration can be carried out at any point before the code is deployed, without affecting the currently-deployed codebase.  Migrations can be seen as laying the foundations for the codebase changes that follow, but can be reviewed and deployed asyncrhonously. This is critical when you move towards blue-green deploys, which we'll cover below.
+
+Migrations should only introduce breaking changes when it's unavoidable.  Often you can add a new field, or leverage an existing structure, without needing to rename and/or remove existing structures. A healthy amount of documentation can help here. Annotating deprecated variables for removal at some point in the future makes it obvious for developers what the current API is. Check out this [excellent article by Thoughtbot](TODO link or reword to RubyRogues podcast).
 
 
 ### Step #1: hotfix often
@@ -55,11 +75,15 @@ Smoke tests work in addition to your end-to-end tests (let's call them 'function
 
 If you don't have a suite of functional tests, you'll want to build them for the business-critical features (and at least for the [happy path](TODO happy path testing)) now. The first tests you add will likely be tests that someone in the business does manually on some (if not all) deploys.
 
-
-# TODO developer autonomy for smaller things
+`TODO developer autonomy for smaller things`
 
 ### Step #3 think
 
 So you're deploying the majority of your code changes as hotfixes, and hiding many changes behind feature toggles. Undoubtedly you're starting to feel some pain. Maybe the deployment takes a while, or you're forced to do some manual interventions at the end. Now is a good time to take stock. Feel the pain and try to understand the causes for each point. Some you'll be able to fix easily, others will require infrastructure changes or alterations to the way you work. 
 
 ### Going for gold: the blue-green deploy
+
+
+### Footnotes
+
+[data-migrations] See [this article](https://robots.thoughtbot.com/data-migrations-in-rails) for a bit of background on why it's good to keep them separate.
