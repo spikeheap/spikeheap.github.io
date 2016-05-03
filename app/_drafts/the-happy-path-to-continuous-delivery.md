@@ -7,7 +7,7 @@ comments: true
 ---
 
 
-__TL;DR__ it doesn't exist. For most teams the move to CD requires a buy-in from technical and non-technical stateholders, and (generally) a significant amount of up-front work on infrastructure, the existing codebase, and company culture.
+__TL;DR__ it doesn't exist. For most teams the move to CD requires a buy-in from technical and non-technical stakeholders, and (generally) a significant amount of up-front work on infrastructure, the existing codebase, and company culture.
 
 <!-- more -->
 
@@ -62,11 +62,11 @@ Migrations should only introduce breaking changes when it's unavoidable.  Often 
 
 ### Step #1: hotfix often
 
-You can get a feel for how continuous delivery might feel by taking a selection of features and developing them using your hotfix workflow. If you're coming from a git-flow system, this means merging straight to your main branch, and deploying as soon as the feature is merged. You'll be able to see where the bottlenecks are, and which bits of the deployment are painful and slow. More importantly, you'll get to see the political ramifications of such a change. Is the product/QA team able to review the new feature? When do other stakeholders expect to see changes go live, and how are they notified of changes?
+You can get a sense of how continuous delivery might feel by taking a selection of features and developing them using your hotfix workflow. If you're coming from a git-flow system, this means merging straight to your main branch, and deploying as soon as the feature is merged. You'll be able to see where the bottlenecks are, and which bits of the deployment are painful and slow. More importantly, you'll get to see the political ramifications of such a change. Is the product/QA team able to review the new feature? When do other stakeholders expect to see changes go live, and how are they notified of changes?
 
 ### Step #2 feature toggles
 
-Feature toggling allows you to ship code to production which isn't yet active. This means code can be made live without requiring non-technical review, and breaks the connection between activation and delivery by the developers. This is the single biggest technical change you can make to empower developers as it empowers them to release and deploy asynchronously to business deadlines. With that empowerment comes responsibility: features shipped to production must be stable, because the developer might not be around when it's switched on. 
+Feature toggling allows you to ship code to production which isn't yet active. This means code can be made live without requiring non-technical review, and breaks the connection between activation and delivery by the developers. This is the single biggest technical change you can make to empower developers as it entrusts them to release and deploy asynchronously to business deadlines. With that empowerment comes responsibility: features shipped to production must be stable, because the developer might not be around when it's switched on. 
 
 ##### How much is too much?
 
