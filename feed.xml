@@ -7,7 +7,173 @@
 		<atom:link href="https://www.ryanbrooks.co.uk/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Speedier dependencies with Docker</title>
+				<title>A simple HTTPS proxy with Nginx on Docker</title>
+				<dc:creator></dc:creator>
+				
+					<description>&lt;p&gt;There are many reasons why you might need to develop behind an HTTPS proxy, for example when testing integrations which behave differently based on the security of your site. This post describes how to add an nginx proxy to your docker setup.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;tldr&quot;&gt;TL;DR&lt;/h3&gt;
+
+&lt;p&gt;I know, you probably don’t care about the back-story, you just want the code. If that’s you, this is all you need:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;This isn’t production-quality. Mirror your production environment if you can.&lt;/li&gt;
+  &lt;li&gt;The &lt;code&gt;Dockerfile&lt;/code&gt; and &lt;code&gt;nginx.conf&lt;/code&gt; are in &lt;a href=&quot;https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84&quot;&gt;this gist&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;This assumes you’ve got a &lt;code&gt;rails&lt;/code&gt; container linked through docker-compose. Tweak it to your needs.&lt;/li&gt;
+  &lt;li&gt;See [1].&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Not so long back I was working on a Dropbox OAuth integration. This sent the user off to Dropbox to approve and connect their account to us before redirecting back to our site to continue the process. Dropbox have rules in place to protect users from accidentally exposing their details on insecure sites and push developers to secure their work. One of these rules means that if you ask Dropbox to redirect a user back to an HTTP address it will &lt;em&gt;always&lt;/em&gt; ask them to confirm their permission. If you’re using HTTPS it will just redirect back if they have already approved the connection in the past. This difference in behaviour is a sensible one, however it’s another example of the development and production environments diverging, which we don’t really want.&lt;/p&gt;
+
+&lt;p&gt;It’s good practice to have all your production traffic use HTTPS, so we need a lightweight HTTPS proxy which we can stick in front of whichever app server we’re developing against.&lt;/p&gt;
+
+&lt;p&gt;At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using &lt;code&gt;rails s&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-setup&quot;&gt;The setup&lt;/h3&gt;
+
+&lt;p&gt;You may already have an nginx config which works for you in production, but if not, here’s a simple setup which proxies all requests to an upstream server/container named ‘rails’, and redirects all HTTP traffic to HTTPS:&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;user nobody nogroup;
+
+pid /tmp/nginx.pid;
+
+error_log stderr;
+# error_log /var/log/nginx/error.log;
+
+events {
+  worker_connections 1024; # increase if you have lots of clients
+  accept_mutex off; # &amp;quot;on&amp;quot; if nginx worker_processes &amp;gt; 1
+  # use epoll; # enable for Linux 2.6+
+  # use kqueue; # enable for FreeBSD, OSX
+}
+
+http {
+  include mime.types;
+  default_type application/octet-stream;
+  # access_log /var/log/nginx/access.log combined;
+  access_log /dev/stdout;
+  sendfile on;
+  tcp_nopush on; # off may be better for *some* Comet/long-poll stuff
+  tcp_nodelay off; # on may be better for some Comet/long-poll stuff
+  gzip on;
+  gzip_http_version 1.0;
+  gzip_proxied any;
+  gzip_min_length 500;
+  gzip_disable &amp;quot;MSIE [1-6]\.&amp;quot;;
+
+  # So Rails can be aware of whether it&amp;#39;s HTTP/HTTPS
+  proxy_set_header X-Forwarded-Proto $scheme;
+
+  upstream app_server {
+    server rails:3000 fail_timeout=0;
+  }
+
+  # global certs per ip but a cert can sign *.mysite.dev mysite.dev
+  ssl_certificate      /usr/local/app/certs/server.crt;
+  ssl_certificate_key  /usr/local/app/certs/server.key;
+
+  server {
+    listen         80;
+    server_name    192.168.99.100;
+    return         301 https://$server_name$request_uri;
+  }
+
+  server {
+    listen       443 ssl;
+    server_name 192.168.99.100;
+    ssl           on;
+    client_max_body_size 4G;
+    keepalive_timeout 5;
+    root /usr/src/app/;
+    try_files $uri/index.html $uri.html $uri @app;
+
+    location @app {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_pass http://app_server;
+    }
+
+    # Rails error pages
+    error_page 500 502 503 504 /500.html;
+    location = /500.html {
+      root /usr/src/app/public;
+    }
+  }
+}
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84.js?file=nginx.conf&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;The &lt;a href=&quot;TODO&quot;&gt;official nginx docker images&lt;/a&gt; don’t currently support HTTPS, so we’ll need to build an image to serve as our proxy:&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;FROM alpine:3.2
+MAINTAINER ryan@slatehorse.com
+
+RUN apk add --update nginx openssl &amp;amp;&amp;amp; rm -rf /var/cache/apk/*
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+# Generate certificates
+ENV CERTIFICATE_DIR=/usr/local/app/certs
+
+# The hostname used in the certificate. For OSX/Windows you can use the VM IP.
+# For Linux, localhost works fine. 
+ENV DOCKER_HOSTNAME=192.168.99.100
+
+RUN mkdir -p /usr/local/app/certs
+
+RUN openssl req -new -x509 -nodes -subj &amp;quot;/CN=${DOCKER_HOSTNAME}/O=Your Company Name/C=UK&amp;quot; -keyout $CERTIFICATE_DIR/server.key -out $CERTIFICATE_DIR/server.crt
+
+VOLUME /var/log/nginx/
+
+EXPOSE 80 443
+
+CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&amp;quot;]
+&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84.js?file=Dockerfile&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;This isn’t really doing anything interesting other than the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;RUN openssl req -new -x509 -nodes -subj &quot;/CN=${DOCKER_HOSTNAME}/O=Your Company Name/C=UK&quot; -keyout $CERTIFICATE_DIR/server.key -out $CERTIFICATE_DIR/server.crt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This generates a self-signed certificate and drops it into the path we’ve used in &lt;code&gt;nginx.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in &lt;code&gt;./docker/nginx/&lt;/code&gt; and add the following to your &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;nginx:
+  build: docker/nginx/
+  ports:
+    - &quot;80:80&quot;
+    - &quot;443:443&quot;
+  links:
+    - rails
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fire up a browser and check it out. The certificate is self-signed, so your browser won’t trust it by default, but you trust yourself… right?&lt;/p&gt;
+
+&lt;h3 id=&quot;caching&quot;&gt;Caching&lt;/h3&gt;
+
+&lt;p&gt;With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at&lt;code&gt;/usr/local/app/certs&lt;/code&gt; and put your certificates there. This will persist across container changes and image builds.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;You probably wouldn’t want to use the nginx configuration provided here for production, but hopefully it demonstrates how easily we can add additional services into our development environment to bridge the gap to production one step at a time.&lt;/p&gt;
+
+</description>
+				
+                        	<pubDate>Thu, 19 May 2016 00:00:00 +0100</pubDate>
+				<link>https://www.ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/</link>
+				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/</guid>
+			</item>
+		
+			<item>
+				<title>Faster dependencies with Docker</title>
 				<dc:creator></dc:creator>
 				
 					<description>&lt;p&gt;Docker is great for building portable applications, modelling complex environments locally, and helping us bridge the gap between development and production, but installing your Bundler, Bower, NPM, Maven (and so on) dependencies can make builds slow. This post explains how to speed up your builds by seeding the image with most of your dependencies, so subsequent builds aren’t hampered by the ‘all-or-nothing’ approach to updating dependencies.&lt;/p&gt;
@@ -128,7 +294,7 @@ RUN bower install
   &lt;li&gt;Speed up your Docker image build time by using a version of your dependencies list which changes less frequently to leverage Dockers caching mechanism.&lt;/li&gt;
   &lt;li&gt;One good source for the more-stable dependencies list is your GitHub repository.&lt;/li&gt;
   &lt;li&gt;Be careful not to expose your keys and secrets.&lt;/li&gt;
-  &lt;li&gt;Only do this is image build time is impacting some part of your life!&lt;/li&gt;
+  &lt;li&gt;Only do this if image build time is impacting some part of your life!&lt;/li&gt;
 &lt;/ol&gt;
 
 </description>
@@ -792,83 +958,6 @@ def okStatus( SOAPResponse response ){
                         	<pubDate>Thu, 21 Aug 2014 00:00:00 +0100</pubDate>
 				<link>https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</link>
 				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite/</guid>
-			</item>
-		
-			<item>
-				<title>Oxford&#39;s Summer of Hacks 2014 – Code Retreat</title>
-				<dc:creator></dc:creator>
-				
-					<description>&lt;p&gt;On Sunday the 6th of July we ran the second Oxford Code Retreat, so here’s a few notes I’ve made about the event. &lt;!--I also made some notes on hosting Code Retreats [here](/posts/2014-08-06-hosting-code-retreat)
---&gt;&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;the-jsoxford-summer-of-hacks-code-retreat&quot;&gt;The JSOxford Summer of Hacks Code Retreat&lt;/h2&gt;
-
-&lt;p&gt;Okay, so it’s not a super-snappy title, but the &lt;a href=&quot;http://jsoxford.com/2014/summer-of-hacks/&quot;&gt;Summer of Hacks&lt;/a&gt; has been a great success so far. The Code Retreat was the second event in the series, and this time we did it for Ruby, Python and JavaScript.&lt;/p&gt;
-
-&lt;p&gt;Removing the language restriction was quite nice, and although we initially had a 90/10 split of JavaScript/Python for the first session that evened out to 50/50 after lunch. No dedicated Rubyists turned up, but Pete still managed to test out his Ruby test runner.&lt;/p&gt;
-
-&lt;p&gt;The nice thing about the Code Retreat format is that it plays well to most languages, so running Python and JavaScript alongside each other didn’t require any special tooling. I’m a huge fan of polyglot events (being a multi-linguist myself), and it was great to see a mix of people rather than the JavaScripters at one end and Pythonistas at the other.&lt;/p&gt;
-
-&lt;p&gt;The turnout for this event was completely different to the last one, and it was great to see the majority who turned up were testing/pair-programming newbies. We had intended to make TDD/pair-programming secondary, but through each session we had a reasonably constant flow of TDD-related questions so that obviously didn’t happen!&lt;/p&gt;
-
-&lt;p&gt;One of the things I love about events like this is how it makes me question the things I’ve come to take for granted. A couple of times I was faced with questions about TDD taking too long or appearing to be a big time drain, and whereas online you might just dismiss questions like that with “they just don’t get it”, it has really helped me clarify my reason for loving TDD and think about the inherent tradeoffs and assumptions.&lt;/p&gt;
-
-&lt;p&gt;So because I made everyone suffer my retrospectives on Sunday, here’s my quick retro:&lt;/p&gt;
-
-&lt;h3 id=&quot;what-went-well&quot;&gt;What went well?&lt;/h3&gt;
-
-&lt;h5 id=&quot;tdd--pair-programming&quot;&gt;TDD &amp;amp; pair programming&lt;/h5&gt;
-
-&lt;p&gt;All my planning had been around the idea that we’d done TDD/pair-programming as a focus in the first Code Retreat, so it was old-hat and would be boring to push it a second time. Wrong! There were quite a few attendees who hadn’t really used TDD in anger or who were just experiencing pair-programming for the first time, so I had quite a few discussions about how it worked ‘in real life’ and whether it was just a construct which is nice for events but isn’t really practical.&lt;/p&gt;
-
-&lt;p&gt;This accurately reflects the experiences I’ve had recruiting for developers at all levels, and I’m much less surprised when I hear people describe testing as a secondary activity or something that would be nice if there was more time. In fairness most developers seem to agree that tests are necessary, and there is still a big debate about what constitutes the right amount of testing, and if it should be part of the design/development process. Either way it was good to be part of the discussion!&lt;/p&gt;
-
-&lt;h5 id=&quot;defensive-programming&quot;&gt;Defensive programming&lt;/h5&gt;
-
-&lt;p&gt;Our second session was to have a development battle. When writing tests it followed the standard TDD mantra of write as little as possible to get the test to fail, but when implementing the function the approach had to be to do it in the most obscure or wrong way possible, whilst still making the test pass.&lt;/p&gt;
-
-&lt;p&gt;The resultant code was (obviously) atrocious and tended towards micro-methods, but it was interesting to see how everyone perceived it: was it a poor activity or a chance to think about one of the purposes of writing tests in a collaborative environment? Some of the code I saw closely resembled production code I’ve seen from projects that I won’t name here which had been running for much longer than 20 minutes, but no-one sets out to produce code that poor, right?&lt;/p&gt;
-
-&lt;h5 id=&quot;discussions--the-people&quot;&gt;Discussions &amp;amp; the people&lt;/h5&gt;
-
-&lt;p&gt;Of course, I have to say this, but it was genuinely good fun running the event, and it never felt like hard work getting contributions during the post-session chats. There was almost always something interesting being worked through, sometimes heatedly! I am a strong believer that the point of these events is mostly to get interesting people into the same room so we can all learn things from each other. Events really are only as good as the people who turn up, so thanks to everyone who made it.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-could-have-gone-better&quot;&gt;What could have gone better&lt;/h3&gt;
-
-&lt;h5 id=&quot;focus-on-the-meaning&quot;&gt;Focus on the meaning&lt;/h5&gt;
-&lt;p&gt;When we set the kata and planned the sessions the focus was on what we were trying to get the attendees to think about, working backwards to find constraints which would exercise that. It all (sort of) went to plan, but during the event I completely forgot to focus on that same end goal! As a result I think a few people were left wondering why (for example) there wasn’t a planning session before the round-table programming session.&lt;/p&gt;
-
-&lt;h5 id=&quot;the-venue&quot;&gt;The venue&lt;/h5&gt;
-&lt;p&gt;The &lt;a href=&quot;http://www.thejamfactoryoxford.com/&quot;&gt;Jam Factory&lt;/a&gt; is a great pub with a friendly feel and lots of light, and it would be great for an evening party or talk. In the height of summer the Boiler Room really is that, a glass-roofed hotbox. All that light streaming in also meant our projectors were useless. Fortunately we had a backup 40” TV, but that was really a little too small while still taking up a load of space.&lt;/p&gt;
-
-&lt;p&gt;Being an (almost) free event meant we had to fund the venue and catering through sponsorship. Our sponsors &lt;a href=&quot;http://www.haybrook.co.uk/&quot;&gt;Haybrook IT Recruitment&lt;/a&gt; and &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; were amazing, but we struggled to make their contributions, along with the £5 entry fee, cover all the things. Lesson learned: figure out the constraints of the venue in advance (like not being able to bring our own refreshments &amp;amp; snacks) and either work with them to compromise, ask for more sponsorship or change the venue.&lt;/p&gt;
-
-&lt;p&gt;We were keen to host things at the Jam Factory so it didn’t feel like work, and was more friendly and informal than the standard conference-style event, and I think it almost achieved that.&lt;/p&gt;
-
-&lt;h5 id=&quot;the-testing-wrappers&quot;&gt;The testing wrappers&lt;/h5&gt;
-
-&lt;p&gt;We had a grand vision for getting real-time results from the pairs to build a live, developing game of life on the projector, as well as collecting stats for pretty graphs. We also wanted to have test wrappers for each language which would get as close to zero-setup as possible for attendees. There was a great push by George and Pete to knock out Python, Ruby and JavaScript test runners, and we had limited success in actually running the tests. Unfortunately the test runners weren’t as stable as we would have liked so they were quickly relegated for some.&lt;/p&gt;
-
-&lt;p&gt;Since the event Uxebu have open-sourced &lt;a href=&quot;https://github.com/uxebu/tddbin-frontend&quot;&gt;TDDBin&lt;/a&gt;, which we’ve used with great success for previous events. It’s great to see them open up the code, and we’ll certainly build on that for future events.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-&lt;p&gt;Each time I’ve run a Code Retreat there are things I’d do completely differently next time, and to be honest it would be boring if that weren’t the case. As always it was an interesting event, and hopefully the attendees got as much out of it as I did.&lt;/p&gt;
-
-&lt;p&gt;A few people have written up the day. If you’ve done the same let me know and I’ll add you to the list below:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://tomlane.me/2014/07/jsoxford-code-retreat/&quot;&gt;Tom Lane&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://danielthepope.wordpress.com/2014/07/09/tdd-is-still-alive-jsoxford-code-retreat/&quot;&gt;Dan Pope&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.marcusnoble.co.uk/12-07-2014-jsoxford-code-retreat&quot;&gt;Marcus Noble&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-				
-                        	<pubDate>Wed, 06 Aug 2014 16:58:40 +0100</pubDate>
-				<link>https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</link>
-				<guid isPermaLink="true">https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts/</guid>
 			</item>
 		
 	</channel>

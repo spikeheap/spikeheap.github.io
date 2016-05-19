@@ -12,3 +12,9 @@ open_projects:
   - https://github.com/spikeheap/labking
 misc:
   - https://github.com/spikeheap/dotfiles
+talks:
+events:
+  - Docker Birthday hack evening:
+    - event: Docker Oxford
+    - date: 2016-03-23
+    - role: mentor

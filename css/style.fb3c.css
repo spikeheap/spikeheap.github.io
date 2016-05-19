@@ -1119,7 +1119,23 @@ blockquote p {
   margin-bottom: 2em;
 }
 
-/*** uncss> filename: https://assets-cdn.github.com/assets/gist-embed-884f19b3583b1e92322e0e2db74f61434ccecbbef4b63a457e2127972ca01a01.css ***/
+.reading-time:before {
+  content: "🕓 ";
+}
+
+.discussion {
+  margin-left: -30px;
+  padding-left: 20px;
+  border-left-style: outset;
+  border-left-width: 10px;
+  border-left-color: #6891ad;
+}
+
+.discussion h1 {
+  font-size: 1.2em;
+}
+
+/*** uncss> filename: https://assets-cdn.github.com/assets/gist-embed-bb1ffee40facc2473eb18927ac572162447f6c79d0269cce93b52f9066a5da11.css ***/
 
 .gist {
   font-size: 16px;
