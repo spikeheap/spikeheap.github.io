@@ -25,7 +25,7 @@ Not so long back I was working on a Dropbox OAuth integration. This sent the use
 
 It's good practice to have all your production traffic use HTTPS, so we need a lightweight HTTPS proxy which we can stick in front of whichever app server we're developing against.
 
-At this point, we're not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rail server fired up using `rails s`.
+At this point, we're not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using `rails s`.
 
 ### The setup
 
@@ -45,7 +45,7 @@ RUN openssl req -new -x509 -nodes -subj "/CN=${DOCKER_HOSTNAME}/O=Your Company N
 
 This generates a self-signed certificate and drops it into the path we've used in `nginx.conf`.
 
-With that, you're ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in `./docker/nginx/` add the following to your `docker-compose.yml`:
+With that, you're ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in `./docker/nginx/` and add the following to your `docker-compose.yml`:
 
 ```yaml
 nginx:
