@@ -28,7 +28,7 @@
           <meta name="twitter:title" value="{{page.title}}" />
           <meta name="twitter:description" value="{{ page.description }}" />
           <meta name="twitter:label1" value="Reading time" />
-          <meta name="twitter:data1" value="🕒 {{ wordCount | divided_by: 200 }} minutes" />
+          <meta name="twitter:data1" value="🕒 {{ wordCount | divided_by: 200 | replace: '0', '<1' }} minutes" />
         {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
