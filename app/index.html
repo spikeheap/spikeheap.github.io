@@ -19,7 +19,7 @@ layout: default
                 {{ post.content | truncatewords:75, "&hellip;" }}
               {% endif %}
             </div>
-            <a href="{{post.url}}" class="btn btn-sm btn-success">Read more</a> <span class="reading-time text-muted">{{ post.content | number_of_words | divided_by: 200}} minute read</span>
+            <a href="{{post.url}}" class="btn btn-sm btn-success">Read more</a> <span class="reading-time text-muted">{{ post.content | number_of_words | divided_by: 200 | replace: '0', '&lt;1' }} minute read</span>
           </div>
         {% endfor %}
       </div>

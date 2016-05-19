@@ -5,7 +5,7 @@ layout: default
   <div class="row">
       <div class="col-sm-9">
           <h1 class="page-title">{{ page.title }}</h1>
-          <span class="text-muted">{{ page.date | date_to_string }}</span>, <span class="reading-time text-muted">{{ content | number_of_words | divided_by: 200 | replace: '0', '<1' }} minute read</span>
+          <span class="text-muted">{{ page.date | date_to_string }}</span>, <span class="reading-time text-muted">{{ content | number_of_words | divided_by: 200 | replace: '0', '&lt;1' }} minute read</span>
           <p>{{ page.tagline }}</p>
           {{ content }}
           <hr>
