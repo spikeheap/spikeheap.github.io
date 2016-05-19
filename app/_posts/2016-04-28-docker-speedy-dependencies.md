@@ -1,7 +1,7 @@
 ---
 layout: post
 tags: ['post', 'software', 'development', 'programming', 'docker', 'npm', 'bundler', 'rails']
-title: "Speedier dependencies with Docker"
+title: "Faster dependencies with Docker"
 description: "This post explains how to speed up your builds by seeding your Docker image with most of your dependencies, without resorting to data volumes."
 comments: true
 ---
@@ -127,6 +127,6 @@ Deployments are hard. Striking a balance between stable production builds, fast 
 1. Speed up your Docker image build time by using a version of your dependencies list which changes less frequently to leverage Dockers caching mechanism.
 2. One good source for the more-stable dependencies list is your GitHub repository.
 3. Be careful not to expose your keys and secrets.
-4. Only do this is image build time is impacting some part of your life!
+4. Only do this if image build time is impacting some part of your life!
 
 
