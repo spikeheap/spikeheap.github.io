@@ -92,15 +92,17 @@ In the above examples, we have just referenced a public GitHub repository, but c
 
 #### Private GitHub repostories
 
-If you're using GitHub private repositories you're in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:
+<b>Update (2016-07-27):</b> <em>It turns out that the tokens described below expire after an arbitrary amount of time, so this approach will break regularly. Stay tuned for a stable approach, using the GitHub API.</em>
+
+<del>If you're using GitHub private repositories you're in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:</del>
 
 ```
 https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
 ```
 
-You can get the token for your files by viewing the file on GitHub and clicking 'Raw' before copying the URL from your address bar. 
+<del>You can get the token for your files by viewing the file on GitHub and clicking 'Raw' before copying the URL from your address bar. </del>
 
-Note that the tokens are __per commit reference__, so you should use commit-specific URLs in preference to branch references. The following link will break and return `404` as soon as `develop` is updated:
+<del>Note that the tokens are __per commit reference__, so you should use commit-specific URLs in preference to branch references. The following link will break and return `404` as soon as `develop` is updated:</del>
 
 
 ```
