@@ -12,4 +12,17 @@ If you just disagree with me, let's talk about it in the comments.
 
 I've built this site using Jekyll, with the compilation, watching, livereloading and deployment handled by Grunt. The styles are built on [Bootstrap](http://getbootstrap.com/). 
 
+To get going:
+- `sudo apt-get update -qq`
+- `sudo apt-get install -y libicu-dev`
+- `npm install -g grunt-cli bower`
+- `npm install`
+- `bower install`
+
+Then:
+
+```bash
+grunt deploy
+```
+
 I host the site on GitHub pages, but build the site on Travis. 
