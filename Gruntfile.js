@@ -202,17 +202,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-    uncss: {
-      dist: {
-        options: {
-          htmlroot      : '<%= yeoman.dist %>'
-        },
-
-        files: {
-          '<%= yeoman.dist %>/css/style.css': ['<%= yeoman.dist %>/**/*.html']
-        }
-      }
-    },
 
     // Usemin adds files to concat
     concat: {},
@@ -409,7 +398,6 @@ module.exports = function (grunt) {
     'useminPrepare',
     //'concat',
     'autoprefixer:dist',
-    'uncss',
     'cssmin',
     //'uglify',
     'imagemin',
