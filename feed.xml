@@ -262,14 +262,16 @@ RUN bower install
 
 &lt;h4 id=&quot;private-github-repostories&quot;&gt;Private GitHub repostories&lt;/h4&gt;
 
-&lt;p&gt;If you’re using GitHub private repositories you’re in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Update (2016-07-27):&lt;/b&gt; &lt;em&gt;It turns out that the tokens described below expire after an arbitrary amount of time, so this approach will break regularly. Stay tuned for a stable approach, using the GitHub API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;If you’re using GitHub private repositories you’re in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:&lt;/del&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You can get the token for your files by viewing the file on GitHub and clicking ‘Raw’ before copying the URL from your address bar.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;You can get the token for your files by viewing the file on GitHub and clicking ‘Raw’ before copying the URL from your address bar. &lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;Note that the tokens are &lt;strong&gt;per commit reference&lt;/strong&gt;, so you should use commit-specific URLs in preference to branch references. The following link will break and return &lt;code&gt;404&lt;/code&gt; as soon as &lt;code&gt;develop&lt;/code&gt; is updated:&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Note that the tokens are &lt;strong&gt;per commit reference&lt;/strong&gt;, so you should use commit-specific URLs in preference to branch references. The following link will break and return &lt;code&gt;404&lt;/code&gt; as soon as &lt;code&gt;develop&lt;/code&gt; is updated:&lt;/del&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
 &lt;/code&gt;&lt;/pre&gt;

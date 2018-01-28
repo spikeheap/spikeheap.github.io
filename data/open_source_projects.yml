@@ -12,9 +12,92 @@ open_projects:
   - https://github.com/spikeheap/labking
 misc:
   - https://github.com/spikeheap/dotfiles
+
 talks:
+  - The most convoluted JavaScript testing framework:
+    - event: JSOxford
+    - date: 2015-05-12
+    - duration: 45 minutes
+    - attendees: 35
+  - Pain the Asset Pipeline:
+    - event: OxRUG
+    - date: 2015-12-03
+    - duration: 60 minutes
+    - attendees: 5
+  - Progressive Continuous Delivery:
+    - event: DevOps Oxford
+    - date: 2016-05-25
+    - duration: 45 minutes
+    - attendees: 75
+  - Docker & Node lightning talk:
+    - event: JSOxford
+    - date: 2016-06-15
+    - duration: 5 minutes
+    - attendees: 50
+  - Composable filters in Ruby:
+    - event: OxRUG
+    - date: 2016-06-16
+    - duration: 15 minutes
+    - attendees: 12
+  - Improve your life with this one weird trick they didn't want you to know about*:
+    - event: JSOxford SuperMegaMeetup
+    - date: 2017-02-15
+    - duration: 10 minutes
+    - attendees: 60
+  - WebSockets in Ruby:
+    - event: OxRUG
+    - date: 2017-03-22
+    - duration: 25 minutes
+    - attendees: 15
+  - You need a mentor!:
+    - event: Codebar Oxford
+    - date: 2017-10-18
+    - duration: 10 minutes
+    - attendees: 10
+
+affiliations:
+- JSOxford:
+  - role: organiser
+  - from: 2014-10-01
+  - to: 2017-01-01
+- OxRUG:
+  - role: organiser
+  - from: 2015-06-01
+  - to: 2017-11-01
+- TODO Codebar
+
 events:
+  - JavaScript Code Retreat:
+    - event: JSOxford
+    - date: 2014-05-09
+    - role:
+      - organiser
+      - facilitator
+    - attendees: 20
+    - duration: 1 day
+  - TODO 2015 Summer of Hacks
+  - TODO 2016 Summer of Hacks
   - Docker Birthday hack evening:
     - event: Docker Oxford
     - date: 2016-03-23
     - role: mentor
+    - duration: 2 hours
+  - TODO Docker hack Wales
+  - Introduction to coaching workshop:
+    - event: Slate Horse / Kathryn Gordon
+    - date: 2017-08-12
+    - role:
+      - organiser
+      - facilitator
+      - coach
+    - duration: 1 day
+    - attendees: 20
+  - We need it now! Pushing back on immediate requirements:
+    - event: Digital Oxford Project Management
+    - date: 2017-09-20
+    - role:
+      - organiser
+      - facilitator
+      - coach
+    - duration: 2 hours
+    - attendees: 15
