@@ -4,7 +4,7 @@ layout: post
 tags: ['post', 'web']
 comments: true
 ---
-<strong>Edit (2019-04-23):</strong> Updated to replace <pre>compose_opacity</pre> with <pre>DstIn</pre> to preserve source image transparency. Thanks Chen Han!
+<strong>Edit (2019-04-23):</strong> Updated to replace `compose_opacity` with `DstIn` to preserve source image transparency. Thanks Chen Han!
 
 Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it'll look great for new users, but we don't want to leave the existing ones behind.
 <!-- more -->
@@ -44,7 +44,7 @@ Humans are really (really) good at recognising faces. They're not so good at mon
 
 ImageMagick is all set up to generate our rounded avatar images:
 
-> Edit (2019-04-23): I've updated this script to use `DstIn` instead of `compose_opacity`, to preserve source image transparency in the cropped, masked output. See [the documentation](http://www.imagemagick.org/Usage/compose/#duff-porter) for more information about Duff Porter choices.
+__Edit (2019-04-23):__ I've updated this script to use `DstIn` instead of `compose_opacity`, to preserve source image transparency in the cropped, masked output. See [the documentation](http://www.imagemagick.org/Usage/compose/#duff-porter) for more information about Duff Porter choices.
 
 ```bash
 #/bin/sh
