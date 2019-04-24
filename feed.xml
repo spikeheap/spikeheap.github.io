@@ -310,7 +310,9 @@ RUN bower install
 				<title>Migrating user avatars to circular crops, with ImageMagick</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.
+					<description>&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; Updated to replace &lt;code&gt;compose_opacity&lt;/code&gt; with &lt;code&gt;DstIn&lt;/code&gt; to preserve source image transparency. Thanks Chen Han!&lt;/p&gt;
+
+&lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.
 &lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s imagine our current approach to user avatars is to accept any size and shape image. Because we’re sensible, we retain the originally uploaded image and generate a thumbnail to be used on the site which maintains the proportions but constrains the longest side to 100 pixels.&lt;/p&gt;
@@ -349,13 +351,16 @@ RUN bower install
 
 &lt;p&gt;ImageMagick is all set up to generate our rounded avatar images:&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; I’ve updated this script to use &lt;code&gt;DstIn&lt;/code&gt; instead of &lt;code&gt;compose_opacity&lt;/code&gt;, to preserve source image transparency in the cropped, masked output. See &lt;a href=&quot;http://www.imagemagick.org/Usage/compose/#duff-porter&quot;&gt;the documentation&lt;/a&gt; for more information about Duff Porter choices.&lt;/p&gt;
+
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;#/bin/sh
 convert $1 \
         -resize x800 -resize &#39;800x&amp;lt;&#39;   -resize 50% \
         -gravity center  -crop 400x400+0+0 +repage \
         \( +clone -threshold -1 -negate -fill white -draw &quot;circle 200,200 200,0&quot; \) \
-                -alpha off -compose copy_opacity -composite \
-                \-auto-orient \
+        -compose DstIn \
+        -composite \
+        -auto-orient \
     cropped_${1}.png
 &lt;/code&gt;&lt;/pre&gt;
 
