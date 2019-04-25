@@ -13,7 +13,7 @@ jobs:
       - restore_cache:
           keys:
             - ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - bundle install
+      - run: bundle install
       - save_cache:
           key: ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -24,7 +24,7 @@ jobs:
       - restore_cache:
           keys:
             - ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
-      - npm install
+      - run: npm install
       - save_cache:
           key: ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
