@@ -13,7 +13,9 @@ jobs:
       - restore_cache:
           keys:
             - ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - run: bundle install
+      - run:
+          name: bundle install
+          command: bundle install
       - save_cache:
           key: ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -24,7 +26,9 @@ jobs:
       - restore_cache:
           keys:
             - ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install
+      - run:
+          name: npm install
+          command: npm install
       - save_cache:
           key: ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
@@ -32,8 +36,8 @@ jobs:
 
       # Build the site
       - run:
-        - name: Build to validate content
-        - command: grunt build
+          name: Build to validate content
+          command: grunt build
 
       # Store the built site for debugging
       - store_artifacts:
