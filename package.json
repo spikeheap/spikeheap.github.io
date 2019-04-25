@@ -7,7 +7,8 @@
     "bootstrap-sass": "^3.3.7",
     "bower": "^1.7.9",
     "font-awesome": "^4.2.0",
-    "grunt-cli": "^1.2.0"
+    "grunt-cli": "^1.2.0",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
