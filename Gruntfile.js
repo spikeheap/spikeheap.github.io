@@ -31,8 +31,7 @@ module.exports = function (grunt) {
       },
       jekyll: {
         files: [
-          '<%= yeoman.app %>/**/*.{html,scss,yml,md,mkd,markdown}',
-          '!<%= yeoman.app %>/_bower_components/**/*'
+          '<%= yeoman.app %>/**/*.{html,scss,yml,md,mkd,markdown}'
         ],
         tasks: ['jekyll:server']
       },
@@ -114,8 +113,7 @@ module.exports = function (grunt) {
         relativeAssets: false,
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
-        outputStyle: 'expanded',
-        raw: 'extensions_dir = "<%= yeoman.app %>/_bower_components"\n'
+        outputStyle: 'expanded'
       },
       dist: {
         options: {
@@ -260,12 +258,14 @@ module.exports = function (grunt) {
         {
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>/_bower_components',
+          cwd: 'node_modules',
           src: [
             // Explicitly add any files your site needs for distribution here.
-            '**/*'
+            'bootstrap-sass/**/*.js',
+            'font-awesome/**/*.woff',
+            'jquery/**/*.min.js'
           ],
-          dest: '<%= yeoman.dist %>/bower_components'
+          dest: '<%= yeoman.dist %>/node_modules'
         }
         ]
       },
@@ -283,12 +283,14 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>/_bower_components',
+          cwd: 'node_modules',
           src: [
             // Explicitly add any files your site needs for distribution here.
-            '**/*'
+            'bootstrap-sass/**/*.js',
+            'font-awesome/**/*.woff',
+            'jquery/**/*.min.js'
           ],
-          dest: '.tmp/bower_components'
+          dest: '.tmp/node_modules'
         }]
       }
     },
