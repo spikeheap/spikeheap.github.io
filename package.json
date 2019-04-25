@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "description": "Yeoman workflow for spikeheap.github.io",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
     "bower": "^1.7.9",
+    "font-awesome": "^4.2.0",
     "grunt-cli": "^1.2.0"
   },
   "devDependencies": {
