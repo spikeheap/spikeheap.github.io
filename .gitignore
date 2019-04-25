@@ -1,8 +1,10 @@
 # .gitignore for Yeoman-Jekyll projects
 
-# Ignore hidden folders #
-# This takes care of .tmp, .sass-cache, and many others #
-.*/
+.DS_Store
+**/.DS_Store
+.tmp/
+.sass-cache/
+.jekyll/
 
 # Ignore OS generated files #
 .DS_Store*
