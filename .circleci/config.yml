@@ -1,0 +1,76 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # TODO this needs JS
+      # TODO bump Ruby version in Dockerfile, etc.
+      - image: circleci/ruby:2.6.3
+
+    steps:
+      - checkout
+
+      # Get Ruby dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - bundle install
+      - save_cache:
+          key: ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - Gemfile
+            - Gemfile.lock
+
+      # Get NPM dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
+      - npm install
+      - save_cache:
+          key: ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - package.json
+
+      # Build the site
+      - run:
+        - name: Build to validate content
+        - command: |
+          grunt build
+
+      # Store the built site for debugging
+      - store_artifacts:
+          path: ./dist
+          destination: dist
+
+  deploy-prod:
+    docker:
+      # TODO: this should be one with JS as well
+      - image: circleci/ruby:2.6.3
+    steps:
+      - run:
+        name: Deploy to Github Pages
+        # TODO run grunt-build-control deploy
+
+        #working_directory: ~/workdir/docs
+        #command: |
+        #  git config credential.helper 'cache --timeout=120'
+        #  git config user.email "<email>"
+        #  git config user.name "Deployment Bot"
+        #  git commit --allow-empty -m "Trigger deployment"
+        #  # Push quietly to prevent showing the token in log
+        #  git push -q https://${DOCS_GITHUB_TOKEN}@github.com/giantswarm/docs.git master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
