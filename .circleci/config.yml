@@ -36,7 +36,7 @@ jobs:
       # Build the site
       - run:
           name: Build to validate content
-          command: grunt build
+          command: ./node_modules/.bin/grunt build
 
       # Store the built site for debugging
       - store_artifacts:
