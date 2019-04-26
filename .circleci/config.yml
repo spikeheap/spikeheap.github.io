@@ -3,8 +3,7 @@ jobs:
   build:
     docker:
       # TODO this needs JS
-      # TODO bump Ruby version in Dockerfile, etc.
-      - image: circleci/ruby:2.6.3
+      - image: circleci/ruby:2.6.3-node
 
     steps:
       - checkout
@@ -47,7 +46,7 @@ jobs:
   deploy-prod:
     docker:
       # TODO: this should be one with JS as well
-      - image: circleci/ruby:2.6.3
+      - image: circleci/ruby:2.6.3-node
     steps:
       - run:
         name: Deploy to Github Pages
