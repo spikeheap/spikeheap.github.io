@@ -75,6 +75,10 @@ jobs:
           paths:
             - package.json
 
+      - run:
+          name: Git status
+          command: git status
+
       # Deploy the site
       - run:
           name: Deploy to Github Pages
