@@ -1,8 +1,9 @@
 version: 2
+
+# TODO: reconcile shared portion of jobs for build and deploy-prod
 jobs:
   build:
     docker:
-      # TODO this needs JS
       - image: circleci/ruby:2.6.3-node
 
     steps:
@@ -45,7 +46,6 @@ jobs:
 
   deploy-prod:
     docker:
-      # TODO: this should be one with JS as well
       - image: circleci/ruby:2.6.3-node
     steps:
       - checkout
