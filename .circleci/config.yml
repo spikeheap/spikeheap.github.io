@@ -80,6 +80,10 @@ jobs:
           name: Git status
           command: git diff package-lock.json
 
+      - run:
+          name: Node version
+          command: node --version
+
       # Deploy the site
       - run:
           name: Deploy to Github Pages
