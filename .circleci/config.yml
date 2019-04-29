@@ -78,7 +78,7 @@ jobs:
 
       - run:
           name: Git status
-          command: git status
+          command: git diff package-lock.json
 
       # Deploy the site
       - run:
