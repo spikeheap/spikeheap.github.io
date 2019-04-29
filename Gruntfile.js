@@ -23,11 +23,11 @@ module.exports = function (grunt) {
     watch: {
       compass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer:server']
+        tasks: ['compass:server', 'postcss:dev']
       },
-      autoprefixer: {
+      postcss: {
         files: ['<%= yeoman.app %>/css/**/*.css'],
-        tasks: ['copy:stageCss', 'autoprefixer:server']
+        tasks: ['copy:stageCss', 'postcss:dev']
       },
       jekyll: {
         files: [
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         files: [
           '.jekyll/**/*.html',
           '.tmp/css/**/*.css',
-          '{.tmp,<%= yeoman.app %>}/<%= js %>/**/*.js',
+          '{.tmp,<%= yeoman.app %>}/js/**/*.js',
           '<%= yeoman.app %>/images/**/*.{gif,jpg,jpeg,png,svg,webp}'
         ]
       }
@@ -127,9 +127,18 @@ module.exports = function (grunt) {
         }
       }
     },
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: ['last 2 versions']
+        map: {
+            inline: false, // save all sourcemaps as separate files...
+            annotation: 'dist/css/maps/' // ...to the specified directory
+        },
+
+        processors: [
+          require('pixrem')(), // add fallbacks for rem units
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+          //require('cssnano')() // minify the result
+        ]
       },
       dist: {
         files: [{
@@ -146,7 +155,8 @@ module.exports = function (grunt) {
           src: '**/*.css',
           dest: '.tmp/css'
         }]
-      }
+      },
+      prod: {}
     },
     jekyll: {
       options: {
@@ -175,7 +185,8 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= yeoman.dist %>'
       },
-      html: '<%= yeoman.dist %>/index.html'
+      html: '<%= yeoman.dist %>/index.html',
+      js: '<%= yeoman.dist %>/js/**.js'
     },
     usemin: {
       options: {
@@ -250,8 +261,8 @@ module.exports = function (grunt) {
             'fonts/**/*',
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
-            //'favicon.ico',
-            //'apple-touch*.png'
+            'favicon.ico',
+            'apple-touch*.png'
           ],
           dest: '<%= yeoman.dist %>'
         },
@@ -366,7 +377,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'autoprefixer:server',
+      'postcss',
       'connect:livereload',
       'watch'
     ]);
@@ -399,7 +410,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'useminPrepare',
     //'concat',
-    'autoprefixer:dist',
+    'postcss:prod',
     'cssmin',
     //'uglify',
     'imagemin',
