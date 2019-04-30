@@ -54,13 +54,11 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node
     steps:
+
+      # Add R/W SSH key for GitHub to image
       - add_ssh_keys:
           fingerprints:
             - "c3:c2:fc:70:4c:81:fc:7e:86:f0:5c:8a:7b:ed:ee:6c"
-
-      - run:
-          name: ls -al ~/.ssh
-          command: ls -al ~/.ssh
 
       # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
       - run:
