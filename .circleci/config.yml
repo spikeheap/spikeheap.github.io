@@ -53,7 +53,7 @@ jobs:
           command: npm -v
       - run:
           name: npm install -g npm@latest
-          command: npm install -g npm@latest
+          command: sudo npm install -g npm@latest
       - run:
           name: npm -v
           command: npm -v
