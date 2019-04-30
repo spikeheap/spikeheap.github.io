@@ -262,10 +262,7 @@ module.exports = function (grunt) {
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
             'favicon.ico',
-            'apple-touch*.png',
-
-            // We need to copy over the circle config otherwise Circle complains :/
-            '.circleci/config.yml'
+            'apple-touch*.png'
           ],
           dest: '<%= yeoman.dist %>'
         },
@@ -280,6 +277,16 @@ module.exports = function (grunt) {
             'jquery/**/*.min.js'
           ],
           dest: '<%= yeoman.dist %>/vendor/node_modules'
+        },
+        {
+          expand: true,
+          dot: true,
+          cwd: '.',
+          src: [
+            // We need to copy over the circle config otherwise Circle complains :/
+            '.circleci/config.yml'
+          ],
+          dest: '<%= yeoman.dist %>'
         }
         ]
       },
