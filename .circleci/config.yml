@@ -54,6 +54,10 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "c3:c2:fc:70:4c:81:fc:7e:86:f0:5c:8a:7b:ed:ee:6c"
+
       # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
       - run:
           name: npm install -g npm@6.9.0
