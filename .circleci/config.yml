@@ -61,6 +61,7 @@ jobs:
       - run:
           name: ls -al ~/.ssh
           command: ls -al ~/.ssh
+
       # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
       - run:
           name: npm install -g npm@6.9.0
