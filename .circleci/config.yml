@@ -48,15 +48,10 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node
     steps:
+      # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
       - run:
-          name: npm -v
-          command: npm -v
-      - run:
-          name: npm install -g npm@latest
-          command: sudo npm install -g npm@latest
-      - run:
-          name: npm -v
-          command: npm -v
+          name: npm install -g npm@6.9.0
+          command: sudo npm install -g npm@6.9.0
 
       - checkout
 
@@ -95,7 +90,12 @@ jobs:
       # Deploy the site
       - run:
           name: Deploy to Github Pages
-          command: ./node_modules/.bin/grunt deploy
+          command: |
+            git config credential.helper 'cache --timeout=120'
+            git config user.email "ryan+deploybot@slatehorse.com"
+            git config user.name "Deployment Bot"
+
+            ./node_modules/.bin/grunt deploy
 
       # Store the built site for debugging
       - store_artifacts:
