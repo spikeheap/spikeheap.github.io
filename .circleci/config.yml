@@ -81,19 +81,12 @@ jobs:
             - package.json
             - package-lock.json
 
-      #TODO remove
-      - run:
-          name: Git status
-          command: git diff package-lock.json | cat
-
-
       # Deploy the site
       - run:
           name: Deploy to Github Pages
           command: |
-            git config credential.helper 'cache --timeout=120'
-            git config user.email "ryan+deploybot@slatehorse.com"
-            git config user.name "Deployment Bot"
+            git config --global user.email "ryan+deploybot@slatehorse.com"
+            git config --global user.name "Deployment Bot"
 
             ./node_modules/.bin/grunt deploy
 
