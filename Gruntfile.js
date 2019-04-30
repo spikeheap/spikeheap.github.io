@@ -276,7 +276,7 @@ module.exports = function (grunt) {
             'font-awesome/**/*.woff',
             'jquery/**/*.min.js'
           ],
-          dest: '<%= yeoman.dist %>/node_modules'
+          dest: '<%= yeoman.dist %>/vendor/node_modules'
         }
         ]
       },
@@ -301,7 +301,7 @@ module.exports = function (grunt) {
             'font-awesome/**/*.woff',
             'jquery/**/*.min.js'
           ],
-          dest: '.tmp/node_modules'
+          dest: '.tmp/vendor/node_modules'
         }]
       }
     },
