@@ -84,7 +84,7 @@ jobs:
       #TODO remove
       - run:
           name: Git status
-          command: git diff package-lock.json
+          command: git diff package-lock.json | cat
 
 
       # Deploy the site
