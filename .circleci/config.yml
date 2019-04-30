@@ -48,6 +48,15 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node
     steps:
+      - run:
+          name: npm -v
+          command: npm -v
+      - run:
+          name: npm install -g npm@latest
+          command: npm install -g npm@latest
+      - run:
+          name: npm -v
+          command: npm -v
 
       - checkout
 
@@ -86,7 +95,7 @@ jobs:
       # Deploy the site
       - run:
           name: Deploy to Github Pages
-          command: ./node_modules/.bin/grunt deploy --force
+          command: ./node_modules/.bin/grunt deploy
 
       # Store the built site for debugging
       - store_artifacts:
