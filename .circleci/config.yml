@@ -1,0 +1,127 @@
+version: 2
+
+# TODO: reconcile shared portion of jobs for build and deploy-prod
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-node
+
+    steps:
+      # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
+      - run:
+          name: npm install -g npm@6.9.0
+          command: sudo npm install -g npm@6.9.0
+
+      - checkout
+
+      # Get Ruby dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: bundle install
+          command: bundle install
+      - save_cache:
+          key: ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - Gemfile
+            - Gemfile.lock
+
+      # Get NPM dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: npm install
+          command: npm install
+      - save_cache:
+          key: ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          paths:
+            - package.json
+            - package-lock.json
+
+      # Deploy the site
+      - run:
+          name: Build site
+          command: ./node_modules/.bin/grunt build
+
+      # Store the built site for debugging
+      - store_artifacts:
+          path: ./dist
+          destination: dist
+
+  deploy-prod:
+    docker:
+      - image: circleci/ruby:2.6.3-node
+    steps:
+
+      # Add R/W SSH key for GitHub to image
+      - add_ssh_keys:
+          fingerprints:
+            - "c3:c2:fc:70:4c:81:fc:7e:86:f0:5c:8a:7b:ed:ee:6c"
+
+      # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
+      - run:
+          name: npm install -g npm@6.9.0
+          command: sudo npm install -g npm@6.9.0
+
+      - checkout
+
+      # Get Ruby dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: bundle install
+          command: bundle install
+      - save_cache:
+          key: ryanbrookscouk-bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - Gemfile
+            - Gemfile.lock
+
+      # Get NPM dependencies
+      - restore_cache:
+          keys:
+            - ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: npm install
+          command: npm install
+      - save_cache:
+          key: ryanbrookscouk-packagejson-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          paths:
+            - package.json
+            - package-lock.json
+
+      # Deploy the site
+      - run:
+          name: Deploy to Github Pages
+          command: |
+            git config --global user.email "ryan@slatehorse.com"
+            git config --global user.name "Deployment Bot"
+
+            # Clear SSH agent and add the R/W deploy key to allow push
+            ssh-add -D
+            ssh-add ~/.ssh/id_rsa_c3c2fc704c81fc7e86f05c8a7bedee6c
+
+            ./node_modules/.bin/grunt deploy
+
+      # Store the built site for debugging
+      - store_artifacts:
+          path: ./dist
+          destination: dist
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+      - deploy-prod:
+          filters:
+            branches:
+              only: develop
