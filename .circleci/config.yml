@@ -49,15 +49,6 @@ jobs:
       - image: circleci/ruby:2.6.3-node
     steps:
 
-      - run:
-          name: Install node@12.1.0
-          command: |
-            nvm install v12
-
-      - run:
-          name: Node version
-          command: node --version
-
       - checkout
 
       # Get Ruby dependencies
@@ -95,7 +86,7 @@ jobs:
       # Deploy the site
       - run:
           name: Deploy to Github Pages
-          command: ./node_modules/.bin/grunt deploy
+          command: ./node_modules/.bin/grunt deploy --force
 
       # Store the built site for debugging
       - store_artifacts:
