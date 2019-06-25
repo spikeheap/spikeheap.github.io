@@ -177,7 +177,9 @@ module.exports = function (grunt) {
       },
       check: {
         options: {
-          doctor: true
+          doctor: false,
+          config: '_config.yml,_config.build.yml',
+          src: '<%= yeoman.app %>'
         }
       }
     },
