@@ -19,6 +19,8 @@ To get going:
 - `npm install`
 - `bower install`
 
+We also need to set some environment variables to `.env`. See the `.env.template` for an example.
+
 Then:
 
 ```bash
@@ -27,11 +29,13 @@ grunt serve
 
 ## Deploying the blog
 
+Set environment variables as above, then:
+
 ```bash
 grunt deploy
 ```
 
-I host the site on GitHub pages, but build the site on Travis. 
+I host the site on GitHub pages, but build the site on CircleCI. 
 
 ## Requirements when considering alternatives
 

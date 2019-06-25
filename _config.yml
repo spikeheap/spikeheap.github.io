@@ -32,6 +32,9 @@ defaults:
     values:
       layout: "default"
 
+collections:
+  - medium_posts
+
 # prose:
 #   siteurl: 'http://www.ryanbrooks.co.uk'
 #   media: "app/images

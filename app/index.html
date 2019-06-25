@@ -4,7 +4,23 @@ layout: default
 <div class="container">
   <div class="row">
       <div class="col-sm-9">
-        {% for post in site.posts limit:5 %}
+          {% for post in site.medium_posts %}
+
+            <div class="clearfix margin-bottom">
+              <h3 class="post-title">
+                <a href="{{post.medium_link}}">{{ post.title }}</a>
+              </h3>
+              <div class="clearfix">
+                <small class="pull-right date-subtitle">{{ post.date | date_to_string}}</small>
+              </div>
+              <div>
+                {{post.feed_content | truncatewords:75, "&hellip;" }}
+              </div>
+              <a href="{{post.medium_link}}" class="btn btn-sm btn-success">Read more (on Medium)</a> <span class="reading-time text-muted">{{ post.feed_content | number_of_words | divided_by: 200 | replace: '0', '&lt;1' }} minute read</span>
+            </div>
+          {% endfor %}
+
+          {% for post in site.posts limit:5 %}
           <div class="clearfix margin-bottom">
             <h3 class="post-title">
               <a href="{{post.url}}">{{ post.title}}</a>
