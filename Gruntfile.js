@@ -23,12 +23,9 @@ module.exports = function (grunt) {
     watch: {
       compass: {
         files: ['<%= yeoman.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'postcss:dev']
+        tasks: ['compass:server']
       },
-      postcss: {
-        files: ['<%= yeoman.app %>/css/**/*.css'],
-        tasks: ['copy:stageCss', 'postcss:dev']
-      },
+
       jekyll: {
         files: [
           '<%= yeoman.app %>/**/*.{html,scss,yml,md,mkd,markdown}'
@@ -127,37 +124,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    postcss: {
-      options: {
-        map: {
-            inline: false, // save all sourcemaps as separate files...
-            annotation: 'dist/css/maps/' // ...to the specified directory
-        },
 
-        processors: [
-          require('pixrem')(), // add fallbacks for rem units
-          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
-          //require('cssnano')() // minify the result
-        ]
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>/css',
-          src: '**/*.css',
-          dest: '<%= yeoman.dist %>/css'
-        }]
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/css',
-          src: '**/*.css',
-          dest: '.tmp/css'
-        }]
-      },
-      prod: {}
-    },
     jekyll: {
       options: {
         bundleExec: true,
@@ -181,72 +148,6 @@ module.exports = function (grunt) {
           config: '_config.yml,_config.build.yml',
           src: '<%= yeoman.app %>'
         }
-      }
-    },
-    useminPrepare: {
-      options: {
-        dest: '<%= yeoman.dist %>'
-      },
-      html: '<%= yeoman.dist %>/index.html',
-      js: '<%= yeoman.dist %>/js/**.js'
-    },
-    usemin: {
-      options: {
-        assetsDirs: '<%= yeoman.dist %>',
-      },
-      html: ['<%= yeoman.dist %>/**/*.html'],
-      css: ['<%= yeoman.dist %>/css/**/*.css']
-    },
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: '**/*.html',
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
-
-    // Usemin adds files to concat
-    concat: {},
-    // Usemin adds files to uglify
-    uglify: {},
-    // Usemin adds files to cssmin
-    cssmin: {
-      dist: {
-        options: {
-          check: 'gzip'
-        }
-      }
-    },
-    imagemin: {
-      dist: {
-        options: {
-          progressive: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: '**/*.{jpg,jpeg,png}',
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
-    svgmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: '**/*.svg',
-          dest: '<%= yeoman.dist %>'
-        }]
       }
     },
     copy: {
@@ -317,21 +218,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-    filerev: {
-      options: {
-        length: 4
-      },
-      dist: {
-        files: [{
-          src: [
-            '<%= yeoman.dist %>/js/**/*.js',
-            '<%= yeoman.dist %>/css/**/*.css',
-            '<%= yeoman.dist %>/images/**/*.{gif,jpg,jpeg,png,svg,webp}',
-            '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}'
-          ]
-        }]
-      }
-    },
+
     buildcontrol: {
       dist: {
         options: {
@@ -389,7 +276,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'postcss',
       'connect:livereload',
       'watch'
     ]);
@@ -420,16 +306,6 @@ module.exports = function (grunt) {
     // Jekyll cleans files from the target directory, so must run first
     'jekyll:dist',
     'concurrent:dist',
-    'useminPrepare',
-    //'concat',
-    'postcss:prod',
-    'cssmin',
-    //'uglify',
-    'imagemin',
-    'svgmin',
-    'filerev',
-    'usemin',
-    'htmlmin'
     ]);
 
   grunt.registerTask('deploy', [
