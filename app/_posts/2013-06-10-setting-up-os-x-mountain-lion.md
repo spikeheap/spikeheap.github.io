@@ -23,13 +23,11 @@ Last month I installed a second internal drive on my Macbook Pro to increase the
 
 To help me out next time, and for anyone who's interested, here's a quick run-down of the steps I took to go from vanilla OS X to a walking, talking personal machine capable of a bit of dev.
 
+#### Update 2019-06-28
+
+Six years later, I don't quite follow this process anymore. I now have a bootstrap script which I keep up to date: https://github.com/spikeheap/dotfiles.
 
 ### Getting things right in System Preferences
-
-
-
-
-
 	
   * Set the dock size to small with a lot of magnification & auto-hide enabled
   * Language & Text: add "British English" to the list of languages
