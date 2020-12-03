@@ -101,8 +101,8 @@
 
 <ol>
   <li>This isn’t production-quality. Mirror your production environment if you can.</li>
-  <li>The <code class="highlighter-rouge">Dockerfile</code> and <code class="highlighter-rouge">nginx.conf</code> are in <a href="https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84">this gist</a>.</li>
-  <li>This assumes you’ve got a <code class="highlighter-rouge">rails</code> container linked through docker-compose. Tweak it to your needs.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Dockerfile</code> and <code class="language-plaintext highlighter-rouge">nginx.conf</code> are in <a href="https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84">this gist</a>.</li>
+  <li>This assumes you’ve got a <code class="language-plaintext highlighter-rouge">rails</code> container linked through docker-compose. Tweak it to your needs.</li>
   <li>See [1].</li>
 </ol>
 
@@ -112,7 +112,7 @@
 
 <p>It’s good practice to have all your production traffic use HTTPS, so we need a lightweight HTTPS proxy which we can stick in front of whichever app server we’re developing against.</p>
 
-<p>At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using <code class="highlighter-rouge">rails s</code>.</p>
+<p>At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using <code class="language-plaintext highlighter-rouge">rails s</code>.</p>
 
 <h3 id="the-setup">The setup</h3>
 
@@ -223,9 +223,9 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RUN openssl req <span class="nt">-new</span> <span class="nt">-x509</span> <span class="nt">-nodes</span> <span class="nt">-subj</span> <span class="s2">"/CN=</span><span class="k">${</span><span class="nv">DOCKER_HOSTNAME</span><span class="k">}</span><span class="s2">/O=Your Company Name/C=UK"</span> <span class="nt">-keyout</span> <span class="nv">$CERTIFICATE_DIR</span>/server.key <span class="nt">-out</span> <span class="nv">$CERTIFICATE_DIR</span>/server.crt
 </code></pre></div></div>
 
-<p>This generates a self-signed certificate and drops it into the path we’ve used in <code class="highlighter-rouge">nginx.conf</code>.</p>
+<p>This generates a self-signed certificate and drops it into the path we’ve used in <code class="language-plaintext highlighter-rouge">nginx.conf</code>.</p>
 
-<p>With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in <code class="highlighter-rouge">./docker/nginx/</code> and add the following to your <code class="highlighter-rouge">docker-compose.yml</code>:</p>
+<p>With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in <code class="language-plaintext highlighter-rouge">./docker/nginx/</code> and add the following to your <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">nginx</span><span class="pi">:</span>
   <span class="na">build</span><span class="pi">:</span> <span class="s">docker/nginx/</span>
@@ -240,7 +240,7 @@ CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
 
 <h3 id="caching">Caching</h3>
 
-<p>With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at<code class="highlighter-rouge">/usr/local/app/certs</code> and put your certificates there. This will persist across container changes and image builds.</p>
+<p>With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at<code class="language-plaintext highlighter-rouge">/usr/local/app/certs</code> and put your certificates there. This will persist across container changes and image builds.</p>
 
 <h3 id="summary">Summary</h3>
 

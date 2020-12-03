@@ -124,7 +124,7 @@ It seems that living in the UK and watching political satire is not a compatible
 
 <p>Create the file ~/.flexget/config.yml. An example configuration is pasted below, and assumes you’re running Transmission on the same box. Make sure you don’t use tabs to indent the items, and use 2 spaces for each level of indentation. The USERNAME and PASSWORD variables are used to connect to Transmission, so you can pick whatever you like, as long as it matches the Transmission configuration lower down.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    presets:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    presets:
       transmissionrpc:
         transmission:
           host: localhost
@@ -163,18 +163,18 @@ It seems that living in the UK and watching political satire is not a compatible
 
 <p>You can test the configuration without actually downloading the torrents by running</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flexget --test
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flexget --test
 </code></pre></div></div>
 
 <p>You then need to add Flexget to your crontab (crontab -e). Add an entry such as the following:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># m h dom mon dow command
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># m h dom mon dow command
 0 * * * * su mediatomb -c /usr/local/bin/flexget --cron
 </code></pre></div></div>
 
 <p>I would also recommend removing old episodes so they don’t just fill up your hard drive by adding the crontab entries below. The “-mtime +14″ parameter limits the find to files older than 14 days, obviously you can tweak this to meet your requirements.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Remove old Daily Show and Colbert Reports
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Remove old Daily Show and Colbert Reports
 0 0 * * * find /var/torrented/Daily Show/ -type f -mtime +14 -exec rm {} \;
 0 0 * * * find /var/torrented/Colbert_Report/ -type f -mtime +14 -exec rm {} \;
 </code></pre></div></div>
@@ -183,7 +183,7 @@ It seems that living in the UK and watching political satire is not a compatible
 
 <p>On Ubuntu the Transmission daemon configuration file is stored in /etc/transmission-daemon/settings.json. The contents of the file can be replaced with the contents below:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "alt-speed-down": 50, 
     "alt-speed-enabled": true, 
     "alt-speed-time-begin": 540, 

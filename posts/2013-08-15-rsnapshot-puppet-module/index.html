@@ -130,25 +130,25 @@ The module solves a simple problem: configure a central Rsnapshot system with no
 <span class="na">classes</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">rsnapshot</span>
 
-<span class="s">rsnapshot::ssh_private_key</span><span class="pi">:</span> <span class="pi">|</span>
-  <span class="no">-----BEGIN RSA PRIVATE KEY-----</span>
-  <span class="no">...</span>
-  <span class="no">-----END RSA PRIVATE KEY-----</span>
+<span class="s">rsnapshot::ssh_private_key: |</span>
+  <span class="s">-----BEGIN RSA PRIVATE KEY-----</span>
+  <span class="s">...</span>
+  <span class="s">-----END RSA PRIVATE KEY-----</span>
 
 <span class="c1"># All the following variables are optional, and are just to illustrate configuration </span>
-<span class="s">rsnapshot::sync_first</span><span class="pi">:</span> <span class="no">true</span>
-<span class="s">rsnapshot::interval_hourly</span><span class="pi">:</span> <span class="s">24</span>
-<span class="s">rsnapshot::cron_sync_hour</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*'</span>
-<span class="s">rsnapshot::cron_sync_minute</span><span class="pi">:</span> <span class="s">0</span>
-<span class="s">rsnapshot::cron_hourly_hour</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*'</span>
-<span class="s">rsnapshot::cron_hourly_minute</span><span class="pi">:</span> <span class="s">30</span>
-<span class="s">rsnapshot::cron_daily_hour</span><span class="pi">:</span> <span class="s">23</span>
-<span class="s">rsnapshot::cron_daily_minute</span><span class="pi">:</span> <span class="s">0</span>
-<span class="s">rsnapshot::cron_weekly_hour</span><span class="pi">:</span> <span class="s">22</span>
-<span class="s">rsnapshot::cron_weekly_minute</span><span class="pi">:</span> <span class="s">0</span>
-<span class="s">rsnapshot::cron_monthly_hour</span><span class="pi">:</span> <span class="s">21</span>
-<span class="s">rsnapshot::cron_monthly_minute</span><span class="pi">:</span> <span class="s">0</span>
-<span class="s">rsnapshot::snapshot_root</span><span class="pi">:</span> <span class="s">/backups/rsnapshot/</span>
+<span class="s">rsnapshot::sync_first: </span><span class="no">true</span>
+<span class="s">rsnapshot::interval_hourly: </span><span class="m">24</span>
+<span class="s">rsnapshot::cron_sync_hour: '*'</span>
+<span class="s">rsnapshot::cron_sync_minute: </span><span class="m">0</span>
+<span class="s">rsnapshot::cron_hourly_hour: '*'</span>
+<span class="s">rsnapshot::cron_hourly_minute: </span><span class="m">30</span>
+<span class="s">rsnapshot::cron_daily_hour: </span><span class="m">23</span>
+<span class="s">rsnapshot::cron_daily_minute: </span><span class="m">0</span>
+<span class="s">rsnapshot::cron_weekly_hour: </span><span class="m">22</span>
+<span class="s">rsnapshot::cron_weekly_minute: </span><span class="m">0</span>
+<span class="s">rsnapshot::cron_monthly_hour: </span><span class="m">21</span>
+<span class="s">rsnapshot::cron_monthly_minute: </span><span class="m">0</span>
+<span class="s">rsnapshot::snapshot_root: /backups/rsnapshot/</span>
 </code></pre></div></div>
 
 <p>and the client:</p>
@@ -157,10 +157,10 @@ The module solves a simple problem: configure a central Rsnapshot system with no
 <span class="na">classes</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="s">rsnapshot::client</span>
 
-<span class="s">rsnapshot::client::dirs</span><span class="pi">:</span> <span class="pi">[</span>
-<span class="s1">'</span><span class="s">/usr/local/myamazingapp/'</span><span class="pi">,</span>
+<span class="s">rsnapshot::client::dirs: [</span>
+<span class="s1">'</span><span class="s">/usr/local/myamazingapp/'</span><span class="err">,</span>
 <span class="s1">'</span><span class="s">/var/'</span>
-<span class="pi">]</span>
+<span class="err">]</span>
 </code></pre></div></div>
 
 <p>The module has support for all the configuration options of Rsnapshot, and I’ll update the documentation shortly to explain the additional parameters.</p>

@@ -89,7 +89,7 @@
           <h1 class="page-title">Using Grails respond for HTML, JSON and XML responses</h1>
           <span class="text-muted">25 Feb 2014</span>, <span class="reading-time text-muted">3 minute read</span>
           <p></p>
-          <p>The new(ish) support for <code class="highlighter-rouge">respond</code> in Grails 2.3 is great, and saves us the hassle of specifying different render/response calls depending on the content type. Surpisingly it falters when it comes to returning exceptions and errors, for example <code class="highlighter-rouge">404 NOT FOUND</code>. This post describes a simple workaround which provides a meaningful response to a JSON/XML request as well as a user-friendly rendered 404 exception for humans.</p>
+          <p>The new(ish) support for <code class="language-plaintext highlighter-rouge">respond</code> in Grails 2.3 is great, and saves us the hassle of specifying different render/response calls depending on the content type. Surpisingly it falters when it comes to returning exceptions and errors, for example <code class="language-plaintext highlighter-rouge">404 NOT FOUND</code>. This post describes a simple workaround which provides a meaningful response to a JSON/XML request as well as a user-friendly rendered 404 exception for humans.</p>
 
 <!-- more -->
 
@@ -148,13 +148,13 @@
 <ol>
   <li><code>if(!widget)</code> is a Groovy way of checking for null/empty values</li>
   <li>The model we’re going to return has an obvious failure notification because we’ve set <code>success</code> to <code>false</code>, but we’ve added a little more information by saying the widget couldn’t be found.</li>
-  <li>The first argument to <code>respond</code> is <code class="highlighter-rouge"><span class="k">model</span> <span class="k">as</span> <span class="n">Object</span></code>. This tells <code class="highlighter-rouge">respond</code> to use <code class="highlighter-rouge">model</code> for the JSON and XML responses. The coercion is required to prevent an error because of ambiguous arguments.</li>
-  <li>The second argument to <code>respond</code> is <code class="highlighter-rouge">[model: model, status: 404, view: 'error404']</code>, which provides the view arguments so the correct 404 GSP is loaded. The <code class="highlighter-rouge">model</code> specified here is the same as is used for the JSON/XML response, so the GSP has access to the same information to render to the user.</li>
+  <li>The first argument to <code>respond</code> is <code class="language-plaintext highlighter-rouge">model as Object</code>. This tells <code class="language-plaintext highlighter-rouge">respond</code> to use <code class="language-plaintext highlighter-rouge">model</code> for the JSON and XML responses. The coercion is required to prevent an error because of ambiguous arguments.</li>
+  <li>The second argument to <code>respond</code> is <code class="language-plaintext highlighter-rouge">[model: model, status: 404, view: 'error404']</code>, which provides the view arguments so the correct 404 GSP is loaded. The <code class="language-plaintext highlighter-rouge">model</code> specified here is the same as is used for the JSON/XML response, so the GSP has access to the same information to render to the user.</li>
 </ol>
 
 <hr />
 
-<p>So there we have it: a simple way to <code class="highlighter-rouge">respond</code> and please all our sources. It’s not quite elegant, and I’m going to see how easy it would be to roll this into the <code class="highlighter-rouge">respond</code> method itself.</p>
+<p>So there we have it: a simple way to <code class="language-plaintext highlighter-rouge">respond</code> and please all our sources. It’s not quite elegant, and I’m going to see how easy it would be to roll this into the <code class="language-plaintext highlighter-rouge">respond</code> method itself.</p>
 
 <p>Is there a better way? Let me know in the comments!</p>
 

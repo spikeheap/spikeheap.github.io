@@ -97,7 +97,7 @@
 <span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
 
 <span class="c1"># For each line in the file</span>
-<span class="k">my</span> <span class="nv">$line</span> <span class="o">=</span> <span class="nv">$_</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$line</span> <span class="o">=</span> <span class="vg">$_</span><span class="p">;</span>
 
 <span class="k">if</span><span class="p">(</span><span class="k">my</span> <span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$age</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$line</span> <span class="o">=~</span> <span class="sr">/My name is ([A-Za-z]+) and I am (\d+) years old/</span><span class="p">){</span>
 	<span class="nv">$personbuilder</span><span class="o">-&gt;</span><span class="nv">addPerson</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$age</span><span class="p">);</span>
@@ -119,7 +119,7 @@
 <span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
 <span class="k">use</span> <span class="nv">v5</span><span class="mf">.10</span><span class="p">;</span>
 
-<span class="k">for</span><span class="p">(</span><span class="k">my</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&amp;</span><span class="ow">lt</span><span class="p">;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+<span class="k">for</span><span class="p">(</span><span class="k">my</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="nv">&amp;lt</span><span class="p">;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
 	<span class="k">my</span> <span class="nv">$line</span> <span class="o">=</span> <span class="p">"</span><span class="s2">This contains </span><span class="si">$i</span><span class="s2"> winnings for </span><span class="p">";</span>
 	<span class="nv">$line</span> <span class="o">.=</span> <span class="p">"</span><span class="s2">the </span><span class="si">${i}</span><span class="s2">th winnner.</span><span class="p">";</span>
 	
@@ -129,13 +129,13 @@
 	
 	<span class="nv">given</span><span class="p">(</span><span class="nv">$line</span><span class="p">){</span>
 		<span class="nv">when</span><span class="p">(</span><span class="sr">/This contains (\d+) winnings for (.*)/</span><span class="p">){</span>
-			<span class="k">my</span> <span class="nv">$winnings</span> <span class="o">=</span> <span class="nv">$1</span><span class="p">;</span>
-			<span class="k">my</span> <span class="nv">$winner</span> <span class="o">=</span> <span class="nv">$2</span><span class="p">;</span>
+			<span class="k">my</span> <span class="nv">$winnings</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span><span class="p">;</span>
+			<span class="k">my</span> <span class="nv">$winner</span> <span class="o">=</span> <span class="err">$</span><span class="mi">2</span><span class="p">;</span>
 			<span class="k">print</span> <span class="p">"</span><span class="s2">Amount: </span><span class="p">"</span><span class="o">.</span><span class="nv">$winnings</span> <span class="o">.</span><span class="p">"</span><span class="se">\n</span><span class="p">";</span>
 			<span class="k">print</span> <span class="p">"</span><span class="s2">Winner: </span><span class="p">"</span> <span class="o">.</span><span class="nv">$winner</span> <span class="o">.</span> <span class="p">"</span><span class="s2">.</span><span class="se">\n</span><span class="p">";</span>
 		<span class="p">}</span>
 		<span class="nv">when</span><span class="p">(</span><span class="sr">/no dice/</span><span class="p">){</span>
-			<span class="k">print</span> <span class="p">"</span><span class="se">\t</span><span class="p">"</span><span class="o">.</span> <span class="nv">$_</span> <span class="o">.</span> <span class="p">"</span><span class="se">\n</span><span class="p">";</span>
+			<span class="k">print</span> <span class="p">"</span><span class="se">\t</span><span class="p">"</span><span class="o">.</span> <span class="vg">$_</span> <span class="o">.</span> <span class="p">"</span><span class="se">\n</span><span class="p">";</span>
 		<span class="p">}</span>
 		<span class="nv">default</span> <span class="p">{</span> 
 			<span class="k">print</span> <span class="p">"</span><span class="s2">NOT MATCHED</span><span class="se">\n</span><span class="p">";</span>

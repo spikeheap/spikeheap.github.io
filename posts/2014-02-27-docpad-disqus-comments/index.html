@@ -99,7 +99,7 @@
 
 <p>Fortunately Disqus support were very responsive, and got back to me explaining the problem: the Disqus widget doesn’t just need the title, it also needs a unique URL in its config. The services plugin doesn’t work for this, as it always gets the current page URL, so here’s a modified version of <a href="https://github.com/docpad/docpad-plugin-services/blob/master/src/services.plugin.coffee#L356">the original script</a> which takes a post as a parameter so you can load dynamic comment threads wherever you like.</p>
 
-<p>All you need to do is add the following to your <code class="highlighter-rouge">docpad.cofee</code>, I put it in the helpers section:</p>
+<p>All you need to do is add the following to your <code class="language-plaintext highlighter-rouge">docpad.cofee</code>, I put it in the helpers section:</p>
 
 <noscript><pre>getPostDisqus: (post, services) -&gt;
 	# Prepare

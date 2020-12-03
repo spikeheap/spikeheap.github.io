@@ -89,7 +89,7 @@
           <h1 class="page-title">Migrating user avatars to circular crops, with ImageMagick</h1>
           <span class="text-muted">05 Sep 2015</span>, <span class="reading-time text-muted">4 minute read</span>
           <p></p>
-          <p><strong>Edit (2019-04-23):</strong> Updated to replace <code class="highlighter-rouge">compose_opacity</code> with <code class="highlighter-rouge">DstIn</code> to preserve source image transparency. Thanks Chen Han!</p>
+          <p><strong>Edit (2019-04-23):</strong> Updated to replace <code class="language-plaintext highlighter-rouge">compose_opacity</code> with <code class="language-plaintext highlighter-rouge">DstIn</code> to preserve source image transparency. Thanks Chen Han!</p>
 
 <p>Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.
 <!-- more --></p>
@@ -118,7 +118,7 @@
   <span class="nt">-format</span> %w<span class="se">\ </span>%h<span class="se">\\</span>n <span class="o">{}</span> <span class="se">\;</span> | <span class="nb">awk</span> <span class="s1">'{ print $1/$2 }'</span> | <span class="nb">sort</span> | <span class="nb">cut</span> <span class="nt">-c1</span>,2,3
 </code></pre></div></div>
 
-<p>In the above example we search the <code class="highlighter-rouge">avatar_images</code> directory, include all files, but filter out images we’ve generated in the past (prefixed with <code class="highlighter-rouge">thumb_</code>). The output will be a list of the image propotions as double values (e.g. 4/3 → 1.333, 6/9 → 0.666).</p>
+<p>In the above example we search the <code class="language-plaintext highlighter-rouge">avatar_images</code> directory, include all files, but filter out images we’ve generated in the past (prefixed with <code class="language-plaintext highlighter-rouge">thumb_</code>). The output will be a list of the image propotions as double values (e.g. 4/3 → 1.333, 6/9 → 0.666).</p>
 
 <p>You can dump this list into Excel and <a href="http://www.excel-easy.com/examples/histogram.html">generate a histogram</a>, or just use it to highlight how many values are outside of ‘squarish’.</p>
 
@@ -130,7 +130,7 @@
 
 <p>ImageMagick is all set up to generate our rounded avatar images:</p>
 
-<p><strong>Edit (2019-04-23):</strong> I’ve updated this script to use <code class="highlighter-rouge">DstIn</code> instead of <code class="highlighter-rouge">compose_opacity</code>, to preserve source image transparency in the cropped, masked output. See <a href="http://www.imagemagick.org/Usage/compose/#duff-porter">the documentation</a> for more information about Duff Porter choices.</p>
+<p><strong>Edit (2019-04-23):</strong> I’ve updated this script to use <code class="language-plaintext highlighter-rouge">DstIn</code> instead of <code class="language-plaintext highlighter-rouge">compose_opacity</code>, to preserve source image transparency in the cropped, masked output. See <a href="http://www.imagemagick.org/Usage/compose/#duff-porter">the documentation</a> for more information about Duff Porter choices.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/bin/sh</span>
 convert <span class="nv">$1</span> <span class="se">\</span>
@@ -143,14 +143,14 @@ convert <span class="nv">$1</span> <span class="se">\</span>
     cropped_<span class="k">${</span><span class="nv">1</span><span class="k">}</span>.png
 </code></pre></div></div>
 
-<p>This generates a circular mask, and overlays that on the cropped, centred image. Wrapping the above with <code class="highlighter-rouge">find</code> allows us to loop through and process all our images:</p>
+<p>This generates a circular mask, and overlays that on the cropped, centred image. Wrapping the above with <code class="language-plaintext highlighter-rouge">find</code> allows us to loop through and process all our images:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># assumes we've placed the above snippet crop_avatars.sh</span>
 <span class="nb">mkdir </span>cropped_images
 find ./images <span class="nt">-type</span> f <span class="nt">-exec</span> ./crop_avatars.sh <span class="o">{}</span> <span class="se">\;</span>
 </code></pre></div></div>
 
-<p>We now have a <code class="highlighter-rouge">cropped_images/</code> directory containing smaller, rounder versions of the images. All we need to do then is stitch them together, and once again ImageMagick is there for us:</p>
+<p>We now have a <code class="language-plaintext highlighter-rouge">cropped_images/</code> directory containing smaller, rounder versions of the images. All we need to do then is stitch them together, and once again ImageMagick is there for us:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>montage cropped_images/<span class="k">*</span> avatar_montage.png
 </code></pre></div></div>

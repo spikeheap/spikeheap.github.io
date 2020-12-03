@@ -322,8 +322,8 @@ hwclock <span class="nt">-s</span>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">smbus</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="n">bus</span> <span class="o">=</span> <span class="n">smbus</span><span class="o">.</span><span class="n">SMBus</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="mh">0x48</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bus</span> <span class="o">=</span> <span class="n">smbus</span><span class="p">.</span><span class="n">SMBus</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">bus</span><span class="p">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="mh">0x48</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">msb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">lsb</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="c1"># Print degrees Celsius (I have no idea where I got 0.0625 from...)
@@ -332,13 +332,13 @@ hwclock <span class="nt">-s</span>
 
 <p>To get the temperature logged to <a href="http://emoncms.org/">emoncms</a> we just need to get the results from the script and lob it at the REST API see <a href="https://github.com/spikeheap/pi-switch-post/blob/master/tempToEmon.sh">the source</a>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl "http://emoncms.org/api/post?apikey=YOURAPIKEYHERE&amp;json={piTemp:`python /root/pi-switch-post/readTemp.py`}"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl "http://emoncms.org/api/post?apikey=YOURAPIKEYHERE&amp;json={piTemp:`python /root/pi-switch-post/readTemp.py`}"
 </code></pre></div></div>
 
 <h3 id="getting-some-heat">Getting some heat</h3>
 <p>Controlling the relay is pretty straightforward, and we just need to take the pin (24 for A) high or low, as needed:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wiringpi.pinMode(24,1)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wiringpi.pinMode(24,1)
 
 initialState = wiringpi.digitalRead(24)
 wiringpi.digitalWrite(24, 1) #replace 1 for 0 to switch it off

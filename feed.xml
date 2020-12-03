@@ -20,8 +20,8 @@
 
 &lt;ol&gt;
   &lt;li&gt;This isn’t production-quality. Mirror your production environment if you can.&lt;/li&gt;
-  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nginx.conf&lt;/code&gt; are in &lt;a href=&quot;https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84&quot;&gt;this gist&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;This assumes you’ve got a &lt;code class=&quot;highlighter-rouge&quot;&gt;rails&lt;/code&gt; container linked through docker-compose. Tweak it to your needs.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx.conf&lt;/code&gt; are in &lt;a href=&quot;https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84&quot;&gt;this gist&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;This assumes you’ve got a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails&lt;/code&gt; container linked through docker-compose. Tweak it to your needs.&lt;/li&gt;
   &lt;li&gt;See [1].&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;p&gt;It’s good practice to have all your production traffic use HTTPS, so we need a lightweight HTTPS proxy which we can stick in front of whichever app server we’re developing against.&lt;/p&gt;
 
-&lt;p&gt;At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using &lt;code class=&quot;highlighter-rouge&quot;&gt;rails s&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails s&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-setup&quot;&gt;The setup&lt;/h3&gt;
 
@@ -142,9 +142,9 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;RUN openssl req &lt;span class=&quot;nt&quot;&gt;-new&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-x509&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-nodes&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-subj&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/CN=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_HOSTNAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/O=Your Company Name/C=UK&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-keyout&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CERTIFICATE_DIR&lt;/span&gt;/server.key &lt;span class=&quot;nt&quot;&gt;-out&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CERTIFICATE_DIR&lt;/span&gt;/server.crt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This generates a self-signed certificate and drops it into the path we’ve used in &lt;code class=&quot;highlighter-rouge&quot;&gt;nginx.conf&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This generates a self-signed certificate and drops it into the path we’ve used in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx.conf&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in &lt;code class=&quot;highlighter-rouge&quot;&gt;./docker/nginx/&lt;/code&gt; and add the following to your &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./docker/nginx/&lt;/code&gt; and add the following to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker/nginx/&lt;/span&gt;
@@ -159,7 +159,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;h3 id=&quot;caching&quot;&gt;Caching&lt;/h3&gt;
 
-&lt;p&gt;With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/app/certs&lt;/code&gt; and put your certificates there. This will persist across container changes and image builds.&lt;/p&gt;
+&lt;p&gt;With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/app/certs&lt;/code&gt; and put your certificates there. This will persist across container changes and image builds.&lt;/p&gt;
 
 &lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 
@@ -182,13 +182,13 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;h3 id=&quot;a-quick-note-on-terms&quot;&gt;A quick note on terms&lt;/h3&gt;
 
-&lt;p&gt;This post talks about a &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and Ruby’s gems, but this post applies equally to libraries and dependencies in pretty much any other language. If you’re not familiar, the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; is the list of libraries, frameworks, and other 3rd party dependencies.&lt;/p&gt;
+&lt;p&gt;This post talks about a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and Ruby’s gems, but this post applies equally to libraries and dependencies in pretty much any other language. If you’re not familiar, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; is the list of libraries, frameworks, and other 3rd party dependencies.&lt;/p&gt;
 
 &lt;h3 id=&quot;rebuilding-gemsnpm-from-scratch-is-slow&quot;&gt;Rebuilding gems/NPM from scratch is slow&lt;/h3&gt;
 
-&lt;p&gt;Docker images should contain all of the dependencies required to run your application. If we can guarantee that all our Bundler, NPM and Bower dependencies are already built into the image, we no longer need to worry about outages of &lt;code class=&quot;highlighter-rouge&quot;&gt;rubygems.org&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;github.com&lt;/code&gt;. No contention there, right? However, building your dependencies into the Docker image comes at a cost: every time your dependency installation step happens there’s a good chance you’re blowing away every dependency you downloaded in the last build.&lt;/p&gt;
+&lt;p&gt;Docker images should contain all of the dependencies required to run your application. If we can guarantee that all our Bundler, NPM and Bower dependencies are already built into the image, we no longer need to worry about outages of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rubygems.org&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;github.com&lt;/code&gt;. No contention there, right? However, building your dependencies into the Docker image comes at a cost: every time your dependency installation step happens there’s a good chance you’re blowing away every dependency you downloaded in the last build.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href=&quot;https://robots.thoughtbot.com/rails-on-docker&quot;&gt;Thoughtbot Rails on Docker post&lt;/a&gt; demonstrates how to only bundle your gems when your &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; changes, which at least means your dependencies aren’t re-downloaded every time the code changes. If your dependencies change regularly you’re still a bit stuck. Every time you add, remove or update a gem, the cache is invalidated and the &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; step runs again, downloading every gem from scratch.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://robots.thoughtbot.com/rails-on-docker&quot;&gt;Thoughtbot Rails on Docker post&lt;/a&gt; demonstrates how to only bundle your gems when your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; changes, which at least means your dependencies aren’t re-downloaded every time the code changes. If your dependencies change regularly you’re still a bit stuck. Every time you add, remove or update a gem, the cache is invalidated and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; step runs again, downloading every gem from scratch.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://bradgessler.com/articles/docker-bundler/&quot;&gt;Brad Gessler built on that approach&lt;/a&gt; to leverage data volumes as a cross-container gem store. By updating the dependencies in a container you no longer need to re-build your image each time, which speeds up your development cycle immensely. This comes at a cost: by using volumes we’re maintaining state for the container which may not be obvious later on. This &lt;em&gt;may&lt;/em&gt; be fine, after all we don’t rebuild the image every time we change the code. However if we’re pushing towards immutable infrastructure it’s reasonable to treat your gems in the same way as your OS and system dependencies. This approach also allows our environments to diverge, so a piece of code can’t be expected to behave the same way for the same container if we run it on different machines with different sets of gems installed.&lt;/p&gt;
 
@@ -196,7 +196,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;h2 id=&quot;a-new-solution-cache-dependencies-from-a-point-in-the-past&quot;&gt;A new solution: cache dependencies from a point in the past&lt;/h2&gt;
 
-&lt;p&gt;We can work around Docker’s behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies from a static point in time. Once we have the majority of our dependencies cached, subsequent &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;s will only need to grab the newer gems.&lt;/p&gt;
+&lt;p&gt;We can work around Docker’s behaviour of invalidating the cache on any change to the dependencies list by seeding our image with dependencies from a static point in time. Once we have the majority of our dependencies cached, subsequent &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;s will only need to grab the newer gems.&lt;/p&gt;
 
 &lt;p&gt;We’ll start with an example and then pick it apart:&lt;/p&gt;
 
@@ -226,7 +226,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
   &lt;li&gt;Add our source code (and do the rest of the build).&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;By grabbing our Gemfile from the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch we get most of our dependencies up-front. The subsequent &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; [2] then only needs to download dependencies that have been added as part of the feature branch. This means we can add and remove dependencies without fearing Docker invalidating the cache and downloading everything from scratch. Note that [2] and [3] are the popular approach to caching you’re probably already using, so all you need to do is add [1].&lt;/p&gt;
+&lt;p&gt;By grabbing our Gemfile from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch we get most of our dependencies up-front. The subsequent &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; [2] then only needs to download dependencies that have been added as part of the feature branch. This means we can add and remove dependencies without fearing Docker invalidating the cache and downloading everything from scratch. Note that [2] and [3] are the popular approach to caching you’re probably already using, so all you need to do is add [1].&lt;/p&gt;
 
 &lt;p&gt;Suddenly Docker on rubbish hotel wifi is fun again!&lt;/p&gt;
 
@@ -254,7 +254,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;h3 id=&quot;picking-a-seed-point&quot;&gt;Picking a seed point&lt;/h3&gt;
 
-&lt;p&gt;The point you cache in step [1] can make all the difference to your build times, particularly if your dependencies change regularly. We’ve chosen to minimise manual intervention by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch, ensuring the cache point will follow our deployed code closely. It’s also completely reasonable to use &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; if you have a slower release cadence.&lt;/p&gt;
+&lt;p&gt;The point you cache in step [1] can make all the difference to your build times, particularly if your dependencies change regularly. We’ve chosen to minimise manual intervention by using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch, ensuring the cache point will follow our deployed code closely. It’s also completely reasonable to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; if you have a slower release cadence.&lt;/p&gt;
 
 &lt;h3 id=&quot;getting-the-historical-dependency-list&quot;&gt;Getting the historical dependency list&lt;/h3&gt;
 
@@ -266,14 +266,14 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;p&gt;&lt;del&gt;If you’re using GitHub private repositories you’re in luck: they generate per-file keys to allow you to access a file using a simple URL, e.g.:&lt;/del&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/13b4a64d90fece1889c6c24e8f736a2241fefc6c/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;del&gt;You can get the token for your files by viewing the file on GitHub and clicking ‘Raw’ before copying the URL from your address bar. &lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;del&gt;Note that the tokens are &lt;strong&gt;per commit reference&lt;/strong&gt;, so you should use commit-specific URLs in preference to branch references. The following link will break and return &lt;code class=&quot;highlighter-rouge&quot;&gt;404&lt;/code&gt; as soon as &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; is updated:&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Note that the tokens are &lt;strong&gt;per commit reference&lt;/strong&gt;, so you should use commit-specific URLs in preference to branch references. The following link will break and return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;404&lt;/code&gt; as soon as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt; is updated:&lt;/del&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.md?token=AAcWYgmWJyDeDs_6aO-UemuC7ywONtd2ks5XKakOwA%3D%3D
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;private-repositories-on-bitbucket-gitlab-etc&quot;&gt;Private repositories on BitBucket, GitLab, etc.&lt;/h4&gt;
@@ -284,7 +284,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;h4 id=&quot;fallback&quot;&gt;Fallback&lt;/h4&gt;
 
-&lt;p&gt;If you’re using something completely esoteric, you can use Docker’s &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; command in preference to &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;ing them as we have above. Through &lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt; you can curl your files down, install a custom client, or whatever you need.&lt;/p&gt;
+&lt;p&gt;If you’re using something completely esoteric, you can use Docker’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; command in preference to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADD&lt;/code&gt;ing them as we have above. Through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; you can curl your files down, install a custom client, or whatever you need.&lt;/p&gt;
 
 &lt;h2 id=&quot;summary--tldr&quot;&gt;Summary / TL;DR&lt;/h2&gt;
 
@@ -310,7 +310,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 				<title>Migrating user avatars to circular crops, with ImageMagick</title>
 				<dc:creator></dc:creator>
 				
-					<description>&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; Updated to replace &lt;code class=&quot;highlighter-rouge&quot;&gt;compose_opacity&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;DstIn&lt;/code&gt; to preserve source image transparency. Thanks Chen Han!&lt;/p&gt;
+					<description>&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; Updated to replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compose_opacity&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DstIn&lt;/code&gt; to preserve source image transparency. Thanks Chen Han!&lt;/p&gt;
 
 &lt;p&gt;Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it’ll look great for new users, but we don’t want to leave the existing ones behind.
 &lt;!-- more --&gt;&lt;/p&gt;
@@ -339,7 +339,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
   &lt;span class=&quot;nt&quot;&gt;-format&lt;/span&gt; %w&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;%h&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;n &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{ print $1/$2 }'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c1&lt;/span&gt;,2,3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;In the above example we search the &lt;code class=&quot;highlighter-rouge&quot;&gt;avatar_images&lt;/code&gt; directory, include all files, but filter out images we’ve generated in the past (prefixed with &lt;code class=&quot;highlighter-rouge&quot;&gt;thumb_&lt;/code&gt;). The output will be a list of the image propotions as double values (e.g. 4/3 → 1.333, 6/9 → 0.666).&lt;/p&gt;
+&lt;p&gt;In the above example we search the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avatar_images&lt;/code&gt; directory, include all files, but filter out images we’ve generated in the past (prefixed with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thumb_&lt;/code&gt;). The output will be a list of the image propotions as double values (e.g. 4/3 → 1.333, 6/9 → 0.666).&lt;/p&gt;
 
 &lt;p&gt;You can dump this list into Excel and &lt;a href=&quot;http://www.excel-easy.com/examples/histogram.html&quot;&gt;generate a histogram&lt;/a&gt;, or just use it to highlight how many values are outside of ‘squarish’.&lt;/p&gt;
 
@@ -351,7 +351,7 @@ CMD [&amp;quot;nginx&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;daemon off;&am
 
 &lt;p&gt;ImageMagick is all set up to generate our rounded avatar images:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; I’ve updated this script to use &lt;code class=&quot;highlighter-rouge&quot;&gt;DstIn&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;compose_opacity&lt;/code&gt;, to preserve source image transparency in the cropped, masked output. See &lt;a href=&quot;http://www.imagemagick.org/Usage/compose/#duff-porter&quot;&gt;the documentation&lt;/a&gt; for more information about Duff Porter choices.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit (2019-04-23):&lt;/strong&gt; I’ve updated this script to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DstIn&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compose_opacity&lt;/code&gt;, to preserve source image transparency in the cropped, masked output. See &lt;a href=&quot;http://www.imagemagick.org/Usage/compose/#duff-porter&quot;&gt;the documentation&lt;/a&gt; for more information about Duff Porter choices.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/bin/sh&lt;/span&gt;
 convert &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -364,14 +364,14 @@ convert &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;se
     cropped_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.png
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This generates a circular mask, and overlays that on the cropped, centred image. Wrapping the above with &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; allows us to loop through and process all our images:&lt;/p&gt;
+&lt;p&gt;This generates a circular mask, and overlays that on the cropped, centred image. Wrapping the above with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt; allows us to loop through and process all our images:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# assumes we've placed the above snippet crop_avatars.sh&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;cropped_images
 find ./images &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; ./crop_avatars.sh &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We now have a &lt;code class=&quot;highlighter-rouge&quot;&gt;cropped_images/&lt;/code&gt; directory containing smaller, rounder versions of the images. All we need to do then is stitch them together, and once again ImageMagick is there for us:&lt;/p&gt;
+&lt;p&gt;We now have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cropped_images/&lt;/code&gt; directory containing smaller, rounder versions of the images. All we need to do then is stitch them together, and once again ImageMagick is there for us:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;montage cropped_images/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; avatar_montage.png
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -406,19 +406,19 @@ find ./images &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f &lt;span cla
 				
 					<description>&lt;p&gt;A while ago I switched from using boot2docker directly to the Kitematic Mac app. Although Kitematic generally makes life a bit easier when managing Docker containers, it was a bit of a pain to get it running.&lt;/p&gt;
 
-&lt;p&gt;After the Kitematic installation, the VM started but Kitematic had trouble connecting to it. The error messages showed &lt;code class=&quot;highlighter-rouge&quot;&gt;boot2docker&lt;/code&gt; paths so I made the assumption they’d got in a tangle. Uninstalling boot2docker didn’t entirely solve the problem, as I was still unable to connect using the terminal. The error pointed us in the right direction:&lt;/p&gt;
+&lt;p&gt;After the Kitematic installation, the VM started but Kitematic had trouble connecting to it. The error messages showed &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot2docker&lt;/code&gt; paths so I made the assumption they’d got in a tangle. Uninstalling boot2docker didn’t entirely solve the problem, as I was still unable to connect using the terminal. The error pointed us in the right direction:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FATA[0000] Couldn't read ca cert /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: open /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: no such file or directory
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FATA[0000] Couldn't read ca cert /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: open /Users/rb/.boot2docker/certs/boot2docker-vm/ca.pem: no such file or directory
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The other error I was hitting was a bit more vague, but still points to a certificate issue.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Get http://192.168.99.102:2376/v1.17/containers/json: malformed HTTP response &quot;\x15\x03\x01\x00\x02\x02&quot;. Are you trying to connect to a TLS-enabled daemon without TLS?
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Get http://192.168.99.102:2376/v1.17/containers/json: malformed HTTP response &quot;\x15\x03\x01\x00\x02\x02&quot;. Are you trying to connect to a TLS-enabled daemon without TLS?
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;You may find it’s because the boot2docker environment variables are being set in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.profile&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.zshenv&lt;/code&gt;, something like:&lt;/p&gt;
+&lt;p&gt;You may find it’s because the boot2docker environment variables are being set in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.profile&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.zshenv&lt;/code&gt;, something like:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export DOCKER_TLS_VERIFY=1
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -429,7 +429,7 @@ export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOCKER_CERT_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/.docker/machine/machines/dev
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Note that if (like me) you’ve already removed/reinstalled Kitematic, you may find the IP (and possibly subnet) has moved from &lt;code class=&quot;highlighter-rouge&quot;&gt;192.168.60.103&lt;/code&gt;. In my case it is now &lt;code class=&quot;highlighter-rouge&quot;&gt;192.168.99.102&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Note that if (like me) you’ve already removed/reinstalled Kitematic, you may find the IP (and possibly subnet) has moved from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.60.103&lt;/code&gt;. In my case it is now &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.99.102&lt;/code&gt;.&lt;/p&gt;
 </description>
 				
                         	<pubDate>Fri, 28 Aug 2015 00:00:00 +0100</pubDate>
@@ -443,7 +443,7 @@ export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 				
 					<description>&lt;p&gt;Building custom web views within LabKey is pretty straightforward, but if you find yourself needing to constrain the contents of your module horizontally you’ll quickly find that the surrounding tables will gladly stretch to any width. Fortunately restricting the width of hte container is pretty straightforward.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Wrap your contents in a table with &lt;code class=&quot;highlighter-rouge&quot;&gt;table-layout: fixed; width: 100%&lt;/code&gt; and the contents won’t push the surrounding page to wider than the browser window.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; Wrap your contents in a table with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;table-layout: fixed; width: 100%&lt;/code&gt; and the contents won’t push the surrounding page to wider than the browser window.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -473,7 +473,7 @@ export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 
 &lt;p&gt;Table-based layouts are a bit out of fashion these days, but it’s necessary here because of the unbounded tables wrapping the web parts. If there’s a more elegant way of solving it, I’d love to hear about it in the comments.&lt;/p&gt;
 
-&lt;p&gt;With that wrapper in place the standard Bootstrap components went back to behaving as they would in a standalone app, and we’re able to use &lt;code class=&quot;highlighter-rouge&quot;&gt;overflow-x: scroll&lt;/code&gt; where we need to display tables which don’t fit the viewport without breaking the width of the entire LabKey page.&lt;/p&gt;
+&lt;p&gt;With that wrapper in place the standard Bootstrap components went back to behaving as they would in a standalone app, and we’re able to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overflow-x: scroll&lt;/code&gt; where we need to display tables which don’t fit the viewport without breaking the width of the entire LabKey page.&lt;/p&gt;
 
 </description>
 				
@@ -541,7 +541,7 @@ export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 
 &lt;!-- more --&gt;
 
-&lt;p&gt;There are a number of articles covering Angular user alerting, but each one relied on &lt;code class=&quot;highlighter-rouge&quot;&gt;$rootScope&lt;/code&gt; or nested scopes. I try to avoid use of the root scope where possible, in the same way we shun the use of the global namespace in JavaScript in general.&lt;/p&gt;
+&lt;p&gt;There are a number of articles covering Angular user alerting, but each one relied on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$rootScope&lt;/code&gt; or nested scopes. I try to avoid use of the root scope where possible, in the same way we shun the use of the global namespace in JavaScript in general.&lt;/p&gt;
 
 &lt;p&gt;Th first problem we need to solve is to collect and manage the list of alerts. to do this we can create a very simple Angular service:&lt;/p&gt;
 
@@ -620,9 +620,9 @@ export DOCKER_CERT_PATH=/Users/rb/.boot2docker/certs/boot2docker-vm
 
 &lt;p&gt;The above example uses &lt;a href=&quot;TODO&quot;&gt;Angular Bootstrap&lt;/a&gt; alerts, but you can obviously roll your own within the directive.&lt;/p&gt;
 
-&lt;p&gt;To add the alerts to your page all you need is &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-page-alerts&amp;gt;&amp;lt;/my-page-alerts&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To add the alerts to your page all you need is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;my-page-alerts&amp;gt;&amp;lt;/my-page-alerts&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;The service/directive pair results in a globally accessible alerting service without the need to pollute the &lt;code class=&quot;highlighter-rouge&quot;&gt;$rootScope&lt;/code&gt;. One criticism of this approach is that the service and directive are tightly coupled, but this can be remedied by passing in the service as an attribute to the directive, an exercise I’ll leave to the reader (but grab me in the comments or &lt;a href=&quot;https://twitter.com/spikeheap&quot;&gt;on Twitter&lt;/a&gt; if you want a hand ;) ).&lt;/p&gt;
+&lt;p&gt;The service/directive pair results in a globally accessible alerting service without the need to pollute the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$rootScope&lt;/code&gt;. One criticism of this approach is that the service and directive are tightly coupled, but this can be remedied by passing in the service as an attribute to the directive, an exercise I’ll leave to the reader (but grab me in the comments or &lt;a href=&quot;https://twitter.com/spikeheap&quot;&gt;on Twitter&lt;/a&gt; if you want a hand ;) ).&lt;/p&gt;
 </description>
 				
                         	<pubDate>Tue, 17 Mar 2015 00:00:00 +0000</pubDate>

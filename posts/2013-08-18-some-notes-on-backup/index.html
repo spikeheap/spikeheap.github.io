@@ -117,7 +117,7 @@
 
 <p>Rsnapshot does some clever hard-linking to give you the appearance of many independent backups without having to store many copies of the same files. In the example below the same directory has been backed-up two days in a row (daily.0 is the most recent). Even though file1.txt has been deleted at some point and is missing from the latest backup, an older version is still in the system. If file2.exe and file3.xml haven’t changed they will only be stored on disk once.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backup_root
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backup_root
 |- daily.0
 |  |-directory1
 |    |-file2.exe

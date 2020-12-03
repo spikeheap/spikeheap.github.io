@@ -93,14 +93,14 @@
 
 <p>A couple of days later and I’m integrating the project with a local Sonar instance, only to find it fails with a similar message:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ERROR] Failed to execute goal on project XXXXXXXX: Could not resolve dependencies for project XXXXXXXX:XXXXXXXX:jar:1.0-SNAPSHOT: The following artifacts could not be resolved: XXXXXXXX, XXXXXXXX, XXXXXXXX: Could not find artifact XXXXXXXX:XXXXXXXX:jar:1.0-SNAPSHOT -&gt; [Help 1]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ERROR] Failed to execute goal on project XXXXXXXX: Could not resolve dependencies for project XXXXXXXX:XXXXXXXX:jar:1.0-SNAPSHOT: The following artifacts could not be resolved: XXXXXXXX, XXXXXXXX, XXXXXXXX: Could not find artifact XXXXXXXX:XXXXXXXX:jar:1.0-SNAPSHOT -&gt; [Help 1]
 </code></pre></div></div>
 
 <p>A bit of digging turned up an issue which claims the problem is solved in Maven 3.2, but that didn’t solve it for me.</p>
 
 <p>At least as an interim, packaging the project prior to running the Sonar plugin does the trick, ensuring that the relevant JARs are available for the sonar plugin’s run:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn package sonar:sonar
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn package sonar:sonar
 </code></pre></div></div>
 
 <p>Now the only problem is dealing with all the violations I’ve introduced, Bad Ryan!</p>

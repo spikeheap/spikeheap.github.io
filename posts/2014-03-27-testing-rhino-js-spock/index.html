@@ -95,7 +95,7 @@
 
 <h2 id="other-potential-solutions">Other potential solutions</h2>
 
-<p>There are a number of ways of tackling this problem. Initially we attempted to use one of the many existing JavaScript testing libraries, running on Rhino. Jasmine running on Karma was my first choice, but we soon hit issues with <code class="highlighter-rouge">require</code> not being present. Since giving up on that avenue I’ve discovered <a href="http://www.angrycoding.com/2011/09/mozilla-rhino-commonjs-module-support.html">CommonJS for Rhino</a>. That solution may be preferable because it allows you to write your tests in JavaScript, but I love Spock’s data driven capabilities and the cleanness of spec tests, so I’m not disappointed with our result.</p>
+<p>There are a number of ways of tackling this problem. Initially we attempted to use one of the many existing JavaScript testing libraries, running on Rhino. Jasmine running on Karma was my first choice, but we soon hit issues with <code class="language-plaintext highlighter-rouge">require</code> not being present. Since giving up on that avenue I’ve discovered <a href="http://www.angrycoding.com/2011/09/mozilla-rhino-commonjs-module-support.html">CommonJS for Rhino</a>. That solution may be preferable because it allows you to write your tests in JavaScript, but I love Spock’s data driven capabilities and the cleanness of spec tests, so I’m not disappointed with our result.</p>
 
 <h2 id="configuring-gradle">Configuring Gradle</h2>
 
@@ -104,7 +104,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradle init
 </code></pre></div></div>
 
-<p>And then edit the <code class="highlighter-rouge">build.gradle</code> file to look something like the following:</p>
+<p>And then edit the <code class="language-plaintext highlighter-rouge">build.gradle</code> file to look something like the following:</p>
 
 <noscript><pre>apply plugin: &#39;java&#39;
 apply plugin: &#39;groovy&#39;
@@ -123,14 +123,14 @@ dependencies {
 }</pre></noscript>
 <script src="https://gist.github.com/spikeheap/9808514.js?file=build.gradle"> </script>
 
-<p>This will ensure we’ve got Rhino on our classpath, and can use Spock to write our tests. The last <code class="highlighter-rouge">compile</code> dependency allows us to include JAR files in a <code class="highlighter-rouge">lib</code> directory, which can be handy if you use libraries not available through Bintray or Maven.</p>
+<p>This will ensure we’ve got Rhino on our classpath, and can use Spock to write our tests. The last <code class="language-plaintext highlighter-rouge">compile</code> dependency allows us to include JAR files in a <code class="language-plaintext highlighter-rouge">lib</code> directory, which can be handy if you use libraries not available through Bintray or Maven.</p>
 
 <p>We’ll use the standard Maven source locations, which we need to create manually:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> src/<span class="o">{</span>main,test<span class="o">}</span>/<span class="o">{</span>groovy,js<span class="o">}</span>
 </code></pre></div></div>
 
-<p>We’ve now got a Gradle project which we can test with <code class="highlighter-rouge">gradle check</code>, although there’s not much to see at the moment.</p>
+<p>We’ve now got a Gradle project which we can test with <code class="language-plaintext highlighter-rouge">gradle check</code>, although there’s not much to see at the moment.</p>
 
 <h2 id="eclipse">Eclipse</h2>
 
@@ -141,17 +141,17 @@ dependencies {
   <li>The <a href="https://github.com/spring-projects/eclipse-integration-gradle/">Gradle IDE plugin</a> (requires the http://dist.springsource.com/release/TOOLS/gradle update site).</li>
 </ul>
 
-<p>Once they’re installed run <code class="highlighter-rouge">gradle eclipse</code> in the terminal to generate the Eclipse settings files, and then import it into Eclipse with <code class="highlighter-rouge">File &gt; Import... &gt; General &gt; Existing Projects into Workspace</code>.</p>
+<p>Once they’re installed run <code class="language-plaintext highlighter-rouge">gradle eclipse</code> in the terminal to generate the Eclipse settings files, and then import it into Eclipse with <code class="language-plaintext highlighter-rouge">File &gt; Import... &gt; General &gt; Existing Projects into Workspace</code>.</p>
 
 <h3 id="running-tests">Running tests</h3>
 
-<p>In the <code class="highlighter-rouge">Run &gt; Run Configurations</code> configuration, add a JUnit run configuration set to Run all tests in the selected project, package or source folder (selecting the root of tests).</p>
+<p>In the <code class="language-plaintext highlighter-rouge">Run &gt; Run Configurations</code> configuration, add a JUnit run configuration set to Run all tests in the selected project, package or source folder (selecting the root of tests).</p>
 
 <p>You can now run the tests (even Spock tests) just like normal!</p>
 
 <h1 id="testable-javascript">Testable JavaScript</h1>
 
-<p>We’ll create a sample JavaScript file to test in <code class="highlighter-rouge">src/main/js/littleFunction.js</code>, containing the following:</p>
+<p>We’ll create a sample JavaScript file to test in <code class="language-plaintext highlighter-rouge">src/main/js/littleFunction.js</code>, containing the following:</p>
 
 <noscript><pre>function addTogether(a, b, c){
 	return a + b + c;
@@ -162,7 +162,7 @@ dependencies {
 
 <h2 id="writing-tests">Writing tests</h2>
 
-<p>Create a Groovy class named <code class="highlighter-rouge">LittleFunctionSpec.groovy</code> in <code class="highlighter-rouge">src/test/groovy/my/package/</code>, containing the following:</p>
+<p>Create a Groovy class named <code class="language-plaintext highlighter-rouge">LittleFunctionSpec.groovy</code> in <code class="language-plaintext highlighter-rouge">src/test/groovy/my/package/</code>, containing the following:</p>
 
 <noscript><pre>package my.package
 
@@ -204,7 +204,7 @@ class LittleFunctionSpec extends Specification{
 }</pre></noscript>
 <script src="https://gist.github.com/spikeheap/9808514.js?file=LittleFunctionSpec.groovy"> </script>
 
-<p>This gives us our Rhino environment (context). Note that if you want to use <code class="highlighter-rouge">XML</code> objects you’ll need to use a context version &gt; 1.7. All we need to do now is add a test:</p>
+<p>This gives us our Rhino environment (context). Note that if you want to use <code class="language-plaintext highlighter-rouge">XML</code> objects you’ll need to use a context version &gt; 1.7. All we need to do now is add a test:</p>
 
 <noscript><pre>// Add into LittleFunctionSpec.groovy
 def &quot;check little function adds numbers together&quot;(){
@@ -252,7 +252,7 @@ def &quot;check addTogether behaves for #a, #b, #c&quot;(){
 
 <h2 id="running-tests-1">Running tests</h2>
 
-<p>Running the tests is as easy as <code class="highlighter-rouge">gradle check</code>, or pushing the <code class="highlighter-rouge">run</code> button in Eclipse. Doing the former, your test results will be output into an easy-to-read HTML file as well as JUnit XML.</p>
+<p>Running the tests is as easy as <code class="language-plaintext highlighter-rouge">gradle check</code>, or pushing the <code class="language-plaintext highlighter-rouge">run</code> button in Eclipse. Doing the former, your test results will be output into an easy-to-read HTML file as well as JUnit XML.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
