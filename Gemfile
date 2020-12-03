@@ -13,6 +13,7 @@ group :jekyll_plugins do
   gem 'jekyll-gist'
   # gem 'jekyll-paginate'
   # gem 'redcarpet'
+  gem 'kramdown-parser-gfm' # required because Jekyll 3.9's pinned Kramdown removed it from the base gem
 
   # pulls in posts from Medium to appear like cross-posting
   gem "jekyll-display-medium-posts"
