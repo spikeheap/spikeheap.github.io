@@ -100,6 +100,10 @@ jobs:
             git config --global user.email "ryan@slatehorse.com"
             git config --global user.name "Deployment Bot"
 
+            # Clear SSH agent and add the R/W deploy key to allow push
+            ssh-add -D
+            ssh-add ~/.ssh/id_rsa_3fba15a459a63b9faa5fcff5baa76c08
+
             ./node_modules/.bin/grunt deploy
 
       # Store the built site for debugging
