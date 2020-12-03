@@ -58,7 +58,7 @@ jobs:
       # Add R/W SSH key for GitHub to image
       - add_ssh_keys:
           fingerprints:
-            - "c3:c2:fc:70:4c:81:fc:7e:86:f0:5c:8a:7b:ed:ee:6c"
+            - "3f:ba:15:a4:59:a6:3b:9f:aa:5f:cf:f5:ba:a7:6c:08"
 
       # Upgrade NPM to mitigate https://github.com/npm/npm/issues/20926#issuecomment-397372131
       - run:
