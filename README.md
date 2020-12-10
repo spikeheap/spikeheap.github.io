@@ -8,6 +8,21 @@ If you've found an error, typo or stylistic faux-pas, please feel free to open a
 
 If you just disagree with me, let's talk about it in the comments.
 
+## To do
+
+- [x] Update posts template to include title in page
+- [x] Move `docs` directory up to root
+- [ ] Inline all the `{% gist xxxxx %}` macros
+- [ ] Fix links that aren't links (wrap in markdown link syntax)
+- [ ] Update homepage to be summary & links off to places
+- [ ] Publish to GitHub pages using CircleCI (update job)
+
+- [ ] Add `Mentoring` page with call to action to contact 
+- [ ] Add `About` page with link to community, e.g. RemoteHack
+- [ ] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
+- [ ] Round corners of images and add drop-shadow
+- [ ] Add a footer & license (?)
+
 
 ## Requirements when considering alternatives
 
