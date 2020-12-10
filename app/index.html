@@ -4,21 +4,14 @@ layout: default
 <div class="container">
   <div class="row">
       <div class="col-sm-9">
-          {% for post in site.medium_posts %}
 
-            <div class="clearfix margin-bottom">
-              <h3 class="post-title">
-                <a href="{{post.medium_link}}">{{ post.title }}</a>
-              </h3>
-              <div class="clearfix">
-                <small class="pull-right date-subtitle">{{ post.date | date_to_string}}</small>
-              </div>
-              <div>
-                {{post.feed_content | truncatewords:75, "&hellip;" }}
-              </div>
-              <a href="{{post.medium_link}}" class="btn btn-sm btn-success">Read more (on Medium)</a> <span class="reading-time text-muted">{{ post.feed_content | number_of_words | divided_by: 200 | replace: '0', '&lt;1' }} minute read</span>
-            </div>
-          {% endfor %}
+          <div class="jumbotron">
+            <h1>I've moved to Medium</h1>
+            <p class="lead">After spending more time maintaining my blog's build process than writing, I've started writing new things over on Medium.</p>
+            <hr>
+            <p>Keeping things synced between Medium and here was a pain, so older articles will continue to live here (and links won't break). One day I'll procrastinate and figure out a clean way to cross-post, but today isn't that day.</p>
+            <a class="btn btn-primary btn-lg" href="https://spikeheap.medium.com" role="button">Read the new stuff</a>
+          </div>
 
           {% for post in site.posts limit:5 %}
           <div class="clearfix margin-bottom">
