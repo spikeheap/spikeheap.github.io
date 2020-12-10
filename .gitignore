@@ -1,12 +1,5 @@
-# .gitignore for Yeoman-Jekyll projects
-
-.DS_Store
-**/.DS_Store
-.tmp/
-.sass-cache/
-.jekyll/
-
 # Ignore OS generated files #
+.DS_Store
 .DS_Store*
 ehthumbs.db
 Icon?
@@ -33,12 +26,3 @@ Thumbs.db
 *.rar
 *.tar
 *.zip
-
-# Ignore for Yeoman-Jekyll projects #
-app/_bower_components
-dist
-node_modules
-.tmp
-app/.jekyll-metadata
-_site
-.env
