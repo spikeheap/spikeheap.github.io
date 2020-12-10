@@ -15,7 +15,7 @@ By the time I arrived the ambulance had already been called, and I set about tal
 
 Even more luckily, he seemed generally intact, despite putting a pretty big dent into the car and not wearing a helmet.
 
-![Paramedics attending the accident.](/images/posts/2014-02-24-cycling-accident.JPG)
+![Paramedics attending the accident](./images/2014-02-24-cycling-accident.jpg)
 
 The driver was suitably shaken, and you can see why. Turning into the driveway he said the first he knew of the cyclist was seeing his face just before he hit the windscreen. Scary stuff.
 

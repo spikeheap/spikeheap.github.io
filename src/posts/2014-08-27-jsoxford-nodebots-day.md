@@ -15,15 +15,15 @@ A [NodeBot](http://nodebots.io/) is any JavaScript-powered robot, and the aim of
 
 Most importantly, [we had a flag](https://www.youtube.com/watch?v=uEx5G-GOS1k):
 
-![NodeBots flag](/images/posts/2014-08-27_03.jpg)
+![NodeBots flag](./images/2014-08-27_03.jpg)
 
 [Alan Shaw](https://twitter.com/intent/follow?screen_name=_alanshaw) and [Oli Evans](https://twitter.com/intent/follow?screen_name=olizilla) very kindly came up for the day from London to impart some of their NodeBots wizardry on us and show off their impressive suite of hardware. It was great to start the day with the message that 'hardware is really hard' – as I repeatedly drove our JS remote control car into the wall I was definitely feeling that!
 
-![NodeBots presentation](/images/posts/2014-08-27_09.jpg)
+![NodeBots presentation](./images/2014-08-27_09.jpg)
 
 We purchased 10 [oomlout starter kits](http://oomlout.co.uk/) and had a few servos, Arduino Uno boards and a load of wires kicking around, so there was plenty of kit and the day started with most people running through the introductory blinking LED lessons. Some chose to start with Arduino and some went straight to using the Johnny Five library, a JS library for controlling the Arduino inputs/outputs over the USB cable. 
 
-![npm install johnny-five (t-shirt)](/images/posts/2014-08-27_04.jpg)
+![npm install johnny-five (t-shirt)](./images/2014-08-27_04.jpg)
 
 Once the initial single-LED board was out the way things got a bit more interesting, and the rest of the day saw some cool little projects at varying levels of completeness (sorry if I forgot yours):
 
@@ -36,11 +36,11 @@ Once the initial single-LED board was out the way things got a bit more interest
 
 We deliberately didn't set a particular objective so everyone could plough on at their own pace and dive into whatever grabbed their interest. This worked really well, and had the added advantage that it was really easy to organise!
 
-![Marcus, Chris and sensors](/images/posts/2014-08-27_10.jpg)
+![Marcus, Chris and sensors](./images/2014-08-27_10.jpg)
 
 After Oli and Alan had got us all excited about the possibilities they set about linking a Logitech gaming joypad with the CrazyFlie, a cool but twitchy little quadcopter with a death-wish. These little devices are quite exciting (there's nothing boring about flying) but can pick up a lot of speed and cause a lot of damage to themselves with a bit of errant programming. 
 
-![Crazyflie quadcopter](/images/posts/2014-08-27_06.jpg)
+![Crazyflie quadcopter](./images/2014-08-27_06.jpg)
 
 Needless to say it didn't take long before the inevitable:
 
@@ -51,7 +51,7 @@ Fortunately there was plenty of other kit to get overly enthusiastic about.
 
 One limitation of johnny-five is that you need a connection to a laptop to run the JavaScript, so roving machines or fighting bots can be a problem. The [Espruino](http://www.espruino.com/) and [Tessel](https://tessel.io/) boards look really promising because they take different approaches to enabling developers to write JS and end up with a standalone board.
 
-![Tessel board](/images/posts/2014-08-27_07.jpg)
+![Tessel board](./images/2014-08-27_07.jpg)
 
 ### Pinoccio and the Dension WiRC
 
@@ -59,7 +59,7 @@ One limitation of johnny-five is that you need a connection to a laptop to run t
 
 Our first thought was to add more sensors to the existing car but that didn't seem possible so we settled on the idea of using a Pinoccio board as a sensor array and then have a single JS script running on the laptop which would use these sensor readings to action the car. The Pinoccio board seemed perfect for this because the 'lead scout' board has a WiFi backpack. Now that I've had a couple of days to look into Pinoccio in a bit more detail it's clear that all the limitations I'm about to talk about were because of our lack of understanding. Hopefully we'll run another NodeBots day and get a chance to play with it again.
 
-![Pinoccio boards](/images/posts/2014-08-27_13.jpg)
+![Pinoccio boards](./images/2014-08-27_13.jpg)
 
 [Pinoccio boards](https://pinocc.io/) are a great idea: mesh-networked Arduino-based devices which connect to the Internet by default, combined with a web-based IDE. The result is a system you can get up and running with in minutes. Needless to say, having feedback on the IR rangefinder's value in the IDE without typing a single line of code got us quite excited.
 
@@ -75,7 +75,7 @@ It's a shame we only had the afternoon to play around with these devices, and I'
 
 ### Summary
 
-![Group hacking on hardware and laptops](/images/posts/2014-08-27_15.jpg)
+![Group hacking on hardware and laptops](./images/2014-08-27_15.jpg)
 
 Thanks to everyone who's helped out with the JSOxford Summer or Hacks and made it possible, and a huge thanks to [Ben](https://twitter.com/intent/follow?screen_name=benjaminbenben) for coming up with the idea in the first place. We also owe [Alan Shaw](https://twitter.com/intent/follow?screen_name=_alanshaw) and [Oli Evans](https://twitter.com/intent/follow?screen_name=olizilla) at least one or two beers for bringing their skills and enthusiasm and giving up a day to escape the big smoke.
 

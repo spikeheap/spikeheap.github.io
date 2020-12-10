@@ -75,7 +75,7 @@ montage cropped_images/* avatar_montage.png
 
 After all of that you should end up with something like this:
 
-![A montage of user avatars](/images/posts/2015-08-28_montage.jpg)
+![A montage of user avatars](./images/2015-08-28_montage.jpg)
 
 Have fun with it, but don't be surprised when everyone wants to see your new creation. For many organisations this could well be the first chance they've had to see many of their users, and a huge grid of (hopefully smiling) faces can be quite powerful.
 
