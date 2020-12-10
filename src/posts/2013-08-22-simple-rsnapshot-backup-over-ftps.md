@@ -107,7 +107,78 @@ chown rsnapshot /var/run/rsnapshot/
 
 Next we need to set the configuration file. There are many options, so it's a good idea to [read the documentation](http://www.rsnapshot.org/rsnapshot.html), but this will get you up and running:
 
-{% gist spikeheap/7901408 %}
+```conf
+#################################################
+# rsnapshot.conf - rsnapshot configuration file #
+#################################################
+#                                               #
+# PLEASE BE AWARE OF THE FOLLOWING RULES:       #
+#                                               #
+# This file requires tabs between elements      #
+#                                               #
+# Directories require a trailing slash:         #
+#   right: /home/                               #
+#   wrong: /home                                #
+#                                               #
+#################################################
+
+config_version	1.2
+
+snapshot_root	/var/rsnapshot/private/snapshots
+no_create_root	1
+
+cmd_cp		/bin/cp
+cmd_rm		/bin/rm
+cmd_rsync	/usr/bin/rsync
+#cmd_ssh	/usr/bin/ssh
+
+cmd_logger	/usr/bin/logger
+cmd_du		/usr/bin/du
+cmd_rsnapshot_diff	/usr/bin/rsnapshot-diff
+
+# Specify the path to a script (and any optional arguments) to run right
+# before rsnapshot syncs files
+#
+#cmd_preexec	/path/to/preexec/script
+
+# Specify the path to a script (and any optional arguments) to run right
+# after rsnapshot syncs files
+#
+#cmd_postexec	/path/to/postexec/script
+
+
+#########################################
+#           BACKUP INTERVALS            #
+# Must be unique and in ascending order #
+# i.e. hourly, daily, weekly, etc.      #
+#########################################
+
+retain		hourly	24
+retain		daily	7
+retain		weekly	4
+retain		monthly	60
+
+verbose		2
+loglevel	3
+logfile	/var/log/rsnapshot.log
+
+lockfile	/var/run/rsnapshot/rsnapshot.pid
+stop_on_stale_lockfile		0
+
+link_dest	1
+sync_first	1
+
+###############################
+### BACKUP POINTS / SCRIPTS ###
+###############################
+
+# LOCALHOST
+#backup	/home/		localhost/
+#backup	/etc/		localhost/
+
+# Remote SFTP site
+backup	/media/remote_server		remote_server/
+```
 
 Now we can test the configuration (be sure to run as the rsnapshot user):
 

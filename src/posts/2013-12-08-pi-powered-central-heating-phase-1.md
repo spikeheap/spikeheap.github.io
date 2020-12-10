@@ -88,7 +88,24 @@ To get the Pi into a working state from the base SD card image I did the followi
 
 The next step is to get the networking up and running. I wanted a static IP address of 192.168.0.222 on the wired interface just in case I need to get into it manually. I need the PiHut Wifi dongle to DHCP onto our secure(ish) network  (don't forget to <code>ipe-rw</code> first!):
 
-{% gist spikeheap/7857064 %}
+```
+auto lo
+
+iface lo inet loopback
+iface eth0 inet static
+	address 192.168.0.222
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	broadcast 192.168.0.1
+	dns-nameservers 192.168.0.1
+
+allow-hotplug wlan0
+auto wlan0
+iface wlan0 inet dhcp
+	wpa-ssid "myhomenetwork"
+	wpa-psk "mysharedkey"
+	gateway 192.168.0.1
+```
 
 You'll probably want to tweak the above so your network group/router is right, and add your WPA SSID and pre-shared key.
 
@@ -255,7 +272,26 @@ See [the source code](https://github.com/spikeheap/pi-switch-post/blob/master/sw
 ## Extended testing
 What's the point in building a computer-controlled heating system if you have to turn it on and off yourself? Before I get into 'intelligent' heating control I want to run the system for a couple of weeks to prove it works. This can be easily accomplished by editing your crontab (<code>crontab -e</code>):
 
-{% gist spikeheap/7858014 %}
+```cron
+# Update the time from the RTC hourly
+0 * * * * hwclock -s
+
+# Post sensor readings to emoncms
+* * * * * /root/ryan_scripts/tempToEmon.sh > /dev/null
+* * * * * /root/ryan_scripts/heatingStateToEmon.sh > /dev/null
+
+# Every morning, 6:30 to 7:00
+30 6 * * * /root/ryan_scripts/switchHeatingOn.sh > /dev/null
+0 7 * * * /root/ryan_scripts/switchHeatingOff.sh > /dev/null
+
+# Mon, Fri 6pm to 7pm
+0 18 * * 1,5 /root/ryan_scripts/switchHeatingOn.sh > /dev/null
+0 19 * * 1,5 /root/ryan_scripts/switchHeatingOff.sh > /dev/null
+
+# Tues, Weds, Thur 22:20 to 23:00
+20 22 * * 2,3,4 /root/ryan_scripts/switchHeatingOn.sh > /dev/null
+0 23 * * 2,3,4 /root/ryan_scripts/switchHeatingOff.sh > /dev/null
+```
 
 And there we have it, a basic central heating control system, but with the potential for so much more. Obviously the scripts above are pretty rough around the edges, but as a proof of concept I'm pretty happy with it.
 

@@ -32,11 +32,105 @@ At this point, we're not too concerned about production performance, and want to
 
 You may already have an nginx config which works for you in production, but if not, here's a simple setup which proxies all requests to an upstream server/container named 'rails', and redirects all HTTP traffic to HTTPS:
 
-{% gist spikeheap/488929887d22e74783a5f4f982981a84 nginx.conf %}
+```conf
+user nobody nogroup;
+
+pid /tmp/nginx.pid;
+
+error_log stderr;
+# error_log /var/log/nginx/error.log;
+
+events {
+  worker_connections 1024; # increase if you have lots of clients
+  accept_mutex off; # "on" if nginx worker_processes > 1
+  # use epoll; # enable for Linux 2.6+
+  # use kqueue; # enable for FreeBSD, OSX
+}
+
+http {
+  include mime.types;
+  default_type application/octet-stream;
+  # access_log /var/log/nginx/access.log combined;
+  access_log /dev/stdout;
+  sendfile on;
+  tcp_nopush on; # off may be better for *some* Comet/long-poll stuff
+  tcp_nodelay off; # on may be better for some Comet/long-poll stuff
+  gzip on;
+  gzip_http_version 1.0;
+  gzip_proxied any;
+  gzip_min_length 500;
+  gzip_disable "MSIE [1-6]\.";
+
+  # So Rails can be aware of whether it's HTTP/HTTPS
+  proxy_set_header X-Forwarded-Proto $scheme;
+
+  upstream app_server {
+    server rails:3000 fail_timeout=0;
+  }
+
+  # global certs per ip but a cert can sign *.mysite.dev mysite.dev
+  ssl_certificate      /usr/local/app/certs/server.crt;
+  ssl_certificate_key  /usr/local/app/certs/server.key;
+
+  server {
+    listen         80;
+    server_name    192.168.99.100;
+    return         301 https://$server_name$request_uri;
+  }
+
+  server {
+    listen       443 ssl;
+    server_name 192.168.99.100;
+    ssl           on;
+    client_max_body_size 4G;
+    keepalive_timeout 5;
+    root /usr/src/app/;
+    try_files $uri/index.html $uri.html $uri @app;
+
+    location @app {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_pass http://app_server;
+    }
+
+    # Rails error pages
+    error_page 500 502 503 504 /500.html;
+    location = /500.html {
+      root /usr/src/app/public;
+    }
+  }
+}
+```
 
 The [official nginx docker images](TODO) don't currently support HTTPS, so we'll need to build an image to serve as our proxy:
 
-{% gist spikeheap/488929887d22e74783a5f4f982981a84 Dockerfile %}
+```Dockerfile
+FROM alpine:3.2
+MAINTAINER ryan@slatehorse.com
+
+RUN apk add --update nginx openssl && rm -rf /var/cache/apk/*
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+# Generate certificates
+ENV CERTIFICATE_DIR=/usr/local/app/certs
+
+# The hostname used in the certificate. For OSX/Windows you can use the VM IP.
+# For Linux, localhost works fine. 
+ENV DOCKER_HOSTNAME=192.168.99.100
+
+RUN mkdir -p /usr/local/app/certs
+
+RUN openssl req -new -x509 -nodes -subj "/CN=${DOCKER_HOSTNAME}/O=Your Company Name/C=UK" -keyout $CERTIFICATE_DIR/server.key -out $CERTIFICATE_DIR/server.crt
+
+VOLUME /var/log/nginx/
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]
+```
 
 This isn't really doing anything interesting other than the following:
 
