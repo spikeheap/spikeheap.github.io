@@ -1,0 +1,19 @@
+{
+  "name": "ryanbrooks.co.uk",
+  "version": "0.0.1",
+  "description": "The personal blog of Ryan Brooks",
+  "main": "index.js",
+  "authors": {
+    "name": "Ryan Brooks",
+    "email": "ryan@ryanbrooks.co.uk"
+  },
+  "repository": "https://github.com/spikeheap/spikeheap.github.io",
+  "scripts": {
+    "dev": "vuepress dev src --debug",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
