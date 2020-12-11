@@ -27,3 +27,4 @@ Thumbs.db
 *.tar
 *.zip
 node_modules/
+src/.vuepress/dist/
