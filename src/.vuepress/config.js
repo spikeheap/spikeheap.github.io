@@ -32,10 +32,10 @@ module.exports = {
         text: 'Blog',
         link: '/posts/',
       },
-      {
-        text: 'About',
-        link: '/about/'
-      },
+      // {
+      //   text: 'About',
+      //   link: '/about/'
+      // },
       {
         text: 'GitHub',
         link: 'https://github.com/spikeheap'
