@@ -14,9 +14,10 @@ If you just disagree with me, let's talk about it in the comments.
 - [x] Move `docs` directory up to root
 - [x] Inline all the `{% gist xxxxx %}` macros
 - [x] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
-- [ ] Update homepage to be summary & links off to places
-- [ ] Publish to GitHub pages using CircleCI (update job)
+- [x] Remove homepage cruft
+- [ ] Publish to GitHub pages using CircleCI (update job) (https://vuepress.vuejs.org/guide/deploy.html#github-pages)
 
+- [ ] Add authoring notes (metadata, publishing) to readme
 - [ ] Copy across posts from drafts (with dates 🙄)
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
@@ -27,7 +28,19 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Import old stories from Medium
 - [ ] Import images for pi central heating post
 - [ ] Check all stories
+- [ ] Update homepage to be summary & links off to places
 
+## Developing locally
+
+```
+npm run dev
+```
+
+##  Deploying to GitHub pages
+
+```
+./bin/deploy.sh
+```
 
 ## Requirements when considering alternatives
 
