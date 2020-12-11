@@ -11,6 +11,10 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+       # Add R/W SSH key for GitHub push
+      - add_ssh_keys:
+          fingerprints:
+            - "3f:ba:15:a4:59:a6:3b:9f:aa:5f:cf:f5:ba:a7:6c:08"
       - run: |
           git config --global user.email "ryan@slatehorse.com"
           git config --global user.name "Deployment Bot"
