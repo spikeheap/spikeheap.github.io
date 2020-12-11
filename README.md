@@ -12,16 +12,21 @@ If you just disagree with me, let's talk about it in the comments.
 
 - [x] Update posts template to include title in page
 - [x] Move `docs` directory up to root
-- [ ] Inline all the `{% gist xxxxx %}` macros
-- [ ] Fix links that aren't links (wrap in markdown link syntax)
+- [x] Inline all the `{% gist xxxxx %}` macros
+- [x] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
 - [ ] Update homepage to be summary & links off to places
 - [ ] Publish to GitHub pages using CircleCI (update job)
 
+- [ ] Copy across posts from drafts (with dates 🙄)
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
-- [ ] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
 - [ ] Round corners of images and add drop-shadow
+- [ ] Prune links with `TODO` as the URL
+- [ ] Fix links that aren't links (wrap in markdown link syntax)  
 - [ ] Add a footer & license (?)
+- [ ] Import old stories from Medium
+- [ ] Import images for pi central heating post
+- [ ] Check all stories
 
 
 ## Requirements when considering alternatives
@@ -32,6 +37,3 @@ If you just disagree with me, let's talk about it in the comments.
   - https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/
 3. Github-flavour markdown, including code blocks, are present in posts.
 4. Code blocks must be syntax highlighted!
-4. Posts use gist liquid tags. These will need to be honoured, or updated:
-  - `{% gist spikeheap/488929887d22e74783a5f4f982981a84 nginx.conf %}`
-5. We denote the short blurb with `<!-- more -->` in posts.
