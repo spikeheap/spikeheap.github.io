@@ -25,7 +25,7 @@ git init
 git add -A
 git commit -m "Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1} on branch ${COMMIT_BRANCH}"
 
-# Push to the generated_site branch from whatever we're on at the moment
+echo "Push to the generated_site branch from whatever we're on at the moment"
 git push -f git@github.com:spikeheap/spikeheap.github.io.git ${COMMIT_BRANCH}:generated_site
 
 cd -
