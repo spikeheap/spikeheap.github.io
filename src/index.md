@@ -12,5 +12,5 @@ tagline: (the software teams one, no Iron Man suits here)
 #   details: Feature 2 Description
 # - title: Feature 3 Title
 #   details: Feature 3 Description
-footer: Made with ❤️ in Sheffield, UK 
+# footer: Made with ❤️ in Sheffield, UK 
 ---

@@ -39,6 +39,11 @@
         <slot name="page-bottom" />
       </template>
     </Page>
+
+    <div class="footer">
+      Made with ❤️ in Sheffield, UK 
+    </div>
+    
   </div>
 </template>
 

@@ -23,13 +23,15 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Round corners of images and add drop-shadow
 - [ ] Fix links that aren't links (wrap in markdown link syntax)  
-- [ ] Add a footer & license (?)
+
 - [ ] Import old stories from Medium
 - [ ] Import images for pi central heating post
+- [ ] Import image from Wordpress for JIRA skills register post
 - [ ] Check all stories
 - [ ] Update homepage to be summary & links off to places
 - [ ] Add thanks to Vuepress & default theme on site
 - [x] Prune links with `TODO` as the URL
+- [x] Add a footer & license (?)
 
 ## Developing locally
 
