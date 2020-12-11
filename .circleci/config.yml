@@ -24,7 +24,10 @@ jobs:
           ssh-add -D
           ssh-add ~/.ssh/id_rsa_3fba15a459a63b9faa5fcff5baa76c08
 
-          git fetch --depth=10000
+          cp .git/config .git/config.backup
+          git remote remove origin
+          mv .git/config.backup .git/config
+          git fetch
           ./bin/deploy.sh
 
 workflows:
