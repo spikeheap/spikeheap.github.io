@@ -3,7 +3,7 @@
     <slot name="top" />
 
     <div class="theme-default-content">
-      <h1>{{ frontmatter.title }}</h1>
+      <h1 v-if="frontmatter.title">{{ frontmatter.title }}</h1>
       <Content  />
     </div>
     
