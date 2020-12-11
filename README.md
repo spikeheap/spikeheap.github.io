@@ -15,7 +15,7 @@ If you just disagree with me, let's talk about it in the comments.
 - [x] Inline all the `{% gist xxxxx %}` macros
 - [x] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
 - [x] Remove homepage cruft
-- [ ] Publish to GitHub pages using CircleCI (update job) (https://vuepress.vuejs.org/guide/deploy.html#github-pages)
+- [x] Publish to GitHub pages using CircleCI (update job) (https://vuepress.vuejs.org/guide/deploy.html#github-pages)
 
 - [ ] Add authoring notes (metadata, publishing) to readme
 - [ ] Copy across posts from drafts (with dates 🙄)
