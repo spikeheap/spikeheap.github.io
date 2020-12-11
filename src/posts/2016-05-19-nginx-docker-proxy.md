@@ -102,7 +102,7 @@ http {
 }
 ```
 
-The [official nginx docker images](TODO) don't currently support HTTPS, so we'll need to build an image to serve as our proxy:
+The official nginx docker images don't currently support HTTPS, so we'll need to build an image to serve as our proxy:
 
 ```Dockerfile
 FROM alpine:3.2

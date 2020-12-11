@@ -22,13 +22,14 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Round corners of images and add drop-shadow
-- [ ] Prune links with `TODO` as the URL
 - [ ] Fix links that aren't links (wrap in markdown link syntax)  
 - [ ] Add a footer & license (?)
 - [ ] Import old stories from Medium
 - [ ] Import images for pi central heating post
 - [ ] Check all stories
 - [ ] Update homepage to be summary & links off to places
+- [ ] Add thanks to Vuepress & default theme on site
+- [x] Prune links with `TODO` as the URL
 
 ## Developing locally
 

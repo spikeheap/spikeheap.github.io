@@ -7,7 +7,6 @@ comments: true
 published: false
 date: '2017-12-06'
 ---
-# TODO
 I'd split the costs into two broad areas:
 
 1. Things you need to run projects across a company.

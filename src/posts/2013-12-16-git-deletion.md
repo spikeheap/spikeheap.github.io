@@ -81,8 +81,6 @@ git gc --aggressive --prune=now
 git count-objects -v
 ```
 
-<!-- TODO Overwriting history, or pushing a new repository -->
-
 ## Reapplying commits
 It's almost certainly the case that someone cloned your repository and made some changes while you were off rewriting history. If you're now working on a new repository, the easiest way might be to create a patch from the old repo and then apply it to the new one. Using the following command, "-1" refers to the last 1 commit, so you can use "-2", "-3", and so on.
 

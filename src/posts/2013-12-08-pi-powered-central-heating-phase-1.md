@@ -64,7 +64,6 @@ When my components turned up (Ciseco get points for a very fast turnaround) I ne
 
 The relay board uses GPIO pins 24 & 25 (as well as the 5V & ground pins). The RTC/temperature sensor runs on 3V3 and ground pins as well as the SDA and SCL pins for i2c communication, so can be safely added on top of the relay.
 
-<!-- TODO photo of the complete unit-->
 ![The complete unit](http://i1367.photobucket.com/albums/r788/spikeheap/completepi_zpseb6b063b.jpg)
 
 
