@@ -14,6 +14,7 @@ COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
 # build
 npm run build
 
+# We need a CircleCI config otherwise we'll get a warning email for every deploy
 cp -r .circleci src/.vuepress/dist/
 
 # navigate into the build output directory
