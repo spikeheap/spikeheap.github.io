@@ -12,7 +12,15 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: ./bin/deploy.sh
+          command: |
+            git config --global user.email "ryan@slatehorse.com"
+            git config --global user.name "Deployment Bot"
+
+            # Clear SSH agent and add the R/W deploy key to allow push
+            ssh-add -D
+            ssh-add ~/.ssh/id_rsa_3fba15a459a63b9faa5fcff5baa76c08
+
+            ./bin/deploy.sh
 
 workflows:
   deploy_site:
