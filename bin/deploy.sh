@@ -10,7 +10,7 @@ set -e
 
 # Attempt to use CircleCI's environment variables, else pull from git
 COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
-COMMIT_BRANCH=${CIRCLE_SHA1:-`git branch --show-current`}
+COMMIT_BRANCH=${CIRCLE_SHA1:-HEAD}
 
 # build
 npm run build
