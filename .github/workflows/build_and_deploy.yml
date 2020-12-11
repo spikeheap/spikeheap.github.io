@@ -18,6 +18,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
+    - name: Set git user
+      run: |
+        git config --global user.email "ryan@slatehorse.com"
+        git config --global user.name "Deployment Bot"
     - run: ./bin/deploy.sh
       env:
         CI: true
