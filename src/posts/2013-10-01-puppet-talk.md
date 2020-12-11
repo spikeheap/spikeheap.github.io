@@ -8,12 +8,10 @@ published: true
 description: A talk I gave at Software Alliance Wales lightning lunch on the 27th of September 2013
 ---
 
-Here are the slides from a presentation on Puppet I gave at the [Software Alliance Wales](https://twitter.com/SAWBangor) lightning lunch on 27th September 2013:
-
-<script async class="speakerdeck-embed" data-id="029e4b5009b90131f52862a257e402f6" data-ratio="1.29456384323641" src="//speakerdeck.com/assets/embed.js"></script>
+Here are the slides from a presentation on Puppet I gave at the [Software Alliance Wales](https://twitter.com/SAWBangor) lightning lunch on 27th September 2013: [https://speakerdeck.com/spikeheap/our-experience-with-puppet](https://speakerdeck.com/spikeheap/our-experience-with-puppet).
 
 # Aside: making simple presentations
-The source for those slides is available at https://github.com/spikeheap/saw-meet-puppet-talk. 
+The source for those slides is available [here](https://github.com/spikeheap/saw-meet-puppet-talk). 
 
 If you need to build a simple presentation I'd definitely recommend [Reveal.js](http://lab.hakim.se/reveal-js/#/). There are a good number of open-source presentation engines emerging now, and it's great to see open tools (finally) competing with Keynote/Powerpoint for simplicity. For simple presentations it blows them out of the water.
 
