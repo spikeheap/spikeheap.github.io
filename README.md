@@ -42,6 +42,8 @@ npm run dev
 ./bin/deploy.sh
 ```
 
+This script automatically pushes the build to the `generated_site` branch.
+
 ## Requirements when considering alternatives
 
 1. Honour permalinks from days gone by. The format for links is https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/

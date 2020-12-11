@@ -12,7 +12,6 @@ set -e
 COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
 COMMIT_BRANCH=${CIRCLE_SHA1:-`git branch --show-current`}
 
-echo $COMMIT_SHA1
 # build
 npm run build
 
@@ -24,8 +23,9 @@ cd src/.vuepress/dist
 
 git init
 git add -A
-git commit -m 'Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1} on branch ${COMMIT_BRANCH}'
+git commit -m "Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1} on branch ${COMMIT_BRANCH}"
 
-git push -f git@github.com:spikeheap/spikeheap.github.io.git gh-pages
+# Push to the generated_site branch from whatever we're on at the moment
+git push -f git@github.com:spikeheap/spikeheap.github.io.git ${COMMIT_BRANCH}:generated_site
 
 cd -
