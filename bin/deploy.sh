@@ -10,7 +10,6 @@ set -e
 
 # Attempt to use CircleCI's environment variables, else pull from git
 COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
-COMMIT_BRANCH=${CIRCLE_SHA1:-HEAD}
 
 # build
 npm run build
@@ -22,10 +21,11 @@ cd src/.vuepress/dist
 # echo 'www.example.com' > CNAME
 
 git init
+git co -b main
 git add -A
-git commit -m "Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1} on branch ${COMMIT_BRANCH}"
+git commit -m "Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1}"
 
 echo "Push to the generated_site branch from whatever we're on at the moment"
-git push -f git@github.com:spikeheap/spikeheap.github.io.git ${COMMIT_BRANCH}:generated_site
+git push -f git@github.com:spikeheap/spikeheap.github.io.git main:generated_site
 
 cd -
