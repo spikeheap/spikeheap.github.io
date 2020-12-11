@@ -4,6 +4,7 @@ tags: ['post','technology','backup','rsnapshot','automation','puppet','linux']
 title: "Rsnapshot Puppet module"
 date: 2013-08-15 19:20:00
 comments: true
+description: Over the past couple of weeks I've been building a full-fledged Rsnapshot module for Puppet. What started as a simple puppet-isation of an install turned into a labour of love to build my first publishable Puppet module.
 ---
 
 <blockquote>
@@ -16,7 +17,7 @@ I'm often a perfectionist, and after watching [this excellent talk at Google I/O
 Over the past couple of weeks I've been building a full-fledged [Rsnapshot](http://www.rsnapshot.org/) module for the [Puppet configuration management platform](http://projects.puppetlabs.com/). What started as a simple puppet-isation of an install turned into a labour of love to build my first publishable Puppet module.
 
 The module can be found here: https://github.com/spikeheap/puppet_rsnapshot and is released under the [GPL v3](http://www.gnu.org/licenses/gpl.html). Pull requests and issues are welcome! 
-<!-- more -->
+
 The module solves a simple problem: configure a central Rsnapshot system with node-specific backup directories. The module is completely hiera-compatible.
 
 Declaring an Rsnapshot server is as simple as:

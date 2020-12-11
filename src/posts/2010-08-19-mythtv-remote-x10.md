@@ -8,6 +8,7 @@ title: Mythtv Remote X10
 wordpress_id: 28
 tags:
 - mythtv
+description: I have an ATI Remote Wonder remote, which I've been quite happy with for the last couple of years. Not that happy though (or maybe I just like tinkering), because I set about trying to make the remote more responsive
 ---
 
 I have an ATI Remote Wonder remote, which I've been quite happy with for the last couple of years. Not that happy though (or maybe I just like tinkering), because I set about trying to make the remote more responsive. There's something about having to keep letting go of the button and waiting for it to accept a new press that winds me up when I'm trying to watch a film... 

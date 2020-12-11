@@ -5,6 +5,7 @@ title: "Puppet talk"
 date: 2013-10-02 15:39:00+00:00
 comments: true
 published: true
+description: A talk I gave at Software Alliance Wales lightning lunch on the 27th of September 2013
 ---
 
 Here are the slides from a presentation on Puppet I gave at the [Software Alliance Wales](https://twitter.com/SAWBangor) lightning lunch on 27th September 2013:

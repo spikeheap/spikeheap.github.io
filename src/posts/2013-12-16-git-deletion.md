@@ -5,11 +5,10 @@ title: "Preparing a Git repository for open-sourcification"
 date: 2013-12-16 19:48:40+00:00
 comments: true
 published: true
+description: There's an easy way in Git to go through your history and remove the offending articles
 ---
 
 A project I'm involved with is going through the process of being open-sourced and released on GitHub. This is a great development, but of course we have had to go through and make sure that we're able to release everything. The project started out life in a single Git repository so there's plenty of bootstrap data that's owned by other groups within the University. Fortunately there's an easy way in Git to go through your history and remove the offending articles. 
-
-<!-- more -->
 
 __Update 18/12/2013__ For those who don't want to re-clone their project, I've added the commands to flush the deleted refs from your local repository. I've also added a small section on identifying and removing space-hungry sections of the git repository.
 
@@ -64,9 +63,23 @@ To find out the size of your git repository, use <code>git count-objects -v</cod
 
 Ted Naleid has written an excellent article on [finding and purging big files from git history](http://naleid.com/blog/2012/01/17/finding-and-purging-big-files-from-git-history), along with a couple of one-liners to get locate the biggest files. 
 
-I've dumped the above into a handy little script:
+I've dumped the above into a little script:
 
-{% gist spikeheap/8019649 %}
+```bash
+FILE_TO_DELETE="target"
+
+# Filter the history
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch ${FILE_TO_DELETE' --prune-empty --tag-name-filter cat -- --all
+
+# Purge the local repository and force garbage collection
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+# Print new repository size
+git count-objects -v
+```
 
 <!-- TODO Overwriting history, or pushing a new repository -->
 

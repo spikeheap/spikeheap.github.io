@@ -8,6 +8,7 @@ title: Maven sonar:sonar failure for multi-module projects
 wordpress_id: 71
 tags:
 - maven sonar dev
+description: "After refactoring a small project to manage subversion auth information into multiple Maven modules I started running into what I assume is a fairly common problem: trying to build a child module which depends on an edit applied to a different module which hasn't been built yet"
 ---
 
 After refactoring a small project to manage subversion auth information into multiple Maven modules I started running into what I assume is a fairly common problem: trying to build a child module which depends on an edit applied to a different module which hasn't been built yet. For some reason the "Set as main project" option has gone from Netbeans 7.2, so I found myself going back to the command line to build each time.

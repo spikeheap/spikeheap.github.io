@@ -4,11 +4,12 @@ tags: ['post','technology','git']
 title: "Testing Octopress and Heroku"
 date: 2013-08-11 18:21:25+00:00
 comments: true
+description: Octopress is a tool for building static websites and blogs from plain text files, and allows local development before pushing to your live blog. Best of all, it's designed with Git in mind.
 ---
 I have vowed to move away from Wordpress. My blog there, ryanbrooks.wordpress.com, isn't exactly the epitome of regular activity (my last post was back in June) but when I do blog I want it to be easy most of the time and hackable when I'm interested. Enter [Jekyll](http://jekyllrb.com/) and [Octopress](http://octopress.org/). 
 
 TL;DR: Octopress is a tool for building static websites and blogs from plain text files, and allows local development before pushing to your live blog. Best of all, it's designed with Git in mind.
-<!-- more -->
+
 Rather than reproduce the steps to get up and running (the Octopress site has a wealth of top-notch documentation) I'll just highlight the features which made this worth investigating. Octopress is a framework built on top of Jekyll. Jekyll is the engine which builds your sources into a static site. At this point I'm not sure which feature belongs to which project, so I'm going to lump it all together under the Octopress banner for simplicity.
 
 <blockquote> 

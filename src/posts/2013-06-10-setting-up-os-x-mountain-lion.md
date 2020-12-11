@@ -17,6 +17,7 @@ tags:
 - osx
 - personalisation
 - setup
+description: Last month I installed a second internal drive on my Macbook Pro to increase the capacity to nearly a terabyte. Foolishly forgetting that every time I reinstall the OS all the little tweaks from the past n months are forgotten
 ---
 
 Last month I installed a second internal drive on my Macbook Pro to increase the capacity to nearly a terabyte. Foolishly forgetting that every time I reinstall the OS all the little tweaks from the past n months are forgotten.

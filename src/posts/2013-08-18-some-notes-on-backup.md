@@ -4,6 +4,7 @@ tags: ['post','technology','backup','rsnapshot','linux']
 title: "Some notes on backup"
 date: 2013-08-18 18:18:00+00:00
 comments: true
+description: Small business backups are a minefield. Here are some thoughts on how to come up with a strategy that won't leave you at a loss.
 ---
 
 I've been extolling the virtues of backup a lot recently, which has led to a few interesting conversations (and a lot of people rolling their eyes and going back to talking about climbing). 
@@ -11,7 +12,6 @@ I've been extolling the virtues of backup a lot recently, which has led to a few
 One of these conversations was with [Glyn](https://twitter.com/glynhudson) from the amazing [Open Energy Monitor project](http://openenergymonitor.org/emon/), who are wrestling with a backup implementation for their forums. Their requirements are very similar to a lot of small businesses who rely on hosted solutions, so in this post I'm going to talk about small-scale backup strategies and give some suggestions on how to approach the task. 
 
 In a following post I will describe how to set up a simple backup solution using Rsnapshot for machines which don't have SSH or rsync available.
-<!-- more -->
 
 # How much protection?
 A good place to start is figuring out the level of backup you actually need. There are a couple of industry terms which are worth considering here:

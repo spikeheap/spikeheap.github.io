@@ -9,8 +9,6 @@ date: 2016-05-19 17:12:25+00:00
 
 There are many reasons why you might need to develop behind an HTTPS proxy, for example when testing integrations which behave differently based on the security of your site. This post describes how to add an nginx proxy to your docker setup.
 
-<!-- more -->
-
 ### TL;DR
 
 I know, you probably don't care about the back-story, you just want the code. If that's you, this is all you need:

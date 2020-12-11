@@ -5,13 +5,12 @@ title: "Groovy SOAP clients with ws-lite"
 comments: true
 published: true
 date: 2014-08-21
+description: "When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: 'this is perfect for Groovy, and it's DSL support will mean talking to SOAP won't require stub generation or any of that pain'. I was almost right."
 ---
 
 When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: "this is perfect for Groovy, and it's DSL support will mean talking to SOAP won't require stub generation or any of that pain". I was almost right.  
 
 **TLDR;** My client script is [available as a GitHub gist](https://gist.github.com/spikeheap/b5428f11834a0cea3822) for cannibalisation.
-
-<!-- more -->
 
 SOAP is *almost* legacy, but it's still the only way to interface with large enterprise systems, at least in healthcare. Just as I've come to accept that CSV is **the** way everyone sends lab and patient records (when they're not exporting to Excel sheets), I wasn't surprised when our project with MirthResults and MirthConnect only had SOAP calls to add patients to a component. No problem, I thought, just Google "Groovy SOAP" and I'll be done in 10 minutes.
 
@@ -77,4 +76,96 @@ println "There are ${memberCount} members initially"
 
 In the following gist I've abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs. 
 
-{% gist spikeheap/b5428f11834a0cea3822 %}
+```groovy
+@Grab(group='com.github.groovy-wslite', module='groovy-wslite', version='1.1.0')
+
+import groovy.xml.*
+import wslite.soap.*
+import wslite.http.auth.*
+
+def client = new SOAPClient('https://dummy:11443/ClinicalDocumentWSService/ClinicalDocumentWS?wsdl')
+client.authorization = new HTTPBasicAuthorization("mirth", "password")
+
+// Grab the latest member list
+def members = getSubjectGroupMemberIds(client, 'GROUP001', 'NEW').results
+def memberCount = members.list.size()
+println "There are ${memberCount} members initially"
+
+// Get a patient
+def retrievedSubject = getPatientsByFilterWithoutClinicalItems(client, {
+    firstName("Bob")
+    lastName("Bunting")
+    numRows(1)
+  }) 
+def subjectId = retrievedSubject.results.list.id
+println "Subject ID: ${subjectId}, name: ${retrievedSubject.results.list.name.first} ${retrievedSubject.results.list.name.middle} ${retrievedSubject.results.list.name.last}"
+
+// Add the patient to the subjects of interest list (NEW, ACTIVE, EXCLUDED, RETIRED)
+println XmlUtil.serialize( createSubjectGroupMember(client, 'GROUP001', 'NEW', 'MYSTATUS', subjectId) )
+
+// Grab the latest member list
+members = getSubjectGroupMemberIds(client, 'GROUP001', 'NEW').results
+assert  members.list.size() == (memberCount + 1)
+
+println XmlUtil.serialize(members)
+
+
+// SOAP call methods
+
+def getSubjectGroupMemberIds(client, groupId, groupStatusId){
+  doSOAPRequest( client, 'getSubjectGroupMemberIds', {
+    subjectGroupId( groupId )
+    subjectGroupStatusId( groupStatusId )
+  })
+}
+
+/**
+ * Typically search by forename, surname, dob and gender
+ * also by patient alias (NHS # or MRN #)
+ **/
+def getPatientsByFilterWithoutClinicalItems(client, subjectFilter){
+  doSOAPRequest( client, 'getPatientsByFilterWithoutClinicalItems', {
+    subjectFilterModel subjectFilter
+  })
+}
+
+
+def createSubjectGroupMember(client, groupId, groupStatusId, recFacilityId, patientId){
+  doSOAPRequest( client, 'createSubjectGroupMember', {
+    subjectGroupId( groupId )
+    subjectGroupStatusId( groupStatusId )
+    subjectId( patientId )
+    receivingFacilityId ( recFacilityId )
+    createSubjectGroupMemberExt( 0 ) // '0' causes an update to fail silently if it exists already.
+  })
+}
+
+
+/**
+ * Do a SOAP request with the given command and payload.
+ * Doesn't massage the payload, this method is just to reduce copy/paste for the SOAP request.
+ **/
+def doSOAPRequest(client, command, commandBody){
+  def response = client.send(
+                           connectTimeout:5000,
+                           readTimeout:20000,
+                           useCaches:false,
+                           followRedirects:false,
+                           sslTrustAllCerts:true) {
+    envelopeAttributes "xmlns:ejb":"http://ejb.results.mirth.com/"
+    body {
+        "ejb:${command}"(commandBody)
+    }
+  }
+  okStatus(response) ? response."${command}Response".'return' : null
+}
+
+
+/**
+ * Check that the HTTP response is good.
+ * Shamelessly lifted from https://confluence.sakaiproject.org/display/WEBSVCS/WS-Groovy
+ **/
+def okStatus( SOAPResponse response ){
+  return response.httpResponse.statusMessage=="OK"
+}
+```

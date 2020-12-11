@@ -8,8 +8,6 @@ date: 2016-04-28
 ---
 Docker is great for building portable applications, modelling complex environments locally, and helping us bridge the gap between development and production, but installing your Bundler, Bower, NPM, Maven (and so on) dependencies can make builds slow. This post explains how to speed up your builds by seeding the image with most of your dependencies, so subsequent builds aren't hampered by the 'all-or-nothing' approach to updating dependencies.
 
-<!-- more -->
-
 ### A quick note on terms
 
 This post talks about a `Gemfile` and Ruby's gems, but this post applies equally to libraries and dependencies in pretty much any other language. If you're not familiar, the `Gemfile` is the list of libraries, frameworks, and other 3rd party dependencies.

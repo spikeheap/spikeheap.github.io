@@ -8,12 +8,13 @@ title: 'Downloading TV series with BitTorrent: getting The Daily Show and The Co
 wordpress_id: 112
 post_format:
 - Aside
+description: For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer
 ---
 
 For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer. The principle applies to pretty much any other series you might want to get hold of too. If you’re just wanting to watch the odd episode, or don’t want to record them all, a more appropriate article is available here.
 
 **NOTE**: TV series (like films) have copyright, and by downloading an episode you may be breaching copyright law. I’m not advising you to flout copyright law, and you shouldn’t really use this method to get around paying for something!
-<!-- more -->
+
 It seems that living in the UK and watching political satire is not a compatible mix. Since More4 dropped the Daily Show the Radio Times have collected a petition to get it back to no avail. The Global Edition is still pumped out weekly, but that omits many of the best (and most incisive) bits. 
 
 The problem, as the Radio Times article above explains, is that Channel 4 still own the rights to the Daily Show so they can show the Global Edition, so no-one else can pick it up (and why would they, only to compete with the Global Edition). It doesn’t look like this will change in the foreseeable future.

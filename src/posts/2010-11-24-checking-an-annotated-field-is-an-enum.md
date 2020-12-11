@@ -8,6 +8,7 @@ title: Checking an annotated field is an enum
 wordpress_id: 53
 tags:
 - java enum programming
+description: Whilst building an annotation processor for a Seam/Wicket project I'm working on I needed to do a specific action if the annotated field was an `enum`
 ---
 
 Whilst building an annotation processor for a Seam/Wicket project I'm working on I needed to do a specific action if the annotated field was an `enum`. Thanks to autoboxing, I accomplished the task using the `getType()` method and comparing that `Class` object to the enum I was interested in. It did leave me with a big niggle though, and for the past couple of weeks I've been thinking about the following code:

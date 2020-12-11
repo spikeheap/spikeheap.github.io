@@ -2,6 +2,7 @@
 layout: post
 tags: ['post', 'docker']
 title: Kitematic for boot2docker users
+description: "A while ago I switched from using boot2docker directly to the Kitematic Mac app. Although Kitematic generally makes life a bit easier when managing Docker containers, it was a bit of a pain to get it running."
 comments: true
 date: 2015-08-28
 ---

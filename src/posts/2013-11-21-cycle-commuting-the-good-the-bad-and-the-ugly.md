@@ -5,11 +5,11 @@ title: "Cycle commuting: the good, the bad and the ugly"
 date: 2013-11-21 22:24:00+00:00
 comments: true
 published: true
+description: I've been commuting to the John Radcliffe Hospital in Oxford for the last week or so, and the hugely variable quality of cyclists, motorists and pedestrians has been a bit of a shock, so this post is a collection of my notes on transitioning from being "a cyclist" in the countryside to "a cycle commuter" in the city. 
 ---
 
 I've been commuting to the John Radcliffe Hospital in Oxford for the last week or so, and the hugely variable quality of cyclists, motorists and pedestrians has been a bit of a shock, so this post is a collection of my notes on transitioning from being "a cyclist" in the countryside to "a cycle commuter" in the city. 
 
-<!-- more -->
 Moving down to Oxford has its advantages, and one of them is that I'm being forced to ride more. Living in Snowdonia I had a 35 minute ride (plus shower time) or a 10 minute drive, so it was easy for me to come up with excuses to get that extra 20 or 30 minutes sleep. Oxford turns that on its head. Living out near Farmoor on the western side of Oxford and having to commute to Headington means travelling through the centre or using the ring road, so in rush hour the slowest option is now the car, which took an amazing 1 hour 20 minutes to cover the 12 miles. Buses are (in theory) a little faster, and take an hour from the nearest bus-stop. Even cycling slowly on a commuting bike and carrying clothes, food, tech and a ridiculously heavy lock it doesn't take more than 50 minutes door to door. I resolved to get into good habits, and even though Oxford buses are great and my woes were all caused by my own ignorance and lack of organisation, it only took one day of commuting by bus to cement the decision. 
 
 For those who don't know me (and haven't seen 2013's [Team Pedal adventure](http://teampedal.com) when I ride I tend to go fast (but not as fast as I'd like) and light (but not as light as I'd like).

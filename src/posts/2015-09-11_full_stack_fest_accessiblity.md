@@ -4,11 +4,10 @@ layout: post
 tags: ['post', 'events', 'accessibility']
 comments: true
 date: 2015-09-11
+description: Before the 2015 Full Stack Fest, I hadn't really given any thought to how accessible a conference is past whether or not it had wheelchair ramps and lifts. It turns out there's _way_ more to making an event inclusive than that.
 ---
 
 Before the 2015 Full Stack Fest, I hadn't really given any thought to how accessible a conference is past whether or not it had wheelchair ramps and lifts. It turns out there's _way_ more to making an event inclusive than that.
-
-<!-- more -->
 
 ![A live-captioned talk at Full Stack Fest](./images/2015-09-11_good2.jpg) <small>A live-captioned talk at Full Stack Fest</small>
 

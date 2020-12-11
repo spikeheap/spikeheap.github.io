@@ -5,10 +5,9 @@ title: "Pi-powered central heating phase 1"
 date: 2013-12-01 12:48:00+00:00
 comments: true
 published: true
+description: This post is a summary of what I've done and learned, in case I forget it all next week
 ---
 Not that long ago I wrote about [planning to set up a basic Raspberry Pi-controlled central heating system](/posts/2013-11-20-automating-central-heating-control-with-a-raspberry-pi). A few components later, and the relatively simple proof of concept is complete. This post is a summary of what I've done and learned, in case I forget it all next week.
-
-<!-- more -->
 
 ## Firstly, a disclaimer
 Okay, so it's obvious but I have to say it: messing around with mains electricity is dangerous and you could end up getting a pretty big shock (literally). If you don't know what you're doing and don't fancy killing yourself (and potentially other people), get someone else to do it! Everything here is provided without any kind of assurance that it will work for you. Basically, don't blame me if you do something that gets someone electrocuted or causes your house to burn down. You have been warned (I do enjoy a bit of melodrama)!

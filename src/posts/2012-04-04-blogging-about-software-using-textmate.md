@@ -6,6 +6,7 @@ layout: post
 slug: blogging-about-software-using-textmate
 title: Blogging about software using Textmate
 wordpress_id: 129
+description: I'm trying to force myself to be a better contributor to the software development community, and part of that is writing up my rough notes each time I solve an interesting technical problem
 ---
 
 I'm trying to force myself to be a better contributor to the software development community, and part of that is writing up my rough notes each time I solve an interesting technical problem.
@@ -14,7 +15,10 @@ To do that I'm using this Wordpress blog, and Textmate because it makes me far m
 
 The only problem then is posting source code, which this post is simple test for. If the following works:
 
-
+```
+Title: Blogging about software using Textmate
+Slug: blogging-about-software-using-textmate
+```
 
 then source code formatting works from Textmate, and on to the next challenge!
 

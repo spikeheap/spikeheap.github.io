@@ -5,11 +5,11 @@ title: "Bower dependencies with Gradle"
 date: 2014-01-23 10:48:40+00:00
 comments: true
 published: true
+description: We all know it's important to be able to build your code in one step, but when I came to build a project I'm working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.
 ---
 
 We all know [it's important to be able to build your code in one step](http://www.joelonsoftware.com/articles/fog0000000043.html), but when I came to build a project I'm working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.
 
-<!-- more -->
 The project in question is built in Grails but uses Bower to ensure we have the right versions of AngularJS, Bootstrap, etc. Once your development machine is setup it's as "easy" as running <code>bower install</code> whenever the dependencies change, and otherwise using the standard <code>grails</code> commands. 
 
 When you come to a fresh machine there are a few more steps before you can get up and running:
@@ -23,7 +23,41 @@ This is already too much hassle! Grails makes life easier by generating a [Grail
 
 NodeJS is a requirement for development, so I made the assumption that any developer machine would have it present. From there I wanted to use NPM to install Bower and then run Bower to grab the dependencies. There were plenty of options but I'm keen to learn a bit more Gradle so this was a great opportunity. 15 minutes later and we've got a build file (thanks to [Mr Haki](http://mrhaki.blogspot.co.uk/2010/10/gradle-goodness-parse-output-from-exec.html) for the OutputStream processing):
 
-{% gist spikeheap/8558786 %}
+```groovy
+import org.gradle.api.tasks.Exec
+
+defaultTasks 'bower'
+
+// Get the path for the locally installed binaries
+task npmBin << {
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            executable = 'npm'
+            args = ['bin']
+            standardOutput = os
+        }
+        ext.binPath = os.toString().trim() + "/"
+    }
+}
+
+
+// Install packages from package.json
+task npm(type: Exec) {
+    description = "Grab NodeJS dependencies (from package.json)"
+    commandLine = ["npm", "install"]
+    inputs.file "package.json"
+    outputs.dir "node_modules"
+
+    tasks.npmBin.execute()
+
+}
+
+
+// Install the bower components for front-end library management
+task bower(dependsOn: 'npm', type: Exec){
+    commandLine "${npmBin.binPath}bower", 'install'
+}
+```
 
 There may well be a better way of doing this, but it worked for me on OSX. There was a path-related error when we tried to run it on Windows, and if anyone can point out why that would be great.
 

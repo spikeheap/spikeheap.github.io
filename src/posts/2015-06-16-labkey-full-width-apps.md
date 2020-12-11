@@ -4,13 +4,12 @@ tags: ['post', 'labkey']
 title: "Constraining width for LabKey WebParts and Views"
 comments: true
 date: 2015-06-16
+description: "Wrap your contents in a table with `table-layout: fixed; width: 100%` and the contents won't push the surrounding page to wider than the browser window."
 ---
 
 Building custom web views within LabKey is pretty straightforward, but if you find yourself needing to constrain the contents of your module horizontally you'll quickly find that the surrounding tables will gladly stretch to any width. Fortunately restricting the width of hte container is pretty straightforward. 
 
 **TL;DR:** Wrap your contents in a table with `table-layout: fixed; width: 100%` and the contents won't push the surrounding page to wider than the browser window.
-
-<!-- more -->
 
 LabKey's JavaScript API is rich, and allows complex JavaScript applications to be built against it whilst being hosted as web parts or views within the standard LabKey environment. As big fans of [Bootstrap](http://getbootstrap.com/) we were keen to leverage the structure and base components within our embedded application, but quickly came up against an issue where the web part container would grow infinitely to contain our contents. This made things like [justified navs](http://getbootstrap.com/components/#nav-justified) irksome as our content could grow horizontally.
 

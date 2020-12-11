@@ -9,6 +9,7 @@ wordpress_id: 140
 tags:
 - perl
 - programming regular-expressions
+description: One of our applications written in Perl parses large text files to collect information about it. We've ended up applying it (over time) to various different areas, and we're now in a position where we create new versions regularly
 ---
 
 One of our applications written in Perl parses large text files to collect information about it. We've ended up applying it (over time) to various different areas, and we're now in a position where we create new versions regularly.

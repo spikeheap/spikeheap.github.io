@@ -5,11 +5,10 @@ title: "Cycle safely please Oxford"
 date: 2014-02-24 23:48:00+00:00
 comments: true
 published: true
+description: Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.
 ---
 
 Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.
-
-<!-- more -->
 
 By the time I arrived the ambulance had already been called, and I set about talking to the cyclist while doing a basic assessment (those training courses with Cave Rescue came in handy!). Luckily for him we were close to the John Radcliffe hospital, and within 15 minutes he was getting professional attention.
 

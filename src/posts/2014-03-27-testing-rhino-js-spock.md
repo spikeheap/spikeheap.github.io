@@ -5,11 +5,10 @@ title: "Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock"
 date: 2014-03-27 15:58:00+00:00
 comments: true
 published: true
+description: "A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the Rhino JS engine. After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn't be arduous."
 ---
 
 A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the [Rhino JS engine](https://developer.mozilla.org/en-US/docs/Rhino). After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn't be arduous. 
-
-<!-- more -->
 
 ## Other potential solutions
 
@@ -25,7 +24,23 @@ gradle init
 
 And then edit the `build.gradle` file to look something like the following:
 
-{% gist spikeheap/9808514 build.gradle %}
+```groovy
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.1.5'
+    testCompile "org.spockframework:spock-core:0.7-groovy-2.0" 
+	
+    compile 'org.mozilla:rhino:1.7R4'
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
+```
 
 This will ensure we've got Rhino on our classpath, and can use Spock to write our tests. The last `compile` dependency allows us to include JAR files in a `lib` directory, which can be handy if you use libraries not available through Bintray or Maven.
 
@@ -56,7 +71,11 @@ You can now run the tests (even Spock tests) just like normal!
 
 We'll create a sample JavaScript file to test in `src/main/js/littleFunction.js`, containing the following:
 
-{% gist spikeheap/9808514 littleFunction.js %}
+```js
+function addTogether(a, b, c){
+	return a + b + c;
+}
+```
 
 That code isn't likely to win any awards, but we can check that it works by writing a specification.
 
@@ -64,17 +83,93 @@ That code isn't likely to win any awards, but we can check that it works by writ
 
 Create a Groovy class named `LittleFunctionSpec.groovy` in `src/test/groovy/my/package/`, containing the following:
 
-{% gist spikeheap/9808514 LittleFunctionSpec.groovy %}
+```groovy
+package my.package
+
+class LittleFunctionSpec extends Specification{
+	Context context
+	Scriptable scope
+	
+	/**
+	 * Setup, prior to every spec test
+	 */
+	void setup(){
+		 context = Context.enter()
+
+		// Set version to JavaScript1.2 so that we get object-literal style
+		// printing instead of "[object Object]"
+		context.setLanguageVersion(Context.VERSION_1_8)
+
+		// Initialize the standard objects (Object, Function, etc.)
+		// This must be done before scripts can be executed.
+		scope = context.initStandardObjects()
+	}
+	
+	/**
+	 * Teardown method, run after each test. This just ensures we've left the Rhino context.
+	 */
+	void cleanup(){
+		Context.exit();
+	}
+	
+	/**
+	 * Load a JavaScript file into the Rhino engine. For resources held within the project you will probably want a filename like:
+	 * 		"src/main/js/componentX/script.js"
+	 * @param fileName The name of the file to be loaded.
+	 */
+	void loadJSIntoContext(String fileName) {
+		File emulatorFile = fileName as File
+		context.evaluateString(scope, emulatorFile.text, emulatorFile.name, 1, null)
+	}
+    ```
 
 This gives us our Rhino environment (context). Note that if you want to use `XML` objects you'll need to use a context version > 1.7. All we need to do now is add a test:
 
-{% gist spikeheap/9808514 LittleFunctionSpecPartial1.groovy %}
+```groovy
+// Add into LittleFunctionSpec.groovy
+def "check little function adds numbers together"(){
+	given: "I have littleFunction.js loaded"
+	loadJSIntoContext("src/main/js/littleFunction.js")
+	
+	when: "I run the addTogether function for 1, 2, and 3"
+	String jsExercise = "var result = addTogether(1,2,3);"
+	context.evaluateString(scope, jsExercise, "TestScript", 1, null)
+	
+	then: "The result is 6"
+	scope.get("result", scope) == 6
+}
+```
 
 Hopefully that specification is pretty self-explanatory. For more information [Check out the Spock documentation](http://spock-framework.readthedocs.org/en/latest/).
 
 The example above used a single value, but we probably want to check quite a few. Spock's [Data Driven Testing support](http://spock-framework.readthedocs.org/en/latest/data_driven_testing.html) makes this simple, so we can rewrite the test as:
 
-{% gist spikeheap/9808514 LittleFunctionSpecPartial2.groovy %}
+```groovy
+// Add into LittleFunctionSpec.groovy
+@Unroll
+def "check addTogether behaves for #a, #b, #c"(){
+	given: "I have littleFunction.js loaded"
+	loadJSIntoContext("src/main/js/littleFunction.js")
+	
+	when: "I run the addTogether function for 1, 2, and 3"
+	String jsExercise = "var result = addTogether("+a+","+b+","+c+");"
+	context.evaluateString(scope, jsExercise, "TestScript", 1, null)
+	
+	then: "The result is #c"
+	scope.get("result", scope) == (a + b + c)
+	
+	where:
+	a   | b   | c
+	0   | 0   | 0
+	9   | 1   | 0
+	5   | 0   | 5
+	1   | 1   | 1
+	0   | 4   | 24
+	1231| 0   | 0
+	9999| 0   | 4325
+	0   | 035 | 230
+}
+```
 
 ## Running tests
 

@@ -5,6 +5,7 @@ title: "Give and tell challenge"
 comments: true
 published: true
 date: 2014-09-27
+description: "The Ice Bucket Challenge has been a tour-de-force for charitable donations, and has raised a staggering amount of money for the undoubtedly underfunded organisations in the US and here in the UK"
 ---
 
 ![Ice Bucket Challenge](https://farm4.staticflickr.com/3908/14848287869_804a39900f_z_d.jpg) <small>Image courtesy of [Quintano Media / Flickr](https://www.flickr.com/photos/quintanomedia/14848287869/)</small>

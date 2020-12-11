@@ -5,11 +5,10 @@ title: "JSOxford NodeBots, August 2014"
 comments: true
 published: true
 date: 2014-08-27
+description: On the 23rd of August we ran the last event in the JSOxford 2014 Summer of Hacks, building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.
 ---
 
 On the 23rd of August we ran the last event in the [JSOxford 2014 Summer of Hacks](http://jsoxford.com/2014/summer-of-hacks/), building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.
-
-<!-- more -->
 
 A [NodeBot](http://nodebots.io/) is any JavaScript-powered robot, and the aim of the day was to bridge the gap into the physical world with the help of Arduinos, sensors, servos, motors, LEDs and a load of LEGO.
 
