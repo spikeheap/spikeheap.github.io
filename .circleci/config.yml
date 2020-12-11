@@ -16,7 +16,6 @@ jobs:
           fingerprints:
             - "3f:ba:15:a4:59:a6:3b:9f:aa:5f:cf:f5:ba:a7:6c:08"
       - run: |
-          git --version
           git config --global user.email "ryan@slatehorse.com"
           git config --global user.name "Deployment Bot"
 
@@ -30,6 +29,7 @@ workflows:
   deploy_site:
     jobs:
       - build_and_deploy:
-        filters:
-          branches:
-            only: main
+          filters:
+            branches:
+              only: 
+                - main
