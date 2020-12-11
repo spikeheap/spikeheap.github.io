@@ -21,7 +21,7 @@ cd src/.vuepress/dist
 # echo 'www.example.com' > CNAME
 
 git init
-git co -b main
+git checkout -b main
 git add -A
 git commit -m "Build output from ./bin/deploy.sh using commit ${COMMIT_SHA1}"
 
