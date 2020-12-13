@@ -9,7 +9,7 @@ wordpress_id: 168
 description: "I'm a big fan of paper books because they're just so easy to borrow and lend, but I've hit a bit of a problem: persistence. I noticed the other day that the wall was damp next to the bookcase"
 ---
 
-[![20130102-141115](http://ryanbrooks.files.wordpress.com/2012/08/20130102-141115.jpeg)](http://ryanbrooks.wordpress.com/2013/01/02/how-do-you-backup-a-book/20130102-141115/#main)
+![A pile of mouldy books on my kitchen table](./images/2013-01-02-how-do-you-backup-a-book.jpeg)
 
 So I'm a big fan of paper books because they're just so easy to borrow and lend, but I've hit a bit of a problem: persistence. I noticed the other day that the wall was damp next to the bookcase, and have spent the best part of a day ripping the books out, brushing the mould spores off an categorising them into "fine", "not so fine" and "possibly irrecoverable". The photo above constitues all the books falling into the latter two categories. The majority are academic textbooks from my university days, which is great because I don't really need them anymore, but less great because they're also the most expensive if I did want to replace them.
 
