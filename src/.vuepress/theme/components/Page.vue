@@ -4,9 +4,10 @@
 
     <div class="theme-default-content">
       <h1 v-if="frontmatter.title">{{ frontmatter.title }}</h1>
+      <small v-if="frontmatter.date" class="publication-date">Published on {{ new Date(frontmatter.date).toLocaleDateString() }}</small>
       <Content  />
     </div>
-    
+
     <PageEdit />
 
     <PageNav v-bind="{ sidebarItems }" />

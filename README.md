@@ -12,12 +12,9 @@ If you just disagree with me, let's talk about it in the comments.
 
 - [ ] Optimise image on homepage
 - [ ] Add authoring notes (metadata, publishing, embedded tweets) to readme
-- [ ] Add publication date, time to read, to post page
-- [ ] Copy across posts from drafts (with dates 🙄)
+- [ ] Add "time to read" to post page
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
-- [ ] Round corners of images and add drop-shadow
-- [ ] Import old stories from Medium
 - [ ] Import images for pi central heating post
 - [ ] Import image from Wordpress for JIRA skills register post
 - [ ] Check all stories
