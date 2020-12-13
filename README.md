@@ -10,14 +10,6 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [x] Update posts template to include title in page
-- [x] Move `docs` directory up to root
-- [x] Inline all the `{% gist xxxxx %}` macros
-- [x] Create summary/descriptions for each post (automate with pre-`<!-- more -->` block?)
-- [x] Remove homepage cruft
-- [x] Publish to GitHub pages using CircleCI (update job) (https://vuepress.vuejs.org/guide/deploy.html#github-pages)
-
-- [ ] Reintroduce Google Analytics!
 - [ ] Optimise image on homepage
 - [ ] Add authoring notes (metadata, publishing, embedded tweets) to readme
 - [ ] Add publication date, time to read, to post page
@@ -31,9 +23,6 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Check all stories
 - [ ] Update homepage to be summary & links off to places
 - [ ] Add thanks to Vuepress & default theme on site
-- [x] Prune links with `TODO` as the URL
-- [x] Fix links that aren't links (wrap in markdown link syntax)  
-- [x] Add a footer & license (?)
 
 ## Developing locally
 
@@ -48,6 +37,14 @@ npm run dev
 ```
 
 This script automatically pushes the build to the `generated_site` branch.
+
+## Importing from Medium
+
+Let's face it, I write too infrequently for this to be automated. To import a post from Medium:
+
+1. Use `medium-to-markdown` (or one of the other variants) to convert the HTML to markdown.
+2. Download images and update links to be local
+3. Update tweets to use `<Tweet id="xxxxx" />`
 
 ## Requirements when considering alternatives
 
