@@ -17,13 +17,14 @@ If you just disagree with me, let's talk about it in the comments.
 - [x] Remove homepage cruft
 - [x] Publish to GitHub pages using CircleCI (update job) (https://vuepress.vuejs.org/guide/deploy.html#github-pages)
 
-- [ ] Add authoring notes (metadata, publishing) to readme
+- [ ] Reintroduce Google Analytics!
+- [ ] Optimise image on homepage
+- [ ] Add authoring notes (metadata, publishing, embedded tweets) to readme
+- [ ] Add publication date, time to read, to post page
 - [ ] Copy across posts from drafts (with dates 🙄)
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Round corners of images and add drop-shadow
-- [ ] Fix links that aren't links (wrap in markdown link syntax)  
-
 - [ ] Import old stories from Medium
 - [ ] Import images for pi central heating post
 - [ ] Import image from Wordpress for JIRA skills register post
@@ -31,6 +32,7 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Update homepage to be summary & links off to places
 - [ ] Add thanks to Vuepress & default theme on site
 - [x] Prune links with `TODO` as the URL
+- [x] Fix links that aren't links (wrap in markdown link syntax)  
 - [x] Add a footer & license (?)
 
 ## Developing locally
@@ -55,3 +57,4 @@ This script automatically pushes the build to the `generated_site` branch.
   - https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/
 3. Github-flavour markdown, including code blocks, are present in posts.
 4. Code blocks must be syntax highlighted!
+5. Tweets are included using <Tweet id="idxxxxxx"></Tweet>
