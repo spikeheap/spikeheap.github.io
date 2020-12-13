@@ -1,8 +1,6 @@
 ---
 title: Invest in internal tooling
-description: >-
-  Empower colleagues to solve their problems early to retain your development
-  velocity
+description: Empower colleagues to solve their problems early to retain your development velocity
 date: '2018-07-31T10:42:15.937Z'
 categories: []
 keywords: []
@@ -59,3 +57,6 @@ The most common approach to setting aside time seems to be adding one or two ite
 Another way which looks very promising is to have one week of improvements every 4–6 sprints. I read an article a while ago which described lining up sprint starts with the beginning of a month, which built in both the internal improvements iteration week _and_ made it easier to other parts of the business to know when sprints would start/finish (if anyone can remember where that was from I’d appreciate the link!).
 
 There’s always the good, old 20% time approach. We’ve successfully run “Fun Friday Afternoons” where we were a bit tight and only had 10% time. The point is to experiment and see what works well for _your_ team.
+
+---
+This post was originally published [on Medium](https://medium.com/honest-focus/invest-in-internal-tooling-8bf038e45e07).

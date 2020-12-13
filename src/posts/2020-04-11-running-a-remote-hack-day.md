@@ -58,4 +58,4 @@ We’d planned to close up around 5pm, and came back together at 4:30 to show, t
 We’ll be running the next event on Saturday the 25th of April. You should join us: [https://remotehack.space](https://remotehack.space).
 
 ---
-Originally posted [on Medium](https://medium.com/@spikeheap/running-a-remote-hack-day-94fc6a9b9550)
+Originally posted [on Medium](https://medium.com/@spikeheap/running-a-remote-hack-day-94fc6a9b9550).

@@ -35,3 +35,5 @@ I **absolutely** support efforts to make Open Source projects sustainable. Charg
 
 ---
 Thanks to Nevelina Aleksandrova and Emanuil Tolev for help editing this and listening to me rant.
+
+This post was originally published [on Medium](https://medium.com/honest-focus/security-is-not-a-pro-feature-151eec09fdfa).

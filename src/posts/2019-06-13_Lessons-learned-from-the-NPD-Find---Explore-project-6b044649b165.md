@@ -4,9 +4,6 @@ description: >-
   Earlier this year I had the pleasure of working with the Department for
   Education, Nimble and Paper.
 date: '2019-06-13T17:31:00.823Z'
-categories: []
-keywords: []
-slug: /@spikeheap/lessons-learned-from-the-npd-find-explore-project-6b044649b165
 ---
 
 Earlier this year I had the pleasure of working with the Department for Education, Nimble and Paper on the Alpha and Beta phases of a Find & Explore tool for the National Pupil Database. Having reflected on that experience, here’s a few lessons I hope I can apply to future projects, in no particular order.
@@ -61,3 +58,6 @@ This isn’t new, but it’s good to reinforce that the team makes all the diffe
 What actually happened was everyone came together to keep us afloat and (relatively) sane. Having a friendly, supportive environment in the office each day made the last weeks much more enjoyable, and helped prevent us spiralling off individually as we tackled our own challenges. Tacking on “check ins” (thanks for starting that Urska!) to see how everyone’s feeling, and openly promoting mental well-being and the importance of looking after yourself first is paramount. Kudos to Jon for always putting people first, and not faltering when times got tough.
 
 When you’re part of a great team it’s easy to take it for granted. The lesson I’ve taken from this project is to be thankful, and to take the time to let people know when they’ve made an impact.
+
+---
+This post was originally published [on Medium](https://spikeheap.medium.com/lessons-learned-from-the-npd-find-explore-project-6b044649b165).
