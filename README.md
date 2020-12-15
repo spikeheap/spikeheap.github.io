@@ -32,6 +32,22 @@ npm run dev
 
 This script automatically pushes the build to the `generated_site` branch.
 
+## Resizing images
+
+- The homepage hero image maxes out at 450px wide. We need 900px to get retina sharpness.
+- In-page images are max 740px wide, so we need 1480px for retina.
+
+```
+npx sharp-cli resize 900 \
+  --withoutEnlargement \
+  --optimise \
+  --progressive \
+  --format input \
+  --fit inside \
+  --input $(find ./docs -name *.jpg -or -name *.png) \
+  --output "{dir}/{base}"
+```
+
 ## Importing from Medium
 
 Let's face it, I write too infrequently for this to be automated. To import a post from Medium:
