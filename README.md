@@ -10,13 +10,20 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [ ] Optimise image on homepage
-- [ ] Add authoring notes (metadata, publishing, embedded tweets) to readme
-- [ ] Add "time to read" to post page
 - [ ] Add `Mentoring` page with call to action to contact 
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Update homepage to be summary & links off to places
 - [ ] Add thanks to Vuepress & default theme on site
+
+## Authoring notes
+
+### Embedded tweets
+
+To embed a Tweet we use the custom Vue component:
+
+```html
+<Tweet id="xxxxxxx" />
+```
 
 ## Developing locally
 

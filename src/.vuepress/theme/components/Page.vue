@@ -4,7 +4,8 @@
 
     <div class="theme-default-content">
       <h1 v-if="frontmatter.title">{{ frontmatter.title }}</h1>
-      <small v-if="frontmatter.date" class="publication-date">Published on {{ new Date(frontmatter.date).toLocaleDateString() }}</small>
+      <span v-if="frontmatter.date" class="publication-date">Published on {{ new Date(frontmatter.date).toLocaleDateString() }}</span>
+      <Badge v-if="$page.readingTime.text && frontmatter.date">{{ $page.readingTime.text }}</Badge>
       <Content  />
     </div>
 

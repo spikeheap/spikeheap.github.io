@@ -70,6 +70,7 @@ module.exports = {
       {
         'ga': 'UA-43110335-1'
       }
-    ]
+    ],
+    'vuepress-plugin-reading-time'
   ]
 }
