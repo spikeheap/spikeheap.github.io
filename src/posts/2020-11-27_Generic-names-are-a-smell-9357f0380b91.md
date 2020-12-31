@@ -60,7 +60,7 @@ Next time you’re naming a service, application, or component in your code, val
 
 If they pass first time then great! You’ve increased your confidence.
 
-If you’ve tried this approach, or tackle this another way, I’d love to hear about it in the comments or \[on Twitter\]([https://twitter.com/spikeheap](https://twitter.com/spikeheap)).
+If you’ve tried this approach, or tackle this another way, I’d love to hear about it in the comments or [on Twitter](https://twitter.com/spikeheap).
 
 ---
 This post was originally published [on Medium](https://spikeheap.medium.com/generic-names-are-a-smell-9357f0380b91).

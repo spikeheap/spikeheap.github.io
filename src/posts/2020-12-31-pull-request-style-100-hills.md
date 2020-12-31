@@ -87,3 +87,7 @@ Now you’ve figured out how you work, you’ll want to write it down. Without w
 ### Conclusion
 
 Create a style guide for your ways of working, and encourage slow, thoughtful evolution over time. And don’t assume that what works well for your team is inherently the One True Way.
+
+---
+
+This post was originally published [on Medium](https://spikeheap.medium.com/pull-request-style-100-hills-to-die-on-703475d36d74).
