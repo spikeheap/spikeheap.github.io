@@ -39,11 +39,18 @@ module.exports = {
       // },
       {
         text: 'GitHub',
-        link: 'https://github.com/spikeheap'
+        link: 'https://github.com/spikeheap',
+        rel: 'me'
+      },
+      {
+        text: 'Mastodon',
+        link: 'https://mastodon.social/@spikeheap',
+        rel: 'me'
       },
       {
         text: 'Twitter',
-        link: 'https://twitter.com/spikeheap'
+        link: 'https://twitter.com/spikeheap',
+        rel: 'me'
       }
     ],
     sidebar: {
