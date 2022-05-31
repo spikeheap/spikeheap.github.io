@@ -1,0 +1,13 @@
+source: src
+
+title: Ryan Brooks' blog
+description: Technical musings and notes from a polyglot developer
+# url: https://www.ryanbrooks.co.uk
+
+
+safe: true
+timezone: Europe/London
+
+# Publish posts or collection documents with a future date
+future: false
+show_drafts: true
