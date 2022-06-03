@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development', 'programming', 'continuous delivery']
 title: "The importance of the feature toggle"
 description: "TODO"

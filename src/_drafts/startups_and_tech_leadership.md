@@ -1,6 +1,5 @@
 ---
 title: Startups and technical leadership
-layout: post
 tags: ['post', 'leadership', 'management']
 comments: true
 published: false

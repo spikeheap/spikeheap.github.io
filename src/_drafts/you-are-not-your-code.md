@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development', 'programming', 'continuous delivery']
 title: "You are not your code"
 description: "Failed code !== failed person."
