@@ -12,7 +12,7 @@ set -e
 COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
 
 # build
-bundle exec jekyll build --config _config.yml,_config.build.yml
+JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config.build.yml
 
 # We need a CircleCI config otherwise we'll get a warning email for every deploy
 cp -r .circleci _site/
