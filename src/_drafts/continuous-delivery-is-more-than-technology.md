@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development', 'programming', 'continuous delivery']
 title: "Continuous Delivery is more than a technical problem"
 description: "Thoughts on the political side of implementing continuous delivery within a small business."

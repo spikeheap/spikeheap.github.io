@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development']
 title: "New project checklist"
 description: "Starting a new software project? I use this checklist of tools and services to price up and plan a new project."

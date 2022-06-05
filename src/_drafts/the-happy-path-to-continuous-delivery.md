@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development', 'programming', 'continuous delivery']
 title: "The happy path to Continuous Delivery"
 description: "There's more to Continuous Delivery than just blue-green deploys."

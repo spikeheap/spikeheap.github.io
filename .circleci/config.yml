@@ -1,16 +1,20 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.1.0
+  ruby: circleci/ruby@1.0
+  # node: circleci/node@4.1.0
 
 jobs:
   build_and_deploy:
-    executor:
-      name: node/default
-      tag: '14.15'
+    docker:
+      - image: cimg/ruby:3.1-node # use a tailored CircleCI docker image.
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - node/install-packages
+      - ruby/install-deps
+      # - node/install-packages
        # Add R/W SSH key for GitHub push
       - add_ssh_keys:
           fingerprints:
@@ -31,5 +35,5 @@ workflows:
       - build_and_deploy:
           filters:
             branches:
-              only: 
+              only:
                 - main

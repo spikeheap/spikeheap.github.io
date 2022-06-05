@@ -1,0 +1,7 @@
+main:
+  - title: "Posts by year"
+    url: /posts-by-year/
+  - title: "Tags"
+    url: /tags/
+  # - title: "About"
+  #   url: /about/

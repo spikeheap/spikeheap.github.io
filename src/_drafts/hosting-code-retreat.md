@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'software', 'development', 'programming', 'hackday', 'event', 'coderetreat', 'TDD', 'testing']
 title: "Running a Code Retreat"
 date: 2014-07-10 15:58:40 +0000

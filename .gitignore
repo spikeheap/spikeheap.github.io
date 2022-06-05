@@ -28,3 +28,5 @@ Thumbs.db
 *.zip
 node_modules/
 src/.vuepress/dist/
+.jekyll-cache
+_site

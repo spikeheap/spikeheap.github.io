@@ -1,5 +1,4 @@
 ---
-layout: post
 tags: ['post', 'remote']
 title: "A beginner's guide to remote working"
 comments: true

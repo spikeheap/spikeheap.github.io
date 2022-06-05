@@ -10,25 +10,31 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [ ] Add `Mentoring` page with call to action to contact 
+Before switching over:
+- [ ] Clean up
+- [ ] Build and deploy with github actions (and remove CircleCI config)
+
+After shipping:
+- [ ] Add /now page
+- [ ] Add webmentions
 - [ ] Add `About` page with link to community, e.g. RemoteHack
+- [ ] Style captions for images "better"
+- [ ] Sort out nav - posts by tag, year, ???
 - [ ] Update homepage to be summary & links off to places
-- [ ] Add thanks to Vuepress & default theme on site
+- [ ] Figure out a way to blog short notes about websites & things
+- [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
+- [ ] Look at cloudflare analytics
 
 ## Authoring notes
 
 ### Embedded tweets
 
-To embed a Tweet we use the custom Vue component:
-
-```html
-<Tweet id="xxxxxxx" />
-```
+To embed a Tweet use the "Embed tweet" snippet from Twitter's website.
 
 ## Developing locally
 
 ```
-npm run dev
+bundle exec jekyll serve --livereload
 ```
 
 ##  Deploying to GitHub pages
@@ -41,8 +47,7 @@ This script automatically pushes the build to the `generated_site` branch.
 
 ## Resizing images
 
-- The homepage hero image maxes out at 450px wide. We need 900px to get retina sharpness.
-- In-page images are max 740px wide, so we need 1480px for retina.
+To resize to (e.g.) 900px:
 
 ```
 npx sharp-cli resize 900 \
@@ -61,7 +66,7 @@ Let's face it, I write too infrequently for this to be automated. To import a po
 
 1. Use `medium-to-markdown` (or one of the other variants) to convert the HTML to markdown.
 2. Download images and update links to be local
-3. Update tweets to use `<Tweet id="xxxxx" />`
+3. Update tweets to use Twitter embeds
 
 ## Requirements when considering alternatives
 
