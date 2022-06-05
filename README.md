@@ -10,11 +10,6 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-Before switching over:
-- [ ] Clean up
-- [ ] Build and deploy with github actions (and remove CircleCI config)
-
-After shipping:
 - [ ] Add /now page
 - [ ] Add webmentions
 - [ ] Add `About` page with link to community, e.g. RemoteHack
@@ -23,8 +18,8 @@ After shipping:
 - [ ] Update homepage to be summary & links off to places
 - [ ] Figure out a way to blog short notes about websites & things
 - [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
-- [ ] Look at cloudflare analytics
 - [ ] Fix Indieweb `rel=me` for site validation on Mastodon
+- [ ] Build and deploy with github actions (and remove CircleCI config)
 
 ## Authoring notes
 
