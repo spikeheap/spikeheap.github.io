@@ -9,14 +9,21 @@ If you've found an error, typo or stylistic faux-pas, please feel free to open a
 If you just disagree with me, let's talk about it in the comments.
 
 ## To do
+
+Before switching over:
+- [ ] Clean up
 - [ ] Build and deploy with github actions (and remove CircleCI config)
+
+After shipping:
 - [ ] Add /now page
 - [ ] Add webmentions
 - [ ] Add `About` page with link to community, e.g. RemoteHack
+- [ ] Style captions for images "better"
+- [ ] Sort out nav - posts by tag, year, ???
 - [ ] Update homepage to be summary & links off to places
-- [ ] Import posts from Medium
 - [ ] Figure out a way to blog short notes about websites & things
-- [ ] Slim down tags!
+- [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
+- [ ] Look at cloudflare analytics
 
 ## Authoring notes
 
