@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology', 'git', 'grails', 'sonar', 'development']
+tags: 
+  - engineering
+  - guide
 title: "Setting up Grails code quality tools with local Sonar"
 date: 2013-11-21 13:25:00+00:00
 comments: true

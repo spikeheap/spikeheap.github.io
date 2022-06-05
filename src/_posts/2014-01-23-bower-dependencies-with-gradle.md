@@ -1,5 +1,7 @@
 ---
-tags: ['post','gradle', 'open source', 'nodejs','npm','bower','build']
+tags: 
+  - engineering
+  - guide
 title: "Bower dependencies with Gradle"
 date: 2014-01-23 10:48:40+00:00
 comments: true

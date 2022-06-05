@@ -1,5 +1,7 @@
 ---
-tags: ['post','git', 'open source']
+tags: 
+  - engineering
+  - guide
 title: "Preparing a Git repository for open-sourcification"
 date: 2013-12-16 19:48:40+00:00
 comments: true

@@ -1,5 +1,6 @@
 ---
-tags: ['post','raspberrypi', 'home', 'central heating']
+tags: 
+  - update
 title: "Pi-powered central heating phase 1"
 date: 2013-12-01 12:48:00+00:00
 comments: true

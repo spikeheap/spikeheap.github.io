@@ -6,6 +6,8 @@ slug: smaller-scaled-logos-for-mythwebs-elkin-theme
 title: Smaller (scaled) logos for Mythweb's Elkin theme
 wordpress_id: 59
 description: "I really do like MythTV, mostly because I like fiddling with things for hours to make them 'just so'"
+tags: 
+  - guide
 ---
 
 I really do like MythTV, mostly because I like fiddling with things for hours to make them 'just so'. Since 0.23 I have even started thinking it's almost straight-forward to set up. My only complaint has been that mythweb, the web-based interface, had a very dated look and feel. I only use the mythweb for scheduling recordings and checking out what to watch, and with the help of DynDNS I can get to it from anywhere, a feature which Sky have only cottoned onto recently.

@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','backup','gpg','linux']
+tags: 
+  - engineering
+  - guide
 title: "Using GPG to encrypt backups"
 date: 2013-09-12 18:39:00+00:00
 comments: true

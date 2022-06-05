@@ -5,8 +5,9 @@ date: 2010-11-24 17:09:32+00:00
 slug: checking-an-annotated-field-is-an-enum
 title: Checking an annotated field is an enum
 wordpress_id: 53
-tags:
-- java enum programming
+tags: 
+  - engineering
+  - guide
 description: Whilst building an annotation processor for a Seam/Wicket project I'm working on I needed to do a specific action if the annotated field was an `enum`
 ---
 

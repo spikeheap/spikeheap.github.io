@@ -1,5 +1,7 @@
 ---
-tags: ['post','geb', 'grails', 'groovy','testing']
+tags: 
+  - engineering
+  - guide
 title: "Testing double-click events using Geb"
 date: 2014-02-06 22:48:00+00:00
 comments: true

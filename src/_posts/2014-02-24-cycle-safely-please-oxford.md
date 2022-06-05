@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'Oxford', 'cycling', 'safety']
+tags: 
+  - cycling
+  - life
 title: "Cycle safely please Oxford"
 date: 2014-02-24 23:48:00+00:00
 comments: true

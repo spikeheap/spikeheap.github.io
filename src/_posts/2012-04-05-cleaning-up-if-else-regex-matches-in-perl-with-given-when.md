@@ -5,9 +5,9 @@ date: 2012-04-05 08:58:22+00:00
 slug: cleaning-up-if-else-regex-matches-in-perl-with-given-when
 title: Cleaning up if-else regex matches in Perl with given-when
 wordpress_id: 140
-tags:
-- perl
-- programming regular-expressions
+tags: 
+  - engineering
+  - guide
 description: One of our applications written in Perl parses large text files to collect information about it. We've ended up applying it (over time) to various different areas, and we're now in a position where we create new versions regularly
 ---
 

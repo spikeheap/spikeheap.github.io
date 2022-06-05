@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','git','puppet','linux']
+tags: 
+  - engineering
+  - guide
 title: "Refactoring a directory into a git submodule"
 date: 2013-08-16 18:10:00+00:00
 comments: true

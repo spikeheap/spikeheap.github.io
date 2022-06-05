@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'Gradle', 'software', 'development', 'programming', 'Spock', 'TDD', 'BDD', 'Groovy', 'Eclipse']
+tags: 
+  - engineering
+  - guide
 title: "Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock"
 date: 2014-03-27 15:58:00+00:00
 comments: true

@@ -8,10 +8,8 @@ wordpress_id: 158
 post_format:
 - Aside
 tags:
-- jira
-- project-management
-- skills
-- training
+  - engineering
+  - guide
 description: Maybe my search-foo isn't what it used to be, but it seems that there's no standard method for recording employee's skills and training requirements against a central skill set. Our ISO 17025 accreditation requires our skills matrix to be audited, and we need to use it to prove that everyone has the necessary skills to carry out the tasks they're assigned
 ---
 

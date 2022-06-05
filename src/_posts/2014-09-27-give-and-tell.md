@@ -1,5 +1,6 @@
 ---
-tags: ['post', 'charity']
+tags: 
+  - life
 title: "Give and tell challenge"
 comments: true
 published: true

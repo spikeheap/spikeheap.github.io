@@ -8,6 +8,8 @@ wordpress_id: 112
 post_format:
 - Aside
 description: For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer
+tags: 
+  - guide
 ---
 
 For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer. The principle applies to pretty much any other series you might want to get hold of too. If you’re just wanting to watch the odd episode, or don’t want to record them all, a more appropriate article is available here.

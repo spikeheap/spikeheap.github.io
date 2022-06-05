@@ -2,8 +2,7 @@
 title: Invest in internal tooling
 description: Empower colleagues to solve their problems early to retain your development velocity
 date: '2018-07-31T10:42:15.937Z'
-categories: []
-keywords: []
+tag: engineering
 slug: /@spikeheap/invest-in-internal-tooling-8bf038e45e07
 ---
 

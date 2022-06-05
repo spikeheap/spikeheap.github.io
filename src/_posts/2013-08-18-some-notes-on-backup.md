@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','backup','rsnapshot','linux']
+tags: 
+  - engineering
+  - guide
 title: "Some notes on backup"
 date: 2013-08-18 18:18:00+00:00
 comments: true

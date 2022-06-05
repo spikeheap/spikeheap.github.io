@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','configurationmanagement','puppet','linux','presentations']
+tags: 
+  - engineering
+  - event
 title: "Puppet talk"
 date: 2013-10-02 15:39:00+00:00
 comments: true

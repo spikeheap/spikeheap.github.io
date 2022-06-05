@@ -1,5 +1,6 @@
 ---
-tags: ['post','cycling', 'commuting']
+tags: 
+  - cycling
 title: "Cycle commuting: the good, the bad and the ugly"
 date: 2013-11-21 22:24:00+00:00
 comments: true

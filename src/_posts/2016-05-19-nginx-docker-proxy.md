@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'software', 'development', 'programming', 'docker', 'nginx', 'rails']
+tags:
+  - engineering
+  - guide
 title: "A simple HTTPS proxy with Nginx on Docker"
 description: "Add a lightweight nginx container to your Docker setup to test HTTPS-related things."
 comments: true

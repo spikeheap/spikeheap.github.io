@@ -1,5 +1,6 @@
 ---
-tags: ['post','technology','git']
+tags: 
+  - update
 title: "Testing Octopress and Heroku"
 date: 2013-08-11 18:21:25+00:00
 comments: true

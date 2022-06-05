@@ -1,5 +1,6 @@
 ---
-tags: ['post', 'contracting']
+tags: 
+  - reflection
 title: "Reclaiming my Saturday mornings"
 comments: true
 date: 2015-03-22

@@ -6,6 +6,8 @@ slug: how-do-you-backup-a-book
 title: How do you backup a book?
 wordpress_id: 168
 description: "I'm a big fan of paper books because they're just so easy to borrow and lend, but I've hit a bit of a problem: persistence. I noticed the other day that the wall was damp next to the bookcase"
+tags:
+  - update
 ---
 
 ![A pile of mouldy books on my kitchen table](/images/2013-01-02-how-do-you-backup-a-book.jpeg)

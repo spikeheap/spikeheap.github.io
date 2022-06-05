@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'labkey']
+tags: 
+  - engineering
+  - guide
 title: "Constraining width for LabKey WebParts and Views"
 comments: true
 date: 2015-06-16

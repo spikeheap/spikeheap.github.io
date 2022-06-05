@@ -6,6 +6,8 @@ slug: posting-syntax-highlighted-source-code-to-wordpress
 title: Posting syntax highlighted source code to Wordpress
 wordpress_id: 44
 description: Syntax highlighting in Wordpress is actually pretty easy
+tags: 
+  - update
 ---
 
 So I almost left Wordpress the other day, when I found the code tags didn't syntax hightlight. Since then I've found this page: http://en.support.wordpress.com/code/posting-source-code/ which describes how to do it with sourcecode tags. 

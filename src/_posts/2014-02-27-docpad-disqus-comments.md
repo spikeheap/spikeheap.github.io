@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'Grails', 'software', 'development', 'programming']
+tags: 
+  - engineering
+  - guide
 title: "Disqus comment threads on a docpad homepage"
 date: 2014-02-27 18:58:00+00:00
 comments: true

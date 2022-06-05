@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'software', 'development', 'programming', 'hackday', 'event']
+tags: 
+  - engineering
+  - event
 title: "JSOxford NodeBots, August 2014"
 comments: true
 published: true

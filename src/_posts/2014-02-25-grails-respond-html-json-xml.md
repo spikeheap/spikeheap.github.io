@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'Grails', 'software', 'development', 'programming']
+tags: 
+  - engineering
+  - guide
 title: "Using Grails respond for HTML, JSON and XML responses"
 date: 2014-02-25 17:48:00+00:00
 comments: true

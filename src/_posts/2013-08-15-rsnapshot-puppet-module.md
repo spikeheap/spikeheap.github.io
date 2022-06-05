@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','backup','rsnapshot','automation','puppet','linux']
+tags: 
+  - engineering
+  - guide
 title: "Rsnapshot Puppet module"
 date: 2013-08-15 19:20:00
 comments: true

@@ -6,6 +6,8 @@ slug: pfsense-and-virtualbox
 title: pfSense and VirtualBox
 wordpress_id: 50
 description: "Thinking of installing pfSense on VirtualBox to test out the functionality. Great idea!"
+tags: 
+  - update
 ---
 
 Thinking of installing pfSense on VirtualBox to test out the functionality. Great idea! 

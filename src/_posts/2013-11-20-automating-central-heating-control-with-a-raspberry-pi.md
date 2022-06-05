@@ -1,5 +1,6 @@
 ---
-tags: ['post','raspberry pi', 'home', 'central heating']
+tags: 
+  - update
 title: "Plans for automating central heating control with a Raspberry Pi"
 date: 2013-11-20 9:32:00+00:00
 comments: true

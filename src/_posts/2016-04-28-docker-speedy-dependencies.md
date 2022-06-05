@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'software', 'development', 'programming', 'docker', 'npm', 'bundler', 'rails']
+tags:
+  - engineering
+  - guide
 title: "Faster dependencies with Docker"
 description: "This post explains how to speed up your builds by seeding your Docker image with most of your dependencies, without resorting to data volumes."
 comments: true

@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'software', 'development', 'programming', 'hackday', 'event', 'coderetreat', 'TDD', 'testing']
+tags: 
+  - engineering
+  - event
 title: "Oxford's Summer of Hacks 2014 – Code Retreat"
 date: 2014-08-06 15:58:00+00:00
 comments: true

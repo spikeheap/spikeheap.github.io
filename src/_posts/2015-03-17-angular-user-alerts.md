@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'angularjs','javascript', 'software']
+tags: 
+  - engineering
+  - guide
 title: "App-wide AngularJS alerts"
 comments: true
 date: 2015-03-17

@@ -1,5 +1,7 @@
 ---
-tags: ['post','technology','backup','rsnapshot','linux']
+tags: 
+  - engineering
+  - guide
 title: "Simple Rsnapshot backup over FTPS"
 date: 2013-08-22 20:39:00+00:00
 comments: true

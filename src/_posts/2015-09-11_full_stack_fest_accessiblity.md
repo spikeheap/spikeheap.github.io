@@ -1,6 +1,6 @@
 ---
 title: Conferences aren't as accessible as we think they are, but they're getting better
-tags: ['post', 'events', 'accessibility']
+tag: event
 comments: true
 date: 2015-09-11
 description: Before the 2015 Full Stack Fest, I hadn't really given any thought to how accessible a conference is past whether or not it had wheelchair ramps and lifts. It turns out there's _way_ more to making an event inclusive than that.

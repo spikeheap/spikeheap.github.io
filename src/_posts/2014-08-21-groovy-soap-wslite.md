@@ -1,5 +1,7 @@
 ---
-tags: ['post', 'software', 'development']
+tags: 
+  - engineering
+  - guide
 title: "Groovy SOAP clients with ws-lite"
 comments: true
 published: true

@@ -6,6 +6,8 @@ slug: blogging-about-software-using-textmate
 title: Blogging about software using Textmate
 wordpress_id: 129
 description: I'm trying to force myself to be a better contributor to the software development community, and part of that is writing up my rough notes each time I solve an interesting technical problem
+tags: 
+  - update
 ---
 
 I'm trying to force myself to be a better contributor to the software development community, and part of that is writing up my rough notes each time I solve an interesting technical problem.
