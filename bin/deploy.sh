@@ -12,16 +12,13 @@ set -e
 COMMIT_SHA1=${CIRCLE_SHA1:-`git rev-parse --short HEAD`}
 
 # build
-npm run build
+bundle exec jekyll build --config _config.yml,_config.build.yml
 
 # We need a CircleCI config otherwise we'll get a warning email for every deploy
-cp -r .circleci src/.vuepress/dist/
+cp -r .circleci _site/
 
 # navigate into the build output directory
-cd src/.vuepress/dist
-
-# if you are deploying to a custom domain
-echo 'ryanbrooks.co.uk' > CNAME
+cd _site/
 
 git init
 git checkout -b main
