@@ -3,10 +3,9 @@ source: src
 title: Ryan Brooks' blog
 subtitle: # site tagline that appears below site title in masthead
 description: >- # this means to ignore newlines
-  Lead technical architect with a dev & ops origin story. 
-  Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ. 
+  Lead technical architect with a dev & ops origin story.
+  Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ.
   Only personal opinions here
-# url: https://www.ryanbrooks.co.uk
 email:
 twitter_username: spikeheap
 github_username: spikeheap
@@ -26,7 +25,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "en-GB"
 title_separator          : "-"
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url: https://www.ryanbrooks.co.uk # Needed for sitemap generation
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -108,8 +107,8 @@ author:
   name             : "Ryan Brooks"
   avatar           : "/images/ryan_brooks_peak_autumn_2020.jpg"
   bio              : >- # this means to ignore newlines
-    Lead technical architect with a dev & ops origin story. 
-    Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ. 
+    Lead technical architect with a dev & ops origin story.
+    Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ.
     Only personal opinions here
   location         : "Sheffield, UK"
   email            :

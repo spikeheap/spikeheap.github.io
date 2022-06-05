@@ -24,6 +24,7 @@ After shipping:
 - [ ] Figure out a way to blog short notes about websites & things
 - [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
 - [ ] Look at cloudflare analytics
+- [ ] Fix Indieweb `rel=me` for site validation on Mastodon
 
 ## Authoring notes
 
