@@ -20,6 +20,8 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
 - [ ] Fix Indieweb `rel=me` for site validation on Mastodon
 - [ ] Build and deploy with github actions (and remove CircleCI config)
+- [ ] fix small font on mobile
+- [ ] PR for <https://github.com/jekyll/github-metadata/issues/190>
 
 ## Authoring notes
 
