@@ -93,7 +93,7 @@ social:
   type                   : Person # Person or Organization (defaults to Person)
   name                   : Ryan Brooks
   links: # An array of links to social media profiles
-    - https://mastodon.social/@spikeheap
+    - https://ruby.social/@spikeheap
     - https://twitter.com/spikeheap
 
 # Analytics
@@ -126,7 +126,7 @@ author:
       url: https://twitter.com/spikeheap
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
-      url: https://mastodon.social/@spikeheap
+      url: https://ruby.social/@spikeheap
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: https://github.com/spikeheap
@@ -139,7 +139,7 @@ footer:
       url: https://twitter.com/spikeheap
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
-      url: https://mastodon.social/@spikeheap
+      url: https://ruby.social/@spikeheap
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: https://github.com/spikeheap
