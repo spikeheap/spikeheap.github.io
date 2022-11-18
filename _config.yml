@@ -3,8 +3,8 @@ source: src
 title: Ryan Brooks' blog
 subtitle: # site tagline that appears below site title in masthead
 description: >- # this means to ignore newlines
-  Lead technical architect with a dev & ops origin story.
-  Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ.
+  CTO with a dev & ops origin story.
+  Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS.
   Only personal opinions here
 email:
 twitter_username: spikeheap
@@ -109,7 +109,7 @@ author:
   name             : "Ryan Brooks"
   avatar           : "/images/ryan_brooks_peak_autumn_2020.jpg"
   bio              : >- # this means to ignore newlines
-    Lead technical architect with a dev & ops origin story.
+    CTO with a dev & ops origin story.
     Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ.
     Only personal opinions here
   location         : "Sheffield, UK"
