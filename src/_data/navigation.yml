@@ -1,4 +1,6 @@
 main:
+  - title: "Now"
+    url: /now
   - title: "Posts by year"
     url: /posts-by-year/
   - title: "Tags"
