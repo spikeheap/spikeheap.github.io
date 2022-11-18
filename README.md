@@ -22,7 +22,10 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Build and deploy with github actions (and remove CircleCI config)
 - [ ] fix small font on mobile
 - [ ] PR for <https://github.com/jekyll/github-metadata/issues/190>
-
+- [ ] Pull in drafts from
+  - [ ] Medium
+  - [ ] Journal
+  - [ ] Bear
 ## Authoring notes
 
 ### Embedded tweets
