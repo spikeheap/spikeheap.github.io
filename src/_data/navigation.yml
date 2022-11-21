@@ -1,9 +1,13 @@
 main:
+  - title: "Previously"
+    url: /prev
   - title: "Now"
     url: /now
-  - title: "Posts by year"
+  # - title: "About me"
+  #   url: /about
+  - title: "Posts"
     url: /posts-by-year/
-  - title: "Tags"
-    url: /tags/
+  # - title: "Tags"
+  #   url: /tags/
   # - title: "About"
   #   url: /about/
