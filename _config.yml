@@ -7,7 +7,6 @@ description: >- # this means to ignore newlines
   Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS.
   Only personal opinions here
 email:
-twitter_username: spikeheap
 github_username: spikeheap
 search: true
 
@@ -84,8 +83,6 @@ yandex_site_verification :
 baidu_site_verification  :
 
 # Social Sharing
-twitter:
-  username               : spikeheap
 og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
@@ -94,7 +91,6 @@ social:
   name                   : Ryan Brooks
   links: # An array of links to social media profiles
     - https://ruby.social/@spikeheap
-    - https://twitter.com/spikeheap
 
 # Analytics
 analytics:
@@ -121,9 +117,6 @@ author:
     # - label: "Website"
     #   icon: "fas fa-fw fa-link"
     #   url: "https://ryanbrooks.co.uk"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter"
-      url: https://twitter.com/spikeheap
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
       url: https://ruby.social/@spikeheap
@@ -134,9 +127,6 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter"
-      url: https://twitter.com/spikeheap
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
       url: https://ruby.social/@spikeheap
