@@ -1,0 +1,78 @@
+---
+layout: none
+# permalink: .well-known/keybase.txt
+---
+==================================================================
+https://keybase.io/spikeheap
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ryanbrooks.co.uk
+  * I am spikeheap (https://keybase.io/spikeheap) on keybase.
+  * I have a public key with fingerprint 48ED EC4E F283 D4D3 EAD3  9236 F3B7 4711 D033 CD1B
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01013a08c31a925718650ce329901dff54c953930c650792e41a4bb15468d2d9e5460a",
+      "fingerprint": "48edec4ef283d4d3ead39236f3b74711d033cd1b",
+      "host": "keybase.io",
+      "key_id": "f3b74711d033cd1b",
+      "kid": "01013a08c31a925718650ce329901dff54c953930c650792e41a4bb15468d2d9e5460a",
+      "uid": "8d5add1b28418cce5fc66909a471cd19",
+      "username": "spikeheap"
+    },
+    "service": {
+      "hostname": "ryanbrooks.co.uk",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1671443489,
+  "expire_in": 157680000,
+  "prev": "5fe83797649804e9db3913d877c5db20ab168b3615bfcb5694bccb338a6332e1",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNHAnicrVJtUBVlFL4XP0gY4BZGfAmykE3I4O7d75taChrUhAJBSdR1P96F5eLd
+bXe5wdwRihHEiVArc1BGkx+JwEDj4DgChReoAMOgCJQbgkkzQaGQ/RActV3G/vWz
+98/7nvM+z3Oec+b0Bqww+ZnvXnz5ySF0MMJ8xVNXZOI+x2LcECvxJZDNDTnA8gUK
+eaBqdofIQzYIRmAEZWCKQxGGtuIkQhE4zAHUStMwwgsCjnE0jtIozOl5krYCDGEw
+lkVwjKB4K08D/QEzUAIkiM48oMiK6NR0WYwCPOAwIFgplMd4FDA8SltRQkBZEiMR
+hIdRlOMRVifmS6rB0M2xjAoSRUnP6YF92d5/4P9n30XLchSPM7yub6UwhOI4gAsc
+QdAwzejF9bq0AVSB4mT2AR2tyqID5ANGhvYnQHraJXLAmKzRymOIUsI4WUWSHGoi
+JyUWOXQBWZE0iZMK9d98TZNVm8HWSmQD/h5g7Y+F7Kzo5PVh6gwXUFRRckI2REdy
+mmgoIwSJYBiKUXQCBIplUQF20UDgJEHB+jHqAJcuiQuAQkmaJDCagjFA8yxKIyhP
+kSSH86wVZliEoFiUQHBW4FicoDGW41gUpRgCRa0AgYzW3nVKkI3UbTJ5Rt9inpPR
+ihQA7e/25K40mf1Mq1f5GEtm8ltj+Xf1DhUEPRLLLP75Fi94c9cLVXH1S+4fX5uo
+Ed4pD970JdQe0PHQNTvuX5d6jj4cmRURdPapr16pvLltcqAto/qBpeeS6cjGac/J
+8/cX1b1haXlHvg2crj36tuZzIfSttoLg1q2Y91R9eljjrpDJIbItasaxuKnGyyVt
+D7n/yRvzvp/GpU0s/NzW2XCj/9rUSHnRb1ujcyp/yBrKb0pNDekp7wib3hPeYWuO
+/25MCN9gT83MGWq/bvpVe955rvj0xeTSyePb1D97qszCcPrviO9ufGIge6Y4/fRU
+aNUYF7/DN3vDFmnJ5/BLwcmzFYFBEd50z11tZaAKnwGV/R+Xd4+XQn1XM7ukY6EN
+SGaL4s62Hao+47/2xaWp0VWRuddzzj6yzZkbn2t+eKJlp9/N4r8i5f4PJ+XNn6VW
+b4+tGMajR+4lrMvA+vDVHwz3IkRbV3OXOaqjQq7xhi3MgjuDO54ttcx7TrZUJF5e
+cy23Yfx2zGjzipR7u5tjTx2sk0+83ls3N9Bt+r5Mfeb9rNGFsmrvoJuOuNqwLxo6
+cENTfX1qn2g1fUQ5C1zWxnkluL1zad1BS3xyRsXeB9155Rv3jHxT5x1rv5TU3XR7
+Zidz7I/N9a4rpWuffjXhVlPh1+OtIZelvqbFC+u33FlMiT1+dO58TMqBEWwuICos
+/ZbY0Cn+8pP7izhvUlp4bdbf7tZ/AO6GwBg=
+=sHgz
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/spikeheap
+
+==================================================================
