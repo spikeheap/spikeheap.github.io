@@ -16,7 +16,7 @@ To help me out next time, and for anyone who's interested, here's a quick run-do
 
 #### Update 2019-06-28
 
-Six years later, I don't quite follow this process anymore. I now have a bootstrap script which I keep up to date: https://github.com/spikeheap/dotfiles.
+Six years later, I don't quite follow this process anymore. I now have a [bootstrap script on Github](https://github.com/spikeheap/dotfiles).
 
 ### Getting things right in System Preferences
 	
