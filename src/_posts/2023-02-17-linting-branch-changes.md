@@ -40,3 +40,10 @@ Once you've got a consistently linted codebase it makes a lot of sense to use ed
 However they're less helpful when you're introducing linting because auto-linting a file you've touched groups changes to code with linting modifications. This increases the complexity and cognitive load for both reviewers and future developers spelunking the codebase, possibly mid-way through debugging a tricky error. 
 
 In this case it's friendlier to separate the Rubocop linting from other changes. This might mean separate PRs for linter fixes, or a separate commit in the same request.
+
+## Continuous Integration is your friend
+
+Once the team is able to lint the codebase locally and apply fixes, the next step is to add that linting to your CI service to validate that pull requests consistently improve the codebase. 
+
+Depending on your CI service, you _may_ want to make those checks non-blocking to start with. Your teammates who make a one line change in _that_ thousand line file will be thankful!
+
