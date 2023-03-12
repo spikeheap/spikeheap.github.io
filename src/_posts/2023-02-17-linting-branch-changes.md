@@ -17,7 +17,7 @@ Instead of spending a soul-crushing few days trawling through the offences or bl
 Linting only the files that have changed is fairly straightforward. First we need to find the files that have changed (e.g. for the `main` branch). We can do this with `git diff` and filter for `A`dded, `M`odified, and `R`enamed files:
 
 ```bash
-git diff --name-only --diff-filter=AMR main
+git diff --name-only --diff-filter=AMR main...
 ```
 (thanks to [this StackOverflow answer](https://stackoverflow.com/a/10641400/384693)) for inspiration.
 
@@ -30,7 +30,7 @@ rubocop --only-recognized-files --autocorrect -- file_a.rb file_b.rb
 We can put this together to get a one-line command that runs Rubocop over any files that have been added, modified, or renamed:
 
 ```bash
-rubocop -a --only-recognized-files $(git diff --diff-filter=AMR --name-only main)
+rubocop -a --only-recognized-files $(git diff --diff-filter=AMR --name-only main...)
 ```
 
 > An early version of this approach used `xargs` to pass files, however this doesn't always play nicely with [Pry](https://github.com/pry/pry), rending the breakpoint non-interactive. I didn't get to the bottom of that, let me know if you have any ideas on [Mastodon](https://ruby.social/@spikeheap).
@@ -58,9 +58,9 @@ To work around this we can check to see whether the list of changed files is emp
 ```bash
 
 
-CHANGED_FILES=$(git diff --diff-filter=AMR --name-only main)
+CHANGED_FILES=$(git diff --diff-filter=AMR --name-only main...)
 
 # -n checks whether the list of changed files is null, to prevent Rubocop from running over
-# the _whole_ codebase if we haven't changed a processable file in the branch
+# the _whole_ codebase if we've only removed files from the branch
 [ -n "$CHANGED_FILES" ] && bundle exec rubocop --only-recognized-file-types $(echo $CHANGED_FILES)
 
