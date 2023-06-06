@@ -3,19 +3,11 @@ permalink: /now/
 title: "What I'm doing now"
 layout: single
 ---
-Updated on the 20th of April 2022
+Updated on the 6th of June 2023
 
-A lot has changed over the last few months since I updated this:
+With the start of summer I'm rediscovering my love for running, cycling and the outdoors after an enforced hiatus. I'm having to fight my tendency to push myself as I slowly rebuild after COVID, but few things beat a long self-powered journey in a remote place. I'm working on the balance of parenting and these longer solo activities – and I don't want to miss out on either!
 
-## Moving into contracting and consulting
-
-After a few months helping Bookwhen, I'm moving back into the interim CTO and contracting game. It was really nice to spend a stint helping them reboot their technical and product processes, and introduce things like infrastructure-as-code, and it reminded me how much satisfaction I get from working as if I won't always be there by baking things into documentation, process and the way everyone works.
-
-I'm taking a little time for house renovations and for adventures in the Peak District with my daughter, but I'll be looking for new opportunities very soon.
-
-## I gave up hacking my espresso machine
-
-I had a [gaggiuino modded](https://gaggiuino.github.io) Gaggia Classic espresso machine, but it turns out I'm more interested in learning about making good coffee than managing hardware and software first thing in the morning. It's not a reflection on the open-source project, but a few repeating minor hardware failures wore me down. I've now got a La Marzocco Linea Micra and it's been very relaxing!
+I've just stepped back into contracting and consulting after a few years in employment. I really appreciate the slow pendulum swing, and being able to incorporate skills and experiences from the different ways of working. I'm having to remember the intricacies of running a small business again though. Things like timesheeting, invoicing and accounting are a fairly distant memory!
 
 ## Running Remote Hack
 
