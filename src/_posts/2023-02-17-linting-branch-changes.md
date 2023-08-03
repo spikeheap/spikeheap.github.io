@@ -56,11 +56,9 @@ We need to make our CI script a little smarter than the one we've been running l
 To work around this we can check to see whether the list of changed files is empty before passing it to Rubocop:
 
 ```bash
-
-
 CHANGED_FILES=$(git diff --diff-filter=AMR --name-only main...)
 
 # -n checks whether the list of changed files is null, to prevent Rubocop from running over
 # the _whole_ codebase if we've only removed files from the branch
 [ -n "$CHANGED_FILES" ] && bundle exec rubocop --only-recognized-file-types $(echo $CHANGED_FILES)
-
+```
