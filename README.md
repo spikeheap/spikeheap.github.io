@@ -4,7 +4,7 @@ This is the personal blog of Ryan Brooks at http://www.ryanbrooks.co.uk. All con
 
 Please see the [license](LICENSE.md) to see how you can use the content of this site.
 
-If you've found an error, typo or stylistic faux-pas, please feel free to open an issue or create a pull request. 
+If you've found an error, typo or stylistic faux-pas, please feel free to open an issue or create a pull request.
 
 If you just disagree with me, let's talk about it in the comments.
 
@@ -23,9 +23,10 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] fix small font on mobile
 - [ ] PR for <https://github.com/jekyll/github-metadata/issues/190>
 - [ ] Pull in drafts from
-  - [ ] Medium
-  - [ ] Journal
-  - [ ] Bear
+- [ ] Medium
+- [ ] Journal
+- [ ] Bear
+
 ## Authoring notes
 
 ### Embedded tweets
