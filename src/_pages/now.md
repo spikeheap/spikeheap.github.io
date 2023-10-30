@@ -3,15 +3,13 @@ permalink: /now/
 title: "What I'm doing now"
 layout: single
 ---
-Updated on the 6th of June 2023
+Updated on the 30th of October 2023
 
-With the start of summer I'm rediscovering my love for running, cycling and the outdoors after an enforced hiatus. I'm having to fight my tendency to push myself as I slowly rebuild after COVID, but few things beat a long self-powered journey in a remote place. I'm working on the balance of parenting and these longer solo activities – and I don't want to miss out on either!
+Most of my summer was spent finding edge-cases in home renovation – redecorating a bedroom turned into an epic including partially rebuilding a wall. I'm almost over it, but still feeling a bit bitter about how hard it is to find quality local tradespeople.
 
-I've just stepped back into contracting and consulting after a few years in employment. I really appreciate the slow pendulum swing, and being able to incorporate skills and experiences from the different ways of working. I'm having to remember the intricacies of running a small business again though. Things like timesheeting, invoicing and accounting are a fairly distant memory!
+I've been helping a London council build up their cyber security capabilities. It still feels good to be able to work with local and central government, as there are still so many places to have a big impact on people's lives.
 
-## Running Remote Hack
-
-We celebrated [Remote Hack](https://remotehack.space)'s 3rd birthday in March. Three years have flown by, and it was interesting to reflect on how different life is now. Remote Hack has always been a pleasure. Part of what makes it great is how low-effort it is, for organisers as well participants.
+I've also recently picked up the guitar again and started lessons for the first time. The learning process for an instrument isn't something I've done since I was a kid, and I've strangely enjoyed going back to being a novice and taking direction.
 
 ---
 This is a [now page](https://nownownow.com). If it's old, hassle me on social media.
