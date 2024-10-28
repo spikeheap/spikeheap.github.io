@@ -11,7 +11,7 @@ gem "jekyll"
 # See https://github.com/jekyll/github-metadata/issues/190
 gem 'github-pages', group: :jekyll_plugins
 
-gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
 
 gem "minimal-mistakes-jekyll", "~> 4.24"
 
