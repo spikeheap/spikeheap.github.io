@@ -10,7 +10,6 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [ ] Add /now page
 - [ ] Add webmentions
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Style captions for images "better"
