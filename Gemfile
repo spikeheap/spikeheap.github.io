@@ -18,3 +18,5 @@ gem "minimal-mistakes-jekyll", "~> 4.24"
 gem "jekyll-include-cache", "~> 0.2.1"
 
 # gem "kramdown-parser-gfm", "~> 1.1"
+
+gem "faraday-retry", "~> 2.2"
