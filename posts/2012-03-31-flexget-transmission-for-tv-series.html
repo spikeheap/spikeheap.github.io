@@ -1,0 +1,745 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK - Ryan Brooks’ blog</title>
+<meta name="description" content="For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2012-03-31-flexget-transmission-for-tv-series.html">
+
+
+  <meta property="og:description" content="For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2012-03-31T13:21:48+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2012-03-31-flexget-transmission-for-tv-series.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url"></a>
+    </h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK">
+    <meta itemprop="description" content="For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer. The principle applies to pretty much any other series you might want to get hold of too. If you’re just wanting to watch the odd episode, or don’t want to record them all, a more appropriate article is available here.">
+    <meta itemprop="datePublished" content="2012-03-31T13:21:48+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2012-03-31-flexget-transmission-for-tv-series.html" itemprop="url">Downloading TV series with BitTorrent: getting The Daily Show and The Colbert Report in the UK
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>For anyone with a basic knowledge of the Unix terminal, here’s a quick guide to getting the Daily Show with John Stewart and The Colbert Report onto your computer. The principle applies to pretty much any other series you might want to get hold of too. If you’re just wanting to watch the odd episode, or don’t want to record them all, a more appropriate article is available here.</p>
+
+<p><strong>NOTE</strong>: TV series (like films) have copyright, and by downloading an episode you may be breaching copyright law. I’m not advising you to flout copyright law, and you shouldn’t really use this method to get around paying for something!</p>
+
+<p>It seems that living in the UK and watching political satire is not a compatible mix. Since More4 dropped the Daily Show the Radio Times have collected a petition to get it back to no avail. The Global Edition is still pumped out weekly, but that omits many of the best (and most incisive) bits.</p>
+
+<p>The problem, as the Radio Times article above explains, is that Channel 4 still own the rights to the Daily Show so they can show the Global Edition, so no-one else can pick it up (and why would they, only to compete with the Global Edition). It doesn’t look like this will change in the foreseeable future.</p>
+
+<p>No problem (I thought), Comedy Central is available on Sky, which we joined around Christmas. Unfortunately even Comedy Central don’t think their show is good enough for the UK, so I’ve aggregated all the information I found about setting up an automatic BitTorrent server based on RSS feeds into these notes.</p>
+
+<h1 id="pre-requisites">Pre-requisites</h1>
+
+<p>This has been set up and tested on an Ubuntu server. The same steps should apply to most Linux distros, and can be fudged a bit to work on OSX. The system consists of two components, which I assume you’ve installed:</p>
+
+<ol>
+  <li>Flexget to read the RSS feeds and download new episodes’ torrent files</li>
+  <li>Transmission Daemon to download the torrent files</li>
+</ol>
+
+<p>MediaTomb is a uPNP media server which can very easily watch the directories containing the downloaded episodes, which gives a very easy way to get the episodes onto your TV if you have an XBox, PS3 or uPNP capable device.</p>
+
+<h1 id="configuring-flexget">Configuring Flexget</h1>
+
+<p>Create the locations you want to store the series. In this example I’ve used /var/torrented/Daily_Show and /var/torrented/Colbert_Report. Make sure they belong to the user who runs the Transmission daemon:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">sudo chown</span>  /var/torrented/Daily_Show
+</code></pre></div></div>
+
+<p>and</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">sudo chown</span>  /var/torrented/Colbert_Report
+</code></pre></div></div>
+
+<p>Create the file ~/.flexget/config.yml. An example configuration is pasted below, and assumes you’re running Transmission on the same box. Make sure you don’t use tabs to indent the items, and use 2 spaces for each level of indentation. The USERNAME and PASSWORD variables are used to connect to Transmission, so you can pick whatever you like, as long as it matches the Transmission configuration lower down.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    presets:
+      transmissionrpc:
+        transmission:
+          host: localhost
+          port: 9091
+          removewhendone: True
+          username: 
+          password: 
+          ratio: 2.0
+          addpaused: No
+      tv:
+        series:
+          - The Daily Show:
+              set:
+                path: /var/torrented/Daily_Show
+          - The Colbert Report:
+              set:
+                path: /var/torrented/Colbert_Report
+        # configuration of quality parameters
+        # -&gt; I don't need the 720p files &gt; 1 GB in size
+        quality: hdtv
+    
+    feeds:
+      EZRSSDaily:
+        rss: http://www.ezrss.it/search/index.php?show_name=The+Daily+Show&amp;show_name_exact=true&amp;mode=rss
+        preset:
+          - transmissionrpc
+          - tv
+        priority: 10
+      EZRSSColbert:
+        rss: http://www.ezrss.it/search/index.php?show_name=The+Colbert+Report&amp;show_name_exact=true&amp;mode=rss
+        preset:
+          - transmissionrpc
+          - tv
+        priority: 10
+</code></pre></div></div>
+
+<p>You can test the configuration without actually downloading the torrents by running</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flexget --test
+</code></pre></div></div>
+
+<p>You then need to add Flexget to your crontab (crontab -e). Add an entry such as the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># m h dom mon dow command
+0 * * * * su mediatomb -c /usr/local/bin/flexget --cron
+</code></pre></div></div>
+
+<p>I would also recommend removing old episodes so they don’t just fill up your hard drive by adding the crontab entries below. The “-mtime +14″ parameter limits the find to files older than 14 days, obviously you can tweak this to meet your requirements.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Remove old Daily Show and Colbert Reports
+0 0 * * * find /var/torrented/Daily Show/ -type f -mtime +14 -exec rm {} \;
+0 0 * * * find /var/torrented/Colbert_Report/ -type f -mtime +14 -exec rm {} \;
+</code></pre></div></div>
+
+<h1 id="configuring-transmission">Configuring Transmission</h1>
+
+<p>On Ubuntu the Transmission daemon configuration file is stored in /etc/transmission-daemon/settings.json. The contents of the file can be replaced with the contents below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "alt-speed-down": 50, 
+    "alt-speed-enabled": true, 
+    "alt-speed-time-begin": 540, 
+    "alt-speed-time-day": 127, 
+    "alt-speed-time-enabled": true, 
+    "alt-speed-time-end": 1380, 
+    "alt-speed-up": 50, 
+    "bind-address-ipv4": "0.0.0.0", 
+    "bind-address-ipv6": "::", 
+    "blocklist-enabled": false, 
+    "blocklist-url": "http://www.example.com/blocklist", 
+    "cache-size-mb": 4, 
+    "dht-enabled": true, 
+    "download-dir": "/var/torrented", 
+    "download-limit": 3, 
+    "download-limit-enabled": 1, 
+    "encryption": 1, 
+    "idle-seeding-limit": 3, 
+    "idle-seeding-limit-enabled": false, 
+    "incomplete-dir": "/var/torrented/", 
+    "incomplete-dir-enabled": false, 
+    "lpd-enabled": false, 
+    "max-peers-global": 200, 
+    "message-level": 2, 
+    "peer-congestion-algorithm": "", 
+    "peer-limit-global": 240, 
+    "peer-limit-per-torrent": 60, 
+    "peer-port": 51413, 
+    "peer-port-random-high": 65535, 
+    "peer-port-random-low": 49152, 
+    "peer-port-random-on-start": false, 
+    "peer-socket-tos": "default", 
+    "pex-enabled": true, 
+    "port-forwarding-enabled": false, 
+    "preallocation": 1, 
+    "prefetch-enabled": 1, 
+    "ratio-limit": 2, 
+    "ratio-limit-enabled": true, 
+    "rename-partial-files": true, 
+    "rpc-authentication-required": true, 
+    "rpc-bind-address": "0.0.0.0", 
+    "rpc-enabled": true, 
+    "rpc-password": "", 
+    "rpc-port": 9091, 
+    "rpc-url": "/transmission/", 
+    "rpc-username": "", 
+    "rpc-whitelist": "127.0.0.1,192.168.0.*", 
+    "rpc-whitelist-enabled": true, 
+    "script-torrent-done-enabled": false, 
+    "script-torrent-done-filename": "",
+    "speed-limit-down": 100, 
+    "speed-limit-down-enabled": false, 
+    "speed-limit-up": 100, 
+    "speed-limit-up-enabled": false, 
+    "start-added-torrents": true, 
+    "trash-original-torrent-files": true, 
+    "umask": 18, 
+    "upload-limit": 100, 
+    "upload-limit-enabled": 0, 
+    "upload-slots-per-torrent": 14, 
+    "utp-enabled": true, 
+    "watch-dir": "/var/torrents_to_download", 
+    "watch-dir-enabled": "true"
+}
+</code></pre></div></div>
+
+<p><strong>Important</strong>: Don’t restart Transmission once you’ve updated the settings.json file. Transmission writes its settings on exit, so you’ll just lose your modifications. Instead, either stop Transmission before editing the file, or use “reload” to get Transmission to reload the configuration before restarting.</p>
+
+<p>A couple of notes about the configuration above:</p>
+
+<ol>
+  <li>Make sure the  and  variables are replaced with whatever username and password you used in Flexget. You can also use these credentials to connect with the Transmission Remote GUI. When you exit Transmission it will replace your password with an encrypted version of it.</li>
+  <li>If you want to connect to Transmission using the Remote GUI from a different machine, you need to update the “rpc-whitelist” to include the IP range you’ll connect from (here it’s preset at 192.168.0.1-255).</li>
+  <li>The “watch-dir” and “watch-dir-enabled” settings at the bottom of the file allow you to drop torrent files into the watched directory and Transmission will automatically add them to the download queue.</li>
+  <li>The “ratio-limit” is set at 2.00, which means the torrent will only seed to a ratio of 2, and will then be stopped and marked as completed. Once it’s marked as completed it will be removed by Flexget next time it runs.</li>
+  <li>This configuration uses the full bandwidth available between 11PM and 9AM. During the day the connection speed is limited to 50Kbps up and down.</li>
+</ol>
+
+<p>At this point you’re ready to go!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2012-03-31T13:21:48+00:00">March 31, 2012</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Downloading+TV+series+with+BitTorrent%3A+getting+The+Daily+Show+and+The+Colbert+Report+in+the+UK%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2012-03-31-flexget-transmission-for-tv-series.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2012-03-31-flexget-transmission-for-tv-series.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2011-06-27-pfsense-and-virtualbox.html" class="pagination--pager" title="pfSense and VirtualBox
+">Previous</a>
+    
+    
+      <a href="/posts/2012-04-04-blogging-about-software-using-textmate.html" class="pagination--pager" title="Blogging about software using Textmate
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
