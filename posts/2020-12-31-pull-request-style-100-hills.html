@@ -1,0 +1,722 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Pull-Request style: 100 hills to die on - Ryan Brooks’ blog</title>
+<meta name="description" content="Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Now it’s pull requests…">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Pull-Request style: 100 hills to die on">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2020-12-31-pull-request-style-100-hills.html">
+
+
+  <meta property="og:description" content="Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Now it’s pull requests…">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-12-31T16:05:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2020-12-31-pull-request-style-100-hills.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Pull-Request style: 100 hills to die on">
+    <meta itemprop="description" content="Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Then we moved onto fixed display widths. Many a good friendship was lost to these worthy causes.">
+    <meta itemprop="datePublished" content="2020-12-31T16:05:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2020-12-31-pull-request-style-100-hills.html" itemprop="url">Pull-Request style: 100 hills to die on
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Then we moved onto fixed display widths. Many a good friendship was lost to these worthy causes.</p>
+
+<p>Then one day, something happened to restore peace. Swanky editors with soft-wrap, style guides, and EditorConfig united developers around one principle: consistency. Consistency was hard to argue against, and as tooling made it easier to promote/enforce we started to realise that the actual choice didn’t matter that much really.</p>
+
+<p>So our armies retreated to our caves, ushering in an age of peace and productivity. But with that peace came complacency, and murmurings started again, this time around code collaboration. The Git Flow Wars of the 2010s saw the resurgence of trunk-based development and a return of the endless debate, this time around whether <code class="language-plaintext highlighter-rouge">git rebase</code> was a silver bullet or a corrupting force of evil.</p>
+
+<p>Now we’re well into the age of the Pull Request, and the questions are coming back. Who should merge them? How big should they be? What should they contain? How should we review them? Disciples of the many “One True Way”s are out in force, but we already know the answer: it probably doesn’t matter what you pick as long as you’re consistent. Consistency within a team or organisation is what we’re after, not consistency across a career.</p>
+
+<p>As a technical lead, delivery manager, or just someone hoping for a quiet life, here’s a checklist of the subjective debates that risk bikeshedding and becoming a time-sink. When they crop up in reviews it’s a “smell”, a signal that the team has a diverging understanding of concepts that we need to be able to rally around. It’s tempting to set up a session to talk about how you <em>should</em> be doing things, but that’s a red herring. The first thing you need to do is get agreement on how you <em>are</em> doing things, and write that down. We can call it a Team Charter, a Ways of Working document, or anything meaningful to your team. The important thing is to document the decision. For an extra point capture a simple “why”.</p>
+
+<p>Once we’ve captured our baseline, we can apply some agile goodness and iteratively improve the way we work. Retrospectives are a great place to reflect on how your ways of working help or hinder you, agree experiments to try, and evaluate their effectiveness.</p>
+
+<h3 id="the-list">The list</h3>
+
+<p>There’s nuance to many things on this list, and there may be objectively “better” options, but often they’re marginal gains rather than the only way to avoid catastrophe.</p>
+
+<p>The list is grouped into three areas: commit etiquette, pull request scope, and how we merge.</p>
+
+<p>Commit etiquette:</p>
+
+<ul>
+  <li>
+    <p>Step-by-step commits.</p>
+  </li>
+  <li>
+    <p>Merge <code class="language-plaintext highlighter-rouge">main</code> into the branch or rebase?</p>
+  </li>
+  <li>
+    <p>The perfect commit history.</p>
+  </li>
+  <li>
+    <p>All commits pass CI (e.g. enforced git precommit hooks)</p>
+  </li>
+  <li>
+    <p>Commit messages. Is there a format? Do we use semantic commit messages? Should every message contain <a href="https://gitmoji.dev">Gitmoji</a>?</p>
+  </li>
+  <li>
+    <p>Should lint fixes be a separate commit?</p>
+  </li>
+</ul>
+
+<p>Pull request scope:</p>
+
+<ul>
+  <li>
+    <p>“Scouting” and refactoring as a separate commit or different PR?</p>
+  </li>
+  <li>
+    <p>Coverage &amp; quality creep. Is it okay for a single PR to leave the codebase slightly worse?</p>
+  </li>
+  <li>
+    <p>PR size. This is the big one! Should there be one PR per card/issue, or many tiny increments?</p>
+  </li>
+  <li>
+    <p>Do you use/how do you use “draft” PRs? Are they for presenting ideas, or work in progress. What’s their lifespan?</p>
+  </li>
+  <li>
+    <p>PR descriptions. Do you have a a standard template? What do you expect to see in a description?</p>
+  </li>
+  <li>
+    <p>Do we use labels? If so, how?</p>
+  </li>
+  <li>
+    <p>Are chained PRs allowed?</p>
+  </li>
+  <li>
+    <p>“Fix in this PR” vs “I’ll add that in another PR”.</p>
+  </li>
+</ul>
+
+<p>Merging:</p>
+
+<ul>
+  <li>
+    <p>Squash, merge, or rebase into main?</p>
+  </li>
+  <li>
+    <p>Request changes vs comment vs approve. What are the implications of each type of response?</p>
+  </li>
+  <li>
+    <p>How do we request review (ask on Slack, auto-post, email notifications…)? Is a review open to all, or do you invite specific reviewers? What if you’re not invited but care?</p>
+  </li>
+  <li>
+    <p>What’s the review process? What’s in scope? Do you value high level or low level comments, and when is each type appropriate?</p>
+  </li>
+  <li>
+    <p>Minimum reviewers</p>
+  </li>
+  <li>
+    <p>Does it need to be up-to-date with main before merge?</p>
+  </li>
+  <li>
+    <p>Who decides if it <em>can</em> be merged? The author or the reviewer?</p>
+  </li>
+  <li>
+    <p>Who merges the PR (again: author or reviewer)?</p>
+  </li>
+</ul>
+
+<h3 id="record-your-ways-of-working">Record your ways of working</h3>
+
+<p>Now you’ve figured out how you work, you’ll want to write it down. Without wanting to open another can of worms, there are a couple of qualities common to team charters which are actually read, honoured and evolved by teams I’ve worked with:</p>
+
+<ol>
+  <li>
+    <p>They’re short and concise. It feels good to write 2000 words on the primacy of meaningful commit messages, but think about your reader. A new team member doesn’t want to lose two weeks trawling a book on how they should collaborate. Brevity is key. Short documents are easier to scan, and brief (1 paragraph) points are more easily pointed to. If you *really *need to write more to explain your decision, capture this elsewhere (Decision Records are great for this).</p>
+  </li>
+  <li>
+    <p>Each point is linkable. Being able to point at a specific rule in a pull request comment or chat makes conversations more concrete, and lowers the barrier to entry for reading and following. Most wikis and markdown renderers add IDs to headings so you can link to a point in the document, for example <a href="https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case">this rule</a> in the Ruby Style Guide on GitHub.</p>
+  </li>
+</ol>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Create a style guide for your ways of working, and encourage slow, thoughtful evolution over time. And don’t assume that what works well for your team is inherently the One True Way.</p>
+
+<hr />
+
+<p>This post was originally published <a href="https://spikeheap.medium.com/pull-request-style-100-hills-to-die-on-703475d36d74">on Medium</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2020-12-31T16:05:00+00:00">December 31, 2020</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Pull-Request+style%3A+100+hills+to+die+on%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2020-12-31-pull-request-style-100-hills.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2020-12-31-pull-request-style-100-hills.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2020-04-11-running-a-remote-hack-day.html" class="pagination--pager" title="Running a remote hack day
+">Previous</a>
+    
+    
+      <a href="/posts/2021-07-30-riding-the-englanduro-route-b86e3e3daef1.html" class="pagination--pager" title="Riding the EnglanDURO route
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,661 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Managing sudoers with Puppet - Ryan Brooks’ blog</title>
+<meta name="description" content="Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really really careful!">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Managing sudoers with Puppet">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2013-08-13-managing-sudoers-with-puppet.html">
+
+
+  <meta property="og:description" content="Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really really careful!">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-08-13T21:54:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2013-08-13-managing-sudoers-with-puppet.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Managing sudoers with Puppet">
+    <meta itemprop="description" content="Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!">
+    <meta itemprop="datePublished" content="2013-08-13T21:54:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2013-08-13-managing-sudoers-with-puppet.html" itemprop="url">Managing sudoers with Puppet
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!
+</blockquote>
+
+<p>Today I re-learned a valuable lesson about the power of Puppet: it can be a force for evil if you forget the little extra things you set up weeks ago. Fortunately it’s easy to reproduce, so try it for yourself! If there’s ever an obvious reason to keep a remote clone of your Puppet configuration, this is it.</p>
+
+<p>Step one is easy. To have a good self-managing Puppet setup you really want your clients to auto-configure themselves. That configuration is going to do sane things like (for example) setting ‘pluginsync’ and ensuring the Puppet client daemon is running, configured to start on boot, etc.</p>
+
+<p>Step two follows a little while later. The need arises to manage a sudoers file and rather than reinvent the wheel you install the popular <a href="https://forge.puppetlabs.com/saz/sudo"><em>sudo</em> package by <em>saz</em></a>.</p>
+
+<p>This package got a <a href="https://puppetlabs.com/blog/module-of-the-week-sazsudo-manage-sudo-configuration/">great review from PuppetLabs</a> and is easy to configure:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Manage sudoers with the module</span>
+<span class="k">class</span> <span class="p">{</span> <span class="s1">'sudo'</span><span class="p">:</span> <span class="p">}</span>
+
+<span class="c1"># Declare a sudoer with the username 'bill'</span>
+<span class="n">sudo</span><span class="o">::</span><span class="n">conf</span> <span class="p">{</span> <span class="s1">'bill'</span><span class="p">:</span>
+  <span class="n">priority</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">content</span>  <span class="o">=&gt;</span> <span class="s1">'bill ALL=(ALL) NOPASSWD: ALL'</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The key step here is to run Puppet and see new files created in /etc/sudoers.d/, check the content and think all is well. The <em>facepalm</em> moment really happened when I failed to check the run had added the <em>include</em> into the sudoers file to make it bother to read the files in <em>sudoers.d</em>. Unfortunately for me this hadn’t happened, so although the files were there I no longer had sudo privileges on the client.</p>
+
+<p>No problem! Simply fixing the module to add the <em>include</em> statement would bring the client back online. Unless step three has been done.</p>
+
+<p>Step three closes the loop on this suprisingly vicious circle. A few days prior to step two I was refactoring <em>site.pp</em> and decide to move the puppetmaster into the default node group so I could define it using Hiera. The migration was simple (thanks Hiera!) but in my common definition I had included the puppet client package, which caused the puppetmaster to start updating every 30 minutes like every other node.</p>
+
+<p>I was a couple of minutes too late to prevent the disaster. Locking myself out of the puppetmaster was a little embarrassing, but did give me the opportunity to build the puppetmaster from scratch using Puppet. Oh how a technology can redeem itself.</p>
+
+<h5 id="rebuilding-the-puppetmaster-from-scratch">Rebuilding the puppetmaster from scratch</h5>
+
+<p>Building the puppetmaster from only the /etc/puppet configuration is actually suprisingly easy. After pushing a change to the puppet repository which would prevent the problem above from being deployed to the new instance, the full steps to provision a new VM and go from zero to a full installation were:</p>
+
+<ul>
+  <li>Provision the VM and log into it.</li>
+  <li><a href="http://apt.puppetlabs.com/README.txt">Add the newest Puppet repositories to APT</a> (my Puppet configuration would do this later, but lets start as we mean to go on).</li>
+  <li>Run the usual <code>apt-get install puppet git</code></li>
+  <li>Clone the Git repository of the Puppet configuration (the entirety of /etc/puppet).</li>
+  <li>Use <em>puppet apply</em> on <em>site.pp</em>. I expected this to fail (and it did raise a couple of errors) but it did a significant enough job to then allow puppetmaster to start and a <em>puppet agent -t</em> to be run. <code>bash puppet apply /etc/puppet/manifests/site.pp </code></li>
+  <li>Make a cup of tea and bask in the reflected glory.</li>
+</ul>
+
+<h5 id="lessons-learned">Lessons learned</h5>
+
+<p>So the lessons to be learned from this exercise are many and obvious:</p>
+
+<ol>
+  <li>Always keep a remote clone (or backup) of your Puppet configuration.</li>
+  <li>Check the puppetmaster’s configuration doubly-trebly carefully, especially for the crux items like sudo where you could be locked out.</li>
+  <li>A fully managed Puppet node is trivial to bring up, even if that node is the puppetmaster.</li>
+</ol>
+
+<p>Although I would rather not have been through an hour of pain learning this lesson, I now have a much stronger confidence in our configuration’s resilience, so there’s always a silver lining.</p>
+
+<p>Now, break over, back to the Puppet Rsnapshot module…</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2013-08-13T21:54:00+00:00">August 13, 2013</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Managing+sudoers+with+Puppet%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-08-13-managing-sudoers-with-puppet.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-08-13-managing-sudoers-with-puppet.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2013-08-11-testing-octopress-and-heroku.html" class="pagination--pager" title="Testing Octopress and Heroku
+">Previous</a>
+    
+    
+      <a href="/posts/2013-08-15-rsnapshot-puppet-module.html" class="pagination--pager" title="Rsnapshot Puppet module
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
