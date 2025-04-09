@@ -3,11 +3,13 @@ permalink: /now/
 title: "What I'm doing now"
 layout: single
 ---
-Updated on the 25th of July 2024
+Updated on the 9th of April 2025
 
-DIY. Lots of DIY. We're renovating our house slowly, and learning that there's complexity and nuance in almost every job. It's helping me become less of a perfectionist for large jobs, and is reenforcing the value of [15% solutions](https://medium.com/the-liberators/trigger-big-change-by-starting-small-with-15-solutions-3d463ff1c38a) over paralysingly-large plans that cost more in time and money than you really want to spend. It's also really motivating to see iterative improvement all around you. The little things matter.
+Waiting, on the cusp of our second child being born. After a busy few months renovating the house and wading through illnesses brought back from preschool, there's only a couple of things that actually _need_ to be done. It's refreshing to wake up and not be faced by a mountain of To Do items. 
 
-I'm also getting to spend more time learning the guitar. I've owned one since I was a teenager, but it's only in the last year that I've recruited a tutor and made a concerted effort to learn the theory. Starting to learn something new(ish) at 40 with all the time constraints of family life is refreshing and intimidating in equal measure. Gone are the days when I could just spend all my free time on one thing, so it's teaching me a lot of patience to slowly grow through practice.
+This will be the first year in a while where we've completed our renovation plans for the year before summer. I cannot express how happy I am that I'll not be in a room stripping wallpaper in 30℃.
+
+I'm also on the edge of stability. After some last-minute renewals my latest contract bid is long or bust. I've learned a lot about keeping sanguine in the face of things I can't change here – the tension between wanting to carefully plan finances for family changes and potentially being contract-free is certainly there, but the option of a summer off with a newborn isn't a bad one.
 
 ---
 This is a [now page](https://nownownow.com). If it's old, hassle me on social media.
