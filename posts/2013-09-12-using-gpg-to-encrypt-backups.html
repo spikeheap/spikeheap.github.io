@@ -1,0 +1,658 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Using GPG to encrypt backups - Ryan Brooks’ blog</title>
+<meta name="description" content="If you’re doing off-site backups (and if you’re not, you should), you’ve probably wondered how much you trust the place you’re uploading to">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Using GPG to encrypt backups">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2013-09-12-using-gpg-to-encrypt-backups.html">
+
+
+  <meta property="og:description" content="If you’re doing off-site backups (and if you’re not, you should), you’ve probably wondered how much you trust the place you’re uploading to">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-09-12T18:39:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2013-09-12-using-gpg-to-encrypt-backups.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Using GPG to encrypt backups">
+    <meta itemprop="description" content="If you’re doing off-site backups (and if you’re not, you should), you’ve probably wondered how much you trust the place you’re uploading to. Fortunately public-key cryptography is here to help.">
+    <meta itemprop="datePublished" content="2013-09-12T18:39:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2013-09-12-using-gpg-to-encrypt-backups.html" itemprop="url">Using GPG to encrypt backups
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>If you’re doing off-site backups (and if you’re not, you should), you’ve probably wondered how much you trust the place you’re uploading to. Fortunately <a href="http://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a> is here to help.</p>
+
+<p>With public-key encryption, you have two keys, a <em>public</em> key and a <em>private</em> key. The public key can be passed around to anyone you like, published on the Internet, etc. The private key is (unsurprisingly) kept secret. The keys are generated as pairs and are intrinsically linked, so you can do the following:</p>
+
+<ol>
+  <li>Someone encrypts a message or file using your <em>public</em> key. Only the <em>private</em> key can decrypt it (which only you have).</li>
+  <li>You sign a message or file using your <em>private</em> key. Anyone with your <em>public</em> key can verify that the message was written by you and hasn’t been altered.</li>
+</ol>
+
+<p>This is commonly used for e-mail, and has a great advantage when you’re using it to encrypt files for off-site backup because the private key is always kept private.  If you have many servers they all use the same public key to encrypt their data before uploading to a remote site. The data on that site is encrypted, so an attacker would need your private key to access it. But what about if one of the servers is compromised? Obviously the attacker has access to the live data on that server, but the <em>public</em> key stored on the machine doesn’t allow decryption, so they are no closer to accessing data anywhere else. This means you don’t have to worry about revoking keys or having independent keys for each machine.</p>
+
+<p><a href="http://www.gnupg.org">Gnu Privacy Guard</a> (GPG) is an open-source tool for encrypting and signing data using public-key cryptography. It’s easy to install, and is included on most modern operating systems. There are also several nice front-ends, for example <a href="https://gpgtools.org/">GPGTools for OSX</a>, which take away the effort of having to use the terminal.</p>
+
+<p>You can generate a key using the following command. Note that a passphrase is a <em>really</em> good idea because it gives you that little bit of extra protection: if you lose your private key it’s useless without the passphrase. The passphrase is only needed for the private key, so a script can still encrypt the data without human interaction.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--gen-key</span>
+</code></pre></div></div>
+
+<p>Once you’ve generated your key you can send it to a key server so your other hosts can get at it (XXXXXXXX needs to be replaced with the short ID for your key):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--keyserver</span> subkeys.pgp.net <span class="nt">--send-key</span> XXXXXXXX
+</code></pre></div></div>
+
+<p>Then it’s a really good idea to take a backup of your key (you can also copy your ~/.gnupg directory somewhere safe):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--export-secret-keys</span> <span class="nt">--armor</span> john@example.com <span class="o">&gt;</span> john-privkey.asc
+</code></pre></div></div>
+
+<p>Make sure to keep the resultant file safe, if you lose your private key <em>or</em> forget your passphrase then the contents of any encrypted files are lost forever.</p>
+
+<p>On your remote servers the commands you need to download the public key and set it to be trusted:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--keyserver</span> subkeys.pgp.net <span class="nt">--recv-keys</span> XXXXXXXX
+gpg <span class="nt">--edit</span> XXXXXXX trust <span class="c"># set 5 if you trust it ultimately, and confirm</span>
+</code></pre></div></div>
+
+<p>Then you can encrypt a file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--encrypt</span> <span class="nt">--recipient</span> XXXXXXXX FILENAME
+</code></pre></div></div>
+
+<p>The result is a new file: FILENAME.gpg. Try decrypting it (gpg –decrypt FILENAME). On the remote machine you should see:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg: decryption failed: secret key not available
+</code></pre></div></div>
+
+<p>But on the machine you created the keys on it will ask you for your passphrase and voila!</p>
+
+<h2 id="signatures">Signatures</h2>
+
+<p>This post hasn’t touched on signatures or non-repudiation. Although the above will give you a set of encrypted files, you can’t be sure that it was you who encrypted it, after all, your public key is available to anyone. GPG allows messages to be signed, which proves a message or file hasn’t been altered since the owner of that key signed it.</p>
+
+<p>For multi-server backups, each server should have its own key pair for signing which <em>is not</em> the same as the encryption key. That way if a server is compromised you don’t need to worry about the integrity of files sent by the other servers.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2013-09-12T18:39:00+00:00">September 12, 2013</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Using+GPG+to+encrypt+backups%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-09-12-using-gpg-to-encrypt-backups.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-09-12-using-gpg-to-encrypt-backups.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2013-08-24-ive-moved.html" class="pagination--pager" title="I’ve moved
+">Previous</a>
+    
+    
+      <a href="/posts/2013-10-02-puppet-talk.html" class="pagination--pager" title="Puppet talk
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

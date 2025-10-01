@@ -1,0 +1,756 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>A simple HTTPS proxy with Nginx on Docker - Ryan Brooks’ blog</title>
+<meta name="description" content="Add a lightweight nginx container to your Docker setup to test HTTPS-related things.">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="A simple HTTPS proxy with Nginx on Docker">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy.html">
+
+
+  <meta property="og:description" content="Add a lightweight nginx container to your Docker setup to test HTTPS-related things.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2016-05-19T17:12:25+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A simple HTTPS proxy with Nginx on Docker">
+    <meta itemprop="description" content="There are many reasons why you might need to develop behind an HTTPS proxy, for example when testing integrations which behave differently based on the security of your site. This post describes how to add an nginx proxy to your docker setup.">
+    <meta itemprop="datePublished" content="2016-05-19T17:12:25+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy.html" itemprop="url">A simple HTTPS proxy with Nginx on Docker
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>There are many reasons why you might need to develop behind an HTTPS proxy, for example when testing integrations which behave differently based on the security of your site. This post describes how to add an nginx proxy to your docker setup.</p>
+
+<h3 id="tldr">TL;DR</h3>
+
+<p>I know, you probably don’t care about the back-story, you just want the code. If that’s you, this is all you need:</p>
+
+<ol>
+  <li>This isn’t production-quality. Mirror your production environment if you can.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Dockerfile</code> and <code class="language-plaintext highlighter-rouge">nginx.conf</code> are in <a href="https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84">this gist</a>.</li>
+  <li>This assumes you’ve got a <code class="language-plaintext highlighter-rouge">rails</code> container linked through docker-compose. Tweak it to your needs.</li>
+  <li>See [1].</li>
+</ol>
+
+<h3 id="background">Background</h3>
+
+<p>Not so long back I was working on a Dropbox OAuth integration. This sent the user off to Dropbox to approve and connect their account to us before redirecting back to our site to continue the process. Dropbox have rules in place to protect users from accidentally exposing their details on insecure sites and push developers to secure their work. One of these rules means that if you ask Dropbox to redirect a user back to an HTTP address it will <em>always</em> ask them to confirm their permission. If you’re using HTTPS it will just redirect back if they have already approved the connection in the past. This difference in behaviour is a sensible one, however it’s another example of the development and production environments diverging, which we don’t really want.</p>
+
+<p>It’s good practice to have all your production traffic use HTTPS, so we need a lightweight HTTPS proxy which we can stick in front of whichever app server we’re developing against.</p>
+
+<p>At this point, we’re not too concerned about production performance, and want to retain development conveniences such as live-reloading, so we can just proxy requests directly to our app, in this case a Rails server fired up using <code class="language-plaintext highlighter-rouge">rails s</code>.</p>
+
+<h3 id="the-setup">The setup</h3>
+
+<p>You may already have an nginx config which works for you in production, but if not, here’s a simple setup which proxies all requests to an upstream server/container named ‘rails’, and redirects all HTTP traffic to HTTPS:</p>
+
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span> <span class="n">nobody</span> <span class="n">nogroup</span>;
+
+<span class="n">pid</span> /<span class="n">tmp</span>/<span class="n">nginx</span>.<span class="n">pid</span>;
+
+<span class="n">error_log</span> <span class="n">stderr</span>;
+<span class="c"># error_log /var/log/nginx/error.log;
+</span>
+<span class="n">events</span> {
+  <span class="n">worker_connections</span> <span class="m">1024</span>; <span class="c"># increase if you have lots of clients
+</span>  <span class="n">accept_mutex</span> <span class="n">off</span>; <span class="c"># "on" if nginx worker_processes &gt; 1
+</span>  <span class="c"># use epoll; # enable for Linux 2.6+
+</span>  <span class="c"># use kqueue; # enable for FreeBSD, OSX
+</span>}
+
+<span class="n">http</span> {
+  <span class="n">include</span> <span class="n">mime</span>.<span class="n">types</span>;
+  <span class="n">default_type</span> <span class="n">application</span>/<span class="n">octet</span>-<span class="n">stream</span>;
+  <span class="c"># access_log /var/log/nginx/access.log combined;
+</span>  <span class="n">access_log</span> /<span class="n">dev</span>/<span class="n">stdout</span>;
+  <span class="n">sendfile</span> <span class="n">on</span>;
+  <span class="n">tcp_nopush</span> <span class="n">on</span>; <span class="c"># off may be better for *some* Comet/long-poll stuff
+</span>  <span class="n">tcp_nodelay</span> <span class="n">off</span>; <span class="c"># on may be better for some Comet/long-poll stuff
+</span>  <span class="n">gzip</span> <span class="n">on</span>;
+  <span class="n">gzip_http_version</span> <span class="m">1</span>.<span class="m">0</span>;
+  <span class="n">gzip_proxied</span> <span class="n">any</span>;
+  <span class="n">gzip_min_length</span> <span class="m">500</span>;
+  <span class="n">gzip_disable</span> <span class="s2">"MSIE [1-6]\."</span>;
+
+  <span class="c"># So Rails can be aware of whether it's HTTP/HTTPS
+</span>  <span class="n">proxy_set_header</span> <span class="n">X</span>-<span class="n">Forwarded</span>-<span class="n">Proto</span> $<span class="n">scheme</span>;
+
+  <span class="n">upstream</span> <span class="n">app_server</span> {
+    <span class="n">server</span> <span class="n">rails</span>:<span class="m">3000</span> <span class="n">fail_timeout</span>=<span class="m">0</span>;
+  }
+
+  <span class="c"># global certs per ip but a cert can sign *.mysite.dev mysite.dev
+</span>  <span class="n">ssl_certificate</span>      /<span class="n">usr</span>/<span class="n">local</span>/<span class="n">app</span>/<span class="n">certs</span>/<span class="n">server</span>.<span class="n">crt</span>;
+  <span class="n">ssl_certificate_key</span>  /<span class="n">usr</span>/<span class="n">local</span>/<span class="n">app</span>/<span class="n">certs</span>/<span class="n">server</span>.<span class="n">key</span>;
+
+  <span class="n">server</span> {
+    <span class="n">listen</span>         <span class="m">80</span>;
+    <span class="n">server_name</span>    <span class="m">192</span>.<span class="m">168</span>.<span class="m">99</span>.<span class="m">100</span>;
+    <span class="n">return</span>         <span class="m">301</span> <span class="n">https</span>://$<span class="n">server_name</span>$<span class="n">request_uri</span>;
+  }
+
+  <span class="n">server</span> {
+    <span class="n">listen</span>       <span class="m">443</span> <span class="n">ssl</span>;
+    <span class="n">server_name</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">99</span>.<span class="m">100</span>;
+    <span class="n">ssl</span>           <span class="n">on</span>;
+    <span class="n">client_max_body_size</span> <span class="m">4</span><span class="n">G</span>;
+    <span class="n">keepalive_timeout</span> <span class="m">5</span>;
+    <span class="n">root</span> /<span class="n">usr</span>/<span class="n">src</span>/<span class="n">app</span>/;
+    <span class="n">try_files</span> $<span class="n">uri</span>/<span class="n">index</span>.<span class="n">html</span> $<span class="n">uri</span>.<span class="n">html</span> $<span class="n">uri</span> @<span class="n">app</span>;
+
+    <span class="n">location</span> @<span class="n">app</span> {
+      <span class="n">proxy_set_header</span> <span class="n">Host</span> $<span class="n">host</span>;
+      <span class="n">proxy_set_header</span> <span class="n">X</span>-<span class="n">Real</span>-<span class="n">IP</span> $<span class="n">remote_addr</span>;
+      <span class="n">proxy_set_header</span> <span class="n">X</span>-<span class="n">Forwarded</span>-<span class="n">For</span> $<span class="n">proxy_add_x_forwarded_for</span>;
+      <span class="n">proxy_set_header</span> <span class="n">X</span>-<span class="n">Forwarded</span>-<span class="n">Proto</span> $<span class="n">scheme</span>;
+      <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="n">app_server</span>;
+    }
+
+    <span class="c"># Rails error pages
+</span>    <span class="n">error_page</span> <span class="m">500</span> <span class="m">502</span> <span class="m">503</span> <span class="m">504</span> /<span class="m">500</span>.<span class="n">html</span>;
+    <span class="n">location</span> = /<span class="m">500</span>.<span class="n">html</span> {
+      <span class="n">root</span> /<span class="n">usr</span>/<span class="n">src</span>/<span class="n">app</span>/<span class="n">public</span>;
+    }
+  }
+}
+</code></pre></div></div>
+
+<p>The official nginx docker images don’t currently support HTTPS, so we’ll need to build an image to serve as our proxy:</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> alpine:3.2</span>
+<span class="k">MAINTAINER</span><span class="s"> ryan@slatehorse.com</span>
+
+<span class="k">RUN </span>apk add <span class="nt">--update</span> nginx openssl <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /var/cache/apk/<span class="k">*</span>
+
+<span class="k">COPY</span><span class="s"> ./nginx.conf /etc/nginx/nginx.conf</span>
+
+<span class="c"># Generate certificates</span>
+<span class="k">ENV</span><span class="s"> CERTIFICATE_DIR=/usr/local/app/certs</span>
+
+<span class="c"># The hostname used in the certificate. For OSX/Windows you can use the VM IP.</span>
+<span class="c"># For Linux, localhost works fine. </span>
+<span class="k">ENV</span><span class="s"> DOCKER_HOSTNAME=192.168.99.100</span>
+
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nt">-p</span> /usr/local/app/certs
+
+<span class="k">RUN </span>openssl req <span class="nt">-new</span> <span class="nt">-x509</span> <span class="nt">-nodes</span> <span class="nt">-subj</span> <span class="s2">"/CN=</span><span class="k">${</span><span class="nv">DOCKER_HOSTNAME</span><span class="k">}</span><span class="s2">/O=Your Company Name/C=UK"</span> <span class="nt">-keyout</span> <span class="nv">$CERTIFICATE_DIR</span>/server.key <span class="nt">-out</span> <span class="nv">$CERTIFICATE_DIR</span>/server.crt
+
+<span class="k">VOLUME</span><span class="s"> /var/log/nginx/</span>
+
+<span class="k">EXPOSE</span><span class="s"> 80 443</span>
+
+<span class="k">CMD</span><span class="s"> ["nginx", "-g", "daemon off;"]</span>
+</code></pre></div></div>
+
+<p>This isn’t really doing anything interesting other than the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RUN openssl req <span class="nt">-new</span> <span class="nt">-x509</span> <span class="nt">-nodes</span> <span class="nt">-subj</span> <span class="s2">"/CN=</span><span class="k">${</span><span class="nv">DOCKER_HOSTNAME</span><span class="k">}</span><span class="s2">/O=Your Company Name/C=UK"</span> <span class="nt">-keyout</span> <span class="nv">$CERTIFICATE_DIR</span>/server.key <span class="nt">-out</span> <span class="nv">$CERTIFICATE_DIR</span>/server.crt
+</code></pre></div></div>
+
+<p>This generates a self-signed certificate and drops it into the path we’ve used in <code class="language-plaintext highlighter-rouge">nginx.conf</code>.</p>
+
+<p>With that, you’re ready to go, in development at least. To integrate this into an existing docker-compose setup you could drop the above files in <code class="language-plaintext highlighter-rouge">./docker/nginx/</code> and add the following to your <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">nginx</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span> <span class="s">docker/nginx/</span>
+  <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">443:443"</span>
+  <span class="na">links</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">rails</span>
+</code></pre></div></div>
+
+<p>Fire up a browser and check it out. The certificate is self-signed, so your browser won’t trust it by default, but you trust yourself… right?</p>
+
+<h3 id="caching">Caching</h3>
+
+<p>With the above approach you’ll get a new self-signed certificate every time you rebuild the image. This can be a bit of a pain if you’re rebuilding often, so if this affects you just mount a a local directory as a volume at<code class="language-plaintext highlighter-rouge">/usr/local/app/certs</code> and put your certificates there. This will persist across container changes and image builds.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>You probably wouldn’t want to use the nginx configuration provided here for production, but hopefully it demonstrates how easily we can add additional services into our development environment to bridge the gap to production one step at a time.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2016-05-19T17:12:25+00:00">May 19, 2016</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=A+simple+HTTPS+proxy+with+Nginx+on+Docker%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2016-05-19-nginx-docker-proxy.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2016-05-19-nginx-docker-proxy.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2016-04-28-docker-speedy-dependencies.html" class="pagination--pager" title="Faster dependencies with Docker
+">Previous</a>
+    
+    
+      <a href="/posts/2018-06-01-security-is-not-a-pro-feature-151eec09fdfa.html" class="pagination--pager" title="Security is not a ‘pro’ feature
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,760 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Groovy SOAP clients with ws-lite - Ryan Brooks’ blog</title>
+<meta name="description" content="When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: ‘this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain’. I was almost right.">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Groovy SOAP clients with ws-lite">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite.html">
+
+
+  <meta property="og:description" content="When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: ‘this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain’. I was almost right.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-08-21T00:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Groovy SOAP clients with ws-lite">
+    <meta itemprop="description" content="When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: “this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain”. I was almost right.">
+    <meta itemprop="datePublished" content="2014-08-21T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2014-08-21-groovy-soap-wslite.html" itemprop="url">Groovy SOAP clients with ws-lite
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: “this is perfect for Groovy, and it’s DSL support will mean talking to SOAP won’t require stub generation or any of that pain”. I was almost right.</p>
+
+<p><strong>TLDR;</strong> My client script is <a href="https://gist.github.com/spikeheap/b5428f11834a0cea3822">available as a GitHub gist</a> for cannibalisation.</p>
+
+<p>SOAP is <em>almost</em> legacy, but it’s still the only way to interface with large enterprise systems, at least in healthcare. Just as I’ve come to accept that CSV is <strong>the</strong> way everyone sends lab and patient records (when they’re not exporting to Excel sheets), I wasn’t surprised when our project with MirthResults and MirthConnect only had SOAP calls to add patients to a component. No problem, I thought, just Google “Groovy SOAP” and I’ll be done in 10 minutes.</p>
+
+<p>So, the top result is <a href="http://groovy.codehaus.org/Groovy+SOAP">the Groovy SOAP documentation</a>, which does say (although not very obviously) that it’s deprecated. That’s fine, it suggests its replacement, <a href="http://groovy.codehaus.org/GroovyWS">GroovyWS</a>. But that page tells you to ‘be careful’ because the project is dormant. Not to worry, because it suggests looking at <a href="https://github.com/jwagenleitner/groovy-wslite">groovy-wslite</a>. I’m already feeling like I’m entering the rabbit hole.</p>
+
+<p>Fortunately groovy-wslite is an active project and has commits (at the time of writing) from just over a month ago. The DSL is pretty straightforward so I set about connecting to the target WSDL and then added basic authentication. The documentation for the project is quite sparse, so this post is an attempt to bring together the bits that I needed.</p>
+
+<p>If you need anything other than ‘Basic’ HTTP autentication, stop right there. The project doesn’t seem to support ‘Digest’ or ‘NTLM’ authentication, so you might be better going for <a href="http://stackoverflow.com/questions/15940234/how-to-do-a-soap-web-service-call-from-java-class">plain Java SOAP</a>.</p>
+
+<p>In a simple script, you can just grab the wslite dependency and connect in a couple of lines:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Grab</span><span class="o">(</span><span class="n">group</span><span class="o">=</span><span class="s1">'com.github.groovy-wslite'</span><span class="o">,</span> <span class="n">module</span><span class="o">=</span><span class="s1">'groovy-wslite'</span><span class="o">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">'1.1.0'</span><span class="o">)</span>
+ 
+<span class="kn">import</span> <span class="nn">groovy.xml.*</span>
+<span class="kn">import</span> <span class="nn">wslite.soap.*</span>
+<span class="kn">import</span> <span class="nn">wslite.http.auth.*</span>
+ 
+<span class="kt">def</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SOAPClient</span><span class="o">(</span><span class="s1">'https://mirthtest.local:11443/ClinicalDocumentWSService/ClinicalDocumentWS?wsdl'</span><span class="o">)</span>
+<span class="n">client</span><span class="o">.</span><span class="na">authorization</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HTTPBasicAuthorization</span><span class="o">(</span><span class="s2">"username"</span><span class="o">,</span> <span class="s2">"password"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>It’s then trivially easy to do a SOAP call:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">send</span><span class="o">(</span>
+		<span class="nl">connectTimeout:</span><span class="mi">5000</span><span class="o">,</span>
+		<span class="nl">readTimeout:</span><span class="mi">20000</span><span class="o">,</span>
+		<span class="nl">useCaches:</span><span class="kc">false</span><span class="o">,</span>
+		<span class="nl">followRedirects:</span><span class="kc">false</span><span class="o">,</span>
+		<span class="nl">sslTrustAllCerts:</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">envelopeAttributes</span> <span class="s2">"xmlns:ejb"</span><span class="o">:</span><span class="s2">"http://ejb.results.mirth.com/"</span>
+	<span class="n">body</span> <span class="o">{</span>
+		<span class="s2">"ejb:getSubjectGroupMemberIds"</span> <span class="o">{</span>
+			<span class="n">subjectGroupId</span><span class="o">(</span> <span class="s1">'MySubjectGroup'</span> <span class="o">)</span>
+			<span class="n">subjectGroupStatusId</span><span class="o">(</span> <span class="s1">'NEW'</span> <span class="o">)</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The response we get back contains a bit of extra information, so it’s worth checking the response code before ploughing on:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">returnVal</span>
+<span class="nf">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">httpResponse</span><span class="o">.</span><span class="na">statusMessage</span><span class="o">==</span><span class="s2">"OK"</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">returnVal</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getSubjectGroupMemberIdsResponse</span><span class="o">.</span><span class="s1">'return'</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It’s worth noting that the response element is the name of the service call suffixed with ‘Response’. We can then dump the XML in a readable form to the console if we like:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">println</span> <span class="n">XmlUtil</span><span class="o">.</span><span class="na">serialize</span><span class="o">(</span><span class="n">returnVal</span><span class="o">)</span> <span class="c1">// Obviously use a logger here instead :)</span>
+</code></pre></div></div>
+
+<p>We can also interrogate the XML tree in the same way we would a normal object structure:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">def</span> <span class="n">memberCount</span> <span class="o">=</span> <span class="n">returnVal</span><span class="o">.</span><span class="na">results</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>
+<span class="n">println</span> <span class="s2">"There are ${memberCount} members initially"</span>
+</code></pre></div></div>
+
+<p>In the following gist I’ve abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs.</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Grab</span><span class="o">(</span><span class="n">group</span><span class="o">=</span><span class="s1">'com.github.groovy-wslite'</span><span class="o">,</span> <span class="n">module</span><span class="o">=</span><span class="s1">'groovy-wslite'</span><span class="o">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">'1.1.0'</span><span class="o">)</span>
+
+<span class="kn">import</span> <span class="nn">groovy.xml.*</span>
+<span class="kn">import</span> <span class="nn">wslite.soap.*</span>
+<span class="kn">import</span> <span class="nn">wslite.http.auth.*</span>
+
+<span class="kt">def</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SOAPClient</span><span class="o">(</span><span class="s1">'https://dummy:11443/ClinicalDocumentWSService/ClinicalDocumentWS?wsdl'</span><span class="o">)</span>
+<span class="n">client</span><span class="o">.</span><span class="na">authorization</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HTTPBasicAuthorization</span><span class="o">(</span><span class="s2">"mirth"</span><span class="o">,</span> <span class="s2">"password"</span><span class="o">)</span>
+
+<span class="c1">// Grab the latest member list</span>
+<span class="kt">def</span> <span class="n">members</span> <span class="o">=</span> <span class="n">getSubjectGroupMemberIds</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="s1">'GROUP001'</span><span class="o">,</span> <span class="s1">'NEW'</span><span class="o">).</span><span class="na">results</span>
+<span class="kt">def</span> <span class="n">memberCount</span> <span class="o">=</span> <span class="n">members</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">size</span><span class="o">()</span>
+<span class="n">println</span> <span class="s2">"There are ${memberCount} members initially"</span>
+
+<span class="c1">// Get a patient</span>
+<span class="kt">def</span> <span class="n">retrievedSubject</span> <span class="o">=</span> <span class="n">getPatientsByFilterWithoutClinicalItems</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="o">{</span>
+    <span class="n">firstName</span><span class="o">(</span><span class="s2">"Bob"</span><span class="o">)</span>
+    <span class="n">lastName</span><span class="o">(</span><span class="s2">"Bunting"</span><span class="o">)</span>
+    <span class="n">numRows</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+  <span class="o">})</span> 
+<span class="kt">def</span> <span class="n">subjectId</span> <span class="o">=</span> <span class="n">retrievedSubject</span><span class="o">.</span><span class="na">results</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">id</span>
+<span class="n">println</span> <span class="s2">"Subject ID: ${subjectId}, name: ${retrievedSubject.results.list.name.first} ${retrievedSubject.results.list.name.middle} ${retrievedSubject.results.list.name.last}"</span>
+
+<span class="c1">// Add the patient to the subjects of interest list (NEW, ACTIVE, EXCLUDED, RETIRED)</span>
+<span class="n">println</span> <span class="n">XmlUtil</span><span class="o">.</span><span class="na">serialize</span><span class="o">(</span> <span class="n">createSubjectGroupMember</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="s1">'GROUP001'</span><span class="o">,</span> <span class="s1">'NEW'</span><span class="o">,</span> <span class="s1">'MYSTATUS'</span><span class="o">,</span> <span class="n">subjectId</span><span class="o">)</span> <span class="o">)</span>
+
+<span class="c1">// Grab the latest member list</span>
+<span class="n">members</span> <span class="o">=</span> <span class="n">getSubjectGroupMemberIds</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="s1">'GROUP001'</span><span class="o">,</span> <span class="s1">'NEW'</span><span class="o">).</span><span class="na">results</span>
+<span class="k">assert</span>  <span class="n">members</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="o">(</span><span class="n">memberCount</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+
+<span class="n">println</span> <span class="n">XmlUtil</span><span class="o">.</span><span class="na">serialize</span><span class="o">(</span><span class="n">members</span><span class="o">)</span>
+
+
+<span class="c1">// SOAP call methods</span>
+
+<span class="kt">def</span> <span class="nf">getSubjectGroupMemberIds</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="n">groupId</span><span class="o">,</span> <span class="n">groupStatusId</span><span class="o">){</span>
+  <span class="n">doSOAPRequest</span><span class="o">(</span> <span class="n">client</span><span class="o">,</span> <span class="s1">'getSubjectGroupMemberIds'</span><span class="o">,</span> <span class="o">{</span>
+    <span class="n">subjectGroupId</span><span class="o">(</span> <span class="n">groupId</span> <span class="o">)</span>
+    <span class="n">subjectGroupStatusId</span><span class="o">(</span> <span class="n">groupStatusId</span> <span class="o">)</span>
+  <span class="o">})</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+ * Typically search by forename, surname, dob and gender
+ * also by patient alias (NHS # or MRN #)
+ **/</span>
+<span class="kt">def</span> <span class="nf">getPatientsByFilterWithoutClinicalItems</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="n">subjectFilter</span><span class="o">){</span>
+  <span class="n">doSOAPRequest</span><span class="o">(</span> <span class="n">client</span><span class="o">,</span> <span class="s1">'getPatientsByFilterWithoutClinicalItems'</span><span class="o">,</span> <span class="o">{</span>
+    <span class="n">subjectFilterModel</span> <span class="n">subjectFilter</span>
+  <span class="o">})</span>
+<span class="o">}</span>
+
+
+<span class="kt">def</span> <span class="nf">createSubjectGroupMember</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="n">groupId</span><span class="o">,</span> <span class="n">groupStatusId</span><span class="o">,</span> <span class="n">recFacilityId</span><span class="o">,</span> <span class="n">patientId</span><span class="o">){</span>
+  <span class="n">doSOAPRequest</span><span class="o">(</span> <span class="n">client</span><span class="o">,</span> <span class="s1">'createSubjectGroupMember'</span><span class="o">,</span> <span class="o">{</span>
+    <span class="n">subjectGroupId</span><span class="o">(</span> <span class="n">groupId</span> <span class="o">)</span>
+    <span class="n">subjectGroupStatusId</span><span class="o">(</span> <span class="n">groupStatusId</span> <span class="o">)</span>
+    <span class="n">subjectId</span><span class="o">(</span> <span class="n">patientId</span> <span class="o">)</span>
+    <span class="n">receivingFacilityId</span> <span class="o">(</span> <span class="n">recFacilityId</span> <span class="o">)</span>
+    <span class="n">createSubjectGroupMemberExt</span><span class="o">(</span> <span class="mi">0</span> <span class="o">)</span> <span class="c1">// '0' causes an update to fail silently if it exists already.</span>
+  <span class="o">})</span>
+<span class="o">}</span>
+
+
+<span class="cm">/**
+ * Do a SOAP request with the given command and payload.
+ * Doesn't massage the payload, this method is just to reduce copy/paste for the SOAP request.
+ **/</span>
+<span class="kt">def</span> <span class="nf">doSOAPRequest</span><span class="o">(</span><span class="n">client</span><span class="o">,</span> <span class="n">command</span><span class="o">,</span> <span class="n">commandBody</span><span class="o">){</span>
+  <span class="kt">def</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">send</span><span class="o">(</span>
+                           <span class="nl">connectTimeout:</span><span class="mi">5000</span><span class="o">,</span>
+                           <span class="nl">readTimeout:</span><span class="mi">20000</span><span class="o">,</span>
+                           <span class="nl">useCaches:</span><span class="kc">false</span><span class="o">,</span>
+                           <span class="nl">followRedirects:</span><span class="kc">false</span><span class="o">,</span>
+                           <span class="nl">sslTrustAllCerts:</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">envelopeAttributes</span> <span class="s2">"xmlns:ejb"</span><span class="o">:</span><span class="s2">"http://ejb.results.mirth.com/"</span>
+    <span class="n">body</span> <span class="o">{</span>
+        <span class="s2">"ejb:${command}"</span><span class="o">(</span><span class="n">commandBody</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="n">okStatus</span><span class="o">(</span><span class="n">response</span><span class="o">)</span> <span class="o">?</span> <span class="n">response</span><span class="o">.</span><span class="s2">"${command}Response"</span><span class="o">.</span><span class="s1">'return'</span> <span class="o">:</span> <span class="kc">null</span>
+<span class="o">}</span>
+
+
+<span class="cm">/**
+ * Check that the HTTP response is good.
+ * Shamelessly lifted from https://confluence.sakaiproject.org/display/WEBSVCS/WS-Groovy
+ **/</span>
+<span class="kt">def</span> <span class="nf">okStatus</span><span class="o">(</span> <span class="n">SOAPResponse</span> <span class="n">response</span> <span class="o">){</span>
+  <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="na">httpResponse</span><span class="o">.</span><span class="na">statusMessage</span><span class="o">==</span><span class="s2">"OK"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2014-08-21T00:00:00+00:00">August 21, 2014</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Groovy+SOAP+clients+with+ws-lite%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-21-groovy-soap-wslite.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-21-groovy-soap-wslite.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2014-08-06-code-retreat-thoughts.html" class="pagination--pager" title="Oxford’s Summer of Hacks 2014 – Code Retreat
+">Previous</a>
+    
+    
+      <a href="/posts/2014-08-27-jsoxford-nodebots-day.html" class="pagination--pager" title="JSOxford NodeBots, August 2014
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

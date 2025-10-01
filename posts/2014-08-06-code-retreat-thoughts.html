@@ -1,0 +1,669 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Oxford’s Summer of Hacks 2014 – Code Retreat - Ryan Brooks’ blog</title>
+<meta name="description" content="On Sunday the 6th of July we ran the second Oxford Code Retreat, so here’s a few notes I’ve made about the event">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Oxford’s Summer of Hacks 2014 – Code Retreat">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts.html">
+
+
+  <meta property="og:description" content="On Sunday the 6th of July we ran the second Oxford Code Retreat, so here’s a few notes I’ve made about the event">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-08-06T15:58:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Oxford’s Summer of Hacks 2014 – Code Retreat">
+    <meta itemprop="description" content="On Sunday the 6th of July we ran the second Oxford Code Retreat, so here’s a few notes I’ve made about the event. ">
+    <meta itemprop="datePublished" content="2014-08-06T15:58:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2014-08-06-code-retreat-thoughts.html" itemprop="url">Oxford’s Summer of Hacks 2014 – Code Retreat
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>On Sunday the 6th of July we ran the second Oxford Code Retreat, so here’s a few notes I’ve made about the event. <!--I also made some notes on hosting Code Retreats [here](/posts/2014-08-06-hosting-code-retreat)
+--></p>
+
+<h2 id="the-jsoxford-summer-of-hacks-code-retreat">The JSOxford Summer of Hacks Code Retreat</h2>
+
+<p>Okay, so it’s not a super-snappy title, but the <a href="http://jsoxford.com/2014/summer-of-hacks/">Summer of Hacks</a> has been a great success so far. The Code Retreat was the second event in the series, and this time we did it for Ruby, Python and JavaScript.</p>
+
+<p>Removing the language restriction was quite nice, and although we initially had a 90/10 split of JavaScript/Python for the first session that evened out to 50/50 after lunch. No dedicated Rubyists turned up, but Pete still managed to test out his Ruby test runner.</p>
+
+<p>The nice thing about the Code Retreat format is that it plays well to most languages, so running Python and JavaScript alongside each other didn’t require any special tooling. I’m a huge fan of polyglot events (being a multi-linguist myself), and it was great to see a mix of people rather than the JavaScripters at one end and Pythonistas at the other.</p>
+
+<p>The turnout for this event was completely different to the last one, and it was great to see the majority who turned up were testing/pair-programming newbies. We had intended to make TDD/pair-programming secondary, but through each session we had a reasonably constant flow of TDD-related questions so that obviously didn’t happen!</p>
+
+<p>One of the things I love about events like this is how it makes me question the things I’ve come to take for granted. A couple of times I was faced with questions about TDD taking too long or appearing to be a big time drain, and whereas online you might just dismiss questions like that with “they just don’t get it”, it has really helped me clarify my reason for loving TDD and think about the inherent tradeoffs and assumptions.</p>
+
+<p>So because I made everyone suffer my retrospectives on Sunday, here’s my quick retro:</p>
+
+<h3 id="what-went-well">What went well?</h3>
+
+<h5 id="tdd--pair-programming">TDD &amp; pair programming</h5>
+
+<p>All my planning had been around the idea that we’d done TDD/pair-programming as a focus in the first Code Retreat, so it was old-hat and would be boring to push it a second time. Wrong! There were quite a few attendees who hadn’t really used TDD in anger or who were just experiencing pair-programming for the first time, so I had quite a few discussions about how it worked ‘in real life’ and whether it was just a construct which is nice for events but isn’t really practical.</p>
+
+<p>This accurately reflects the experiences I’ve had recruiting for developers at all levels, and I’m much less surprised when I hear people describe testing as a secondary activity or something that would be nice if there was more time. In fairness most developers seem to agree that tests are necessary, and there is still a big debate about what constitutes the right amount of testing, and if it should be part of the design/development process. Either way it was good to be part of the discussion!</p>
+
+<h5 id="defensive-programming">Defensive programming</h5>
+
+<p>Our second session was to have a development battle. When writing tests it followed the standard TDD mantra of write as little as possible to get the test to fail, but when implementing the function the approach had to be to do it in the most obscure or wrong way possible, whilst still making the test pass.</p>
+
+<p>The resultant code was (obviously) atrocious and tended towards micro-methods, but it was interesting to see how everyone perceived it: was it a poor activity or a chance to think about one of the purposes of writing tests in a collaborative environment? Some of the code I saw closely resembled production code I’ve seen from projects that I won’t name here which had been running for much longer than 20 minutes, but no-one sets out to produce code that poor, right?</p>
+
+<h5 id="discussions--the-people">Discussions &amp; the people</h5>
+
+<p>Of course, I have to say this, but it was genuinely good fun running the event, and it never felt like hard work getting contributions during the post-session chats. There was almost always something interesting being worked through, sometimes heatedly! I am a strong believer that the point of these events is mostly to get interesting people into the same room so we can all learn things from each other. Events really are only as good as the people who turn up, so thanks to everyone who made it.</p>
+
+<h3 id="what-could-have-gone-better">What could have gone better</h3>
+
+<h5 id="focus-on-the-meaning">Focus on the meaning</h5>
+<p>When we set the kata and planned the sessions the focus was on what we were trying to get the attendees to think about, working backwards to find constraints which would exercise that. It all (sort of) went to plan, but during the event I completely forgot to focus on that same end goal! As a result I think a few people were left wondering why (for example) there wasn’t a planning session before the round-table programming session.</p>
+
+<h5 id="the-venue">The venue</h5>
+<p>The <a href="http://www.thejamfactoryoxford.com/">Jam Factory</a> is a great pub with a friendly feel and lots of light, and it would be great for an evening party or talk. In the height of summer the Boiler Room really is that, a glass-roofed hotbox. All that light streaming in also meant our projectors were useless. Fortunately we had a backup 40” TV, but that was really a little too small while still taking up a load of space.</p>
+
+<p>Being an (almost) free event meant we had to fund the venue and catering through sponsorship. Our sponsors <a href="http://www.haybrook.co.uk/">Haybrook IT Recruitment</a> and <a href="https://github.com/">GitHub</a> were amazing, but we struggled to make their contributions, along with the £5 entry fee, cover all the things. Lesson learned: figure out the constraints of the venue in advance (like not being able to bring our own refreshments &amp; snacks) and either work with them to compromise, ask for more sponsorship or change the venue.</p>
+
+<p>We were keen to host things at the Jam Factory so it didn’t feel like work, and was more friendly and informal than the standard conference-style event, and I think it almost achieved that.</p>
+
+<h5 id="the-testing-wrappers">The testing wrappers</h5>
+
+<p>We had a grand vision for getting real-time results from the pairs to build a live, developing game of life on the projector, as well as collecting stats for pretty graphs. We also wanted to have test wrappers for each language which would get as close to zero-setup as possible for attendees. There was a great push by George and Pete to knock out Python, Ruby and JavaScript test runners, and we had limited success in actually running the tests. Unfortunately the test runners weren’t as stable as we would have liked so they were quickly relegated for some.</p>
+
+<p>Since the event Uxebu have open-sourced <a href="https://github.com/uxebu/tddbin-frontend">TDDBin</a>, which we’ve used with great success for previous events. It’s great to see them open up the code, and we’ll certainly build on that for future events.</p>
+
+<h3 id="summary">Summary</h3>
+<p>Each time I’ve run a Code Retreat there are things I’d do completely differently next time, and to be honest it would be boring if that weren’t the case. As always it was an interesting event, and hopefully the attendees got as much out of it as I did.</p>
+
+<p>A few people have written up the day. If you’ve done the same let me know and I’ll add you to the list below:</p>
+
+<ul>
+  <li><a href="http://tomlane.me/2014/07/jsoxford-code-retreat/">Tom Lane</a></li>
+  <li><a href="http://danielthepope.wordpress.com/2014/07/09/tdd-is-still-alive-jsoxford-code-retreat/">Dan Pope</a></li>
+  <li><a href="https://blog.marcusnoble.co.uk/12-07-2014-jsoxford-code-retreat">Marcus Noble</a></li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#event" class="page__taxonomy-item p-category" rel="tag">event</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2014-08-06T15:58:00+00:00">August 6, 2014</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Oxford%27s+Summer+of+Hacks+2014+%E2%80%93+Code+Retreat%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-06-code-retreat-thoughts.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-06-code-retreat-thoughts.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2014-03-27-testing-rhino-js-spock.html" class="pagination--pager" title="Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock
+">Previous</a>
+    
+    
+      <a href="/posts/2014-08-21-groovy-soap-wslite.html" class="pagination--pager" title="Groovy SOAP clients with ws-lite
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

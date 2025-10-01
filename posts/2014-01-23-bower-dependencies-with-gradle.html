@@ -1,0 +1,660 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Bower dependencies with Gradle - Ryan Brooks’ blog</title>
+<meta name="description" content="We all know it’s important to be able to build your code in one step, but when I came to build a project I’m working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Bower dependencies with Gradle">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2014-01-23-bower-dependencies-with-gradle.html">
+
+
+  <meta property="og:description" content="We all know it’s important to be able to build your code in one step, but when I came to build a project I’m working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-01-23T10:48:40+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2014-01-23-bower-dependencies-with-gradle.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Bower dependencies with Gradle">
+    <meta itemprop="description" content="We all know it’s important to be able to build your code in one step, but when I came to build a project I’m working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.">
+    <meta itemprop="datePublished" content="2014-01-23T10:48:40+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2014-01-23-bower-dependencies-with-gradle.html" itemprop="url">Bower dependencies with Gradle
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>We all know <a href="http://www.joelonsoftware.com/articles/fog0000000043.html">it’s important to be able to build your code in one step</a>, but when I came to build a project I’m working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.</p>
+
+<p>The project in question is built in Grails but uses Bower to ensure we have the right versions of AngularJS, Bootstrap, etc. Once your development machine is setup it’s as “easy” as running <code>bower install</code> whenever the dependencies change, and otherwise using the standard <code>grails</code> commands.</p>
+
+<p>When you come to a fresh machine there are a few more steps before you can get up and running:</p>
+
+<ol>
+  <li>Have I got Grails installed?</li>
+  <li>Have I got NodeJS installed?</li>
+  <li>Have I installed Bower using NPM?</li>
+  <li>Have I run Bower to install the dependencies?</li>
+</ol>
+
+<p>This is already too much hassle! Grails makes life easier by generating a <a href="http://mrhaki.blogspot.co.uk/2013/03/grails-goodness-using-wrapper-for.html">Grails wrapper</a>, <code>grailsw</code>, so we don’t need to check that Grails is installed. So far, so good!</p>
+
+<p>NodeJS is a requirement for development, so I made the assumption that any developer machine would have it present. From there I wanted to use NPM to install Bower and then run Bower to grab the dependencies. There were plenty of options but I’m keen to learn a bit more Gradle so this was a great opportunity. 15 minutes later and we’ve got a build file (thanks to <a href="http://mrhaki.blogspot.co.uk/2010/10/gradle-goodness-parse-output-from-exec.html">Mr Haki</a> for the OutputStream processing):</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.gradle.api.tasks.Exec</span>
+
+<span class="n">defaultTasks</span> <span class="s1">'bower'</span>
+
+<span class="c1">// Get the path for the locally installed binaries</span>
+<span class="n">task</span> <span class="n">npmBin</span> <span class="o">&lt;&lt;</span> <span class="o">{</span>
+    <span class="k">new</span> <span class="nf">ByteArrayOutputStream</span><span class="o">().</span><span class="na">withStream</span> <span class="o">{</span> <span class="n">os</span> <span class="o">-&gt;</span>
+        <span class="kt">def</span> <span class="n">result</span> <span class="o">=</span> <span class="n">exec</span> <span class="o">{</span>
+            <span class="n">executable</span> <span class="o">=</span> <span class="s1">'npm'</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="o">[</span><span class="s1">'bin'</span><span class="o">]</span>
+            <span class="n">standardOutput</span> <span class="o">=</span> <span class="n">os</span>
+        <span class="o">}</span>
+        <span class="n">ext</span><span class="o">.</span><span class="na">binPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">()</span> <span class="o">+</span> <span class="s2">"/"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+<span class="c1">// Install packages from package.json</span>
+<span class="n">task</span> <span class="nf">npm</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Exec</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">"Grab NodeJS dependencies (from package.json)"</span>
+    <span class="n">commandLine</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"npm"</span><span class="o">,</span> <span class="s2">"install"</span><span class="o">]</span>
+    <span class="n">inputs</span><span class="o">.</span><span class="na">file</span> <span class="s2">"package.json"</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="na">dir</span> <span class="s2">"node_modules"</span>
+
+    <span class="n">tasks</span><span class="o">.</span><span class="na">npmBin</span><span class="o">.</span><span class="na">execute</span><span class="o">()</span>
+
+<span class="o">}</span>
+
+
+<span class="c1">// Install the bower components for front-end library management</span>
+<span class="n">task</span> <span class="nf">bower</span><span class="o">(</span><span class="nl">dependsOn:</span> <span class="s1">'npm'</span><span class="o">,</span> <span class="nl">type:</span> <span class="n">Exec</span><span class="o">){</span>
+    <span class="n">commandLine</span> <span class="s2">"${npmBin.binPath}bower"</span><span class="o">,</span> <span class="s1">'install'</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There may well be a better way of doing this, but it worked for me on OSX. There was a path-related error when we tried to run it on Windows, and if anyone can point out why that would be great.</p>
+
+<p>Once the Gradle build has completed you still need to run <code>grailsw run-app</code> but 2 steps is better than 4. A brief foray into <a href="https://github.com/grails/grails-gradle-plugin">building Grails with Gradle</a> yielded spurious errors before my 15 minutes was up, but recent commits may well solve that. Grails is expected to move to Gradle for version 3, so soon we’ll be able to do our entire build process through a single click.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2014-01-23T10:48:40+00:00">January 23, 2014</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Bower+dependencies+with+Gradle%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-01-23-bower-dependencies-with-gradle.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-01-23-bower-dependencies-with-gradle.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2013-12-16-git-deletion.html" class="pagination--pager" title="Preparing a Git repository for open-sourcification
+">Previous</a>
+    
+    
+      <a href="/posts/2014-02-06-geb-doubleclick.html" class="pagination--pager" title="Testing double-click events using Geb
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

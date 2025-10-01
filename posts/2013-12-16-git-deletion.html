@@ -1,0 +1,684 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Preparing a Git repository for open-sourcification - Ryan Brooks’ blog</title>
+<meta name="description" content="There’s an easy way in Git to go through your history and remove the offending articles">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Preparing a Git repository for open-sourcification">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2013-12-16-git-deletion.html">
+
+
+  <meta property="og:description" content="There’s an easy way in Git to go through your history and remove the offending articles">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-12-16T19:48:40+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2013-12-16-git-deletion.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Preparing a Git repository for open-sourcification">
+    <meta itemprop="description" content="A project I’m involved with is going through the process of being open-sourced and released on GitHub. This is a great development, but of course we have had to go through and make sure that we’re able to release everything. The project started out life in a single Git repository so there’s plenty of bootstrap data that’s owned by other groups within the University. Fortunately there’s an easy way in Git to go through your history and remove the offending articles.">
+    <meta itemprop="datePublished" content="2013-12-16T19:48:40+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2013-12-16-git-deletion.html" itemprop="url">Preparing a Git repository for open-sourcification
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>A project I’m involved with is going through the process of being open-sourced and released on GitHub. This is a great development, but of course we have had to go through and make sure that we’re able to release everything. The project started out life in a single Git repository so there’s plenty of bootstrap data that’s owned by other groups within the University. Fortunately there’s an easy way in Git to go through your history and remove the offending articles.</p>
+
+<p><strong>Update 18/12/2013</strong> For those who don’t want to re-clone their project, I’ve added the commands to flush the deleted refs from your local repository. I’ve also added a small section on identifying and removing space-hungry sections of the git repository.</p>
+
+<p>There are many ways to achieve the same goal, and we could arguably have retained the same repository, however it’s a nice opportunity to clear out the 300Mb which magically worked its way into the repository at some point and generally streamline our code.</p>
+
+<h5 id="a-word-of-warning">A word of warning</h5>
+<p>The following will go through your entire tree and remove all references to the files you’re removing, rewriting commits where necessary. As a result your local repository will likely wildly differ from the remote repository, so you’ll need to coordinate this with your fellow team members. If your repository is already in the wild is there much point in causing this much pain? You can probably just get away with removing it from your tags and branches, which is far less invasive.</p>
+
+<h5 id="a-second-word-of-warning">A second word of warning</h5>
+<p>This is a destructive process that rewrites history. <strong>Make sure you’ve got a backup</strong> before attempting this, just in case things go pear-shaped.</p>
+
+<p><strong>Update 18/12/2013</strong> GitHub’s documentation is pretty thorough, so it wasn’t surprising to find <a href="https://help.github.com/articles/remove-sensitive-data">a page on removing sensitive data</a>. I’ve updated this post to reflect some of the suggestions in that page.</p>
+
+<p>The first thing to do is remove the offending content from your repository, and push that change. This is an important step because you want a commit at HEAD which isn’t modified by the following actions, which allows other users to pull the changes without having to nuke their repository.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm  </span>path/to/our/secret/bootstrap-data/
+git commit <span class="nt">-m</span> <span class="s2">"Removing bootstrap data"</span> path/to/our/secret/bootstrap-data/
+git push
+</code></pre></div></div>
+
+<p>Then we can filter the commit history to remove the offending content from the history of all branches:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git filter-branch <span class="nt">--force</span> <span class="nt">--index-filter</span> <span class="s1">'git rm --cached --ignore-unmatch path/to/our/secret/bootstrap-data/'</span> <span class="nt">--prune-empty</span> <span class="nt">--tag-name-filter</span> <span class="nb">cat</span> <span class="nt">--</span> <span class="nt">--all</span>
+</code></pre></div></div>
+
+<p>Because you’ve just rewritten history, the <code>git status</code> command will then yield something like</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># On branch develop
+# Your branch and 'origin/develop' have diverged,
+# and have 373 and 372 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+nothing to commit, working directory clean
+</code></pre></div></div>
+
+<p>The next thing to do is purge it from the local repository by forcing a garbage collection, like so:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> .git/refs/original/
+git reflog expire <span class="nt">--expire</span><span class="o">=</span>now <span class="nt">--all</span>
+git gc <span class="nt">--prune</span><span class="o">=</span>now
+git gc <span class="nt">--aggressive</span> <span class="nt">--prune</span><span class="o">=</span>now
+</code></pre></div></div>
+
+<h2 id="clearing-large-repositories">Clearing large repositories</h2>
+<p>In our case, our project was around ~15Mb, however the repository had racked up over 300Mb. The obvious culprit is committed <code>target</code> directories, libraries and built WAR files.</p>
+
+<p>To find out the size of your git repository, use <code>git count-objects -v</code> (you’re looking for the size-pack value, which is the project size in kilobytes).</p>
+
+<p>Ted Naleid has written an excellent article on <a href="http://naleid.com/blog/2012/01/17/finding-and-purging-big-files-from-git-history">finding and purging big files from git history</a>, along with a couple of one-liners to get locate the biggest files.</p>
+
+<p>I’ve dumped the above into a little script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">FILE_TO_DELETE</span><span class="o">=</span><span class="s2">"target"</span>
+
+<span class="c"># Filter the history</span>
+git filter-branch <span class="nt">--force</span> <span class="nt">--index-filter</span> <span class="s1">'git rm --cached --ignore-unmatch ${FILE_TO_DELETE'</span> <span class="nt">--prune-empty</span> <span class="nt">--tag-name-filter</span> <span class="nb">cat</span> <span class="nt">--</span> <span class="nt">--all</span>
+
+<span class="c"># Purge the local repository and force garbage collection</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> .git/refs/original/
+git reflog expire <span class="nt">--expire</span><span class="o">=</span>now <span class="nt">--all</span>
+git gc <span class="nt">--prune</span><span class="o">=</span>now
+git gc <span class="nt">--aggressive</span> <span class="nt">--prune</span><span class="o">=</span>now
+
+<span class="c"># Print new repository size</span>
+git count-objects <span class="nt">-v</span>
+</code></pre></div></div>
+
+<h2 id="reapplying-commits">Reapplying commits</h2>
+<p>It’s almost certainly the case that someone cloned your repository and made some changes while you were off rewriting history. If you’re now working on a new repository, the easiest way might be to create a patch from the old repo and then apply it to the new one. Using the following command, “-1” refers to the last 1 commit, so you can use “-2”, “-3”, and so on.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Make a patchfile </span>
+git format-patch <span class="nt">-1</span>
+
+<span class="c"># Apply the patchfile</span>
+patch <span class="nt">-p1</span> &lt; file.patch
+</code></pre></div></div>
+
+<p>And voila, you’re back up and running again. Of course there’s plenty more to do: adding a permissive license, attributing any libraries and most importantly building a pretty website for it…</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2013-12-16T19:48:40+00:00">December 16, 2013</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Preparing+a+Git+repository+for+open-sourcification%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-12-16-git-deletion.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-12-16-git-deletion.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2013-12-01-pi-powered-central-heating-phase-1.html" class="pagination--pager" title="Pi-powered central heating phase 1
+">Previous</a>
+    
+    
+      <a href="/posts/2014-01-23-bower-dependencies-with-gradle.html" class="pagination--pager" title="Bower dependencies with Gradle
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,699 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JSOxford NodeBots, August 2014 - Ryan Brooks’ blog</title>
+<meta name="description" content="On the 23rd of August we ran the last event in the JSOxford 2014 Summer of Hacks, building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="JSOxford NodeBots, August 2014">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day.html">
+
+
+  <meta property="og:description" content="On the 23rd of August we ran the last event in the JSOxford 2014 Summer of Hacks, building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-08-27T00:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JSOxford NodeBots, August 2014">
+    <meta itemprop="description" content="On the 23rd of August we ran the last event in the JSOxford 2014 Summer of Hacks, building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.">
+    <meta itemprop="datePublished" content="2014-08-27T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2014-08-27-jsoxford-nodebots-day.html" itemprop="url">JSOxford NodeBots, August 2014
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>On the 23rd of August we ran the last event in the <a href="http://jsoxford.com/2014/summer-of-hacks/">JSOxford 2014 Summer of Hacks</a>, building JavaScript powered NodeBots. Cue maniacal cackling as we plan to take over the world.</p>
+
+<p>A <a href="http://nodebots.io/">NodeBot</a> is any JavaScript-powered robot, and the aim of the day was to bridge the gap into the physical world with the help of Arduinos, sensors, servos, motors, LEDs and a load of LEGO.</p>
+
+<p>Most importantly, <a href="https://www.youtube.com/watch?v=uEx5G-GOS1k">we had a flag</a>:</p>
+
+<p><img src="/images/2014-08-27_03.jpg" alt="NodeBots flag" /></p>
+
+<p><a href="https://twitter.com/intent/follow?screen_name=_alanshaw">Alan Shaw</a> and <a href="https://twitter.com/intent/follow?screen_name=olizilla">Oli Evans</a> very kindly came up for the day from London to impart some of their NodeBots wizardry on us and show off their impressive suite of hardware. It was great to start the day with the message that ‘hardware is really hard’ – as I repeatedly drove our JS remote control car into the wall I was definitely feeling that!</p>
+
+<p><img src="/images/2014-08-27_09.jpg" alt="NodeBots presentation" /></p>
+
+<p>We purchased 10 <a href="http://oomlout.co.uk/">oomlout starter kits</a> and had a few servos, Arduino Uno boards and a load of wires kicking around, so there was plenty of kit and the day started with most people running through the introductory blinking LED lessons. Some chose to start with Arduino and some went straight to using the Johnny Five library, a JS library for controlling the Arduino inputs/outputs over the USB cable.</p>
+
+<p><img src="/images/2014-08-27_04.jpg" alt="npm install johnny-five (t-shirt)" /></p>
+
+<p>Once the initial single-LED board was out the way things got a bit more interesting, and the rest of the day saw some cool little projects at varying levels of completeness (sorry if I forgot yours):</p>
+
+<ul>
+  <li>A parking sensor which evolved into an <a href="http://instagram.com/p/sC_S_npxm-">octocat alert</a> with lights, beeping an waving octocats.</li>
+  <li>A RESTful web-based temperature sensor.</li>
+  <li>A temperature-sensing board with LCD display.</li>
+  <li>A device built with Scratch for Arduino.</li>
+  <li>2-bit Guitar Hero. I still have that Sweet Child O’ Mine riff replaying in my head.</li>
+  <li>An RC car with automatic braking to avoid obstacles (or not, it turned out)</li>
+</ul>
+
+<p>We deliberately didn’t set a particular objective so everyone could plough on at their own pace and dive into whatever grabbed their interest. This worked really well, and had the added advantage that it was really easy to organise!</p>
+
+<p><img src="/images/2014-08-27_10.jpg" alt="Marcus, Chris and sensors" /></p>
+
+<p>After Oli and Alan had got us all excited about the possibilities they set about linking a Logitech gaming joypad with the CrazyFlie, a cool but twitchy little quadcopter with a death-wish. These little devices are quite exciting (there’s nothing boring about flying) but can pick up a lot of speed and cause a lot of damage to themselves with a bit of errant programming.</p>
+
+<p><img src="/images/2014-08-27_06.jpg" alt="Crazyflie quadcopter" /></p>
+
+<p>Needless to say it didn’t take long before the inevitable:</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>...annnnd the <a href="https://twitter.com/hashtag/crazyflie?src=hash">#crazyflie</a> is broken :( <a href="https://twitter.com/JSOxford">@JSOxford</a> <a href="https://twitter.com/hashtag/nodebots?src=hash">#nodebots</a></p>&mdash; Alan Shaw (@_alanshaw) <a href="https://twitter.com/_alanshaw/statuses/503178382201618433">August 23, 2014</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Fortunately there was plenty of other kit to get overly enthusiastic about.</p>
+
+<p>One limitation of johnny-five is that you need a connection to a laptop to run the JavaScript, so roving machines or fighting bots can be a problem. The <a href="http://www.espruino.com/">Espruino</a> and <a href="https://tessel.io/">Tessel</a> boards look really promising because they take different approaches to enabling developers to write JS and end up with a standalone board.</p>
+
+<p><img src="/images/2014-08-27_07.jpg" alt="Tessel board" /></p>
+
+<h3 id="pinoccio-and-the-dension-wirc">Pinoccio and the Dension WiRC</h3>
+
+<p><a href="https://twitter.com/intent/follow?screen_name=paradigm_tee">Chris</a> and I wanted to hack on the JSOxford RC cars, a trio of <a href="http://www.dension.com/product/wirc-wifi-rc-receiver">Dension WiRC</a> cars which can be controlled using JavaScript over WiFi and have a webcam onboard. The is a <a href="https://github.com/jsoxford/node-wirc">node library</a> from a previous hack-day to communicate with the car.</p>
+
+<p>Our first thought was to add more sensors to the existing car but that didn’t seem possible so we settled on the idea of using a Pinoccio board as a sensor array and then have a single JS script running on the laptop which would use these sensor readings to action the car. The Pinoccio board seemed perfect for this because the ‘lead scout’ board has a WiFi backpack. Now that I’ve had a couple of days to look into Pinoccio in a bit more detail it’s clear that all the limitations I’m about to talk about were because of our lack of understanding. Hopefully we’ll run another NodeBots day and get a chance to play with it again.</p>
+
+<p><img src="/images/2014-08-27_13.jpg" alt="Pinoccio boards" /></p>
+
+<p><a href="https://pinocc.io/">Pinoccio boards</a> are a great idea: mesh-networked Arduino-based devices which connect to the Internet by default, combined with a web-based IDE. The result is a system you can get up and running with in minutes. Needless to say, having feedback on the IR rangefinder’s value in the IDE without typing a single line of code got us quite excited.</p>
+
+<p>I’d thoroughly recommend having a closer look at the Pinoccio boards. I am particular taken by the way it has battery (including charging), wireless networking, and more importantly a way to access the device from a computer without needing to plug in. The boards also have a temperature sensor which is a nice addition for the home automation projects I’m thinking about.</p>
+
+<p>Unfortunately our enthusiasm was stifled when we tried to use the <a href="https://github.com/Pinoccio/client-node-pinoccio/">node client library</a>. While it’s suitable for non-realtime applications, the library connects to hq.pinocc.io rather than to the device, which leads to &gt;1s latency for reads. The <a href="https://www.npmjs.org/package/pinoccio-server">pinoccio-server</a> package allows you to run your own HQ, and I’d guess that while flashing the devices with the updated server address you’d also be able to update the refresh rate (obviously at the expense of battery life).</p>
+
+<p>Using <a href="http://support.pinocc.io/hc/en-us/articles/200250539-ScoutScript-Overview#functions">ScoutScript commands</a> it’s possible to write functions and save them on the device, which is great if a scout on the mesh needs to carry out an action when another scout on the network detects an input. We didn’t find this section of the docs until after the event. Sad face.</p>
+
+<p>So at the moment I’m not sure how you’d go about streaming the live status of an input at a greater resolution than once per second, but I know it’s possible because of <a href="http://projectable.me/post/48713397681/scout6050-i-was-asked-to-put-together-a-quick">this video</a>.</p>
+
+<p>It’s a shame we only had the afternoon to play around with these devices, and I’ll be picking up a pair soon to play with over winter.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p><img src="/images/2014-08-27_15.jpg" alt="Group hacking on hardware and laptops" /></p>
+
+<p>Thanks to everyone who’s helped out with the JSOxford Summer or Hacks and made it possible, and a huge thanks to <a href="https://twitter.com/intent/follow?screen_name=benjaminbenben">Ben</a> for coming up with the idea in the first place. We also owe <a href="https://twitter.com/intent/follow?screen_name=_alanshaw">Alan Shaw</a> and <a href="https://twitter.com/intent/follow?screen_name=olizilla">Oli Evans</a> at least one or two beers for bringing their skills and enthusiasm and giving up a day to escape the big smoke.</p>
+
+<p>I’ve also got to say a big ‘thank you’ to the great sponsors who’ve made it possible to make the events almost free:</p>
+
+<ul>
+  <li><a href="http://www.b2m-solutions.com/">B2M Solutions</a></li>
+  <li><a href="https://github.com">GitHub</a></li>
+  <li><a href="http://www.haybrook.co.uk/">Haybrook IT Resourcing</a></li>
+  <li><a href="http://teamtreehouse.com/">Treehouse</a></li>
+  <li><a href="http://www.whiteoctober.co.uk/">White October</a></li>
+</ul>
+
+<p>Looking forward to the autumn and winter, we’re keen to keep the JavaScript community in Oxford buzzing, so <a href="https://twitter.com/intent/tweet?text=Yo%20@JSOxford!">get in touch with us on Twitter</a> to let us know:</p>
+
+<ul>
+  <li>What you’d like to talk about or listen to at upcoming meetups.</li>
+  <li>Which events you’d like to see come to Oxford, and which events you’d love to see happen again.</li>
+</ul>
+
+<p>I’m not the only one to write up the event:</p>
+
+<ul>
+  <li><a href="https://blog.marcusnoble.co.uk/2014-08-24-nodebots/">Marcus Noble’s blog</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#event" class="page__taxonomy-item p-category" rel="tag">event</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2014-08-27T00:00:00+00:00">August 27, 2014</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JSOxford+NodeBots%2C+August+2014%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-27-jsoxford-nodebots-day.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2014-08-27-jsoxford-nodebots-day.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2014-08-21-groovy-soap-wslite.html" class="pagination--pager" title="Groovy SOAP clients with ws-lite
+">Previous</a>
+    
+    
+      <a href="/posts/2014-09-27-give-and-tell.html" class="pagination--pager" title="Give and tell challenge
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,858 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Simple Rsnapshot backup over FTPS - Ryan Brooks’ blog</title>
+<meta name="description" content="In this post I’ll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.">
+
+
+  <meta name="author" content="Ryan Brooks">
+  
+  <meta property="article:author" content="Ryan Brooks">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Ryan Brooks' blog">
+<meta property="og:title" content="Simple Rsnapshot backup over FTPS">
+<meta property="og:url" content="https://www.ryanbrooks.co.uk/posts/2013-08-22-simple-rsnapshot-backup-over-ftps.html">
+
+
+  <meta property="og:description" content="In this post I’ll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-08-22T20:39:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.ryanbrooks.co.uk/posts/2013-08-22-simple-rsnapshot-backup-over-ftps.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Ryan Brooks' blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Ryan Brooks' blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/prev"
+                
+                
+              >Previously</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/now"
+                
+                
+              >Now</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts-by-year/"
+                
+                
+              >Posts</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://www.ryanbrooks.co.uk/">
+        <img src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://www.ryanbrooks.co.uk/" itemprop="url">Ryan Brooks</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Sheffield, UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i><span class="label">Mastodon</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Simple Rsnapshot backup over FTPS">
+    <meta itemprop="description" content="In this post I’ll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.">
+    <meta itemprop="datePublished" content="2013-08-22T20:39:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://www.ryanbrooks.co.uk/posts/2013-08-22-simple-rsnapshot-backup-over-ftps.html" itemprop="url">Simple Rsnapshot backup over FTPS
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>In this post I’ll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.</p>
+
+<p><em>Note that while this example will work with FTP it is not recommended because the protocol is not encrypted.</em></p>
+
+<p><strong>Update 23/08/2013:</strong> There were a hundred other things I wanted to talk about in this post but decided to leave out for the sake of simplicity, but as <a href="https://twitter.com/m0untainpenguin">@m0untainpenguin</a> <a href="https://twitter.com/m0untainpenguin/statuses/370901452648374272">points out</a> the feeling of safety that hard links give you is misleading. There is only ever one copy of the file on disk, so if that gets corrupted you’re out of luck. A great reason to do regular full backups, but that’s a walkthrough for another post!</p>
+
+<p>I have tested this on a clean installation of Ubuntu 13.04, but let me know if anything doesn’t work as expected in the comments.</p>
+
+<p><strong>Many of the commands within this tutorial must be executed as root. You can always just add “sudo” in front of it if you have problems.</strong></p>
+
+<h1 id="a-simple-ftp-server-for-testing">A simple FTP server for testing</h1>
+
+<p>While not technically part of the setup, I didn’t have ready access to an FTP server to test these notes. Installing an FTP server for testing is as simple as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>vsftpd
+</code></pre></div></div>
+
+<p>Out of the box, vsftpd serves your home directory and can be connected to using your standard username and password.</p>
+
+<p><strong>Installing an FTP server with access to your home directory is a pretty bad idea without <a href="https://help.ubuntu.com/community/vsftpd#TLS.2BAC8-SSL.2BAC8-FTPS">configuring it properly</a></strong></p>
+
+<h1 id="users-and-groups">Users and groups</h1>
+
+<p>We don’t want the backup to run as root because it’s always a good idea to restrict things as much as possible, so let’s create a backup user and group:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>addgroup backup
+adduser rsnapshot <span class="nt">--ingroup</span> backup <span class="nt">--disabled-password</span>
+</code></pre></div></div>
+
+<h1 id="mounting-an-ftp-folder-locally">Mounting an FTP folder locally</h1>
+
+<p><a href="http://curlftpfs.sourceforge.net/">CurlFTPfs</a> presents the FTP server as a local directory using FUSE. It’s trivial to install it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>curlftpfs 
+</code></pre></div></div>
+
+<p>We want to connect to our remote server using credentials, so let’s add that to the <em>.netrc</em> file in the home directory of the backup user:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh"> &gt; /home/rsnapshot/.netrc
+machine ftp.host.com  
+login myuser  
+password mypass 
+</span><span class="no">EOF
+
+</span><span class="c"># Don't let anyone else see your FTP credentials</span>
+<span class="nb">chmod </span>600 /home/rsnapshot/.netrc
+</code></pre></div></div>
+
+<p>Mounting the remote directory is also straightforward, here we’ll use /media/remote_server. Note that by default the directory is only accessible to the user who mounted it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> /media/remote_server
+<span class="nb">chown </span>rsnapshot /media/remote_server
+
+<span class="c"># Ubuntu doesn't have the right permissions on /etc/fuse.conf, so let's fix that</span>
+<span class="nb">chmod </span>644 /etc/fuse.conf
+</code></pre></div></div>
+
+<p>Mounting and unmounting is easy:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mount</span>
+curlftpfs ftps://ftp.host.com /media/remote_server <span class="nt">-r</span> <span class="nt">-o</span> ssl
+
+<span class="c"># unmount</span>
+fusermount <span class="nt">-u</span> /media/remote_server
+</code></pre></div></div>
+
+<p>Now you have the remote folder mounted locally we can move on to the backup solution.</p>
+
+<h1 id="rsnapshot-configuration">Rsnapshot configuration</h1>
+<p>Right, we’ll need to install Rsnapshot first.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>rsnapshot
+</code></pre></div></div>
+
+<p>We’re going to keep our backups in <em>/var/rsnapshot</em> for this example, but feel free to put them wherever you like:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/rsnapshot/private/snapshots
+<span class="nb">chmod </span>0700 /var/rsnapshot/private
+<span class="nb">chmod </span>0755 /var/rsnapshot/private/snapshots
+<span class="nb">chown</span> <span class="nt">-R</span> rsnapshot /var/rsnapshot/
+</code></pre></div></div>
+
+<p>While we’re at it, let’s touch the log file and lock directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> /var/log/rsnapshot.log
+<span class="nb">chown </span>rsnapshot /var/log/rsnapshot.log
+<span class="nb">mkdir</span> /var/run/rsnapshot/
+<span class="nb">chown </span>rsnapshot /var/run/rsnapshot/
+</code></pre></div></div>
+
+<p>Next we need to set the configuration file. There are many options, so it’s a good idea to <a href="http://www.rsnapshot.org/rsnapshot.html">read the documentation</a>, but this will get you up and running:</p>
+
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#################################################
+# rsnapshot.conf - rsnapshot configuration file #
+#################################################
+#                                               #
+# PLEASE BE AWARE OF THE FOLLOWING RULES:       #
+#                                               #
+# This file requires tabs between elements      #
+#                                               #
+# Directories require a trailing slash:         #
+#   right: /home/                               #
+#   wrong: /home                                #
+#                                               #
+#################################################
+</span>
+<span class="n">config_version</span>	<span class="m">1</span>.<span class="m">2</span>
+
+<span class="n">snapshot_root</span>	/<span class="n">var</span>/<span class="n">rsnapshot</span>/<span class="n">private</span>/<span class="n">snapshots</span>
+<span class="n">no_create_root</span>	<span class="m">1</span>
+
+<span class="n">cmd_cp</span>		/<span class="n">bin</span>/<span class="n">cp</span>
+<span class="n">cmd_rm</span>		/<span class="n">bin</span>/<span class="n">rm</span>
+<span class="n">cmd_rsync</span>	/<span class="n">usr</span>/<span class="n">bin</span>/<span class="n">rsync</span>
+<span class="c">#cmd_ssh	/usr/bin/ssh
+</span>
+<span class="n">cmd_logger</span>	/<span class="n">usr</span>/<span class="n">bin</span>/<span class="n">logger</span>
+<span class="n">cmd_du</span>		/<span class="n">usr</span>/<span class="n">bin</span>/<span class="n">du</span>
+<span class="n">cmd_rsnapshot_diff</span>	/<span class="n">usr</span>/<span class="n">bin</span>/<span class="n">rsnapshot</span>-<span class="n">diff</span>
+
+<span class="c"># Specify the path to a script (and any optional arguments) to run right
+# before rsnapshot syncs files
+#
+#cmd_preexec	/path/to/preexec/script
+</span>
+<span class="c"># Specify the path to a script (and any optional arguments) to run right
+# after rsnapshot syncs files
+#
+#cmd_postexec	/path/to/postexec/script
+</span>
+
+<span class="c">#########################################
+#           BACKUP INTERVALS            #
+# Must be unique and in ascending order #
+# i.e. hourly, daily, weekly, etc.      #
+#########################################
+</span>
+<span class="n">retain</span>		<span class="n">hourly</span>	<span class="m">24</span>
+<span class="n">retain</span>		<span class="n">daily</span>	<span class="m">7</span>
+<span class="n">retain</span>		<span class="n">weekly</span>	<span class="m">4</span>
+<span class="n">retain</span>		<span class="n">monthly</span>	<span class="m">60</span>
+
+<span class="n">verbose</span>		<span class="m">2</span>
+<span class="n">loglevel</span>	<span class="m">3</span>
+<span class="n">logfile</span>	/<span class="n">var</span>/<span class="n">log</span>/<span class="n">rsnapshot</span>.<span class="n">log</span>
+
+<span class="n">lockfile</span>	/<span class="n">var</span>/<span class="n">run</span>/<span class="n">rsnapshot</span>/<span class="n">rsnapshot</span>.<span class="n">pid</span>
+<span class="n">stop_on_stale_lockfile</span>		<span class="m">0</span>
+
+<span class="n">link_dest</span>	<span class="m">1</span>
+<span class="n">sync_first</span>	<span class="m">1</span>
+
+<span class="c">###############################
+### BACKUP POINTS / SCRIPTS ###
+###############################
+</span>
+<span class="c"># LOCALHOST
+#backup	/home/		localhost/
+#backup	/etc/		localhost/
+</span>
+<span class="c"># Remote SFTP site
+</span><span class="n">backup</span>	/<span class="n">media</span>/<span class="n">remote_server</span>		<span class="n">remote_server</span>/
+</code></pre></div></div>
+
+<p>Now we can test the configuration (be sure to run as the rsnapshot user):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsnapshot <span class="nt">-t</span> <span class="nb">sync</span>
+</code></pre></div></div>
+
+<p>We could run it without <em>-t</em> to carry out a backup, however that’ll fail right now because the FTP directory isn’t mounted (yet).</p>
+
+<p>We want to mount the FTP folder every time we do a backup, so we’ll need a wrapper script to do that (/var/rsnapshot/doftpsync.sh):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="c"># -r = mount read-only</span>
+<span class="c"># -o ssl = Force SSL</span>
+<span class="nb">echo </span>Mounting the FTP servr
+curlftpfs ftps://ftp.host.com /media/remote_server <span class="nt">-r</span> <span class="nt">-o</span> ssl
+
+<span class="c"># Do some backup here :)</span>
+<span class="c">#echo performing the backup</span>
+/usr/bin/rsnapshot <span class="nb">sync</span>
+
+<span class="c"># Finally, unmount and disconnect from the FTP server</span>
+fusermount <span class="nt">-u</span> /media/remote_server
+</code></pre></div></div>
+
+<p>Make the script executable:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>755 /var/rsnapshot/doftpsync.sh
+</code></pre></div></div>
+
+<p>And finally run the script to test it. Check the contents of /var/rsnapshot/private/snapshots to check it worked as expected.</p>
+<h1 id="running-regularly-with-cron">Running regularly with cron</h1>
+
+<p>As the backup user, let’s execute the Rsnapshot command at the relevant intervals using cron. To edit the user’s crontab just use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su - rsnapshot
+crontab <span class="nt">-e</span>
+</code></pre></div></div>
+
+<p>And add in the following commands (feel free to change the intervals to meet your needs of course):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># You only need to run 'sync' if the 'syncfirst' option is true</span>
+0 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span>       /var/rsnapshot/doftpsync.sh
+
+<span class="c"># Every hour on the 50th minute</span>
+50 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span>       /usr/local/bin/rsnapshot hourly
+<span class="c"># Once a day at 23:40</span>
+40 23 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span>       /usr/local/bin/rsnapshot daily
+<span class="c"># Every Sunday at 23:30</span>
+30 23 <span class="k">*</span> <span class="k">*</span> 0       /usr/local/bin/rsnapshot weekly
+<span class="c"># The first day of every month at 23:20</span>
+20 23 1 <span class="k">*</span> <span class="k">*</span>       /usr/local/bin/rsnapshot monthly
+</code></pre></div></div>
+
+<h1 id="mounting-a-read-only-backup-for-recovery-optional">Mounting a read-only backup for recovery (optional)</h1>
+
+<p>Having a read-only copy of your backup is a great idea. Having one that even root can’t write to is even better. How much less stressful is it when you never have to think “damn, I copied that the wrong way and overwrote the backup”. Fortunately it’s easy to do with NFS (this is largely adapted and taken from the <a href="http://www.rsnapshot.org/howto/1.2/rsnapshot-HOWTO.en.pdf">Rsnapshot HOWTO</a>).</p>
+
+<p>First we need to create a location to mount the read-only snapshots and modify the permissions so that no-one but the rsnapshot user can look inside the private directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> /var/rsnapshot/readonly
+<span class="nb">chmod </span>0755 /var/rsnapshot/readonly
+</code></pre></div></div>
+
+<p>Then we add the NFS export of our private directory to <em>/etc/exports</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/rsnapshot/private/snapshots/ 127.0.0.1<span class="o">(</span>ro,no_root_squash<span class="o">)</span>
+</code></pre></div></div>
+
+<p>You’ll need to restart the NFS service now:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service nfs restart
+</code></pre></div></div>
+
+<p>Now we have the NFS export, we can mount it. Add the following to <em>/etc/fstab</em>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>localhost:/var/rsnapshot/private/snapshots/ /var/rsnapshot/readonly/ nfs ro 0 0
+</code></pre></div></div>
+
+<p>Finally you can mount the directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount /var/rsnapshot/readonly/
+</code></pre></div></div>
+
+<p>And of course, to test! Try creating a file inside the <em>/var/rsnapshot/readonly/</em> directory and watch it fail.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>You should now have a fully fledged enterprise-grade backup system making a backup of your hosted data, but there’s no time to rest! Encrypting your external drive is a great idea, just in case it gets stolen.</p>
+
+<p>Of course you could always automate most of the above installation (and maintenance) by using Puppet and the <a href="https://github.com/spikeheap/puppet_rsnapshot">Rsnapshot module</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#engineering" class="page__taxonomy-item p-category" rel="tag">engineering</a><span class="sep">, </span>
+    
+      <a href="/tags/#guide" class="page__taxonomy-item p-category" rel="tag">guide</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2013-08-22T20:39:00+00:00">August 22, 2013</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Simple+Rsnapshot+backup+over+FTPS%20https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-08-22-simple-rsnapshot-backup-over-ftps.html"
+    class="btn btn--twitter"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on Twitter"><i
+      class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.ryanbrooks.co.uk%2Fposts%2F2013-08-22-simple-rsnapshot-backup-over-ftps.html"
+    class="btn btn--linkedin"
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+    title="Share on LinkedIn"><i
+      class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2013-08-18-some-notes-on-backup.html" class="pagination--pager" title="Some notes on backup
+">Previous</a>
+    
+    
+      <a href="/posts/2013-08-24-ive-moved.html" class="pagination--pager" title="I’ve moved
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-06-12-protect-yourself-first.html" rel="permalink">Protect yourself first
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-02-17-linting-branch-changes.html" rel="permalink">Incrementally linting a codebase with branch changes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Update 26th February 2023: replaced xargs approach because it interfered with Pry local debugging.
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-17-capybara-webmock-allow-http.html" rel="permalink">Capybara, WebMock, and too many open files
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are becau...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/2023-01-16-docker-contexts.html" rel="permalink">Docker context switching
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and Lima, or local Kubernetes clusters.
+
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://ruby.social/@spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-mastodon" aria-hidden="true"></i> Mastodon</a></li>
+        
+      
+        
+          <li><a href="https://github.com/spikeheap" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://www.ryanbrooks.co.uk">Ryan Brooks' blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVSM9FVFJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVSM9FVFJ3', { 'anonymize_ip': true});
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

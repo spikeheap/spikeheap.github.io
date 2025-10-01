@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://www.ryanbrooks.co.uk/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.ryanbrooks.co.uk/" rel="alternate" type="text/html" /><updated>2025-10-01T07:39:36+00:00</updated><id>https://www.ryanbrooks.co.uk/feed.xml</id><title type="html">Ryan Brooks’ blog</title><subtitle>CTO with a dev &amp; ops origin story. Camembert lover/buzzword hater. Ex JSOxford, OxRUG, MoJ, GDS. Only personal opinions here</subtitle><author><name>Ryan Brooks</name></author><entry><title type="html">Protect yourself first</title><link href="https://www.ryanbrooks.co.uk/posts/2023-06-12-protect-yourself-first.html" rel="alternate" type="text/html" title="Protect yourself first" /><published>2023-06-12T00:00:00+00:00</published><updated>2023-06-12T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/protect-yourself-first</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2023-06-12-protect-yourself-first.html"><![CDATA[<p>A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation’s goals. Everything comes before yourself.</p>
+
+<p>In leadership positions it <em>can</em> be important to protect a team, whether it’s from organisational noise, stress around change, or just focus. It’s easy to feel a burden of responsibility, especially if the team isn’t healthy or there are lots of external pressures you can’t control.</p>
+
+<p>It’s certainly important to build and maintain psychological safety in any team, but when I’m thinking about safety I’m reminded of Cave Rescue training where it’s the other way around.</p>
+
+<h2 id="self-team-casualty">Self, team, casualty</h2>
+
+<p>I was surprised on my first casualty care course. One of the first things we covered was assessing the situation and making sure we weren’t putting ourselves in danger. Our instructor summed it up nicely:</p>
+
+<blockquote>
+  <p>If you rush in and get hurt, what use are you to the casualty? You’re another casualty, and that might make the rescue more dangerous for the rest of your team.</p>
+</blockquote>
+
+<p>Fine, so you’re making sure you’re safe. Now the casualty is the priority. Nope. Your next responsibility is to the team’s safety. Pretty much for the same reasons. One person alone can’t haul a casualty out of a mine, so it’s all about working together safely as a team, watching out for each other.</p>
+
+<p>So the casualty is last.</p>
+
+<h2 id="last-doesnt-mean-unimportant">Last doesn’t mean unimportant</h2>
+
+<p>Even though the casualty sits at the bottom of the list, they’re the whole reason a group of volunteers set off to help in the first place. They get specialist medical attention and a personal stretcher carry. If they’re lucky maybe even a helicopter ride. Taking care of self and team <strong>enables</strong> that level of care.</p>
+
+<h2 id="but-team-leadership-isnt-a-rescue">But team leadership isn’t a rescue</h2>
+
+<p>Okay, you’ve got me there. It’s a bit outlandish to equate running an engineering team to rescue services. But there are lessons to take from it.</p>
+
+<h3 id="for-yourself">For yourself</h3>
+
+<p>If you’re not in a good place you can’t help your team. Take holiday. Finish on time. Say no. Different people need different things, so just make sure you’re looking after yourself.</p>
+
+<p>I still really struggle with this one. It’s easy to fall into the trap of trying to “just push through”, and I’m a sucker for thinking things will be easier after this one last thing. Spoiler alert: that one last thing always unearthed something else. Quelle surprise.</p>
+
+<h3 id="for-your-team">For your team</h3>
+
+<p>Empowering your team to look after themselves is no easy task. Often even a supportive, safe team will have members who work through sickness or work late to get something over the line. In the UK I’ve found a cultural aversion to sickness absence, as if it’s a failure to be ill and need to rest. It doesn’t help that we often celebrate the unhealthy behaviour – staying late to meet a deadline, coming in on a day off to save the day. These things get praise in all-hands meetings, they get your name known, and they maybe even get you a promotion.</p>
+
+<p>Back in 2016 Government Digital Service wrote <a href="https://gds.blog.gov.uk/2016/05/25/its-ok-to-say-whats-ok/">“It’s okay to say what’s okay”</a> and it holds up well today. It’s incredibly powerful to give individuals permission to say no, or not know everything. Even so, it’s often hard to advocate for ourselves so watch out for when your team is struggling to do it. It’s often easier as an outsider to see what’s happening.</p>
+
+<p>Finally, one of the best things we can do is to lead by example. By taking time off when we’re ill, and demonstrating that self-care is important, we normalise it. Conversely, if we say taking mental health days is important but never take them ourselves, we’re modelling the unhealthy behaviour.</p>
+
+<hr />
+
+<ul>
+  <li>Related: Will Larson has some interesting thoughts about <a href="https://lethain.com/company-team-self/">company, team, self</a> and motivation.</li>
+</ul>]]></content><author><name>Ryan Brooks</name></author><category term="leadership" /><summary type="html"><![CDATA[A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation's goals. Everything comes before yourself. But everyone can win when you prioritise looking after yourself]]></summary></entry><entry><title type="html">Incrementally linting a codebase with branch changes</title><link href="https://www.ryanbrooks.co.uk/posts/2023-02-17-linting-branch-changes.html" rel="alternate" type="text/html" title="Incrementally linting a codebase with branch changes" /><published>2023-02-17T00:00:00+00:00</published><updated>2023-02-17T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/linting-branch-changes</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2023-02-17-linting-branch-changes.html"><![CDATA[<p><strong>Update 26th February 2023:</strong> replaced <code class="language-plaintext highlighter-rouge">xargs</code> approach because it interfered with Pry local debugging.</p>
+
+<p>While working on a project with a long history, we wanted to introduce <a href="https://rubocop.org">Rubocop</a> to lint the codebase. Being a large project, enforcing linting on the entire codebase wasn’t feasible – thousands of offences and over a thousand that aren’t auto-correctable.</p>
+
+<p>😱</p>
+
+<p>Instead of spending a soul-crushing few days trawling through the offences or blocking pull requests until it’s all perfect, we can start by just improving the files we change. This is surprisingly high-value – the files we change regularly quickly become “standard” and the ones we never touch… well it doesn’t matter if they’re linted if we never look at them.</p>
+
+<p>Linting only the files that have changed is fairly straightforward. First we need to find the files that have changed (e.g. for the <code class="language-plaintext highlighter-rouge">main</code> branch). We can do this with <code class="language-plaintext highlighter-rouge">git diff</code> and filter for <code class="language-plaintext highlighter-rouge">A</code>dded, <code class="language-plaintext highlighter-rouge">M</code>odified, and <code class="language-plaintext highlighter-rouge">R</code>enamed files:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--name-only</span> <span class="nt">--diff-filter</span><span class="o">=</span>AMR main...
+</code></pre></div></div>
+<p>(thanks to <a href="https://stackoverflow.com/a/10641400/384693">this StackOverflow answer</a>) for inspiration.</p>
+
+<p>Depending on our linter, we’ll probably want to filter those files so we don’t confuse it. Rubocop will attempt to parse things like <code class="language-plaintext highlighter-rouge">.erb</code>, and it won’t have a good time. If we only want to process files that Rubocop thinks it can handle we can use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rubocop <span class="nt">--only-recognized-files</span> <span class="nt">--autocorrect</span> <span class="nt">--</span> file_a.rb file_b.rb
+</code></pre></div></div>
+
+<p>We can put this together to get a one-line command that runs Rubocop over any files that have been added, modified, or renamed:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rubocop <span class="nt">-a</span> <span class="nt">--only-recognized-files</span> <span class="si">$(</span>git diff <span class="nt">--diff-filter</span><span class="o">=</span>AMR <span class="nt">--name-only</span> main...<span class="si">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>An early version of this approach used <code class="language-plaintext highlighter-rouge">xargs</code> to pass files, however this doesn’t always play nicely with <a href="https://github.com/pry/pry">Pry</a>, rending the breakpoint non-interactive. I didn’t get to the bottom of that, let me know if you have any ideas on <a href="https://ruby.social/@spikeheap">Mastodon</a>.</p>
+</blockquote>
+
+<p>Then all that’s left to do is commit the changes with a suitable emoji 😘.</p>
+
+<h2 id="why-not-use-an-editor-extension">Why not use an editor extension?</h2>
+
+<p>Once you’ve got a consistently linted codebase it makes a lot of sense to use editor extensions for <a href="https://editorconfig.org">EditorConfig</a>, Rubocop, or your linter of choice. These will auto-lint or <a href="https://marketplace.visualstudio.com/items?itemName=misogi.ruby-rubocop">highlight offences in your editor</a>, which prevents us from adding non-compliant code in the first place.</p>
+
+<p>However they’re less helpful when you’re introducing linting because auto-linting a file you’ve touched groups changes to code with linting modifications. This increases the complexity and cognitive load for both reviewers and future developers spelunking the codebase, possibly mid-way through debugging a tricky error.</p>
+
+<p>In this case it’s friendlier to separate the Rubocop linting from other changes. This might mean separate PRs for linter fixes, or a separate commit in the same request.</p>
+
+<h2 id="continuous-integration-is-your-friend">Continuous Integration is your friend</h2>
+
+<p>Once the team is able to lint the codebase locally and apply fixes, the next step is to add that linting to your CI service to validate that pull requests consistently improve the codebase.</p>
+
+<p>Depending on your CI service, you <em>may</em> want to make those checks non-blocking to start with. Your teammates who make a one line change in <em>that</em> thousand line file will be thankful!</p>
+
+<p>We need to make our CI script a little smarter than the one we’ve been running locally, because branches with no additions, modifications or removals will cause Rubocop to run over the entire codebase. There are a bunch of scenarios where this is true, for example removing legacy unused code or renaming a bunch of files.</p>
+
+<p>To work around this we can check to see whether the list of changed files is empty before passing it to Rubocop:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">CHANGED_FILES</span><span class="o">=</span><span class="si">$(</span>git diff <span class="nt">--diff-filter</span><span class="o">=</span>AMR <span class="nt">--name-only</span> main...<span class="si">)</span>
+
+<span class="c"># -n checks whether the list of changed files is null, to prevent Rubocop from running over</span>
+<span class="c"># the _whole_ codebase if we've only removed files from the branch</span>
+<span class="o">[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$CHANGED_FILES</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> bundle <span class="nb">exec </span>rubocop <span class="nt">--only-recognized-file-types</span> <span class="si">$(</span><span class="nb">echo</span> <span class="nv">$CHANGED_FILES</span><span class="si">)</span>
+</code></pre></div></div>]]></content><author><name>Ryan Brooks</name></author><category term="engineering" /><category term="ruby" /><summary type="html"><![CDATA[While working on a project with a long history, we wanted to introduce a linter, incrementally improving the code as we made changes.]]></summary></entry><entry><title type="html">Capybara, WebMock, and too many open files</title><link href="https://www.ryanbrooks.co.uk/posts/2023-01-17-capybara-webmock-allow-http.html" rel="alternate" type="text/html" title="Capybara, WebMock, and too many open files" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-01-17T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/capybara-webmock-allow-http</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2023-01-17-capybara-webmock-allow-http.html"><![CDATA[<p>Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you’re facing are because you missed some piece of documentation (or it was missing), or have some bug in your setup.</p>
+
+<p>I had this recently, joining a team where I just couldn’t get our RSpec feature tests to run on a fresh machine and checkout. Many tests failed with “Too many open files”:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failure/Error: initialize_tcp host, port, local_host, local_port
+
+          Errno::EMFILE:
+            Failed to open TCP connection to 127.0.0.1:9526 (Too many open files - socket(2) for 127.0.0.1 port 9526)
+</code></pre></div></div>
+
+<p>This led me to <a href="https://github.com/teamcapybara/capybara#gotchas">a gotcha in Capybara/WebMock</a> that was causing the error. I still have no idea why this affected my Ruby build on MacOS Ventura, but none of my colleagues 🤷‍♂️.</p>
+
+<p>The error occurs because <code class="language-plaintext highlighter-rouge">Net::HTTP</code> has separate <code class="language-plaintext highlighter-rouge">connect</code> and <code class="language-plaintext highlighter-rouge">request</code> phases, but WebMock was designed with <code class="language-plaintext highlighter-rouge">connect</code> being part of the <code class="language-plaintext highlighter-rouge">request</code> step. Because there’s no information about the request in the <code class="language-plaintext highlighter-rouge">connect</code> step (just the destination address), WebMock can’t decide whether to stub or pass through the connection at that point, so they made the design decision to delay <code class="language-plaintext highlighter-rouge">connect</code> until a request is made. This is the approach of many HTTP libraries, but not <code class="language-plaintext highlighter-rouge">Net::HTTP</code>.</p>
+
+<p>Fixing the error appeared to be as simple as <a href="https://github.com/bblimke/webmock/blob/master/README.md#connecting-on-nethttpstart">setting <code class="language-plaintext highlighter-rouge">net_http_connect_on_start: true</code></a> to undo WebMock’s workaround for <code class="language-plaintext highlighter-rouge">Net::HTTP</code>, however this introduced a new SSL certificate error for a mocked request. This was curious, because the requests are supposed to be mocked, so we don’t expect any external connection to be made.</p>
+
+<p>It turns out that setting <code class="language-plaintext highlighter-rouge">net_http_connect_on_start: true</code>  works around the Capybara gotcha by enabling all <code class="language-plaintext highlighter-rouge">Net::HTTP</code> connections to be made<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, while still intercepting and mocking the <code class="language-plaintext highlighter-rouge">request</code>s appropriately. We happened to see an error because of an SSL certificate problem on a host we didn’t really want to connect to.</p>
+
+<h2 id="scoping-eager-connections">Scoping eager connections</h2>
+<p>Thankfully, <code class="language-plaintext highlighter-rouge">net_http_connect_on_start</code> is smarter than just accepting <code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code>. There are a <a href="https://github.com/bblimke/webmock/blob/833291d4ce2d5927a738f929db26b594bf4fa7f5/spec/unit/webmock_spec.rb#L61">bunch of tests showing</a> <code class="language-plaintext highlighter-rouge">net_http_connect_on_start</code> accepts:</p>
+<ul>
+  <li>Regular expression matching host</li>
+  <li>Host</li>
+  <li>Port</li>
+  <li>Scheme (e.g. <code class="language-plaintext highlighter-rouge">http</code>, <code class="language-plaintext highlighter-rouge">https</code>)</li>
+</ul>
+
+<p>For our test suite, we disallow all connections <em>except</em> the Capybara server, so the working solution for us was to scope <code class="language-plaintext highlighter-rouge">net_http_connect_on_start</code> to match the allowed host:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">WebMock</span><span class="p">.</span><span class="nf">disallow_net_connect!</span><span class="p">(</span>
+    <span class="ss">allow_localhost: </span><span class="kp">true</span><span class="p">,</span> 
+    <span class="ss">allow: </span><span class="no">Capybara</span><span class="p">.</span><span class="nf">server_host</span><span class="p">,</span> 
+    <span class="ss">net_http_connect_on_start: </span><span class="no">Capybara</span><span class="p">.</span><span class="nf">server_host</span>
+  <span class="p">)</span>
+</code></pre></div></div>
+
+<p>For another gotcha: WebMock supports passing a list of hosts to <code class="language-plaintext highlighter-rouge">allow</code>, but this isn’t supported by <code class="language-plaintext highlighter-rouge">net_http_connect_on_start</code>, where you’ll need a regular expression instead if you have multiple disparate hosts.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Mostly thanks to <a href="https://github.com/bblimke/webmock/issues/914#issuecomment-810134233">this comment</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Ryan Brooks</name></author><category term="rant" /><category term="update" /><summary type="html"><![CDATA[Working around]]></summary></entry><entry><title type="html">Docker context switching</title><link href="https://www.ryanbrooks.co.uk/posts/2023-01-16-docker-contexts.html" rel="alternate" type="text/html" title="Docker context switching" /><published>2023-01-16T00:00:00+00:00</published><updated>2023-01-16T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/docker-contexts</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2023-01-16-docker-contexts.html"><![CDATA[<p>Sometimes it’s useful to run multiple Docker contexts/daemons, e.g. if you’re running Docker Desktop and <a href="https://github.com/lima-vm/lima">Lima</a>, or local Kubernetes clusters.</p>
+
+<p>Switching to Lima was straightforward, but I found myself scratching around trying to find how to get back to the Docker Desktop config.</p>
+
+<p>For when I forget next time:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list the contexts so you pick the right one</span>
+docker context <span class="nb">ls</span>
+
+<span class="c"># switch to Lima</span>
+docker context use lima 
+
+<span class="c"># switch back to Docker Desktop</span>
+docker context use default 
+</code></pre></div></div>]]></content><author><name>Ryan Brooks</name></author><category term="docker" /><summary type="html"><![CDATA[When you regularly connect to different Docker daemons, Docker contexts are handy.]]></summary></entry><entry><title type="html">From Twitter to Mastodon</title><link href="https://www.ryanbrooks.co.uk/posts/2022-12-19-leaving-twitter.html" rel="alternate" type="text/html" title="From Twitter to Mastodon" /><published>2022-12-19T00:00:00+00:00</published><updated>2022-12-19T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/leaving-twitter</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2022-12-19-leaving-twitter.html"><![CDATA[<p>A lot of people are leaving Twitter right now, and there’s a lot of hyperbole to go with it. I don’t think it’s going to disappear overnight, or go down in flames (there have been a lot of very talented engineers working on Twitter for quite some time after all). That said, I grew tired of the doom-scrolling and perma-anger in the circles I follow, so the furore was a gentle push to fix that.</p>
+
+<p>A few months a go I moved to Mastodon, and after settling in found a home on <a href="https://ruby.social">ruby.social</a>. I kept my Twitter account, partly as a defence against it being taken by someone else (because <code class="language-plaintext highlighter-rouge">@spikeheap</code> is <em>such</em> a desirable username 🙄), but mostly because I wasn’t convinced things wouldn’t recover.</p>
+
+<p>In the end, a couple of things pushed me to delete my account:</p>
+
+<ol>
+  <li>Gutting of the safety and moderation teams, alongside prominent right-wing hate-speech peddling accounts being reinstated. I’d love to say this was the clincher, but really it just fuelled my rants until…</li>
+  <li>Banning of journalists and users critical of Twitter’s new direction, particularly around the <code class="language-plaintext highlighter-rouge">elonjet</code> account. This coincided with a ban on accounts telling followers where they’re moving to (or where they <em>also</em> post content), and we saw accounts with Mastodon links suspended.</li>
+</ol>
+
+<p>I don’t fancy spending my time on a platform that legitimises hate speech under the guise of “freedom”, and while I think Twitter will end up having to moderate these users to comply with the law in many countries, preventing people from exporting their followers in the meantime just feels petty.</p>
+
+<p>So that’s a bit of a rant. It doesn’t bring anything new that hasn’t been said thousands of times in the past month or so, but I wanted to write it down so I can reprimand myself if I find myself reaching for it again.</p>
+
+<hr />
+
+<p>What I will say is that Mastodon has the potential to be a much calmer, happier place. Just before the Twitter exodus there was a pleasant level of positivity, with negative and triggering things hidden behind content warnings so I could scroll past it.</p>
+
+<p>The “local” and “federated” aspects of Mastodon have received a bit of criticism, but I’ve enjoyed having a local feed which mostly contains Ruby and content from Ruby people. It feels more like a community than following hashtags.</p>
+
+<p>There’s a period of readjustment as a mass influx of new users come from Twitter, many hoping for it to be approximately the same. I’m hopeful we get past the “my outrage doesn’t need a content warning because it’s important”.</p>
+
+<p>You can find me on <a href="https://ruby.social/@spikeheap">ruby.social/@spikeheap</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="rant" /><category term="update" /><summary type="html"><![CDATA[A short note about why I'm moving to Mastodon like a load of other people]]></summary></entry><entry><title type="html">FSA Non-Series gravel wheelset bearing replacement</title><link href="https://www.ryanbrooks.co.uk/posts/2021-09-08-fsa-non-series-gravel-wheelset-bearing-replacement-5d759c03ed53.html" rel="alternate" type="text/html" title="FSA Non-Series gravel wheelset bearing replacement" /><published>2021-09-08T00:00:00+00:00</published><updated>2021-09-08T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/fsa-non-series-gravel-wheelset-bearing-replacement-5d759c03ed53</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2021-09-08-fsa-non-series-gravel-wheelset-bearing-replacement-5d759c03ed53.html"><![CDATA[<p><img src="/images/2021-09-08-fsa-wheelset.jpg" alt="" />Rear hub on the FSA Non-Series off-road wheelset</p>
+
+<p>My Sonder Camino Ti arrived in November 2020 with the <a href="https://shop.fullspeedahead.com/en/wheelsets/mtb-gravel/non-series-off-road-wheelset">FSA Non-Series off-road wheelset</a>. After 9 months of mixed British riding, including a long, gritty winter in the Peak District, both wheels developed a bit of play and looked like they needed new bearings.</p>
+
+<p>FSA/Vision have technical documents with <a href="https://shop.fullspeedahead.com/en/files/index/download/id/b2ff4887328d298e4187533fdf15a551357/">lists of service parts</a> for the wheels, but these use non-standard part names, and mapping these to the international standard was only possible once I stripped the wheels down and read them off the bearings themselves.</p>
+
+<h2 id="front-wheel">Front wheel</h2>
+
+<ul>
+  <li>Vision/FSA code: MR199</li>
+  <li>Actual size: 15x26x7mm</li>
+  <li>Quantity: 2</li>
+  <li>Bearing code: 15267–2RS (2RS just means there are 2 rubber seals, which helps protect the bearing from grime)</li>
+</ul>
+
+<p>These can be removed with a <a href="https://www.bearingprotools.com/products/bearing-puller?variant=32121629343849">bearing puller</a>, and refitted with a standard bearing press with 15x26x7mm drifts, such as <a href="https://www.bearingprotools.com/collections/presses/products/bearing-press-for-bicycles-with-t-bar-handles?variant=32895187189865">this one</a>.</p>
+
+<h2 id="rear-wheel">Rear wheel</h2>
+
+<ul>
+  <li>Vision/FSA code: MR200</li>
+  <li>Actual size: 17x28x7mm</li>
+  <li>Quantity: 2</li>
+  <li>Bearing code: 17287–2RS (2RS just means there are 2 rubber seals, which helps protect the bearing from grime)</li>
+  <li>The freehub contains a couple of the same bearings, but I couldn’t remove them, and ended up ordering <a href="https://www.velozone.co.uk/products/vision-non-series-wheels-sh11-el298-freehub">a full replacement freehub (EL298)</a>.</li>
+</ul>
+
+<p>As these have different dimensions, they need a slightly different-sized <a href="https://www.bearingprotools.com/products/bearing-puller?variant=32121629147241">bearing puller</a>.</p>
+
+<p>To fit/refit the bearings, you’ll need <a href="https://www.bearingprotools.com/collections/presses/products/over-axle-bearing-press?variant=32243512508521">a press with over-axle drifts</a> because the captive axle gets in the way of a standard press once you have the first bearing in. There’s also a cheaper alternative approach if you have a socket set — Youtube is your friend there.</p>
+
+<p>I’ve found <a href="https://www.hendersonbearings.co.uk">Henderson Bearings</a> to ship quickly and last a decent time, though I don’t know enough to say whether their “Enduro” branding is just marketing or a lot better for bikes.</p>
+
+<hr />
+
+<p>This post was originally published <a href="https://spikeheap.medium.com/fsa-non-series-gravel-wheelset-bearing-replacement-5d759c03ed53">on Medium</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="cycling" /><summary type="html"><![CDATA[Wheel bearing specifications for the FSA Non-Series gravel wheelset.]]></summary></entry><entry><title type="html">Rapha’s (free) repair service</title><link href="https://www.ryanbrooks.co.uk/posts/2021-08-09-raphas-free-repair-service-8a874939e590.html" rel="alternate" type="text/html" title="Rapha’s (free) repair service" /><published>2021-08-09T00:00:00+00:00</published><updated>2021-08-09T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/raphas-free-repair-service-8a874939e590</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2021-08-09-raphas-free-repair-service-8a874939e590.html"><![CDATA[<p>I was a bit dazed when I came off my bike and rolled down the road. Having got past the initial joy of “all my limbs still work, ish”, through the thankfullness of seeing the big dent in the front of my helmet, and into “ow, my face actually hurts quite a bit”, I realised this had been an expensive mistake.</p>
+
+<p>The bike came out of things pretty well, and just needed the mech hanger bending out, a new GRX shifter and some bar tape. The hardest part of getting that back on the road was sourcing the shifter, with both Shimano and SRAM components being in short supply this year. My clothing was another story…</p>
+
+<p>Suprisingly enough, most road cycling clothing isn’t built to be bounced along the tarmac, and I managed to damage everything I was wearing except my shoes (thankfully my ready-to-be-replaced overshoes took the brunt of that damage). I’d picked a terrible time to do this, as a few things were really new. My 3-week-old Castelli bib tights had a big hole in them, and my month-old POC helmet had a big dent too. For some context on how pleased I was with Rapha, I’ve been comparing them with these two brands:</p>
+
+<ul>
+  <li>POC ignored tweets and a couple of emails. They mention a crash replacement programme in North America, but not Europe, but I never got an answer about whether they do or not. The helmet was amazing, but the service less so.</li>
+  <li>Castelli’s <a href="https://saddleback.co.uk/pages/crash-replacement/">UK replacement policy</a> is oddly complex, with extra discount if you’ve bought directly from Saddleback. This one was the most frustrating — the almost-new bib tights needed a replacement panel, and it felt very wasteful having them destroyed for 40% discount on a full-RRP set. In the end I picked up a brand new set from <a href="https://www.sigmasports.com/item/Castelli/Sorpasso-ROS-Bib-Tight/R1RC">Sigma Sports</a> with a reasonable discount (though not 40%), and am waiting for Alpkit’s repair stations to open up as lockdown lifts. Hopefully I’ll end up with a slightly scrappy pair for mountain biking 🤷‍♂️.</li>
+</ul>
+
+<p>The thinnest, lightest thing I was wearing was my Rapha Brevet high-visibility jacket, which came off peppered with holes and a couple of tears. I <em>love</em> this jacket. It’s reflective stripes are perfect for winter riding when you end up in the dark more often, and it still packed down small and breathes really well. Maybe a little too well after the fall…</p>
+
+<p>Here’s a few “before” photos</p>
+
+<figure class="third ">
+  
+    
+      <a href="/images/2021-08-09-before-1.jpg" title="The right arm of the Rapha Brevet jacket had a couple of holes.">
+          <img src="/images/2021-08-09-before-1.jpg" alt="The right arm of the Rapha Brevet jacket had a couple of holes." />
+      </a>
+    
+  
+    
+      <a href="/images/2021-08-09-before-2.jpg" title="Somehow I tore the shoulder along the seam too.">
+          <img src="/images/2021-08-09-before-2.jpg" alt="The shoulder of the jacket, with a big tear along the seam" />
+      </a>
+    
+  
+    
+      <a href="/images/2021-08-09-before-3.jpg" title="The back panel was grazed, with many tiny holes and a few you could almost poke a finger through.">
+          <img src="/images/2021-08-09-before-3.jpg" alt="The back panel was grazed, with many tiny holes and a few you could almost poke a finger through." />
+      </a>
+    
+  
+  
+    <figcaption>The jacket was scuffed all over, with some larger holes on the shoulder and down one arm.
+</figcaption>
+  
+</figure>
+
+<p>Of all the damaged clothing, this was the one I assumed was destined for the bin. It’s a couple of years old, and a very fine material.</p>
+
+<p>I knew Rapha had a <a href="https://www.rapha.cc/gb/en/repair-service">free repairs service</a>, but couldn’t find anything on the internet other than a forum post that said they’d got a free replacement and it had taken 5 weeks. With nothing to lose, I took the photos above, sent them to Rapha and had it in the post the next day.</p>
+
+<p>Three and a half weeks later a package turned up, and in a nice little “first aid” tote bag was my repaired jacket. Here are a few photos of their handiwork:</p>
+
+<figure class="third ">
+  
+    
+      <a href="/images/2021-08-09-after-1.jpg" title="The torn shoulder seam was repaired with a small patch. Maybe epaulettes will make a comeback in cycling?">
+          <img src="/images/2021-08-09-after-1.jpg" alt="The torn shoulder seam was repaired with a small patch. Maybe epaulettes will make a comeback in cycling?" />
+      </a>
+    
+  
+    
+      <a href="/images/2021-08-09-after-2.jpg" title="The grazed back panel has been covered with another layer of fabric. This covers part of the lower reflective band, but is really robust.">
+          <img src="/images/2021-08-09-after-2.jpg" alt="The grazed back panel has been covered with another layer of fabric. This covers part of the lower reflective band, but is really robust." />
+      </a>
+    
+  
+    
+      <a href="/images/2021-08-09-after-3.jpg" title="The arm was sown back together. This made the fit a bit closer, but is really neat.">
+          <img src="/images/2021-08-09-after-3.jpg" alt="The arm was sown back together. This made the fit a bit closer, but is really neat." />
+      </a>
+    
+  
+  
+    <figcaption>Some neat repairs. The back patch covers the reflective tape and is quite obvious, but that was a really damaged section.
+</figcaption>
+  
+</figure>
+
+<p>I’m more than satisfied with the repair. Sure, it’s no longer as-new, and the back panel adds a little more bulk to the jacket, but when there’s all the other expenses of replacing clothing and components I couldn’t be happier that I’ve not had to shell out (excuse the pun) on a new jacket.</p>
+
+<p>Five stars, but I hope I don’t need to use the service again anytime soon!</p>
+
+<hr />
+
+<p>This post was originally published <a href="https://spikeheap.medium.com/raphas-free-repair-service-8a874939e590">on Medium</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="cycling" /><summary type="html"><![CDATA[Experiences of Rapha's repairs after an inconvenient crash on my bike]]></summary></entry><entry><title type="html">Riding the EnglanDURO route</title><link href="https://www.ryanbrooks.co.uk/posts/2021-07-30-riding-the-englanduro-route-b86e3e3daef1.html" rel="alternate" type="text/html" title="Riding the EnglanDURO route" /><published>2021-07-30T00:00:00+00:00</published><updated>2021-07-30T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/riding-the-englanduro-route-b86e3e3daef1</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2021-07-30-riding-the-englanduro-route-b86e3e3daef1.html"><![CDATA[<p>A quiet, challenging, mostly off-road route from Liverpool to Scarborough</p>
+
+<p><img src="/images/2021-07-30-transpennine-trail-reservoir.jpg" alt="Wide cobbled bridleway above a reservoir on the Trans-Pennine Trail" />Woodhead Reservoir, three quarters of the way up the biggest climb of the trip</p>
+
+<p>It’s been a long time since my <a href="https://teampedal.com">last multi-day adventure ride</a> back in 2013. I’d almost forgotten what it was like to get into the trance. Spinning the pedals, taking in the scenery, thinking about the next milestone, and yet still feeling a long way from the end. This time I was riding along with audiobooks and music instead of friends and family (thanks jobs and pandemic 🙄), but as soon as I set off I felt that calm focus of knowing there was only one thing to do today, and it would take all day.</p>
+
+<p>I should mention that I didn’t bivy or ride self-supported, which is a bit against the spirit of the Racing Collective events. With my dad just round the corner and eager for a road trip, we had a great excuse for a family adventure even though he can’t cycle. I was quite grateful for this in the end — not just because I get on well with my parents, but also it was nice to have someone to chat to. Riding solo suits many people, but I found myself itching for someone to share my highs and lows with as the trip unfolded.</p>
+
+<p><img src="/images/2021-07-30-beatles-statue.jpg" alt="" /></p>
+
+<h2 id="the-route">The route</h2>
+
+<p>The Racing Collective’s <a href="https://www.theracingcollective.com/englanduro.html">EnglanDURO event</a> is the first weekend of August. I had other commitments, so rode it a week or so early. The route starts at the Liverpool seafront, and snakes its way northeast to the sandy beaches of Scarborough. Despite passing through Liverpool, Warrington, Stockport, Wakefield, Castleford and York, the towpaths, bridleways and cycle routes never felt too built-up or busy.</p>
+
+<p>Before leaving I was a bit nervous about the trails being busy with walkers. There’s a lot of distance to cover, but it’s not cool to shoot past people at 25km/h just because you’ve got a goal. Thankfully this wasn’t a problem at all. Other than a slow canal-side section in York where many were enjoying the sun, paths were often wide enough to ride at a reasonable speed, and elsewhere it was pretty quiet.</p>
+
+<p>My parents live in Castleford, so it made a perfect break in the trip, breaking it into a longer 170km first day with 1500m height gain. That left day two with 130km and 500m less height gain (in theory).</p>
+
+<p><img src="/images/2021-07-30-river-mersey.jpg" alt="View of the River Mersey in Liverpool from the cyclepath, with some railings in between" /></p>
+
+<p>We set off early to drive to Liverpool, and I was cycling along the waterfront by 8am, passing a steady stream of commuters, runners and dog walkers. The cycleway is wide, flat, and has great views to shipyards and the wrecks of old piers across the water. It felt great to build up some momentum right at the start, even though there wasn’t time to stop and look at the myriad statues and memorials along the front. I soon joined the <a href="https://www.transpenninetrail.org.uk">Trans-Pennine Trail</a> around Hale, which I’d be following for most of the day, and the first hike-a-bike section, carrying the bike up a switchback of stairs by Ditton Marsh. After the fast, open start, the slow trudge up the steps felt like a bit of a setback, but don’t fear: there are only a handful of these on the entire route.</p>
+
+<p>The first 80 kilometres wind peacefully along the Mersey with the terrain and views changing frequently. I’d been expecting more “industrial heartland”, but the cycle route manages to hide it away behind trees and inclines. Blips of business like John Lennon Airport were short-lived and soon forgotten. Despite the gentle gradients, I wasn’t fooled. The climb over Woodhead Pass loomed in the distance, waiting to see if I had enough energy left for the last big push. Thankfully that climb ramps up slowly, at least until you cross the A628 when you wonder when you’ll need to push. The reward is continuously amazing views (e.g. the photo at the top of this page), and friendly exchanges with other cyclists and walkers. No-one is finding that climb easy!</p>
+
+<p><img src="/images/2021-07-30-elevation-profile.jpg" alt="An elevation profile for the Liverpool to Castlefood ride. The first half is almost flat, followed by a 400m climb over Woodhead Pass that then drops back down to the finish." />Elevation profile for Liverpool to Castleford</p>
+
+<p>With the biggest climb behind me, I had a big grin on my face down to Penistone. The official route turns off Windle Edge to touch Winscar Reservoir before descending off-road to Townhead. This path is now private land with no access, so I retraced my steps back to the main road. From Townhead the route jumps back off-road to follow the River Don down into Penistone, where the last significant climb of the day awaited.</p>
+
+<p><img src="/images/2021-07-30-yorkshire-sculpture-park.jpg" alt="A gentle gravel trail beside a field of short grass, with rolling Yorkshire hills in background" />
+The descent into Bretton Country Park</p>
+
+<p>After spending so long climbing, the long undulating descent was a playground for the energy I somehow managed to conjour in my legs. The area around Bretton Country Park and Yorkshire Sculpture Park was absolutely beautiful, with fast, flowy, open trails. A short glance at the lake at Pugneys Park was next, before joining the canal towpath that I knew would take me all the way into Castleford. There was a tiny hitch joining the canal — the last 100m of the path that joins Pugneys to the canal was closed. A bit of back-tracking (and some helpful people who’d just come the other way) led me out, and then it was just glorious, flat towpath that led to food, stretching and sleep after eleven and a half hours on the bike.</p>
+
+<p><img src="/images/2021-07-30-methley-canal.jpg" alt="" />The stretch of canal before Methley</p>
+
+<h2 id="a-route-of-two-halves">A route of two halves</h2>
+
+<p>I’d been quite nervous about the second day, and cautious about how much my pace would drop with tired legs, so I set off before 7:30am. I don’t know where this fear came from — we didn’t have a deadline to arrive in Scarborough other than “before the fish &amp; chip shops close”, but when you’ve not done the distance in a while it’s easy to assume you’ll be crawling along at a snails pace.</p>
+
+<p><img src="/images/2021-07-30-castleford-weir.jpg" alt="A Sonder Camino gravel bike on a bridge above Castleford Wier on the River Aire" />Castleford weir.</p>
+
+<p>It was this photo on the Racing Collective site that made me realise the route passes so close to my parents’ house</p>
+
+<p>Thankfully for said tired legs, I started with a gentle stretch along the towpath with cool, clear skies and a little dew on the ground. I had a crisis of confidence when the route turned off onto a walkers-only footpath through Fairburn Ings. Normally I’d figure out a cycle-friendly alternative, but being a bit tired and wanting to make progress, I decided there probably wouldn’t be anyone there so it’d be okay. My guess was correct, and I popped out the other side to start the first climb of the day over to Ledsham, which was a nice quiet path through the woods.</p>
+
+<p>The following 30km on road and paved towpaths felt fast, and set the tone for the day. Where the first day had been 60% dirt, day two was 70% paved, which had the unexpected benefit of increasing my pace even though I was a bit more tired. Slowing down in York to carefully pass walkers and other cyclists enjoying the sun, I was reminded that today was supposed to be overcast with rain. Lucky!</p>
+
+<p><img src="/images/2021-07-30-kirkham-hills.jpg" alt="A gravel bike propped against a fencepost with a dry mud track to the right, rolling hills in the background, and slightly cloudy blue skies" />The hills before Kirkham Priory</p>
+
+<p>After York things returned to what I’d expect from a ride in Yorkshire. Hills. Up and down. Short, sharp efforts. And great views. Passing Kirkham Priory brought back childhood memories, and I was more than happy to wait for the trains to pass in the valley before the crossing reopened. There’s a significant climb that reaches 17%, which was a really convenient point to lose signal and have my audiobook cut out. Again, it’s hard to complain because the road was quiet, and the surface pretty good.</p>
+
+<p><img src="/images/2021-07-30-steep-hills.jpg" alt="A “17% incline” road sign, letting me know hard times are ahead" />🥵 At least they let you know it’s coming</p>
+
+<p>I’d studied the elevation profile for day two, so I knew that after this climb there was a good rest before the final significant hill of the day. The big one, albeit a lot smaller than Woodhead Pass of yesterday. I realised I could make it to Scarborough. One more big hill wouldn’t stop me, and my legs felt pretty good. I passed the <a href="https://www.google.co.uk/maps/place/High+Hoyland/@53.6188288,-1.5863622,13z/data=!4m5!3m4!1s0x487962e2e4c8f809:0xaa545db0fd699f74!8m2!3d53.593721!4d-1.5822551">Cayley Arms</a>, crossing the main road to start the climb. Fortunately it’s closed on Tuesdays, otherwise I can’t say for sure that I wouldn’t have succumbed to the lure of a cold drink and a rest. At the base of a steep climb it would have been a bad call.</p>
+
+<p><img src="/images/2021-07-30-north-riding-forest-park.jpg" alt="Wide open fields with woodland in the background" />Near the summit in North Riding Forest Park</p>
+
+<p>The climb up into North Riding Forest Park was actually pretty pleasant. The road had no traffic and only the occasional walker. It’s gruellingly steep in places, but gets its steepness out of the way in the first half before trading road for track and easing off the closer you get to the top. The last gentle climb followed tracks through fields. On any other day these would have been a joy to ride, but after several days of warm sun the track was rock hard and pitted with footsteps and hoofprints. This left a knobbly trail that juddered the gravel bike and shook me to my core as I tried to build up speed after the slow climb. Things just got better and better as field led to smooth, wide forest track, and I chased a motorbike as we both sprinted down the long straight trail with tall trees either side. What a feeling. This was the last big climb of the trip, and I knew Dad was parked up at the end of the trail with snacks and cool drinks. It was only when I met Dad that I heard the bad news…</p>
+
+<p><img src="/images/2021-07-30-blocked-track.jpg" alt="A trail barred with two gates and signs saying to keep out. They really don’t want you in there!" />🤬 I thought <a href="https://www.openstreetmap.org/way/236041216#map=16/54.2717/-0.6188">this track</a> was blocked</p>
+
+<p>They <em>really</em> don’t want anyone in there. I’d already used my “I’m normally good so it’s okay if I break the rules” card back at Fairburn Ings this morning. Fair cop. A quick look at the map showed this is the only track north. My only option seemed to be to head south to Ebberston and suck up a stretch on the busy A170 before turning north again to get back to the route. I was a bit demoralised at the thought of going in precisely the wrong direction, and doing a 15km round-trip to bypass 1km of closed path, and my mood didn’t improve as I realised the descent to Ebberston wiped out all my height gain. In Snainton I turned and re-climbed the hill, grumpy until I remembered how fortunate I was to be out there in the first place. Sure it was an unexpected hill, but it just meant I got to spend more time on the bike. I was still well on track to arrive in Scarborough in time for dinner. It was worth climbing back up for the stretch across Wykeham Forest and a steep descent on road towards Hackness.</p>
+
+<p>Update: Thanks to <a href="https://twitter.com/northyorkmoors/status/1421136482417455106?s=20">North York Moors NP</a>, it looks like I just missed a bridleway to the right of this photo.</p>
+
+<p>The route left the road for one last hurrah, climbing up gently in woodland on established trails. Eager to drop into Scarborough, of course it was here that I met a walker who just needed someone to talk to. What started as a request for directions took a surprising turn into a life story about divorce, moving to Birmingham, and disdain for their neighbours. I felt quite uncomfortable when he started sharing his views about people on benefits, but chose escaping over setting him straight. They were so reluctant to let me go, striking up new lines of conversation. I hope they find someone to talk to.</p>
+
+<p>Thankfully the last stretch into Scarborough was uneventful. A surge of “almost there” energy had me racing to the seafront, where a huge number of people were making the most of what had turned out to be a warm, sunny day.</p>
+
+<p><img src="/images/2021-07-30-scarborough-pier-thumbs.jpg" alt="" /></p>
+
+<p><img src="/images/2021-07-30-scarborough-pier-bike.jpg" alt="" />
+The pier in Scarborough. The sea is such a great place to end a ride</p>
+
+<p>The only thing left to do was hide the bike in the car, meet some friends on the beach, and fight off seagulls while we devoured fish and chips.</p>
+
+<p>Would I recommend the route? Absolutely.</p>
+
+<p><img src="/images/2021-07-30-fish-and-chips.jpg" alt="My father in a wheelchair with me looking ridiculous in cycling lycra next to him, by the beach. We’re both enjoying fish and chips, and I’m pointing at them to show it was the main reason for the ride." />What’s a trip to the seaside without fish and chips?</p>
+
+<h2 id="route-alterations--roadblocks">Route alterations &amp; roadblocks</h2>
+
+<p>If you’re riding EnglanDURO21, or just following the route sometime soon, here’s a summary of the alterations I had to make. You can see my full tracks on Strava for <a href="https://www.strava.com/activities/5691283829">day one</a> and <a href="https://www.strava.com/activities/5695664642">day two</a>.</p>
+
+<ol>
+  <li>Windle Edge/Pennine Sailing Club (<a href="https://www.google.co.uk/maps/place/High+Hoyland/@53.6188288,-1.5863622,13z/data=!4m5!3m4!1s0x487962e2e4c8f809:0xaa545db0fd699f74!8m2!3d53.593721!4d-1.5822551">Google maps</a>). The track is now private land, so stay on Windle Edge (don’t turn into the sailing club) into Townhead to rejoin the route.</li>
+  <li>Pugneys Park near the end of the lake (<a href="https://www.google.co.uk/maps/place/53°39'36.6%22N+1°30'03.4%22W/@53.6601632,-1.5031217,491m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d53.6601603!4d-1.5009331">Google maps</a>) has fenced off the track, but if take the north fork at the point on the map (rather than north-east following the route) you can join it a little further on.</li>
+  <li>The Fairburn Ings entrance from the Aire &amp; Calder Navigation towpath (<a href="https://www.google.co.uk/maps/place/53°44'07.7%22N+1°20'36.9%22W/@53.7354792,-1.3457817,490m/data=!3m2!1e3!4b1!4m13!1m6!3m5!1s0x487941e91bceea19:0xc385ec51e4499bf2!2sRSPB+Fairburn+Ings!8m2!3d53.7443881!4d-1.3173071!3m5!1s0x0:0x0!7e2!8m2!3d53.7354757!4d-1.3435928">Google maps</a>) is <a href="https://www.openstreetmap.org/way/37773996#map=16/53.7366/-1.3448">footpath-only</a>. If you’re early in the morning or late in the evening this is <em>probably</em> fine, but the path is quite narrow in places so best avoided when it’s busier. To avoid it completely, stay on the A656 and follow it into Allerton Bywater before turning right onto Newton Lane to rejoin the route (<a href="https://www.openstreetmap.org/directions?engine=graphhopper_bicycle&amp;route=53.7320%2C-1.3537%3B53.7428%2C-1.3453#map=15/53.7393/-1.3505">see diversion on OpenStreetMap</a>). This diversion only adds a couple of hundred metres to the day.</li>
+</ol>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li>Huge thanks to the Racing Collective for putting the route together: <a href="https://www.theracingcollective.com/englanduro.html">https://www.theracingcollective.com/englanduro.html</a></li>
+  <li>Day one track: <a href="https://www.strava.com/activities/5691283829">https://www.strava.com/activities/5691283829</a></li>
+  <li>Day two track: <a href="https://www.strava.com/activities/5695664642">https://www.strava.com/activities/5695664642</a></li>
+  <li>#EnglanDURO21 Spotify playlist: <a href="https://open.spotify.com/playlist/0BgDygP557YMg5KMSsflAO?si=55af91d8c27044e6">https://open.spotify.com/playlist/0BgDygP557YMg5KMSsflAO?si=55af91d8c27044e6</a></li>
+  <li>The Twilight of Democracy on Audible: <a href="https://www.audible.co.uk/pd/Twilight-of-Democracy-Audiobook/0241481821">https://www.audible.co.uk/pd/Twilight-of-Democracy-Audiobook/0241481821</a></li>
+</ul>
+
+<hr />
+
+<p>This post was originally published <a href="https://spikeheap.medium.com/riding-the-englanduro-route-b86e3e3daef1">on Medium</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="cycling" /><summary type="html"><![CDATA[A quiet, challenging, mostly off-road route from Liverpool to Scarborough]]></summary></entry><entry><title type="html">Pull-Request style: 100 hills to die on</title><link href="https://www.ryanbrooks.co.uk/posts/2020-12-31-pull-request-style-100-hills.html" rel="alternate" type="text/html" title="Pull-Request style: 100 hills to die on" /><published>2020-12-31T16:05:00+00:00</published><updated>2020-12-31T16:05:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/pull-request-style-100-hills</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2020-12-31-pull-request-style-100-hills.html"><![CDATA[<p>Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Then we moved onto fixed display widths. Many a good friendship was lost to these worthy causes.</p>
+
+<p>Then one day, something happened to restore peace. Swanky editors with soft-wrap, style guides, and EditorConfig united developers around one principle: consistency. Consistency was hard to argue against, and as tooling made it easier to promote/enforce we started to realise that the actual choice didn’t matter that much really.</p>
+
+<p>So our armies retreated to our caves, ushering in an age of peace and productivity. But with that peace came complacency, and murmurings started again, this time around code collaboration. The Git Flow Wars of the 2010s saw the resurgence of trunk-based development and a return of the endless debate, this time around whether <code class="language-plaintext highlighter-rouge">git rebase</code> was a silver bullet or a corrupting force of evil.</p>
+
+<p>Now we’re well into the age of the Pull Request, and the questions are coming back. Who should merge them? How big should they be? What should they contain? How should we review them? Disciples of the many “One True Way”s are out in force, but we already know the answer: it probably doesn’t matter what you pick as long as you’re consistent. Consistency within a team or organisation is what we’re after, not consistency across a career.</p>
+
+<p>As a technical lead, delivery manager, or just someone hoping for a quiet life, here’s a checklist of the subjective debates that risk bikeshedding and becoming a time-sink. When they crop up in reviews it’s a “smell”, a signal that the team has a diverging understanding of concepts that we need to be able to rally around. It’s tempting to set up a session to talk about how you <em>should</em> be doing things, but that’s a red herring. The first thing you need to do is get agreement on how you <em>are</em> doing things, and write that down. We can call it a Team Charter, a Ways of Working document, or anything meaningful to your team. The important thing is to document the decision. For an extra point capture a simple “why”.</p>
+
+<p>Once we’ve captured our baseline, we can apply some agile goodness and iteratively improve the way we work. Retrospectives are a great place to reflect on how your ways of working help or hinder you, agree experiments to try, and evaluate their effectiveness.</p>
+
+<h3 id="the-list">The list</h3>
+
+<p>There’s nuance to many things on this list, and there may be objectively “better” options, but often they’re marginal gains rather than the only way to avoid catastrophe.</p>
+
+<p>The list is grouped into three areas: commit etiquette, pull request scope, and how we merge.</p>
+
+<p>Commit etiquette:</p>
+
+<ul>
+  <li>
+    <p>Step-by-step commits.</p>
+  </li>
+  <li>
+    <p>Merge <code class="language-plaintext highlighter-rouge">main</code> into the branch or rebase?</p>
+  </li>
+  <li>
+    <p>The perfect commit history.</p>
+  </li>
+  <li>
+    <p>All commits pass CI (e.g. enforced git precommit hooks)</p>
+  </li>
+  <li>
+    <p>Commit messages. Is there a format? Do we use semantic commit messages? Should every message contain <a href="https://gitmoji.dev">Gitmoji</a>?</p>
+  </li>
+  <li>
+    <p>Should lint fixes be a separate commit?</p>
+  </li>
+</ul>
+
+<p>Pull request scope:</p>
+
+<ul>
+  <li>
+    <p>“Scouting” and refactoring as a separate commit or different PR?</p>
+  </li>
+  <li>
+    <p>Coverage &amp; quality creep. Is it okay for a single PR to leave the codebase slightly worse?</p>
+  </li>
+  <li>
+    <p>PR size. This is the big one! Should there be one PR per card/issue, or many tiny increments?</p>
+  </li>
+  <li>
+    <p>Do you use/how do you use “draft” PRs? Are they for presenting ideas, or work in progress. What’s their lifespan?</p>
+  </li>
+  <li>
+    <p>PR descriptions. Do you have a a standard template? What do you expect to see in a description?</p>
+  </li>
+  <li>
+    <p>Do we use labels? If so, how?</p>
+  </li>
+  <li>
+    <p>Are chained PRs allowed?</p>
+  </li>
+  <li>
+    <p>“Fix in this PR” vs “I’ll add that in another PR”.</p>
+  </li>
+</ul>
+
+<p>Merging:</p>
+
+<ul>
+  <li>
+    <p>Squash, merge, or rebase into main?</p>
+  </li>
+  <li>
+    <p>Request changes vs comment vs approve. What are the implications of each type of response?</p>
+  </li>
+  <li>
+    <p>How do we request review (ask on Slack, auto-post, email notifications…)? Is a review open to all, or do you invite specific reviewers? What if you’re not invited but care?</p>
+  </li>
+  <li>
+    <p>What’s the review process? What’s in scope? Do you value high level or low level comments, and when is each type appropriate?</p>
+  </li>
+  <li>
+    <p>Minimum reviewers</p>
+  </li>
+  <li>
+    <p>Does it need to be up-to-date with main before merge?</p>
+  </li>
+  <li>
+    <p>Who decides if it <em>can</em> be merged? The author or the reviewer?</p>
+  </li>
+  <li>
+    <p>Who merges the PR (again: author or reviewer)?</p>
+  </li>
+</ul>
+
+<h3 id="record-your-ways-of-working">Record your ways of working</h3>
+
+<p>Now you’ve figured out how you work, you’ll want to write it down. Without wanting to open another can of worms, there are a couple of qualities common to team charters which are actually read, honoured and evolved by teams I’ve worked with:</p>
+
+<ol>
+  <li>
+    <p>They’re short and concise. It feels good to write 2000 words on the primacy of meaningful commit messages, but think about your reader. A new team member doesn’t want to lose two weeks trawling a book on how they should collaborate. Brevity is key. Short documents are easier to scan, and brief (1 paragraph) points are more easily pointed to. If you *really *need to write more to explain your decision, capture this elsewhere (Decision Records are great for this).</p>
+  </li>
+  <li>
+    <p>Each point is linkable. Being able to point at a specific rule in a pull request comment or chat makes conversations more concrete, and lowers the barrier to entry for reading and following. Most wikis and markdown renderers add IDs to headings so you can link to a point in the document, for example <a href="https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case">this rule</a> in the Ruby Style Guide on GitHub.</p>
+  </li>
+</ol>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Create a style guide for your ways of working, and encourage slow, thoughtful evolution over time. And don’t assume that what works well for your team is inherently the One True Way.</p>
+
+<hr />
+
+<p>This post was originally published <a href="https://spikeheap.medium.com/pull-request-style-100-hills-to-die-on-703475d36d74">on Medium</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="engineering" /><summary type="html"><![CDATA[Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Now it's pull requests...]]></summary></entry><entry><title type="html">Running a remote hack day</title><link href="https://www.ryanbrooks.co.uk/posts/2020-04-11-running-a-remote-hack-day.html" rel="alternate" type="text/html" title="Running a remote hack day" /><published>2020-04-11T00:00:00+00:00</published><updated>2020-04-11T00:00:00+00:00</updated><id>https://www.ryanbrooks.co.uk/posts/running-a-remote-hack-day</id><content type="html" xml:base="https://www.ryanbrooks.co.uk/posts/2020-04-11-running-a-remote-hack-day.html"><![CDATA[<p>A couple of weeks ago we held our first Remote Hack, a free, fully-remote hack day. Here’s what we did, how it went, and how you can run one.</p>
+
+<p><strong>Planning the day</strong></p>
+
+<p>To get things moving we set up a Slack organisation, a GitHub repository with a static site using <a href="https://pages.github.com">GitHub Pages</a>, and bought the <a href="https://remotehack.space">remotehack.space</a> domain name. We wanted to keep organisation and attendance lightweight, so after starting with a GitHub PR approach like <a href="https://sushack.github.io">SusHack</a> we opted to open signups for the remote-hack Slack group and use chat/signups to gauge interest. We shared details on local Slack groups (Digital Oxford, Sheffield Digital) and Twitter.</p>
+
+<p>We already had access to a paid Zoom account (to work around the 40 minute limit on free accounts), so created a link and shared it in the Slack. The barrier of Slack signup worked well for preventing random Zoom trolls from finding the link on Google, and made sure we had a common place to come together, kick off the day, and talk.</p>
+
+<p>That’s it. We were conscious that a smaller group would likely be more sociable and reduce the challenges for the organisers, so didn’t push too hard on social media.</p>
+
+<p><strong>On the day</strong></p>
+
+<p>The start of an in-person hack day often revolves around a whiteboard to collect ideas (and a load of free pastries and coffee). To make this work for a distributed event we used the <a href="https://github.com/remotehack/remotehack.github.io/issues">GitHub issue tracker</a> and asked people to add ideas in the lead-up to the event.</p>
+
+<p>We opened up the Zoom call 30 minutes early, and as people trickled in we had a great, informal chat before getting into things, setting the scene and then going through the ideas on the issue tracker and picking groups.</p>
+
+<p>People worked in different ways. Ben and Gabor were keen to try out Visual Studio Code’s <a href="https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode">remote collaboration feature</a> , while Mike and I paired most of the day using <a href="https://screen.so">Screen</a>. Adam and Ed hacked alone. Most of us ducked out of the Zoom call, but continued to chat on Slack.</p>
+
+<p>When we’ve run in-person hack days like <a href="https://web.archive.org/web/20160129214444/http://summerofhacks.io/">Summer of Hacks</a> (the domain is dead, but the yellow lives on) lunch has been a pretty big deal. We’ve been fortunate to have sponsors cover custom Mexican food for lunch and use that as a lever to get everyone back together to chat and be sociable.</p>
+
+<p>We <em>really</em> love burritos:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thanks so much to @HaybrookIT for a fantastic lunch today at <a href="https://twitter.com/hashtag/RTHack?src=hash&amp;ref_src=twsrc%5Etfw">#RTHack</a> <a href="http://t.co/wpwLOMp4Te">pic.twitter.com/wpwLOMp4Te</a></p>&mdash; JSOxford (@JSOxford) <a href="https://twitter.com/JSOxford/status/586953688041816065?ref_src=twsrc%5Etfw">April 11, 2015</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>How do you translate that into a remote hack day? We had the great idea of doing a distributed lunch, and just all ordering our burritos (or whatever took our fancy) to be delivered at the same time.</p>
+
+<p>Around 1pm we rejoined the Zoom call and hung out for half an hour, chatting away as Ben and Sarah ate burritos (I’d failed to make an order in time, so just had FOMO instead), before splitting back out into our groups and cracking on.</p>
+
+<p>We’d planned to close up around 5pm, and came back together at 4:30 to show, tell and chat a bit more. Mike and I were so close to adding machine learning to the sentiment-bot (well, except for me having a .dev domain problem preventing any dependencies from downloading, and Mike not having ngrok set up). By 5:30 we’d been around the groups, chatted a bit more, and closed up to go our separate ways. I headed straight downstairs for a cocktail and a call with the family.</p>
+
+<h3 id="what-worked">What worked?</h3>
+
+<ul>
+  <li>
+    <p>A communal group call worked well for a small number of people, but could quickly become unwieldy with larger numbers. We managed to avoid the webinar-style call with everyone except the presenter muted, and really wanted to highlight the social aspect of the event.</p>
+  </li>
+  <li>
+    <p>Starting small. Running a day with 5–6 people I knew pretty well was a pleasure, and created a great atmosphere.</p>
+  </li>
+  <li>
+    <p>Keeping the chat going on Slack. At work I find this quite distracting, but it was great to have light-hearted interruptions during the day. It probably helped that Mike and I were building a Slack sentiment analysis bot…</p>
+  </li>
+  <li>
+    <p><a href="https://screen.so">Screen</a> for remote multiplayer/pairing. It felt like the good old days of ScreenHero, and Mike and I took turns sharing screens.</p>
+  </li>
+  <li>
+    <p>It didn’t feel like work. Even though we were coding, it felt fun, sociable, and there was no pressure to deliver anything.</p>
+  </li>
+</ul>
+
+<h3 id="what-didnt-work-so-well">What didn’t work so well?</h3>
+
+<ul>
+  <li>Distributed lunch orders. I forgot! It’s also quite nice to jump back into home life — I went to catch up with Nev and have a quick lunch, but felt I should be back to be part of the day. When you’re all on-site there isn’t that contention, but I’m not sure which way I’d want it to go.</li>
+</ul>
+
+<h3 id="what-would-i-try-next-time">What would I try next time?</h3>
+
+<ul>
+  <li>Shorten the round-table ideas session first thing. We ended up talking about each idea fairly extensively, so I’d like to try keeping it to a 1–2 sentence summary of the idea, and then flesh the idea out in breakout groups so we can get started sooner.</li>
+</ul>
+
+<p>We’ll be running the next event on Saturday the 25th of April. You should join us: <a href="https://remotehack.space">https://remotehack.space</a>.</p>
+
+<hr />
+<p>Originally posted <a href="https://medium.com/@spikeheap/running-a-remote-hack-day-94fc6a9b9550">on Medium</a>.</p>]]></content><author><name>Ryan Brooks</name></author><category term="event" /><summary type="html"><![CDATA[A couple of weeks ago we held our first Remote Hack, a free, fully-remote hack day. Here’s what we did, how it went, and how you can run one.]]></summary></entry></feed>
