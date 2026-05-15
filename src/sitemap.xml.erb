@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <%
+    # Every published resource except those explicitly opting out via `sitemap: false`.
+    resources = (site.collections.posts.resources + site.collections.pages.resources).reject do |r|
+      r.data&.sitemap == false
+    end
+  %>
+  <% resources.sort_by(&:relative_url).each do |resource| %>
+  <url>
+    <loc><%= site.metadata.url %><%= resource.relative_url %></loc>
+    <% if resource.respond_to?(:date) && resource.date %>
+    <lastmod><%= (resource.data.last_modified_at || resource.date).to_time.iso8601 %></lastmod>
+    <% end %>
+  </url>
+  <% end %>
+</urlset>

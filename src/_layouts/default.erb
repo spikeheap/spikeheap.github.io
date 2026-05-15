@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%
+  page_title = resource&.data&.title
+  display_title = page_title && page_title != "Index" ? "#{page_title} — #{site.metadata.title}" : site.metadata.title
+  # Canonical URL: strip .html so posts and pages share the no-extension form.
+  # Redirect stubs declare their own canonical (in the builder), so they don't
+  # come through this layout. Bridgetown returns `//` as the relative URL for
+  # the root permalink, so collapse consecutive slashes defensively.
+  canonical_path = (resource&.relative_url || "/").sub(/\.html\z/, "").gsub(%r{/+}, "/")
+  canonical_url = "#{site.metadata.url.sub(%r{/\z}, "")}#{canonical_path}"
+%>
+<title><%= display_title %></title>
+<link rel="canonical" href="<%= canonical_url %>">
+<link rel="stylesheet" href="/syntax.css">
+<link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
+</head>
+<body>
+<header>
+<nav>
+<a href="/">Home</a> ·
+<a href="/now">Now</a> ·
+<a href="/prev">Previously</a> ·
+<a href="/posts-by-year">Posts</a> ·
+<a href="/tags">Tags</a>
+</nav>
+</header>
+<main>
+<%= yield %>
+</main>
+<footer>
+<p>© <%= Date.today.year %> <%= site.metadata.author %></p>
+</footer>
+</body>
+</html>

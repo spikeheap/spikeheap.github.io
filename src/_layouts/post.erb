@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article>
+<header>
+<h1><%= resource.data.title %></h1>
+<p><time datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time></p>
+</header>
+<%= yield %>
+<% if Array(resource.data.tags).any? %>
+<footer>
+<p>Tagged:
+<% Array(resource.data.tags).each_with_index do |tag, i| %><%= ", " if i > 0 %><a href="/tags#<%= tag %>"><%= tag %></a><% end %>
+</p>
+</footer>
+<% end %>
+</article>

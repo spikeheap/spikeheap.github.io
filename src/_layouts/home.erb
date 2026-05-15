@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<h1><%= site.metadata.title %></h1>
+<p><%= site.metadata.description %></p>
+<h2>Recent posts</h2>
+<ul>
+<% site.collections.posts.resources.sort_by(&:date).reverse.first(10).each do |post| %>
+<li><a href="<%= post.relative_url %>"><%= post.data.title %></a> — <time datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B %Y") %></time></li>
+<% end %>
+</ul>
+<p><a href="/posts-by-year">All posts by year →</a></p>

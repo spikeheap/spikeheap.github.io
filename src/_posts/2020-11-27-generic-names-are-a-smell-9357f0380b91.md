@@ -5,7 +5,6 @@ description: >-
   meaning to the reader. Good names help us have discussions…
 date: '2020-11-27T09:49:34.176Z'
 tag: engineering
-slug: /@spikeheap/generic-names-are-a-smell-9357f0380b91
 ---
 
 Names are powerful. Good names are intuitive, and communicate intent and meaning to the reader. Good names help us have discussions without ambiguity, and gently nudge us towards a shared understanding of the thing.

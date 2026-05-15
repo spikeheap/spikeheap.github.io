@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<h1><%= resource.data.title %></h1>
+<%
+  # Collect tag → posts mapping. Posts use both `tags:` (array) and `tag:`
+  # (singular string) in frontmatter — normalise across both.
+  by_tag = Hash.new { |h, k| h[k] = [] }
+  site.collections.posts.resources.each do |post|
+    tags = Array(post.data.tags) + Array(post.data.tag)
+    tags.uniq.each { |t| by_tag[t.to_s] << post }
+  end
+%>
+<% by_tag.keys.sort.each do |tag| %>
+<h2 id="<%= tag %>"><%= tag %></h2>
+<ul>
+<% by_tag[tag].sort_by(&:date).reverse.each do |post| %>
+<li><a href="<%= post.relative_url %>"><%= post.data.title %></a></li>
+<% end %>
+</ul>
+<% end %>

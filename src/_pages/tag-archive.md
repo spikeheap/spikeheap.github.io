@@ -1,8 +1,8 @@
 ---
 title: "Posts by Tag"
-permalink: /tags
+permalink: /tags.html
 redirect_from:
   - /tags/
-layout: tags
+layout: tag_archive
 author_profile: true
 ---
