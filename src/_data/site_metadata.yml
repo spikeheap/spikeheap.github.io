@@ -8,3 +8,8 @@ locale: "en"
 url: "https://ryanbrooks.co.uk"
 mastodon: "https://ruby.social/@spikeheap"
 github: "https://github.com/spikeheap"
+
+# Endpoint registered at https://webmention.io for ryanbrooks.co.uk. When set,
+# the link rel=webmention is emitted in <head> and post pages load
+# webmentions.js to fetch and render received mentions.
+webmention_endpoint: "https://webmention.io/ryanbrooks.co.uk/webmention"

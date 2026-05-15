@@ -14,6 +14,9 @@
 <link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/syntax.css">
+<% if site.metadata.webmention_endpoint && !site.metadata.webmention_endpoint.to_s.empty? %>
+<link rel="webmention" href="<%= site.metadata.webmention_endpoint %>">
+<% end %>
 <%# FOUC-safe: apply persisted theme before first paint. %>
 <script>
   (function () {

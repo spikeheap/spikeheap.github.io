@@ -582,6 +582,61 @@ figcaption {
 .comment__content a { color: var(--color-accent); }
 
 /* ============================================================
+   Webmentions (likes/reposts facepiles + replies)
+   ============================================================ */
+
+.webmentions {
+  margin-block-start: var(--space-12);
+}
+.webmentions__content {
+  padding-block-start: var(--space-8);
+  border-block-start: 1px solid var(--color-border);
+}
+.webmentions__heading {
+  font-size: var(--text-xl);
+  margin-block-end: var(--space-6);
+}
+
+.facepile {
+  margin-block-end: var(--space-6);
+}
+.facepile__heading {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-block-end: var(--space-2);
+}
+.facepile__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.facepile__item {
+  display: inline-block;
+  line-height: 0;
+}
+.facepile__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0;
+  transition: transform var(--transition);
+}
+.facepile__item:hover .facepile__avatar { transform: scale(1.1); }
+
+.webmentions__replies-heading {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-block: var(--space-6) var(--space-3);
+}
+
+/* ============================================================
    Post lists (home, posts-by-year, tag archive)
    ============================================================ */
 
