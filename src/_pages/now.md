@@ -1,5 +1,7 @@
 ---
-permalink: /now/
+permalink: /now
+redirect_from:
+  - /now/
 title: "What I'm doing now"
 layout: single
 ---

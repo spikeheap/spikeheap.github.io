@@ -1,5 +1,7 @@
 ---
-permalink: /prev/
+permalink: /prev
+redirect_from:
+  - /prev/
 title: "What I've been up to"
 layout: single
 toc: true

@@ -6,7 +6,7 @@ main:
   # - title: "About me"
   #   url: /about
   - title: "Posts"
-    url: /posts-by-year/
+    url: /posts-by-year
   # - title: "Tags"
   #   url: /tags/
   # - title: "About"
