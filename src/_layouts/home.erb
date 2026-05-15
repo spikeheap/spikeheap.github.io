@@ -15,7 +15,7 @@ layout: default
   <% site.collections.posts.resources.sort_by(&:date).reverse.first(10).each do |post| %>
   <li class="h-entry">
     <a class="p-name u-url" href="<%= post.relative_url %>"><%= post.data.title %></a>
-    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B %Y") %></time>
+    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= ordinal_date(post.date) %></time>
   </li>
   <% end %>
 </ul>

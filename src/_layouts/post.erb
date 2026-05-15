@@ -6,7 +6,7 @@ layout: default
     <h1 class="p-name"><%= resource.data.title %></h1>
     <p class="post-meta">
       <a class="u-url" rel="bookmark" href="<%= resource.relative_url %>">
-        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time>
+        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= ordinal_date(resource.date) %></time>
       </a>
     </p>
   </header>
