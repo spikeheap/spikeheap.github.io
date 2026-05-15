@@ -10,7 +10,7 @@ You hear it everywhere: 'if you want something doing well, do it yourself'. Mayb
 
 That message ingrained itself in me as I grew up. When I started managing people and projects it took a huge effort to let go of the critical tasks, and not only to trust people to do the work well, but also to accept that 'doing it well' might actually involve doing it differently to how I would have.  
 
-As a specialising generalist I've forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to fix (just about) anything and [hack the physical world](/posts/2013-12-01-pi-powered-central-heating-phase-1/) to meet our needs. Plus, getting outside and chopping logs or fixing bikes is a nice distraction after a day in front of the computer. 
+As a specialising generalist I've forged my career so far by trying to understand everything, and to be able to at least get by in most areas of technology. At home I take pride in being able to fix (just about) anything and [hack the physical world]({% link _posts/2013-12-08-pi-powered-central-heating-phase-1.md %}) to meet our needs. Plus, getting outside and chopping logs or fixing bikes is a nice distraction after a day in front of the computer. 
 
 In short, I want to do everything, or at least be involved in everything. I want to understand what's going on in the world around me, fuelled by curiosity and the feeling that I _should_ be able to do it.
 

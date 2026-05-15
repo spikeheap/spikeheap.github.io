@@ -25,20 +25,40 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Medium
 - [ ] Journal
 - [ ] Bear
-
-## Authoring notes
-
-### Embedded tweets
-
-To embed a Tweet use the "Embed tweet" snippet from Twitter's website.
+- [ ] Reconcile posts and pages different slash rendering
 
 ## Developing locally
+
+> ℹ️ Jekyll serves content at localhost:4000.
 
 ```
 bundle exec jekyll serve --livereload
 ```
 
+## Running the system tests
+
+Playwright suite (`tests/`) that asserts every post permalink, page, feed, image asset, internal link, embedded tweet, and syntax-highlighted code block survives any change to the stack. Designed to run against any backend that serves the site over HTTP.
+
+```
+npm install && npx playwright install chromium
+npm test
+```
+
+To test production (the one that actually matters), use: 
+
+```bash
+BASE_URL=https://ryanbrooks.co.uk npm test
+```
+
+Make sure not to use the `www.` prefix as it redirects so the tests will end up in a loop.
+
+Spec files map roughly to one concern each: `permalinks`, `trailing-slash` (policy differs between posts and pages), `pages`, `feeds-and-files`, `syntax-highlighting`, `images`, `embedded-content`, `internal-links`, `archives`.
+
+When doing the mandatory "replace the site builder rather than writing a post" thing every couple of years, keep these tests to ensure things don't regress.
+
 ##  Deploying to GitHub pages
+
+> ℹ️ This doesn't need to be run locally. The site builds and deploys in CI.
 
 ```
 ./bin/deploy.sh
@@ -60,21 +80,3 @@ npx sharp-cli resize 900 \
   --input $(find ./docs -name *.jpg -or -name *.png) \
   --output "{dir}/{base}"
 ```
-
-## Importing from Medium
-
-Let's face it, I write too infrequently for this to be automated. To import a post from Medium:
-
-1. Use `medium-to-markdown` (or one of the other variants) to convert the HTML to markdown.
-2. Download images and update links to be local
-3. Update tweets to use Twitter embeds
-
-## Requirements when considering alternatives
-
-1. Honour permalinks from days gone by. The format for links is https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/
-2. Slashes are optional. The following could both exist in the wild.
-  - https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy
-  - https://ryanbrooks.co.uk/posts/2016-05-19-nginx-docker-proxy/
-3. Github-flavour markdown, including code blocks, are present in posts.
-4. Code blocks must be syntax highlighted!
-5. Tweets are included using <Tweet id="idxxxxxx"></Tweet>
