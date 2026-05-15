@@ -357,6 +357,7 @@ pre {
   font-size: var(--text-sm);
   line-height: 1.5;
   background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
   padding: var(--space-4);
   border-radius: var(--radius-md);
   overflow-x: auto;

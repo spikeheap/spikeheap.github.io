@@ -10,18 +10,17 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [ ] Add webmentions
 - [ ] Rake task to add post & page
 - [ ] add st/nd/th to dates in posts list
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Update homepage to be summary & links off to places
 - [ ] Figure out a way to blog short notes about websites & things, inspired by https://maggieappleton.com/garden.
-- [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
-- [ ] Fix Indieweb `rel=me` for site validation on Mastodon
-- [x] Reconcile posts and pages different slash rendering
 - [ ] Curate tag ontology and re-add `/tags` to the header nav. Current tags (a mix of `tag:` singular and `tags:` array, plus values like `engineering`/`event`/`update`/`rant`) accumulated organically. Decide which to keep, merge, or drop, and standardise on `tags:` as a list. The `/tags` page still builds — it's just been removed from the chrome until this is done.
 - [ ] Add a "Featured posts" section to the homepage once the site is live and bedded in. Manually-curated permanent surface for the strongest evergreen pieces, alongside "Recent posts". One frontmatter flag (`featured: true`) and a Liquid filter in `home.erb`.
 - [ ] Review use of hero images (are there any that need removing?)
+- [ ] WCAG G201 "opens in new tab" indicator on external links. Approach: Bridgetown build-time builder (post-render hook with Nokogiri) following the G201 Example 2 pattern — inline SVG icon + `aria-describedby` referencing a hidden description. Comments JS would carry the same for its dynamic links. Deferred for now to keep complexity down; revisit when the site has been live for a bit.
+- [ ] Send outbound webmentions on publish. Avoid webmention.app — implement as a GitHub Actions step in the deploy workflow: diff the changed post files, parse each for absolute outbound `<a href>` values, discover each target's webmention endpoint (HTTP HEAD → Link header, or HTML `<link rel="webmention">`), POST `source` + `target`. The `webmention` Ruby gem handles discovery + send; the workflow step is ~30 lines. Zero third-party dependency for the sending side.
+- [ ] Set up [Bridgy](https://brid.gy) to bridge Mastodon reactions into webmention.io. Inbound only — feeds replies/likes/boosts on the toot for a post into the Webmentions section, complementing the Mastodon comments section. Sign up at brid.gy with the same domain. Eventually will need a dedupe pass between the Phase 3a Comments section (toot thread) and the Phase 3b Webmentions section (everything else).
 
 ## Developing locally
 
@@ -32,11 +31,36 @@ bundle exec bridgetown start
 
 Serves at `http://localhost:4000`. Output goes to `output/` (gitignored).
 
+## Scaffolding new content
+
+```bash
+# Post — filename is YYYY-MM-DD-<slug>.md; slug derived from title if not given
+bundle exec rake post:new title="My new post"
+bundle exec rake post:new title="My new post" slug="custom-slug" tags="engineering,update"
+
+# Page — filename is <slug>.md; permalink defaults to /<slug>.html
+bundle exec rake page:new title="About me"
+bundle exec rake page:new title="About me" permalink="/about.html"
+```
+
+Both refuse to overwrite an existing file. Pages default to `layout: page`. Posts include a commented-out `mastodon:` line ready to uncomment once you've tooted the post URL.
+
 ## Deploying
 
 GitHub Actions (`.github/workflows/ci.yml`) builds Bridgetown and deploys to GitHub Pages on every push to `main`. PRs run the test suite only.
 
 > ℹ️ One-time setup: in repo Settings → Pages, set **Source** to "GitHub Actions". The legacy "Deploy from a branch" mode won't pick up the new workflow.
+
+## Webmentions
+
+The site receives webmentions via [webmention.io](https://webmention.io). `ryanbrooks.co.uk` is registered there (login with Github, but I should change that).
+
+Two places it hooks into the site:
+
+1. **Build:** `src/_data/site_metadata.yml` carries the endpoint as `webmention_endpoint` which tells other sites where to send mentions. `post.erb` includes the empty Webmentions section + `webmentions.js` on each post page.
+2. **Render:** `src/webmentions.js` fetches `https://webmention.io/api/mentions.jf2?target=<post-url>` client-side. Likes and reposts render as compact avatar facepiles; replies and generic mentions render as comment cards (reusing the same `.comment` styling as Mastodon replies).
+
+**Sending outbound webmentions** (when posts link to other people's sites) is not yet implemented — see the todo list. The plan is a small GitHub Actions step in the deploy workflow rather than a third-party service.
 
 ## Running the system tests
 
