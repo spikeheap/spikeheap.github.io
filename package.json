@@ -1,0 +1,19 @@
+{
+  "name": "spikeheap-site-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "System tests that verify post permalinks, content, and site files survive a stack overhaul.",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "install:browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "gray-matter": "^4.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -30,3 +30,6 @@ node_modules/
 src/.vuepress/dist/
 .jekyll-cache
 _site
+playwright-report/
+test-results/
+playwright/.cache/
