@@ -4,9 +4,15 @@ import { loadPosts } from './helpers/posts';
 const posts = loadPosts();
 
 // kramdown converts straight quotes to typographic ones and "--" to en/em
-// dashes. Normalise both sides so title assertions survive the rendering.
+// dashes; templates may HTML-encode quotes too. Normalise both sides so
+// title assertions survive the rendering.
 function normaliseText(s: string): string {
   return s
+    .replace(/&#39;|&#x27;|&apos;/g, "'")
+    .replace(/&quot;|&#34;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
     .replace(/[‘’‚′]/g, "'")
     .replace(/[“”„]/g, '"')
     .replace(/[–—]/g, '-')
