@@ -5,7 +5,10 @@ description: >-
 tag: cycling
 ---
 
-![](/images/2021-09-08-fsa-wheelset.jpg)Rear hub on the FSA Non-Series off-road wheelset
+<figure>
+<img src="/images/2021-09-08-fsa-wheelset.jpg" alt="Rear hub on the FSA Non-Series off-road wheelset">
+<figcaption>Rear hub on the FSA Non-Series off-road wheelset</figcaption>
+</figure>
 
 My Sonder Camino Ti arrived in November 2020 with the [FSA Non-Series off-road wheelset](https://shop.fullspeedahead.com/en/wheelsets/mtb-gravel/non-series-off-road-wheelset). After 9 months of mixed British riding, including a long, gritty winter in the Peak District, both wheels developed a bit of play and looked like they needed new bearings.
 

@@ -1,6 +1,6 @@
 This is the personal blog of Ryan Brooks at http://www.ryanbrooks.co.uk. All content in this site are my opinions and not those of my employer or any other organisation I may be affiliated with.
 
-> ⚠️ **Mid-migration.** This branch (`phase-1-bridgetown`) is between engines — Jekyll has been removed and Bridgetown is not yet wired in. The site does not currently build. See `MIGRATION.md` for context.
+> ⚠️ **Mid-migration.** This branch (`phase-1-bridgetown`) is rebuilding the site on Bridgetown 2.x. Engine, permalinks and tests are in place; UI redesign + indieweb still to come. See `MIGRATION.md` for context.
 
 Please see the [license](LICENSE.md) to see how you can use the content of this site.
 
@@ -12,20 +12,29 @@ If you just disagree with me, let's talk about it in the comments.
 
 - [ ] Add webmentions
 - [ ] Add `About` page with link to community, e.g. RemoteHack
-- [ ] Style captions for images "better"
-- [ ] Sort out nav - posts by tag, year, ???
 - [ ] Update homepage to be summary & links off to places
-- [ ] Figure out a way to blog short notes about websites & things
+- [ ] Figure out a way to blog short notes about websites & things, inspired by https://maggieappleton.com/garden.
 - [ ] Troubleshoot custom domain certs <https://github.com/spikeheap/spikeheap.github.io/settings/pages>
 - [ ] Fix Indieweb `rel=me` for site validation on Mastodon
-- [ ] Build and deploy with github actions (and remove CircleCI config)
-- [ ] fix small font on mobile
-- [ ] PR for <https://github.com/jekyll/github-metadata/issues/190>
-- [ ] Pull in drafts from
-- [ ] Medium
-- [ ] Journal
-- [ ] Bear
 - [x] Reconcile posts and pages different slash rendering
+- [ ] Curate tag ontology and re-add `/tags` to the header nav. Current tags (a mix of `tag:` singular and `tags:` array, plus values like `engineering`/`event`/`update`/`rant`) accumulated organically. Decide which to keep, merge, or drop, and standardise on `tags:` as a list. The `/tags` page still builds — it's just been removed from the chrome until this is done.
+- [ ] Add a "Featured posts" section to the homepage once the site is live and bedded in. Manually-curated permanent surface for the strongest evergreen pieces, alongside "Recent posts". One frontmatter flag (`featured: true`) and a Liquid filter in `home.erb`.
+- [ ] Review use of hero images (are there any that need removing?)
+
+## Developing locally
+
+```
+bundle install
+bundle exec bridgetown start
+```
+
+Serves at `http://localhost:4000`. Output goes to `output/` (gitignored).
+
+## Deploying
+
+GitHub Actions (`.github/workflows/ci.yml`) builds Bridgetown and deploys to GitHub Pages on every push to `main`. PRs run the test suite only.
+
+> ℹ️ One-time setup: in repo Settings → Pages, set **Source** to "GitHub Actions". The legacy "Deploy from a branch" mode won't pick up the new workflow.
 
 ## Running the system tests
 

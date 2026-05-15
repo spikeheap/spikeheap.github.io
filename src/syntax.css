@@ -1,116 +1,279 @@
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #24292f;
-  background-color: #f6f8fa;
+/* Light syntax theme (default) — Solarized Light, scoped to [data-theme=light] and the no-preference root */
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight table td { padding: 5px; }
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight table pre { margin: 0; }
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .w {
+  color: #586e75;
 }
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
-  color: #cf222e;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
 }
-.highlight .gr {
-  color: #f6f8fa;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .c, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ch, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cd, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cm, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cpf, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .c1, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cs {
+  color: #657b83;
 }
-.highlight .gd {
-  color: #82071e;
-  background-color: #ffebe9;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cp {
+  color: #b58900;
 }
-.highlight .nb {
-  color: #953800;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nt {
+  color: #b58900;
 }
-.highlight .nc {
-  color: #953800;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .o, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ow {
+  color: #93a1a1;
 }
-.highlight .no {
-  color: #953800;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .p, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .pi {
+  color: #93a1a1;
 }
-.highlight .nn {
-  color: #953800;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gi {
+  color: #859900;
 }
-.highlight .sr {
-  color: #116329;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gd {
+  color: #dc322f;
 }
-.highlight .na {
-  color: #116329;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
 }
-.highlight .nt {
-  color: #116329;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ge {
+  font-style: italic;
 }
-.highlight .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-.highlight .ges {
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ges {
   font-weight: bold;
   font-style: italic;
 }
-.highlight .kc {
-  color: #0550ae;
-}
-.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #0550ae;
-}
-.highlight .sb {
-  color: #0550ae;
-}
-.highlight .bp {
-  color: #0550ae;
-}
-.highlight .ne {
-  color: #0550ae;
-}
-.highlight .nl {
-  color: #0550ae;
-}
-.highlight .py {
-  color: #0550ae;
-}
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #0550ae;
-}
-.highlight .o, .highlight .ow {
-  color: #0550ae;
-}
-.highlight .gh {
-  color: #0550ae;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gs {
   font-weight: bold;
 }
-.highlight .gu {
-  color: #0550ae;
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .k, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kn, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kp, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kr, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kv {
+  color: #6c71c4;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kc {
+  color: #cb4b16;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kt {
+  color: #cb4b16;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kd {
+  color: #cb4b16;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sb, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sc, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .dl, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sd, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s2, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sh, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sx, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s1 {
+  color: #859900;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sa {
+  color: #6c71c4;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sr {
+  color: #2aa198;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .si {
+  color: #d33682;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .se {
+  color: #d33682;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nn {
+  color: #b58900;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nc {
+  color: #b58900;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .no {
+  color: #b58900;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .na {
+  color: #268bd2;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .m, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mb, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mf, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mh, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mi, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .il, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mo, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mx {
+  color: #859900;
+}
+[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ss {
+  color: #859900;
+}
+
+/* Dark syntax theme — Solarized Dark — applied when [data-theme=dark] is forced */
+[data-theme="dark"] .highlight table td { padding: 5px; }
+[data-theme="dark"] .highlight table pre { margin: 0; }
+[data-theme="dark"] .highlight, [data-theme="dark"] .highlight .w {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+[data-theme="dark"] .highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+[data-theme="dark"] .highlight .c, [data-theme="dark"] .highlight .ch, [data-theme="dark"] .highlight .cd, [data-theme="dark"] .highlight .cm, [data-theme="dark"] .highlight .cpf, [data-theme="dark"] .highlight .c1, [data-theme="dark"] .highlight .cs {
+  color: #657b83;
+}
+[data-theme="dark"] .highlight .cp {
+  color: #b58900;
+}
+[data-theme="dark"] .highlight .nt {
+  color: #b58900;
+}
+[data-theme="dark"] .highlight .o, [data-theme="dark"] .highlight .ow {
+  color: #93a1a1;
+}
+[data-theme="dark"] .highlight .p, [data-theme="dark"] .highlight .pi {
+  color: #93a1a1;
+}
+[data-theme="dark"] .highlight .gi {
+  color: #859900;
+}
+[data-theme="dark"] .highlight .gd {
+  color: #dc322f;
+}
+[data-theme="dark"] .highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
   font-weight: bold;
 }
-.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
-  color: #0a3069;
-}
-.highlight .nd {
-  color: #8250df;
-}
-.highlight .nf, .highlight .fm {
-  color: #8250df;
-}
-.highlight .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6e7781;
-}
-.highlight .gl {
-  color: #6e7781;
-}
-.highlight .gt {
-  color: #6e7781;
-}
-.highlight .ni {
-  color: #24292f;
-}
-.highlight .si {
-  color: #24292f;
-}
-.highlight .ge {
-  color: #24292f;
+[data-theme="dark"] .highlight .ge {
   font-style: italic;
 }
-.highlight .gs {
-  color: #24292f;
+[data-theme="dark"] .highlight .ges {
   font-weight: bold;
+  font-style: italic;
+}
+[data-theme="dark"] .highlight .gs {
+  font-weight: bold;
+}
+[data-theme="dark"] .highlight .k, [data-theme="dark"] .highlight .kn, [data-theme="dark"] .highlight .kp, [data-theme="dark"] .highlight .kr, [data-theme="dark"] .highlight .kv {
+  color: #6c71c4;
+}
+[data-theme="dark"] .highlight .kc {
+  color: #cb4b16;
+}
+[data-theme="dark"] .highlight .kt {
+  color: #cb4b16;
+}
+[data-theme="dark"] .highlight .kd {
+  color: #cb4b16;
+}
+[data-theme="dark"] .highlight .s, [data-theme="dark"] .highlight .sb, [data-theme="dark"] .highlight .sc, [data-theme="dark"] .highlight .dl, [data-theme="dark"] .highlight .sd, [data-theme="dark"] .highlight .s2, [data-theme="dark"] .highlight .sh, [data-theme="dark"] .highlight .sx, [data-theme="dark"] .highlight .s1 {
+  color: #859900;
+}
+[data-theme="dark"] .highlight .sa {
+  color: #6c71c4;
+}
+[data-theme="dark"] .highlight .sr {
+  color: #2aa198;
+}
+[data-theme="dark"] .highlight .si {
+  color: #d33682;
+}
+[data-theme="dark"] .highlight .se {
+  color: #d33682;
+}
+[data-theme="dark"] .highlight .nn {
+  color: #b58900;
+}
+[data-theme="dark"] .highlight .nc {
+  color: #b58900;
+}
+[data-theme="dark"] .highlight .no {
+  color: #b58900;
+}
+[data-theme="dark"] .highlight .na {
+  color: #268bd2;
+}
+[data-theme="dark"] .highlight .m, [data-theme="dark"] .highlight .mb, [data-theme="dark"] .highlight .mf, [data-theme="dark"] .highlight .mh, [data-theme="dark"] .highlight .mi, [data-theme="dark"] .highlight .il, [data-theme="dark"] .highlight .mo, [data-theme="dark"] .highlight .mx {
+  color: #859900;
+}
+[data-theme="dark"] .highlight .ss {
+  color: #859900;
+}
+
+/* Dark syntax theme — applies in the no-preference case when OS prefers dark */
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme]) .highlight table td { padding: 5px; }
+:root:not([data-theme]) .highlight table pre { margin: 0; }
+:root:not([data-theme]) .highlight, :root:not([data-theme]) .highlight .w {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+:root:not([data-theme]) .highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+:root:not([data-theme]) .highlight .c, :root:not([data-theme]) .highlight .ch, :root:not([data-theme]) .highlight .cd, :root:not([data-theme]) .highlight .cm, :root:not([data-theme]) .highlight .cpf, :root:not([data-theme]) .highlight .c1, :root:not([data-theme]) .highlight .cs {
+  color: #657b83;
+}
+:root:not([data-theme]) .highlight .cp {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .nt {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .o, :root:not([data-theme]) .highlight .ow {
+  color: #93a1a1;
+}
+:root:not([data-theme]) .highlight .p, :root:not([data-theme]) .highlight .pi {
+  color: #93a1a1;
+}
+:root:not([data-theme]) .highlight .gi {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .gd {
+  color: #dc322f;
+}
+:root:not([data-theme]) .highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+:root:not([data-theme]) .highlight .ge {
+  font-style: italic;
+}
+:root:not([data-theme]) .highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+:root:not([data-theme]) .highlight .gs {
+  font-weight: bold;
+}
+:root:not([data-theme]) .highlight .k, :root:not([data-theme]) .highlight .kn, :root:not([data-theme]) .highlight .kp, :root:not([data-theme]) .highlight .kr, :root:not([data-theme]) .highlight .kv {
+  color: #6c71c4;
+}
+:root:not([data-theme]) .highlight .kc {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .kt {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .kd {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .s, :root:not([data-theme]) .highlight .sb, :root:not([data-theme]) .highlight .sc, :root:not([data-theme]) .highlight .dl, :root:not([data-theme]) .highlight .sd, :root:not([data-theme]) .highlight .s2, :root:not([data-theme]) .highlight .sh, :root:not([data-theme]) .highlight .sx, :root:not([data-theme]) .highlight .s1 {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .sa {
+  color: #6c71c4;
+}
+:root:not([data-theme]) .highlight .sr {
+  color: #2aa198;
+}
+:root:not([data-theme]) .highlight .si {
+  color: #d33682;
+}
+:root:not([data-theme]) .highlight .se {
+  color: #d33682;
+}
+:root:not([data-theme]) .highlight .nn {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .nc {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .no {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .na {
+  color: #268bd2;
+}
+:root:not([data-theme]) .highlight .m, :root:not([data-theme]) .highlight .mb, :root:not([data-theme]) .highlight .mf, :root:not([data-theme]) .highlight .mh, :root:not([data-theme]) .highlight .mi, :root:not([data-theme]) .highlight .il, :root:not([data-theme]) .highlight .mo, :root:not([data-theme]) .highlight .mx {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .ss {
+  color: #859900;
+}
 }

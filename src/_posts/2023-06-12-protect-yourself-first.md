@@ -45,4 +45,4 @@ Finally, one of the best things we can do is to lead by example. By taking time 
 
 ---
 
-* Related: Will Larson has some interesting thoughts about [company, team, self](https://lethain.com/company-team-self/) and motivation.
+Related: Will Larson has some interesting thoughts about [company, team, self](https://lethain.com/company-team-self/) and motivation.

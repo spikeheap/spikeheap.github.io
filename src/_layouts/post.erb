@@ -1,17 +1,29 @@
 ---
 layout: default
 ---
-<article>
-<header>
-<h1><%= resource.data.title %></h1>
-<p><time datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time></p>
-</header>
-<%= yield %>
-<% if Array(resource.data.tags).any? %>
-<footer>
-<p>Tagged:
-<% Array(resource.data.tags).each_with_index do |tag, i| %><%= ", " if i > 0 %><a href="/tags#<%= tag %>"><%= tag %></a><% end %>
-</p>
-</footer>
-<% end %>
+<article class="h-entry">
+  <header>
+    <h1 class="p-name"><%= resource.data.title %></h1>
+    <p class="post-meta">
+      <a class="u-url" rel="bookmark" href="<%= resource.relative_url %>">
+        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time>
+      </a>
+    </p>
+  </header>
+  <div class="e-content">
+    <%= yield %>
+  </div>
+  <%
+    tags = Array(resource.data.tags) + Array(resource.data.tag)
+    tags = tags.compact.uniq
+  %>
+  <% if tags.any? %>
+  <footer>
+    <ul class="tag-list" aria-label="Tags">
+      <% tags.each do |tag| %>
+      <li><a class="p-category" href="/tags#<%= tag %>"><%= tag %></a></li>
+      <% end %>
+    </ul>
+  </footer>
+  <% end %>
 </article>

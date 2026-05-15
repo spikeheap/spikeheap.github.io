@@ -7,7 +7,10 @@ tag: cycling
 
 A quiet, challenging, mostly off-road route from Liverpool to Scarborough
 
-![Wide cobbled bridleway above a reservoir on the Trans-Pennine Trail](/images/2021-07-30-transpennine-trail-reservoir.jpg)Woodhead Reservoir, three quarters of the way up the biggest climb of the trip
+<figure>
+<img src="/images/2021-07-30-transpennine-trail-reservoir.jpg" alt="Wide cobbled bridleway above a reservoir on the Trans-Pennine Trail">
+<figcaption>Woodhead Reservoir, three quarters of the way up the biggest climb of the trip</figcaption>
+</figure>
 
 It’s been a long time since my [last multi-day adventure ride](https://teampedal.com) back in 2013. I’d almost forgotten what it was like to get into the trance. Spinning the pedals, taking in the scenery, thinking about the next milestone, and yet still feeling a long way from the end. This time I was riding along with audiobooks and music instead of friends and family (thanks jobs and pandemic 🙄), but as soon as I set off I felt that calm focus of knowing there was only one thing to do today, and it would take all day.
 
@@ -30,7 +33,10 @@ We set off early to drive to Liverpool, and I was cycling along the waterfront b
 
 The first 80 kilometres wind peacefully along the Mersey with the terrain and views changing frequently. I’d been expecting more “industrial heartland”, but the cycle route manages to hide it away behind trees and inclines. Blips of business like John Lennon Airport were short-lived and soon forgotten. Despite the gentle gradients, I wasn’t fooled. The climb over Woodhead Pass loomed in the distance, waiting to see if I had enough energy left for the last big push. Thankfully that climb ramps up slowly, at least until you cross the A628 when you wonder when you’ll need to push. The reward is continuously amazing views (e.g. the photo at the top of this page), and friendly exchanges with other cyclists and walkers. No-one is finding that climb easy!
 
-![An elevation profile for the Liverpool to Castlefood ride. The first half is almost flat, followed by a 400m climb over Woodhead Pass that then drops back down to the finish.](/images/2021-07-30-elevation-profile.jpg)Elevation profile for Liverpool to Castleford
+<figure>
+<img src="/images/2021-07-30-elevation-profile.jpg" alt="An elevation profile for the Liverpool to Castlefood ride. The first half is almost flat, followed by a 400m climb over Woodhead Pass that then drops back down to the finish.">
+<figcaption>Elevation profile for Liverpool to Castleford</figcaption>
+</figure>
 
 With the biggest climb behind me, I had a big grin on my face down to Penistone. The official route turns off Windle Edge to touch Winscar Reservoir before descending off-road to Townhead. This path is now private land with no access, so I retraced my steps back to the main road. From Townhead the route jumps back off-road to follow the River Don down into Penistone, where the last significant climb of the day awaited.
 
@@ -39,14 +45,20 @@ The descent into Bretton Country Park
 
 After spending so long climbing, the long undulating descent was a playground for the energy I somehow managed to conjour in my legs. The area around Bretton Country Park and Yorkshire Sculpture Park was absolutely beautiful, with fast, flowy, open trails. A short glance at the lake at Pugneys Park was next, before joining the canal towpath that I knew would take me all the way into Castleford. There was a tiny hitch joining the canal — the last 100m of the path that joins Pugneys to the canal was closed. A bit of back-tracking (and some helpful people who’d just come the other way) led me out, and then it was just glorious, flat towpath that led to food, stretching and sleep after eleven and a half hours on the bike.
 
-![](/images/2021-07-30-methley-canal.jpg)The stretch of canal before Methley
+<figure>
+<img src="/images/2021-07-30-methley-canal.jpg" alt="The stretch of canal before Methley">
+<figcaption>The stretch of canal before Methley</figcaption>
+</figure>
 
 A route of two halves
 ---------------------
 
 I’d been quite nervous about the second day, and cautious about how much my pace would drop with tired legs, so I set off before 7:30am. I don’t know where this fear came from — we didn’t have a deadline to arrive in Scarborough other than “before the fish & chip shops close”, but when you’ve not done the distance in a while it’s easy to assume you’ll be crawling along at a snails pace.
 
-![A Sonder Camino gravel bike on a bridge above Castleford Wier on the River Aire](/images/2021-07-30-castleford-weir.jpg)Castleford weir. 
+<figure>
+<img src="/images/2021-07-30-castleford-weir.jpg" alt="A Sonder Camino gravel bike on a bridge above Castleford Wier on the River Aire">
+<figcaption>Castleford weir.</figcaption>
+</figure>
 
 It was this photo on the Racing Collective site that made me realise the route passes so close to my parents’ house
 
@@ -54,7 +66,10 @@ Thankfully for said tired legs, I started with a gentle stretch along the towpat
 
 The following 30km on road and paved towpaths felt fast, and set the tone for the day. Where the first day had been 60% dirt, day two was 70% paved, which had the unexpected benefit of increasing my pace even though I was a bit more tired. Slowing down in York to carefully pass walkers and other cyclists enjoying the sun, I was reminded that today was supposed to be overcast with rain. Lucky!
 
-![A gravel bike propped against a fencepost with a dry mud track to the right, rolling hills in the background, and slightly cloudy blue skies](/images/2021-07-30-kirkham-hills.jpg)The hills before Kirkham Priory
+<figure>
+<img src="/images/2021-07-30-kirkham-hills.jpg" alt="A gravel bike propped against a fencepost with a dry mud track to the right, rolling hills in the background, and slightly cloudy blue skies">
+<figcaption>The hills before Kirkham Priory</figcaption>
+</figure>
 
 After York things returned to what I’d expect from a ride in Yorkshire. Hills. Up and down. Short, sharp efforts. And great views. Passing Kirkham Priory brought back childhood memories, and I was more than happy to wait for the trains to pass in the valley before the crossing reopened. There’s a significant climb that reaches 17%, which was a really convenient point to lose signal and have my audiobook cut out. Again, it’s hard to complain because the road was quiet, and the surface pretty good.
 
@@ -62,7 +77,10 @@ After York things returned to what I’d expect from a ride in Yorkshire. Hills.
 
 I’d studied the elevation profile for day two, so I knew that after this climb there was a good rest before the final significant hill of the day. The big one, albeit a lot smaller than Woodhead Pass of yesterday. I realised I could make it to Scarborough. One more big hill wouldn’t stop me, and my legs felt pretty good. I passed the [Cayley Arms](https://www.google.co.uk/maps/place/High+Hoyland/@53.6188288,-1.5863622,13z/data=!4m5!3m4!1s0x487962e2e4c8f809:0xaa545db0fd699f74!8m2!3d53.593721!4d-1.5822551), crossing the main road to start the climb. Fortunately it’s closed on Tuesdays, otherwise I can’t say for sure that I wouldn’t have succumbed to the lure of a cold drink and a rest. At the base of a steep climb it would have been a bad call.
 
-![Wide open fields with woodland in the background](/images/2021-07-30-north-riding-forest-park.jpg)Near the summit in North Riding Forest Park
+<figure>
+<img src="/images/2021-07-30-north-riding-forest-park.jpg" alt="Wide open fields with woodland in the background">
+<figcaption>Near the summit in North Riding Forest Park</figcaption>
+</figure>
 
 The climb up into North Riding Forest Park was actually pretty pleasant. The road had no traffic and only the occasional walker. It’s gruellingly steep in places, but gets its steepness out of the way in the first half before trading road for track and easing off the closer you get to the top. The last gentle climb followed tracks through fields. On any other day these would have been a joy to ride, but after several days of warm sun the track was rock hard and pitted with footsteps and hoofprints. This left a knobbly trail that juddered the gravel bike and shook me to my core as I tried to build up speed after the slow climb. Things just got better and better as field led to smooth, wide forest track, and I chased a motorbike as we both sprinted down the long straight trail with tall trees either side. What a feeling. This was the last big climb of the trip, and I knew Dad was parked up at the end of the trail with snacks and cool drinks. It was only when I met Dad that I heard the bad news…
 
@@ -85,7 +103,10 @@ The only thing left to do was hide the bike in the car, meet some friends on the
 
 Would I recommend the route? Absolutely.
 
-![My father in a wheelchair with me looking ridiculous in cycling lycra next to him, by the beach. We’re both enjoying fish and chips, and I’m pointing at them to show it was the main reason for the ride.](/images/2021-07-30-fish-and-chips.jpg)What’s a trip to the seaside without fish and chips?
+<figure>
+<img src="/images/2021-07-30-fish-and-chips.jpg" alt="My father in a wheelchair with me looking ridiculous in cycling lycra next to him, by the beach. We’re both enjoying fish and chips, and I’m pointing at them to show it was the main reason for the ride.">
+<figcaption>What’s a trip to the seaside without fish and chips?</figcaption>
+</figure>
 
 Route alterations & roadblocks
 ------------------------------

@@ -12,10 +12,13 @@ layout: default
   end
 %>
 <% by_tag.keys.sort.each do |tag| %>
-<h2 id="<%= tag %>"><%= tag %></h2>
-<ul>
-<% by_tag[tag].sort_by(&:date).reverse.each do |post| %>
-<li><a href="<%= post.relative_url %>"><%= post.data.title %></a></li>
-<% end %>
+<h2 class="tag-heading" id="<%= tag %>"><%= tag %></h2>
+<ul class="post-list">
+  <% by_tag[tag].sort_by(&:date).reverse.each do |post| %>
+  <li class="h-entry">
+    <a class="p-name u-url" href="<%= post.relative_url %>"><%= post.data.title %></a>
+    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B %Y") %></time>
+  </li>
+  <% end %>
 </ul>
 <% end %>
