@@ -60,10 +60,10 @@
     if (faves) parts.push(pluralise(faves, "favourite", "favourites"));
 
     if (parts.length === 0) {
-      link.textContent = "Reply on Mastodon";
+      link.textContent = "Continue the discussion on Mastodon";
       return;
     }
-    link.textContent = "View " + joinList(parts) + " on Mastodon";
+    link.textContent = "Continue the discussion on Mastodon — " + joinList(parts) + " so far";
   }
 
   function pluralise(n, one, many) {
