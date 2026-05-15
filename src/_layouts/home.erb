@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<header class="home-intro h-card">
+  <img class="home-intro__avatar u-photo" src="/images/ryan_brooks_peak_autumn_2020.jpg" alt="Ryan Brooks">
+  <div class="home-intro__text">
+    <h1 class="home-intro__greeting">Hi, I’m <span class="p-name">Ryan</span>.</h1>
+    <p class="home-intro__lede p-note"><%= site.metadata.description.to_s.strip %></p>
+    <p class="home-intro__cadence">I write here occasionally.</p>
+  </div>
+</header>
+
+<h2>Recent posts</h2>
+<ul class="post-list">
+  <% site.collections.posts.resources.sort_by(&:date).reverse.first(10).each do |post| %>
+  <li class="h-entry">
+    <a class="p-name u-url" href="<%= post.relative_url %>"><%= post.data.title %></a>
+    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B %Y") %></time>
+  </li>
+  <% end %>
+</ul>
+
+<p><a href="/posts-by-year">All posts by year →</a></p>

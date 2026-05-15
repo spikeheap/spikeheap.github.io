@@ -10,7 +10,10 @@ test.describe('image assets', () => {
     const failures: { file: string; status: number }[] = [];
     for (const file of files) {
       const url = `/images/${file}`;
-      const response = await request.head(url);
+      // GET instead of HEAD: Bridgetown's local dev server only routes GET
+      // through its SSG plugin, even though static hosts like GH Pages support
+      // both. We discard the response body to keep this cheap.
+      const response = await request.get(url, { maxRedirects: 0 });
       if (response.status() !== 200) {
         failures.push({ file: url, status: response.status() });
       }

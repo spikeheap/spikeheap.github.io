@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%
+  page_title = resource&.data&.title
+  display_title = page_title && page_title != "Index" ? "#{page_title} — #{site.metadata.title}" : site.metadata.title
+%>
+<title><%= display_title %></title>
+<% if resource&.data&.description %>
+<meta name="description" content="<%= resource.data.description.to_s.strip %>">
+<% end %>
+<link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/syntax.css">
+<% if site.metadata.webmention_endpoint && !site.metadata.webmention_endpoint.to_s.empty? %>
+<link rel="webmention" href="<%= site.metadata.webmention_endpoint %>">
+<% end %>
+<%# FOUC-safe: apply persisted theme before first paint. %>
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("theme");
+      if (stored === "light" || stored === "dark") {
+        document.documentElement.setAttribute("data-theme", stored);
+      }
+    } catch (_e) { /* localStorage may be unavailable; OS preference applies via CSS */ }
+  })();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__title" href="/" rel="home"><%= site.metadata.author %></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/posts-by-year">Posts</a>
+      <a href="/now">Now</a>
+      <a href="/prev">Previously</a>
+    </nav>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+  <%= yield %>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__links">
+    <a rel="me" href="<%= site.metadata.mastodon %>">Mastodon</a>
+    <a rel="me" href="<%= site.metadata.github %>">GitHub</a>
+    <a href="/feed.xml">RSS</a>
+  </div>
+</footer>
+<script>
+  (function () {
+    var btn = document.querySelector("[data-theme-toggle]");
+    if (!btn) return;
+    function syncAria() {
+      var theme = document.documentElement.getAttribute("data-theme")
+        || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      btn.setAttribute("aria-pressed", theme === "dark");
+    }
+    syncAria();
+    btn.addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme")
+        || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      var next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (_e) { /* ignore */ }
+      syncAria();
+    });
+  })();
+</script>
+<script>
+  /* External links open in a new tab. Detect by hostname mismatch and patch in
+     target + safe rel attributes after DOM ready. The comments JS adds these
+     on its dynamic elements directly. */
+  (function () {
+    var here = location.hostname;
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute("href");
+      if (!/^https?:\/\//i.test(href)) return; // relative/protocol-relative/mailto/etc.
+      try {
+        if (new URL(href).hostname === here) return; // same site
+      } catch (_e) { return; }
+      link.target = "_blank";
+      var rels = (link.getAttribute("rel") || "").split(/\s+/).filter(Boolean);
+      if (rels.indexOf("noopener") === -1) rels.push("noopener");
+      if (rels.indexOf("noreferrer") === -1) rels.push("noreferrer");
+      link.setAttribute("rel", rels.join(" "));
+    });
+  })();
+</script>
+</body>
+</html>

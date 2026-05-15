@@ -1,9 +1,9 @@
 ---
-permalink: /now
+permalink: /now.html
 redirect_from:
   - /now/
 title: "What I'm doing now"
-layout: single
+layout: page
 ---
 Updated on the 15th of May 2025
 

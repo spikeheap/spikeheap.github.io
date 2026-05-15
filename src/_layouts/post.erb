@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<article class="h-entry">
+  <header>
+    <h1 class="p-name"><%= resource.data.title %></h1>
+    <p class="post-meta">
+      <a class="u-url" rel="bookmark" href="<%= resource.relative_url %>">
+        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time>
+      </a>
+    </p>
+  </header>
+  <div class="e-content">
+    <%= yield %>
+  </div>
+  <%
+    tags = Array(resource.data.tags) + Array(resource.data.tag)
+    tags = tags.compact.uniq
+  %>
+  <% if tags.any? %>
+  <footer>
+    <ul class="tag-list" aria-label="Tags">
+      <% tags.each do |tag| %>
+      <li><a class="p-category" href="/tags#<%= tag %>"><%= tag %></a></li>
+      <% end %>
+    </ul>
+  </footer>
+  <% end %>
+</article>
+
+<% if resource.data.mastodon %>
+<section class="comments" data-mastodon-toot="<%= resource.data.mastodon %>" aria-labelledby="comments-heading">
+  <h2 class="comments__heading" id="comments-heading">Comments</h2>
+  <p class="comments__intro">
+    <a class="comments__link" href="<%= resource.data.mastodon %>" target="_blank" rel="noopener noreferrer">View the conversation on Mastodon</a>
+    <noscript> — replies load with JavaScript enabled.</noscript>
+  </p>
+  <ol class="comments__list" hidden></ol>
+</section>
+<script src="/comments.js" defer></script>
+<% end %>
+
+<% if site.metadata.webmention_endpoint && !site.metadata.webmention_endpoint.to_s.empty? %>
+<section class="webmentions" data-webmentions data-webmentions-target="<%= site.metadata.url %><%= resource.relative_url %>">
+  <div class="webmentions__content" hidden></div>
+</section>
+<script src="/webmentions.js" defer></script>
+<% end %>

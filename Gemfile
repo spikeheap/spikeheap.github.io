@@ -1,22 +1,9 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo| "https://github.com/#{repo}" }
 
-gem "jekyll"
+# Pinned roughly — we'll let bundler resolve within a major version.
+gem "bridgetown", "~> 2.0"
 
-# github-pages is disabled becuse the github-metadata plugin overrides baseUrl and
-# _cannot_ be used for sites that run at the root of the domain.
-# See https://github.com/jekyll/github-metadata/issues/190
-gem 'github-pages', group: :jekyll_plugins
-
-gem "webrick", "~> 1.8"
-
-gem "minimal-mistakes-jekyll", "~> 4.24"
-
-gem "jekyll-include-cache", "~> 0.2.1"
-
-# gem "kramdown-parser-gfm", "~> 1.1"
-
-gem "faraday-retry", "~> 2.2"
+# Bridgetown's local dev server.
+gem "puma", "~> 6.0"

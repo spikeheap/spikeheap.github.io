@@ -1,0 +1,46 @@
+# Bridgetown site configuration.
+# See https://www.bridgetownrb.com/docs/configuration for full reference.
+
+url: "https://ryanbrooks.co.uk"
+title: "Ryan Brooks' blog"
+description: "CTO with a dev & ops origin story. Camembert lover/buzzword hater. Only personal opinions here."
+author: "Ryan Brooks"
+available_locales:
+  - en
+default_locale: en
+
+# Liquid is the default for content (.md) files — matches Jekyll's behaviour
+# and preserves existing `{% link %}` references. Layouts and templates use
+# ERB via explicit .erb file extension.
+template_engine: liquid
+markdown: kramdown
+highlighter: rouge
+
+# Production canonical post URL is /posts/<date>-<slug>(.html). The :output_ext
+# token produces "foo.html" on disk; GitHub Pages serves it at both /foo and
+# /foo.html for free.
+collections:
+  posts:
+    output: true
+    permalink: /posts/:dated_slug.*
+  pages:
+    output: true
+  drafts:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      collection: posts
+    values:
+      layout: post
+
+# Match Jekyll's smart-quote behaviour so existing test assertions hold.
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  syntax_highlighter: rouge
+
+timezone: "Europe/London"

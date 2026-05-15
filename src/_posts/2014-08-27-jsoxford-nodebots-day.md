@@ -44,8 +44,10 @@ After Oli and Alan had got us all excited about the possibilities they set about
 
 Needless to say it didn't take long before the inevitable:
 
-<blockquote class="twitter-tweet" lang="en"><p>...annnnd the <a href="https://twitter.com/hashtag/crazyflie?src=hash">#crazyflie</a> is broken :( <a href="https://twitter.com/JSOxford">@JSOxford</a> <a href="https://twitter.com/hashtag/nodebots?src=hash">#nodebots</a></p>&mdash; Alan Shaw (@_alanshaw) <a href="https://twitter.com/_alanshaw/statuses/503178382201618433">August 23, 2014</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="tweet-archive" cite="https://twitter.com/_alanshaw/status/503178382201618433">
+<p>...annnnd the #crazyflie is broken :( @JSOxford #nodebots</p>
+<footer>— <cite>Alan Shaw (@_alanshaw)</cite>, <a href="https://twitter.com/_alanshaw/status/503178382201618433"><time datetime="2014-08-23">23 August 2014</time></a></footer>
+</blockquote>
 
 Fortunately there was plenty of other kit to get overly enthusiastic about. 
 

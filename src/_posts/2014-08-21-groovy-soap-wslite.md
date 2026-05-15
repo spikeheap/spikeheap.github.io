@@ -11,7 +11,7 @@ description: "When we needed to quickly build a proof-of-concept to test a set o
 
 When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: "this is perfect for Groovy, and it's DSL support will mean talking to SOAP won't require stub generation or any of that pain". I was almost right.  
 
-**TLDR;** My client script is [available as a GitHub gist](https://gist.github.com/spikeheap/b5428f11834a0cea3822) for cannibalisation.
+**TLDR;** [Jump to the full client script](#the-full-script) at the bottom of this post for cannibalisation.
 
 SOAP is *almost* legacy, but it's still the only way to interface with large enterprise systems, at least in healthcare. Just as I've come to accept that CSV is **the** way everyone sends lab and patient records (when they're not exporting to Excel sheets), I wasn't surprised when our project with MirthResults and MirthConnect only had SOAP calls to add patients to a component. No problem, I thought, just Google "Groovy SOAP" and I'll be done in 10 minutes.
 
@@ -75,7 +75,9 @@ def memberCount = returnVal.results.list.size()
 println "There are ${memberCount} members initially"
 ```
 
-In the following gist I've abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to fork, copy, adapt to your own needs. 
+### The full script
+
+I've abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to copy and adapt to your own needs.
 
 ```groovy
 @Grab(group='com.github.groovy-wslite', module='groovy-wslite', version='1.1.0')

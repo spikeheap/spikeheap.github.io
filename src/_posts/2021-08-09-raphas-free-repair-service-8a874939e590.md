@@ -47,7 +47,7 @@ The thinnest, lightest thing I was wearing was my Rapha Brevet high-visibility j
 
 Here’s a few “before” photos
 
-{% include gallery id="after_gallery" caption="The jacket was scuffed all over, with some larger holes on the shoulder and down one arm." %}
+{% include "gallery" id="after_gallery" caption="The jacket was scuffed all over, with some larger holes on the shoulder and down one arm." %}
 
 Of all the damaged clothing, this was the one I assumed was destined for the bin. It’s a couple of years old, and a very fine material.
 
@@ -55,7 +55,7 @@ I knew Rapha had a [free repairs service](https://www.rapha.cc/gb/en/repair-serv
 
 Three and a half weeks later a package turned up, and in a nice little “first aid” tote bag was my repaired jacket. Here are a few photos of their handiwork:
 
-{% include gallery caption="Some neat repairs. The back patch covers the reflective tape and is quite obvious, but that was a really damaged section." %}
+{% include "gallery" caption="Some neat repairs. The back patch covers the reflective tape and is quite obvious, but that was a really damaged section." %}
 
 I’m more than satisfied with the repair. Sure, it’s no longer as-new, and the back panel adds a little more bulk to the jacket, but when there’s all the other expenses of replacing clothing and components I couldn’t be happier that I’ve not had to shell out (excuse the pun) on a new jacket.
 

@@ -32,7 +32,10 @@ Elastic’s pricing highlights how the need to generate revenue has eaten into f
 
 Frustratingly, while Elastic “opened up” X-Pack [recently](https://www.elastic.co/products/x-pack/open), all the Security features remain “pro”:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The code is open, but it’s still a subscription feature.</p>&mdash; Elastic (@elastic) <a href="https://twitter.com/elastic/status/999964355931197440?ref_src=twsrc%5Etfw">May 25, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="tweet-archive" cite="https://twitter.com/elastic/status/999964355931197440">
+<p>The code is open, but it’s still a subscription feature.</p>
+<footer>— <cite>Elastic (@elastic)</cite>, <a href="https://twitter.com/elastic/status/999964355931197440"><time datetime="2018-05-25">25 May 2018</time></a></footer>
+</blockquote>
 
 I **absolutely** support efforts to make Open Source projects sustainable. Charging for the use of libraries and services is a completely valid way to generate revenue, and we all need to eat. However, I’m conscious that we may be creating modern crippleware, where the free tier necessitates poor security practices or forces the ones who know better (and have the capital) to upgrade.
 

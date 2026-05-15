@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1><%= resource.data.title %></h1>
+<% site.collections.posts.resources.sort_by(&:date).reverse.group_by { |p| p.date.year }.each do |year, posts| %>
+<h2 class="year-heading" id="<%= year %>"><%= year %></h2>
+<ul class="post-list">
+  <% posts.each do |post| %>
+  <li class="h-entry">
+    <a class="p-name u-url" href="<%= post.relative_url %>"><%= post.data.title %></a>
+    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B") %></time>
+  </li>
+  <% end %>
+</ul>
+<% end %>

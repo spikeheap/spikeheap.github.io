@@ -1,9 +1,9 @@
 ---
-permalink: /prev
+permalink: /prev.html
 redirect_from:
   - /prev/
 title: "What I've been up to"
-layout: single
+layout: page
 toc: true
 toc_sticky: true
 ---
