@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright Chromium
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Start Bridgetown
+        # `bridgetown start` builds then serves. Background it so the workflow
+        # can move on to running tests. mkdir is defensive — Puma writes its
+        # pidfile to tmp/pids and won't create the directory itself.
+        run: |
+          mkdir -p tmp/pids
+          bundle exec bridgetown start &
+
+      - name: Wait for server to come up
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://localhost:4000/ && exit 0
+            sleep 1
+          done
+          echo "Bridgetown did not start within 30s" >&2
+          exit 1
+
+      - run: npm test
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Queue deploys so two pushes don't try to publish at once. Don't cancel
+    # an in-progress deploy — let it finish to avoid a partial publish.
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Build for production
+        env:
+          BRIDGETOWN_ENV: production
+        run: bundle exec bridgetown build
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
