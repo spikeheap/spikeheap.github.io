@@ -1,6 +1,6 @@
 This is the personal blog of Ryan Brooks at http://www.ryanbrooks.co.uk. All content in this site are my opinions and not those of my employer or any other organisation I may be affiliated with.
 
-[![CircleCI](https://circleci.com/gh/spikeheap/spikeheap.github.io/tree/master.svg?style=svg&circle-token=8edb71cdbc67172916f5283acc2be17f59585f38)](https://circleci.com/gh/spikeheap/spikeheap.github.io)
+> ⚠️ **Mid-migration.** This branch (`phase-1-bridgetown`) is between engines — Jekyll has been removed and Bridgetown is not yet wired in. The site does not currently build. See `MIGRATION.md` for context.
 
 Please see the [license](LICENSE.md) to see how you can use the content of this site.
 
@@ -27,14 +27,6 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Bear
 - [x] Reconcile posts and pages different slash rendering
 
-## Developing locally
-
-> ℹ️ Jekyll serves content at localhost:4000.
-
-```
-bundle exec jekyll serve --livereload
-```
-
 ## Running the system tests
 
 Playwright suite (`tests/`) that asserts every post permalink, page, feed, image asset, internal link, embedded tweet, and syntax-highlighted code block survives any change to the stack. Designed to run against any backend that serves the site over HTTP.
@@ -55,16 +47,6 @@ Make sure not to use the `www.` prefix as it redirects so the tests will end up 
 Spec files map roughly to one concern each: `permalinks`, `trailing-slash` (policy differs between posts and pages), `pages`, `feeds-and-files`, `syntax-highlighting`, `images`, `embedded-content`, `internal-links`, `archives`.
 
 When doing the mandatory "replace the site builder rather than writing a post" thing every couple of years, keep these tests to ensure things don't regress.
-
-##  Deploying to GitHub pages
-
-> ℹ️ This doesn't need to be run locally. The site builds and deploys in CI.
-
-```
-./bin/deploy.sh
-```
-
-This script automatically pushes the build to the `generated_site` branch.
 
 ## Resizing images
 
