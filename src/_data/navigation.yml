@@ -1,12 +1,12 @@
 main:
-  - title: "Previously"
-    url: /prev
-  - title: "Now"
-    url: /now
-  # - title: "About me"
-  #   url: /about
   - title: "Posts"
     url: /posts-by-year
+  - title: "Now"
+    url: /now
+  - title: "Previously"
+    url: /prev
+  # - title: "About me"
+  #   url: /about
   # - title: "Tags"
   #   url: /tags/
   # - title: "About"

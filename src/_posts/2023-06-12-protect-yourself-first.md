@@ -4,6 +4,7 @@ description: >-
   A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation's goals. Everything comes before yourself. But everyone can win when you prioritise looking after yourself
 tags: 
   - leadership
+mastodon: https://ruby.social/@spikeheap/110531795093500289
 ---
 A common refrain in software engineering is to put your team before yourself. Also, put the customer first. Make sure you align with the organisation's goals. Everything comes before yourself.
 

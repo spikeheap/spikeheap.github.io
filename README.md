@@ -11,6 +11,8 @@ If you just disagree with me, let's talk about it in the comments.
 ## To do
 
 - [ ] Add webmentions
+- [ ] Rake task to add post & page
+- [ ] add st/nd/th to dates in posts list
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Update homepage to be summary & links off to places
 - [ ] Figure out a way to blog short notes about websites & things, inspired by https://maggieappleton.com/garden.
