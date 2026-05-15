@@ -15,7 +15,7 @@ There are many reasons why you might need to develop behind an HTTPS proxy, for 
 I know, you probably don't care about the back-story, you just want the code. If that's you, this is all you need:
 
 1. This isn't production-quality. Mirror your production environment if you can.
-2. The `Dockerfile` and `nginx.conf` are in [this gist](https://gist.github.com/spikeheap/488929887d22e74783a5f4f982981a84). 
+2. The `Dockerfile` and `nginx.conf` are in [the setup section](#the-setup) below.
 3. This assumes you've got a `rails` container linked through docker-compose. Tweak it to your needs.
 4. See [1].
 

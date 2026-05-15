@@ -27,7 +27,10 @@ People worked in different ways. Ben and Gabor were keen to try out Visual Studi
 When we’ve run in-person hack days like [Summer of Hacks](https://web.archive.org/web/20160129214444/http://summerofhacks.io/) (the domain is dead, but the yellow lives on) lunch has been a pretty big deal. We’ve been fortunate to have sponsors cover custom Mexican food for lunch and use that as a lever to get everyone back together to chat and be sociable.
 
 We *really* love burritos:
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thanks so much to @HaybrookIT for a fantastic lunch today at <a href="https://twitter.com/hashtag/RTHack?src=hash&amp;ref_src=twsrc%5Etfw">#RTHack</a> <a href="http://t.co/wpwLOMp4Te">pic.twitter.com/wpwLOMp4Te</a></p>&mdash; JSOxford (@JSOxford) <a href="https://twitter.com/JSOxford/status/586953688041816065?ref_src=twsrc%5Etfw">April 11, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="tweet-archive" cite="https://twitter.com/JSOxford/status/586953688041816065">
+<p>Thanks so much to @HaybrookIT for a fantastic lunch today at #RTHack pic.twitter.com/wpwLOMp4Te</p>
+<footer>— <cite>JSOxford (@JSOxford)</cite>, <a href="https://twitter.com/JSOxford/status/586953688041816065"><time datetime="2015-04-11">11 April 2015</time></a></footer>
+</blockquote>
 
 How do you translate that into a remote hack day? We had the great idea of doing a distributed lunch, and just all ordering our burritos (or whatever took our fancy) to be delivered at the same time.
 

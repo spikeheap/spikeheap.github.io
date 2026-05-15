@@ -25,7 +25,7 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Medium
 - [ ] Journal
 - [ ] Bear
-- [ ] Reconcile posts and pages different slash rendering
+- [x] Reconcile posts and pages different slash rendering
 
 ## Developing locally
 
