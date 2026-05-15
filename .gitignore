@@ -27,9 +27,14 @@ Thumbs.db
 *.tar
 *.zip
 node_modules/
-src/.vuepress/dist/
-.jekyll-cache
-_site
+
+# Bridgetown
+output/
+.bridgetown-cache/
+tmp/pids/
+.routes.json
+
+# Playwright
 playwright-report/
 test-results/
 playwright/.cache/
