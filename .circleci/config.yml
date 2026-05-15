@@ -1,0 +1,39 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0
+  # node: circleci/node@4.1.0
+
+jobs:
+  build_and_deploy:
+    docker:
+      - image: cimg/ruby:3.1-node # use a tailored CircleCI docker image.
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - ruby/install-deps
+      # - node/install-packages
+       # Add R/W SSH key for GitHub push
+      - add_ssh_keys:
+          fingerprints:
+            - "3f:ba:15:a4:59:a6:3b:9f:aa:5f:cf:f5:ba:a7:6c:08"
+      - run: |
+          git config --global user.email "ryan@slatehorse.com"
+          git config --global user.name "Deployment Bot"
+
+          # Clear SSH agent and add the R/W deploy key to allow push
+          ssh-add -D
+          ssh-add ~/.ssh/id_rsa_3fba15a459a63b9faa5fcff5baa76c08
+
+          ./bin/deploy.sh
+
+workflows:
+  deploy_site:
+    jobs:
+      - build_and_deploy:
+          filters:
+            branches:
+              only:
+                - main
