@@ -1,96 +1,188 @@
-/* Light syntax theme (default) — Solarized Light, scoped to [data-theme=light] and the no-preference root */
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight table td { padding: 5px; }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight table pre { margin: 0; }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .w {
+/* Light syntax theme — Solarized Light. Applied when [data-theme=light] is forced. */
+[data-theme="light"] .highlight table td { padding: 5px; }
+[data-theme="light"] .highlight table pre { margin: 0; }
+[data-theme="light"] .highlight, [data-theme="light"] .highlight .w {
   color: #586e75;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .err {
+[data-theme="light"] .highlight .err {
   color: #002b36;
   background-color: #dc322f;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .c, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ch, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cd, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cm, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cpf, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .c1, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cs {
+[data-theme="light"] .highlight .c, [data-theme="light"] .highlight .ch, [data-theme="light"] .highlight .cd, [data-theme="light"] .highlight .cm, [data-theme="light"] .highlight .cpf, [data-theme="light"] .highlight .c1, [data-theme="light"] .highlight .cs {
   color: #657b83;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .cp {
+[data-theme="light"] .highlight .cp {
   color: #b58900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nt {
+[data-theme="light"] .highlight .nt {
   color: #b58900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .o, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ow {
+[data-theme="light"] .highlight .o, [data-theme="light"] .highlight .ow {
   color: #93a1a1;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .p, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .pi {
+[data-theme="light"] .highlight .p, [data-theme="light"] .highlight .pi {
   color: #93a1a1;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gi {
+[data-theme="light"] .highlight .gi {
   color: #859900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gd {
+[data-theme="light"] .highlight .gd {
   color: #dc322f;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gh {
+[data-theme="light"] .highlight .gh {
   color: #268bd2;
   background-color: #002b36;
   font-weight: bold;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ge {
+[data-theme="light"] .highlight .ge {
   font-style: italic;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ges {
+[data-theme="light"] .highlight .ges {
   font-weight: bold;
   font-style: italic;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .gs {
+[data-theme="light"] .highlight .gs {
   font-weight: bold;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .k, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kn, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kp, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kr, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kv {
+[data-theme="light"] .highlight .k, [data-theme="light"] .highlight .kn, [data-theme="light"] .highlight .kp, [data-theme="light"] .highlight .kr, [data-theme="light"] .highlight .kv {
   color: #6c71c4;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kc {
+[data-theme="light"] .highlight .kc {
   color: #cb4b16;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kt {
+[data-theme="light"] .highlight .kt {
   color: #cb4b16;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .kd {
+[data-theme="light"] .highlight .kd {
   color: #cb4b16;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sb, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sc, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .dl, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sd, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s2, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sh, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sx, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .s1 {
+[data-theme="light"] .highlight .s, [data-theme="light"] .highlight .sb, [data-theme="light"] .highlight .sc, [data-theme="light"] .highlight .dl, [data-theme="light"] .highlight .sd, [data-theme="light"] .highlight .s2, [data-theme="light"] .highlight .sh, [data-theme="light"] .highlight .sx, [data-theme="light"] .highlight .s1 {
   color: #859900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sa {
+[data-theme="light"] .highlight .sa {
   color: #6c71c4;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .sr {
+[data-theme="light"] .highlight .sr {
   color: #2aa198;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .si {
+[data-theme="light"] .highlight .si {
   color: #d33682;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .se {
+[data-theme="light"] .highlight .se {
   color: #d33682;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nn {
+[data-theme="light"] .highlight .nn {
   color: #b58900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .nc {
+[data-theme="light"] .highlight .nc {
   color: #b58900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .no {
+[data-theme="light"] .highlight .no {
   color: #b58900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .na {
+[data-theme="light"] .highlight .na {
   color: #268bd2;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .m, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mb, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mf, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mh, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mi, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .il, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mo, [data-theme="light"] .highlight, :root:not([data-theme]) .highlight .mx {
+[data-theme="light"] .highlight .m, [data-theme="light"] .highlight .mb, [data-theme="light"] .highlight .mf, [data-theme="light"] .highlight .mh, [data-theme="light"] .highlight .mi, [data-theme="light"] .highlight .il, [data-theme="light"] .highlight .mo, [data-theme="light"] .highlight .mx {
   color: #859900;
 }
-[data-theme="light"] .highlight, :root:not([data-theme]) .highlight .ss {
+[data-theme="light"] .highlight .ss {
   color: #859900;
 }
 
-/* Dark syntax theme — Solarized Dark — applied when [data-theme=dark] is forced */
+/* Light syntax theme — applies in the no-preference case (default). */
+:root:not([data-theme]) .highlight table td { padding: 5px; }
+:root:not([data-theme]) .highlight table pre { margin: 0; }
+:root:not([data-theme]) .highlight, :root:not([data-theme]) .highlight .w {
+  color: #586e75;
+}
+:root:not([data-theme]) .highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+:root:not([data-theme]) .highlight .c, :root:not([data-theme]) .highlight .ch, :root:not([data-theme]) .highlight .cd, :root:not([data-theme]) .highlight .cm, :root:not([data-theme]) .highlight .cpf, :root:not([data-theme]) .highlight .c1, :root:not([data-theme]) .highlight .cs {
+  color: #657b83;
+}
+:root:not([data-theme]) .highlight .cp {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .nt {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .o, :root:not([data-theme]) .highlight .ow {
+  color: #93a1a1;
+}
+:root:not([data-theme]) .highlight .p, :root:not([data-theme]) .highlight .pi {
+  color: #93a1a1;
+}
+:root:not([data-theme]) .highlight .gi {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .gd {
+  color: #dc322f;
+}
+:root:not([data-theme]) .highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+:root:not([data-theme]) .highlight .ge {
+  font-style: italic;
+}
+:root:not([data-theme]) .highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+:root:not([data-theme]) .highlight .gs {
+  font-weight: bold;
+}
+:root:not([data-theme]) .highlight .k, :root:not([data-theme]) .highlight .kn, :root:not([data-theme]) .highlight .kp, :root:not([data-theme]) .highlight .kr, :root:not([data-theme]) .highlight .kv {
+  color: #6c71c4;
+}
+:root:not([data-theme]) .highlight .kc {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .kt {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .kd {
+  color: #cb4b16;
+}
+:root:not([data-theme]) .highlight .s, :root:not([data-theme]) .highlight .sb, :root:not([data-theme]) .highlight .sc, :root:not([data-theme]) .highlight .dl, :root:not([data-theme]) .highlight .sd, :root:not([data-theme]) .highlight .s2, :root:not([data-theme]) .highlight .sh, :root:not([data-theme]) .highlight .sx, :root:not([data-theme]) .highlight .s1 {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .sa {
+  color: #6c71c4;
+}
+:root:not([data-theme]) .highlight .sr {
+  color: #2aa198;
+}
+:root:not([data-theme]) .highlight .si {
+  color: #d33682;
+}
+:root:not([data-theme]) .highlight .se {
+  color: #d33682;
+}
+:root:not([data-theme]) .highlight .nn {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .nc {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .no {
+  color: #b58900;
+}
+:root:not([data-theme]) .highlight .na {
+  color: #268bd2;
+}
+:root:not([data-theme]) .highlight .m, :root:not([data-theme]) .highlight .mb, :root:not([data-theme]) .highlight .mf, :root:not([data-theme]) .highlight .mh, :root:not([data-theme]) .highlight .mi, :root:not([data-theme]) .highlight .il, :root:not([data-theme]) .highlight .mo, :root:not([data-theme]) .highlight .mx {
+  color: #859900;
+}
+:root:not([data-theme]) .highlight .ss {
+  color: #859900;
+}
+
+/* Dark syntax theme — Solarized Dark. Applied when [data-theme=dark] is forced. */
 [data-theme="dark"] .highlight table td { padding: 5px; }
 [data-theme="dark"] .highlight table pre { margin: 0; }
 [data-theme="dark"] .highlight, [data-theme="dark"] .highlight .w {
@@ -183,7 +275,7 @@
   color: #859900;
 }
 
-/* Dark syntax theme — applies in the no-preference case when OS prefers dark */
+/* Dark syntax theme — applies in the no-preference case when OS prefers dark. */
 @media (prefers-color-scheme: dark) {
 :root:not([data-theme]) .highlight table td { padding: 5px; }
 :root:not([data-theme]) .highlight table pre { margin: 0; }
