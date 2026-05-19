@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # release uploads on the deploy job
   pages: write
   id-token: write
 
@@ -87,6 +87,36 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+        with:
+          typst-version: "0.14.2"
+
+      - name: Compile CV PDFs
+        # Writes tmp/cv/cv.pdf and tmp/cv/cv-security.pdf from
+        # src/_data/cv.yml + typst/cv.typ. Output is outside src/ so
+        # Bridgetown won't pick them up — they contain personal contact
+        # data and ship only as private GitHub release artefacts.
+        run: bundle exec rake cv:pdf
+
+      - name: Publish CV PDFs as private release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "CV (latest build)"
+          tag_name: cv-latest
+          target_commitish: ${{ github.sha }}
+          body: |
+            Latest CV PDFs. **Private artefacts — contain personal contact data.**
+
+            Built from `${{ github.sha }}` (workflow run [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})).
+
+            - `cv.pdf` — Technical leadership CV
+            - `cv-security.pdf` — Security leadership CV
+          files: |
+            tmp/cv/cv.pdf
+            tmp/cv/cv-security.pdf
+          make_latest: "true"
 
       - name: Build for production
         env:

@@ -22,13 +22,12 @@ layout: default
       </ul>
     <% end %>
 
-    <% if cv["profile"]["print_only"] %>
-      <% pc = cv["profile"]["print_only"] %>
-      <ul class="cv__contact print-only" aria-label="Contact details">
-        <% if pc["phone"] %><li><%= pc["phone"] %></li><% end %>
-        <% if pc["email"] %><li><a href="mailto:<%= pc["email"] %>"><%= pc["email"] %></a></li><% end %>
-      </ul>
-    <% end %>
+    <%# Phone and email are deliberately omitted from the rendered HTML —
+        they live only in src/_data/cv.yml's profile.print_only block, which
+        is consumed by typst/cv.typ to build the private PDFs distributed
+        as GitHub release artefacts. Keeping them out of HTML avoids
+        leaking contact data via `view-source:` even when the page is
+        deployed to a public host. %>
 
     <p class="cv__view-switcher no-print">
       <% if view == "tech_leadership" %>

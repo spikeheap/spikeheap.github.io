@@ -10,8 +10,14 @@ Bridgetown.load_tasks
 # Scaffolding tasks
 # ----------------------------------------------------------------------------
 
-POSTS_DIR = File.expand_path("src/_posts", __dir__)
-PAGES_DIR = File.expand_path("src/_pages", __dir__)
+POSTS_DIR      = File.expand_path("src/_posts", __dir__)
+PAGES_DIR      = File.expand_path("src/_pages", __dir__)
+TYPST_TEMPLATE = File.expand_path("typst/cv.typ", __dir__)
+TYPST_FONTS    = File.expand_path("typst/fonts", __dir__)
+# PDFs deliberately land outside src/ so Bridgetown never copies them
+# into the public site build. They're distributed as private GitHub
+# release artefacts instead.
+PDF_OUTPUT_DIR = File.expand_path("tmp/cv", __dir__)
 
 def slugify(text)
   text
@@ -63,6 +69,37 @@ namespace :post do
     FileUtils.mkdir_p(POSTS_DIR)
     File.write(path, contents)
     puts "Created #{path}"
+  end
+end
+
+namespace :cv do
+  # Compiles the CV variants into tmp/cv/. These PDFs contain personal
+  # contact data and are intentionally kept out of the public site build;
+  # CI uploads them as GitHub release artefacts on the private repository.
+  desc "Compile both CV PDFs from the Typst template → tmp/cv/."
+  task :pdf do
+    unless system("command -v typst > /dev/null 2>&1")
+      abort "typst not found on PATH. Install with: brew install typst"
+    end
+
+    FileUtils.mkdir_p(PDF_OUTPUT_DIR)
+
+    {
+      "tech_leadership"     => "cv.pdf",
+      "security_leadership" => "cv-security.pdf",
+    }.each do |view, filename|
+      output = File.join(PDF_OUTPUT_DIR, filename)
+      puts "Compiling #{view} → #{output}"
+      ok = system(
+        "typst", "compile",
+        "--root", __dir__,
+        "--font-path", TYPST_FONTS,
+        TYPST_TEMPLATE,
+        output,
+        "--input", "view=#{view}",
+      )
+      abort "typst compile failed for view=#{view}" unless ok
+    end
   end
 end
 

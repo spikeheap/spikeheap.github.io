@@ -19,7 +19,6 @@ profile:
     github: https://github.com/spikeheap
     linkedin: https://www.linkedin.com/in/ryanpbrooks/
 
-
 statements:
   tech_leadership: |
     I'm a pragmatic, hands-on technical leader with two decades of
@@ -650,4 +649,3 @@ consultancy:
         logo: /images/logos/kudos.svg
       - name: "NMi Metrology & Gaming"
         logo: /images/logos/nmi.svg
-

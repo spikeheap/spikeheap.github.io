@@ -34,6 +34,9 @@ output/
 tmp/pids/
 .routes.json
 
+# Build artefacts (CV PDFs from `rake cv:pdf`; not served, uploaded as GH release assets)
+tmp/cv/
+
 # Playwright
 playwright-report/
 test-results/
