@@ -95,3 +95,19 @@ npx sharp-cli resize 900 \
   --input $(find ./docs -name *.jpg -or -name *.png) \
   --output "{dir}/{base}"
 ```
+
+### Regenerating favicons / apple-touch-icons
+
+`src/favicon-512.png` is the source. The smaller `favicon-16.png` and the three `apple-touch-icon[-NNN]-v2.png` files (180, 152, 167) are derived from it. Regenerate with:
+
+```bash
+cd src
+for size in 16 152 167 180; do
+  case $size in
+    16) out="favicon-16.png" ;;
+    180) out="apple-touch-icon-v2.png" ;;
+    *) out="apple-touch-icon-${size}-v2.png" ;;
+  esac
+  npx sharp-cli resize $size $size --input favicon-512.png --output "{dir}/$out"
+done
+```

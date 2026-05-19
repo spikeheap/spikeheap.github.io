@@ -53,5 +53,12 @@ export function loadPosts(): Post[] {
 }
 
 export function loadImageFilenames(): string[] {
-  return fs.readdirSync(IMAGES_DIR).filter(f => !f.startsWith('.'));
+  const walk = (dir: string, prefix = ''): string[] => {
+    return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+      if (entry.name.startsWith('.')) return [];
+      const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+      return entry.isDirectory() ? walk(path.join(dir, entry.name), rel) : [rel];
+    });
+  };
+  return walk(IMAGES_DIR);
 }
