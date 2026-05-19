@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .disc { fill: #b45309; }
+    @media (prefers-color-scheme: dark) {
+      .disc { fill: #fb923c; }
+    }
+  </style>
+  <defs>
+    <mask id="cut">
+      <rect width="64" height="64" fill="white"/>
+      <text x="32" y="44" text-anchor="middle"
+            font-family="'Iowan Old Style', 'Apple Garamond', Baskerville, Georgia, serif"
+            font-weight="700"
+            font-size="34"
+            fill="black">RB</text>
+    </mask>
+  </defs>
+  <circle class="disc" cx="32" cy="32" r="28" mask="url(#cut)"/>
+</svg>

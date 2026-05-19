@@ -18,5 +18,29 @@ class Builders::Helpers < SiteBuilder
       fmt = year ? "%B %Y" : "%B"
       "#{day}#{suffix} #{d.strftime(fmt)}"
     end
+
+    # `month_year("2026-03")` → "Mar 2026"
+    # `month_year("2012-12-16")` → "Dec 2012"
+    # `month_year("2002")` → "2002"
+    # `month_year("present")` / `month_year(nil)` → "present"
+    helper :month_year do |value|
+      s = value.to_s.strip
+      if s.empty? || s == "present"
+        "present"
+      else
+        parts = s.split("-")
+        if parts.length < 2
+          s
+        else
+          months = %w[Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
+          idx = parts[1].to_i - 1
+          if idx < 0 || idx > 11
+            s
+          else
+            "#{months[idx]} #{parts[0]}"
+          end
+        end
+      end
+    end
   end
 end

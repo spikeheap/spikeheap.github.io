@@ -1,0 +1,165 @@
+---
+layout: default
+---
+<%
+  view       = resource.data.view.to_s
+  cv         = site.data.cv
+  statement  = cv["statements"][view].to_s
+  skills     = cv["skills"][view] || []
+  experience = cv["experience"] || []
+%>
+
+<article class="cv" data-view="<%= view %>">
+  <header class="cv__header">
+    <h1 class="cv__name"><%= cv["profile"]["name"] %></h1>
+    <p class="cv__location"><%= cv["profile"]["location"] %></p>
+
+    <% if cv["profile"]["links"]&.any? %>
+      <ul class="cv__links">
+        <% cv["profile"]["links"].each do |k, v| %>
+          <li><a href="<%= v %>"><%= k.to_s.capitalize %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if cv["profile"]["print_only"] %>
+      <% pc = cv["profile"]["print_only"] %>
+      <ul class="cv__contact print-only" aria-label="Contact details">
+        <% if pc["phone"] %><li><%= pc["phone"] %></li><% end %>
+        <% if pc["email"] %><li><a href="mailto:<%= pc["email"] %>"><%= pc["email"] %></a></li><% end %>
+      </ul>
+    <% end %>
+
+    <p class="cv__view-switcher no-print">
+      <% if view == "tech_leadership" %>
+        Also available: <a href="/cv/security">security leadership CV</a>.
+      <% elsif view == "security_leadership" %>
+        Also available: <a href="/cv">technical leadership CV</a>.
+      <% end %>
+    </p>
+  </header>
+
+  <% if statement && !statement.empty? %>
+    <section class="cv__statement" aria-label="About">
+      <% statement.split(/\n{2,}/).each do |para| %>
+        <p><%= para.strip.gsub(/\s+/, " ") %></p>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% if skills.any? %>
+    <section class="cv__skills">
+      <h2>Key skills</h2>
+      <p class="cv__skills-list"><%= skills.join(" · ") %></p>
+    </section>
+  <% end %>
+
+  <section class="cv__experience">
+    <h2>Experience</h2>
+    <% experience.each do |role| %>
+      <article class="role">
+        <header class="role__header">
+          <% titles = role["titles"] || {} %>
+          <% role_title = titles[view] || titles["default"] %>
+          <h3 class="role__title"><%= role_title %></h3>
+          <p class="role__meta">
+            <% if role["company_url"] %>
+              <a class="role__company" href="<%= role["company_url"] %>"><%= role["company"] %></a>
+            <% else %>
+              <span class="role__company"><%= role["company"] %></span>
+            <% end %>
+            <% if role["type"] %> <span class="role__type">· <%= role["type"] %></span><% end %>
+            <% if role["location"] %> <span class="role__location">· <%= role["location"] %></span><% end %>
+          </p>
+          <p class="role__dates">
+            <%= month_year(role["start"]) %> – <%= month_year(role["end"]) %>
+          </p>
+        </header>
+        <% if role["summary"] %>
+          <p class="role__summary"><%= role["summary"].to_s.strip.gsub(/\s+/, " ") %></p>
+        <% end %>
+        <% bullets = (role["bullets"] || []).select { |b| Array(b["audiences"]).include?(view) } %>
+        <% if bullets.any? %>
+          <ul class="role__bullets">
+            <% bullets.each do |b| %>
+              <li><%= b["text"].to_s.strip.gsub(/\s+/, " ") %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </article>
+    <% end %>
+  </section>
+
+  <% if cv["career_history"]&.any? %>
+    <section class="cv__earlier">
+      <h2>Earlier career</h2>
+      <ul class="cv__earlier-list">
+        <% cv["career_history"].each do |r| %>
+          <li>
+            <strong><%= r["role"] %></strong>, <%= r["company"] %><% if r["location"] %>, <%= r["location"] %><% end %>
+            <span class="cv__earlier-dates">(<%= month_year(r["start"]) %> – <%= month_year(r["end"]) %>)</span>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <% if cv["certifications"]&.any? %>
+    <section class="cv__certifications">
+      <h2>Certifications</h2>
+      <ul class="cv__certs-list">
+        <% cv["certifications"].each do |c| %>
+          <li>
+            <strong><%= c["title"] %></strong><% if c["issuer"] %>, <%= c["issuer"] %><% end %><%
+              if c["status"]
+            %> — <em><%= c["status"] %><% if c["year"] %> (<%= c["year"] %>)<% end %></em><%
+              elsif c["date"]
+            %> — <%= month_year(c["date"]) %><%
+              elsif c["year"]
+            %> — <%= c["year"] %><%
+              end
+            %><% if c["note"] %> <span class="muted">(<%= c["note"] %>)</span><% end %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <% if cv["community"]&.any? %>
+    <section class="cv__community">
+      <h2>Community &amp; coaching</h2>
+      <ul class="cv__community-list">
+        <% cv["community"].each do |c| %>
+          <li>
+            <strong><%= c["kind"].to_s.capitalize %></strong>:
+            <% if c["url"] %>
+              <a href="<%= c["url"] %>"><%= c["name"] %></a>
+            <% else %>
+              <%= c["name"] %>
+            <% end %>
+            <span class="muted">(<%= c["start"] %><% if c["end"] %> – <%= c["end"].to_s == "present" ? "present" : c["end"] %><% end %>)</span>
+            <% if c["note"] %><br><span class="muted small"><%= c["note"] %></span><% end %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <% if cv["education"]&.any? %>
+    <section class="cv__education">
+      <h2>Education</h2>
+      <ul class="cv__education-list">
+        <% cv["education"].each do |e| %>
+          <li>
+            <strong><%= e["institution"] %></strong> — <%= e["qualification"] %>
+            <span class="muted">(<%= e["start"] %><% if e["end"] %> – <%= e["end"] %><% end %>)</span>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <p class="cv__print no-print">
+    <button type="button" onclick="window.print()">Print or save as PDF</button>
+  </p>
+</article>

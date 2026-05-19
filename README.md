@@ -10,14 +10,12 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## To do
 
-- [ ] Rake task to add post & page
 - [ ] add st/nd/th to dates in posts list
 - [ ] Add `About` page with link to community, e.g. RemoteHack
 - [ ] Update homepage to be summary & links off to places
 - [ ] Figure out a way to blog short notes about websites & things, inspired by https://maggieappleton.com/garden.
 - [ ] Curate tag ontology and re-add `/tags` to the header nav. Current tags (a mix of `tag:` singular and `tags:` array, plus values like `engineering`/`event`/`update`/`rant`) accumulated organically. Decide which to keep, merge, or drop, and standardise on `tags:` as a list. The `/tags` page still builds — it's just been removed from the chrome until this is done.
 - [ ] Add a "Featured posts" section to the homepage once the site is live and bedded in. Manually-curated permanent surface for the strongest evergreen pieces, alongside "Recent posts". One frontmatter flag (`featured: true`) and a Liquid filter in `home.erb`.
-- [ ] Review use of hero images (are there any that need removing?)
 - [ ] WCAG G201 "opens in new tab" indicator on external links. Approach: Bridgetown build-time builder (post-render hook with Nokogiri) following the G201 Example 2 pattern — inline SVG icon + `aria-describedby` referencing a hidden description. Comments JS would carry the same for its dynamic links. Deferred for now to keep complexity down; revisit when the site has been live for a bit.
 - [ ] Send outbound webmentions on publish. Avoid webmention.app — implement as a GitHub Actions step in the deploy workflow: diff the changed post files, parse each for absolute outbound `<a href>` values, discover each target's webmention endpoint (HTTP HEAD → Link header, or HTML `<link rel="webmention">`), POST `source` + `target`. The `webmention` Ruby gem handles discovery + send; the workflow step is ~30 lines. Zero third-party dependency for the sending side.
 - [ ] Set up [Bridgy](https://brid.gy) to bridge Mastodon reactions into webmention.io. Inbound only — feeds replies/likes/boosts on the toot for a post into the Webmentions section, complementing the Mastodon comments section. Sign up at brid.gy with the same domain. Eventually will need a dedupe pass between the Phase 3a Comments section (toot thread) and the Phase 3b Webmentions section (everything else).

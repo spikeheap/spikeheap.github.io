@@ -21,7 +21,7 @@ function extractInternalHrefs(html: string): string[] {
 test('every internal link across posts and pages resolves', async ({ request }) => {
   test.slow();
 
-  const seeds = ['/', ...loadPosts().map(p => p.url), '/now/', '/prev/', '/posts-by-year/', '/tags/'];
+  const seeds = ['/', ...loadPosts().map(p => p.url), '/now/', '/cv/', '/cv/security/', '/services/', '/posts-by-year/', '/tags/'];
 
   const allHrefs = new Set<string>();
   for (const seed of seeds) {

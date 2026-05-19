@@ -1,0 +1,653 @@
+# Ryan Brooks — CV dataset
+#
+# Single source of truth for /cv (tech leadership default), /cv/security
+# (security leadership) and /services (fractional CTO/CISO consultancy page).
+#
+# Filtering rule: a role/bullet renders in view X iff X is in its
+# `audiences` list. Bullets keep source order. Each view picks its
+# `statements.<view>` block for the personal statement and
+# `skills.<view>` list for the ATS-readable keyword block.
+#
+# TODO markers flag items needing user confirmation before ship.
+
+profile:
+  name: Ryan Brooks
+  location: Sheffield, UK (remote)
+  links:
+    website: https://ryanbrooks.co.uk
+    mastodon: https://ruby.social/@spikeheap
+    github: https://github.com/spikeheap
+    linkedin: https://www.linkedin.com/in/ryanpbrooks/
+
+
+statements:
+  tech_leadership: |
+    I'm a pragmatic, hands-on technical leader with two decades of
+    experience building software, infrastructure, and the teams that
+    own them. I focus on people, shared goals, figuring out what's
+    most important, and making space for teams to do their best work.
+
+    My background spans engineering, operations and security. I've led
+    teams from 3 people to 30+ across central and local government,
+    charities, and commercial software businesses. I'm equally
+    comfortable working with executive leadership on strategy and with
+    engineers in the codebase, and I use frameworks like domain-driven
+    design, Team Topologies and the Government Digital Service
+    Standard to ground decisions in real user needs.
+
+  security_leadership: |
+    I'm a pragmatic, hands-on leader with a focus on people, shared
+    goals, figuring out what's most important, and making space to
+    achieve it. My background spans operations, engineering and
+    security, which makes a hands-on Chief Information Security
+    Officer (CISO) role exciting.
+
+    My experience running JavaScript, Ruby and remote hack events and
+    working with executive leadership in local authorities means I'm
+    well placed to work with everyone from board level to end user,
+    meeting them where they are to foster a collaborative, positive
+    security posture. My time in central and local government has
+    given me a good understanding of vast and aging technology stacks,
+    and experience wrangling them to keep risk acceptable.
+
+    I'm an advocate of modern DevSecOps, empowering teams and risk
+    owners to quantify risk and manage it effectively against other
+    priorities, using established frameworks such as the NCSC Cyber
+    Assessment Framework (CAF) and the CIS AWS Cloud Benchmark.
+
+  consultancy: |
+    I work with founders and leadership teams of small and mid-sized
+    organisations as a fractional CTO, fractional CISO, or hands-on
+    technical lead. Engagements are usually 1–2 days a week, or a
+    time-boxed embedded piece of work over 3–6 months.
+
+    The goal is to leave you with a more capable team, clearer
+    priorities, and infrastructure that's safe to change — not to make
+    you dependent on me.
+
+experience:
+  - id: goodbase
+    company: Goodbase Digital Ltd
+    company_url: https://goodbase.co.uk
+    location: Remote
+    type: contract
+    start: "2026-03"
+    end: present
+    titles:
+      default: ISO 27001 Lead Implementer, Cyber Security Lead & Principal Infrastructure Engineer
+      security_leadership: ISO/IEC 27001 Lead Implementer & Cyber Security Lead
+      tech_leadership: Principal Infrastructure Engineer
+      consultancy: Fractional Security & Infrastructure Lead
+    summary: |
+      Goodbase build bespoke case management tooling for charities and
+      local authorities. I was brought in to mature their seucrity posture, introduce an Information Security Management System (ISMS) aligned to ISO/IEC 27001, and to lead the
+      infrastructure changes needed to meet the new standards.
+    bullets:
+      - text: Shipped the first phase of an ISO/IEC 27001-aligned ISMS, including formal risk management.
+        audiences: [security_leadership, consultancy]
+      - text: Introduced infrastructure as code (IaC), retrofitting it across operational systems and adopting it as the default for new deployments.
+        audiences: [tech_leadership, security_leadership, consultancy]
+      - text: Hardened Google Workspace, AWS, GitHub and Slack against the new ISMS controls.
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: Improved Goodbase's GDPR and data privacy posture through contractual improvements and internal review.
+        audiences: [security_leadership, consultancy]
+      - text: Led cyber and information governance responses for sales conversations with prospective clients, including central government bodies.
+        audiences: [security_leadership, consultancy]
+
+  - id: public_group
+    company: Public Group International Ltd
+    location: Remote
+    type: contract
+    start: "2026-01"
+    end: "2026-03"
+    titles:
+      default: Principal Architect
+    summary: |
+      Engaged to lead a research engagement with a central government
+      department exploring techniques for understanding extremely
+      large codebases in restricted environments.
+    bullets:
+      - text: Led the technical research aspect of the engagement end-to-end, working with the client and Public Group's internal research teams to iterate on the problem and candidate solutions.
+        audiences: [tech_leadership, consultancy]
+      - text: Produced the final written report covering the engagement, the challenge, and our recommendations to the client.
+        audiences: [tech_leadership, consultancy]
+
+  - id: hackney_interim_head
+    company: London Borough of Hackney
+    location: Remote
+    type: contract
+    start: "2025-04"
+    end: "2025-10"
+    titles:
+      default: Interim Head of Cyber Security
+    summary: |
+      Role expansion when Hackney's Head of Engineering left and the
+      Council's security function scaled up ahead of a large external
+      audit.
+    bullets:
+      - text: Introduced a structured NCSC Cyber Assessment Framework (CAF) to quantify security risk and prioritise improvements.
+        audiences: [security_leadership, consultancy]
+      - text: Devised and implemented a 5-year cyber strategy to mature cyber security and risk management within the Council's financial constraints.
+        audiences: [security_leadership, consultancy]
+      - text: Led a team of 4 early-career cyber security analysts, providing structured training, mentoring and line management.
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: Introduced Dependabot to quantify software dependency vulnerability risk and auto-update dependencies, training developers and tracking progress through governance sessions.
+        audiences: [security_leadership, consultancy]
+      - text: Discovered risk around unmanaged devices, and led work to manage personal device risk and roll out corporate devices for critical systems.
+        audiences: [security_leadership, consultancy]
+
+  - id: hackney_lead_seceng
+    company: London Borough of Hackney
+    location: Remote
+    type: contract
+    start: "2023-05"
+    end: "2025-04"
+    titles:
+      default: Lead Security Engineer & Technical Architect
+      tech_leadership: Lead Technical Architect & Security Engineer
+    summary: |
+      Brought in to assess and improve Hackney's security posture for
+      modern engineering projects. Worked closely with engineers and
+      senior stakeholders to identify opportunities for change,
+      getting buy-in from the wider business and enthusiasm from
+      teams.
+    bullets:
+      - text: |
+          Led an initiative to map Hackney's attack surface and existing
+          systems after discovering ICT wasn't aware of all the services
+          it operated, with many small systems being built by agencies,
+          deployed within AWS, and forgotten. Brokered agreement about
+          ownership and maintenance with the engineering and cloud
+          platform teams.
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: |
+          Introduced disaster recovery testing after discovering a lack
+          of backups and testing across the estate. Raised awareness
+          with senior leadership to agree priorities and introduced a
+          way to assess system criticality which was adopted into the
+          wider Council's business impact analysis processes. Tackled
+          slow team response by creating lightweight templates and a
+          runbook, and running in-person sessions covering theory and
+          mob-recovery on problem systems. The work led to improvements
+          in the central backup platform and processes, as well as
+          upgrades to out-of-date systems to enable recovery.
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: |
+          Revived Hackney's engineering community of practice. Heavy
+          apprentice/early-career representation and high turnover had
+          left the Slack and CoP languishing. Led by example with talks
+          on security and engineering practices, workshops to build
+          skills, and lightweight decision records as a way to foster
+          discussion. The shift was away from informal decision making
+          to a more collaborative, consensus-driven model — and most
+          engineers became comfortable asking for help.
+        audiences: [tech_leadership, security_leadership, consultancy]
+      - text: Mentored junior security engineers, introducing learning sessions and pairing/swarming. The team began writing Python scripts to automate laborious manual checks.
+        audiences: [security_leadership, consultancy]
+      - text: Ran Community of Practice sessions and workshops with engineers to embed threat modelling, OWASP Top 10, and dependency security.
+        audiences: [security_leadership, consultancy]
+
+  - id: bookwhen
+    company: Bookwhen Ltd
+    location: Remote
+    type: contract
+    start: "2023-01"
+    end: "2023-04"
+    titles:
+      default: Interim Chief Technology Officer (CTO)
+    summary: |
+      Brought in to introduce modern software development delivery
+      practices, improving focus, transparency and velocity.
+    bullets:
+      - text: Introduced the role of Engineering Manager and modern delivery practices. Feedback in the new retrospectives was unanimously positive.
+        audiences: [tech_leadership, consultancy]
+      - text: Enabled engineering to rapidly identify and fix significant technical debt, including unsupported Ruby, Rails and Postgres services, and created a strategy to iteratively improve the codebase.
+        audiences: [tech_leadership, consultancy]
+      - text: Introduced and trained the team on infrastructure-as-code (Terraform), increasing confidence in safe infrastructure change and enabling the replacement of the 6-year-old production Kubernetes cluster.
+        audiences: [tech_leadership, consultancy]
+
+  - id: gds
+    company: Government Digital Service
+    location: Remote
+    type: full-time
+    start: "2021-09"
+    end: "2022-11"
+    titles:
+      default: Lead Technical Architect
+    summary: |
+      Established new teams to maintain and develop GOV.UK's
+      publishing platform, building an API-first strategy to
+      modernise and secure an extensive suite of legacy Ruby
+      applications in preparation for GOV.UK's classification as
+      Critical National Infrastructure (CNI).
+    bullets:
+      - text: |
+          Coached leadership and product management through a
+          domain-driven design approach to publishing team formation
+          and sizing. Shaped the long-lived teams that own, run and
+          build the GOV.UK publishing platform, with a focus on clear
+          boundaries and responsibilities. Instigated a controversial
+          shift away from a globally-shared developer support rota.
+        audiences: [tech_leadership, consultancy]
+      - text: |
+          Prevented a proposed rewrite of GOV.UK publishing. Helped
+          senior leadership and the teams embrace iterative
+          improvement with smaller, scoped rewrites where necessary.
+          Commissioned an internal accessibility audit which enabled
+          sweeping accessibility improvements. By focusing on team
+          capabilities, freed teams from paralysis and empowered
+          developers to make quick, meaningful improvements that
+          benefitted users.
+        audiences: [tech_leadership, consultancy]
+      - text: Built an API-first strategy to modernise and secure an extensive suite of legacy Ruby applications ahead of GOV.UK's classification as Critical National Infrastructure (CNI).
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: Promoted a GOV.UK-wide shift to application/service ownership; started a book club to provide space to explore approaches such as Team Topologies.
+        audiences: [tech_leadership]
+      - text: Introduced C4 modelling to the architecture community, modelling the publishing space and using diagrams to demonstrate the legacy complexities and foster conversation around architectural solutions.
+        audiences: [tech_leadership]
+      - text: Recruited technical positions at all levels (permanent and contract), including sifting and creating fair and inclusive interview questions.
+        audiences: [tech_leadership]
+      - text: Mentored technical leadership on the introduction of Kubernetes and approaches to ensure resilience and upskill developers as we progressed a lagging multi-year project to migrate from legacy virtual machines.
+        audiences: [tech_leadership]
+
+  - id: moj
+    company: Ministry of Justice
+    location: Hybrid, Sheffield
+    type: full-time
+    start: "2019-07"
+    end: "2021-08"
+    titles:
+      default: Senior Technical Architect
+    summary: |
+      Hands-on technical architect leading several software and
+      infrastructure engineering teams, working with product owners,
+      developers and non-technical stakeholders to define strategy,
+      set priorities, and build technical systems.
+    bullets:
+      - text: Instigated and delivered the migration of the in-cell prisoner content hub from on-premise servers to a secure, cloud-based Kubernetes platform, refactoring the application architecture to enable the service to scale to all public prisons while remaining secure.
+        audiences: [tech_leadership, security_leadership, consultancy]
+      - text: Led the prisoner content hub development team, coaching developers on best practice, introducing the test pyramid and CI/CD, and working closely with product and content teams to prioritise features, fixes and technical debt.
+        audiences: [tech_leadership, consultancy]
+      - text: Responsible for the hosting and infrastructure for critical offender management, risk and operational reporting systems for HM Prison and Probation Service. Introduced continuous delivery to the legacy hosting team, building and deploying infrastructure with Terraform, Ansible and Packer. Set a vision for the operations team to escape their inherited technical debt and rebuild morale and delivery velocity.
+        audiences: [tech_leadership, security_leadership, consultancy]
+      - text: Onboarded prisoner transfer suppliers integrating with a new Rails API we built to book a secure move, establishing channels for communication, common language, documentation and resources.
+        audiences: [tech_leadership, consultancy]
+      - text: Identified £750k annual savings in legacy VM deployments due to redundancy or overprovisioning.
+        audiences: [tech_leadership, consultancy]
+      - text: Brokered an agreement between senior technical leaders in HMPPS and Central Digital on contentious cloud infrastructure issues.
+        audiences: [tech_leadership]
+      - text: Assessed projects against the Government Digital Service Standard, coaching teams to make sustainable, pragmatic technical choices.
+        audiences: [tech_leadership, consultancy]
+      - text: Introduced a regular hack day to encourage developers to investigate new tools and approaches and to learn new things.
+        audiences: [tech_leadership]
+      - text: Investigated and resolved complex performance issues in a microservice environment.
+        audiences: [tech_leadership]
+      - text: Fostered communication between siloed groups in MoJ by giving talks for Central Digital, interviewing candidates for the Cloud Platform team, and sharing ideas outside of Prison & Probation.
+        audiences: [tech_leadership]
+
+  - id: slate_horse
+    company: Slate Horse Ltd
+    location: Sheffield
+    type: director, interim & project-based consulting
+    start: "2015-01"
+    end: "2020-01"   # TODO: confirm — LinkedIn says Jan 2020, the older /prev page said Jan 2021
+    titles:
+      default: Principal Consultant & Director
+    summary: |
+      My consultancy vehicle for interim CTO and project-based contract
+      development work, with a focus on software quality, testing, and
+      empowering developers. Clients included the Department for
+      Education, University of Oxford, Oxford University Hospitals NHS
+      Trust, Bookwhen, Nimble Approach and Press Association.
+    bullets:
+      - text: For the Department for Education, was the Technical Architect in a cross-functional team developing Find & Explore NPD Data Alpha & Beta. Defined the technical architecture with stakeholders and led a small engineering team developing a Rails 5 application using TDD, RSpec and PostgreSQL. Built CI/CD pipelines to continuously ship changes using blue/green deployments on DfE's Azure platform.
+        audiences: [tech_leadership]
+      - text: For the Press Association, designed and built an authoring tool for mass-localisation of journalism, bringing together and managing a team of contract developers for the initial build. Subsequently contracted to provide hosting and ongoing maintenance for the service.
+        audiences: [tech_leadership]
+      - text: For Bookwhen, migrated their production Rails service from a single Linode server to managed Postgres, Redis and Kubernetes services in Google Cloud Platform, introducing a CI/CD pipeline. Increased application performance and resilience, reduced manual patching/maintenance, and allowed the service to scale.
+        audiences: [tech_leadership]
+      - text: For the Bodleian Library, designed and ran a 5-day Rails bootcamp, cross-training Python developers on Ruby/Rails fundamentals, testing, and RabbitMQ. The team felt comfortable maintaining the system they'd inherited.
+        audiences: [tech_leadership]
+      - text: Heavily involved in a public-sector transformation bid worth £2.5m which the team won — wrote bid responses, reviewed contributors' responses, and presented and responded to technical questions.
+        audiences: [tech_leadership]
+
+  - id: kudos
+    company: Kudos Innovations Ltd
+    location: Oxford
+    type: full-time
+    start: "2014-09"
+    end: "2017-04"
+    titles:
+      default: Chief Technology Officer (CTO)
+    summary: |
+      Recruited and led a team of 5–6 engineers, taking a Ruby/Padrino
+      proof-of-concept site and iteratively developing it into a
+      stable, scalable product, expanding into two complementary
+      product lines.
+    bullets:
+      - text: Led and managed a team of developers, recruiting and mentoring to reduce reliance on contractors.
+        audiences: [tech_leadership]
+      - text: Introduced Scrum with mechanisms for urgent customer support requests.
+        audiences: [tech_leadership]
+      - text: Coached and mentored the development and management teams, promoting sustainable pace and long-term quality.
+        audiences: [tech_leadership]
+      - text: Led the development of a UI overhaul, migrating parts of the site to Angular, and led the re-engineering of internal statistical modelling to improve performance.
+        audiences: [tech_leadership]
+      - text: Introduced pair-programming, code review and DevOps principles to grow the team.
+        audiences: [tech_leadership]
+      - text: Introduced a modular SCSS-based style guide with reusable components that reduced development and design time, and brought consistency to fonts, whitespace, and colour across the site.
+        audiences: [tech_leadership]
+      - text: Contributed hands-on development, leading the creation of a high-performance data ingestion system, managing production and staging infrastructure, and migrating development to Docker to enable testing of complex system interactions.
+        audiences: [tech_leadership]
+
+  - id: oxford_se
+    company: University of Oxford / Oxford University Hospitals NHS Trust
+    location: Oxford
+    type: full-time
+    start: "2013-11"
+    end: "2014-09"
+    titles:
+      default: Senior Software Engineer
+    summary: |
+      Collaboratively developed open-source metadata-registry tools
+      for modelling patient treatment and outcomes within the NHS.
+    bullets:
+      - text: Introduced the team to Scrum, TDD, functional testing, CI and Puppet.
+        audiences: [tech_leadership]
+
+  - id: nmi_cto
+    company: NMi Metrology & Gaming Ltd
+    location: Bangor, Wales
+    type: full-time
+    start: "2012-01"
+    end: "2013-11"
+    titles:
+      default: Chief Technology Officer (CTO)
+    summary: |
+      Responsible for the strategic development of systems and
+      processes to support growth and operational activities, as well
+      as the security and integrity of NMi UK's computing resources
+      and data under ISO/IEC 17025.
+    bullets:
+      - text: Managed a team of 3 developers and promoted team development through coaching, training, TDD and pair-programming.
+        audiences: [tech_leadership]
+      - text: Strategically developed systems, policies, procedures and training to allow the business to grow from 3 to 30 people.
+        audiences: [tech_leadership, security_leadership]
+      - text: Ran critical, short-term projects from inception to completion; visited clients across Europe providing gambling compliance testing services, on-site auditing and consultancy.
+        audiences: [tech_leadership, security_leadership]
+      - text: Designed and built a report delivery system on AWS to make project progress transparent and add auditability to delivered reports.
+        audiences: [tech_leadership]
+      - text: Introduced an OpenStack private cloud to improve upgrade testing procedures and provide development/staging environments.
+        audiences: [tech_leadership]
+      - text: Operated as security and integrity owner for NMi UK's computing resources and data under ISO/IEC 17025.
+        audiences: [security_leadership]
+
+# Older roles — shown on long/web view only as a compact list, "available on request" tone.
+career_history:
+  - role: Lead Developer
+    company: NMi Metrology & Gaming Ltd
+    location: Bangor, Wales
+    start: "2009-03"
+    end: "2011-12"
+  - role: Test Engineer / Software Developer
+    company: Compliance Testing Laboratory
+    location: Bangor, Wales
+    start: "2008-01"   # TODO: confirm — LinkedIn shows "Jan 2009 – Mar 2009 · 1 yr 3 mos", which is internally inconsistent. Best guess: Jan 2008 – Mar 2009.
+    end: "2009-03"
+
+certifications:
+  - title: PECB ISO/IEC 27001 Lead Auditor
+    issuer: PECB
+    status: in progress
+    year: 2026
+  - title: CISSP
+    issuer: (ISC)²
+    date: "2012-12-16"
+    note: membership not maintained
+  - title: EC-Council Certified Ethical Hacker (CEH)
+    issuer: EC-Council
+    date: "2012-06-15"
+  - title: CMI Level 3 & 5 in Management & Leadership
+    issuer: Chartered Management Institute
+    year: 2012
+
+education:
+  - institution: Bangor University
+    qualification: Postgraduate research, AI and predictive modelling
+    start: "2005"
+    end: "2010"
+  - institution: Bangor University
+    qualification: BSc (Hons) Computer Systems with Business Studies — 1st class
+    start: "2002"
+    end: "2005"
+
+# ATS-readable flat keyword lists. Templates render comma-separated.
+# Keywords use spelled-out forms with abbreviations in parentheses where
+# both are commonly searched (e.g. "Infrastructure as Code (IaC)").
+skills:
+  tech_leadership:
+    - Chief Technology Officer (CTO)
+    - Fractional CTO
+    - Head of Engineering
+    - Technical leadership
+    - Engineering management
+    - Software architecture
+    - Domain-driven design (DDD)
+    - API-first architecture
+    - Team Topologies
+    - Coaching & mentoring
+    - Hiring & inclusive interviewing
+    - Agile, Scrum
+    - Test-driven development (TDD)
+    - Continuous integration / continuous delivery (CI/CD)
+    - Infrastructure as Code (IaC)
+    - Ruby, Rails
+    - Python
+    - Node.js, Express
+    - PostgreSQL, MySQL, Redis, Elasticsearch, RabbitMQ
+    - AWS, Azure, Google Cloud Platform
+    - Kubernetes, Helm, Docker
+    - Terraform, Ansible, Packer
+    - GitHub Actions
+    - Government Digital Service (GDS) Standard
+
+  security_leadership:
+    - Chief Information Security Officer (CISO)
+    - Head of Cyber Security
+    - Security strategy
+    - Governance, Risk & Compliance (GRC)
+    - ISO/IEC 27001
+    - Information Security Management System (ISMS)
+    - Cyber Essentials
+    - NCSC Cyber Assessment Framework (CAF)
+    - CIS AWS Cloud Benchmark
+    - ISO/IEC 17025
+    - Risk management
+    - Threat modelling
+    - OWASP Top 10
+    - DevSecOps
+    - Dependency security (Dependabot)
+    - Identity & Access Management (IAM)
+    - AWS security
+    - Google Workspace hardening
+    - GDPR & data privacy
+    - Information governance
+    - Incident response
+    - Disaster recovery & business impact analysis
+    - Security training & culture
+    - Security community of practice
+
+  consultancy:
+    - Fractional CTO
+    - Fractional CISO
+    - Interim CTO
+    - Technical due diligence
+    - ISO/IEC 27001 implementation
+    - Cyber Essentials
+    - Information Security Management System (ISMS)
+    - Infrastructure as Code (IaC)
+    - AWS, Kubernetes, Terraform
+    - Ruby on Rails
+    - Engineering team coaching
+    - Engineering hiring
+    - Domain-driven design (DDD)
+    - Software architecture
+    - Critical National Infrastructure (CNI)
+    - Public sector engineering
+
+community:
+  - kind: organiser
+    name: Remote Hack
+    url: https://remotehack.space
+    start: "2020-04"
+    end: present
+  - kind: coach
+    name: Tech & Security Leadership Coaching
+    start: "2014"
+    end: present
+    note: Ad-hoc since 2022; no new clients in recent years.
+  - kind: advisor
+    name: CodeATT advisory board
+    url: https://codeatt.org
+    start: "2020"
+    end: "2022"
+  - kind: mentor
+    name: Code4000 / YooMee (day-release prisoner mentoring)
+    url: https://code4000.org
+    start: "2018"
+    end: "2019"
+  - kind: organiser
+    name: JSOxford
+    url: https://jsoxford.com
+    start: "2014"
+    end: "2017"
+  - kind: organiser
+    name: Oxford Ruby User Group (OxRUG)
+    start: "2015"
+    end: "2018"
+  - kind: mentor
+    name: Codebar Oxford
+    url: https://codebar.io/oxford
+    start: "2016"
+    end: "2018"
+
+talks:
+  - { title: "Engineer your review processes",                                                  venue: "Ministry of Justice",   date: "2021-01" }
+  - { title: "Rebase or merge? Design your process",                                             venue: "Airquotes The Podcast", date: "2021-01" }
+  - { title: "Pair programming",                                                                 venue: "Ministry of Justice",   date: "2020-10" }
+  - { title: "Life as a software engineer",                                                      venue: "The Developer Academy", date: "2020-10" }
+  - { title: "You need a mentor!",                                                               venue: "Codebar",               date: "2017-10" }
+  - { title: "WebSockets in Ruby",                                                               venue: "OxRUG",                 date: "2017-03" }
+  - { title: "Improve your life with this one weird trick they didn't want you to know about",   venue: "JSOxford",              date: "2017-02" }
+  - { title: "Composable filters in Ruby",                                                       venue: "OxRUG",                 date: "2016-06" }
+  - { title: "Progressive Continuous Delivery",                                                  venue: "DevOps Oxford",         date: "2016-05" }
+  - { title: "Pain the Asset Pipeline",                                                          venue: "OxRUG",                 date: "2015-12" }
+  - { title: "The most convoluted JavaScript testing framework?",                                venue: "JSOxford",              date: "2015-05" }
+
+events:
+  - { title: "Remote Hack (monthly)",                       host: "Remote Hack",     start: "2020-04", end: present }
+  - { title: "Global Code Retreat (UK)",                    host: "Remote Hack",     date: "2020-11" }
+  - { title: "Introducing organisational change workshop",  host: "DOPM",            date: "2018-04" }
+  - { title: "We need it now!",                             host: "DOPM",            date: "2017-09" }
+  - { title: "Introduction to coaching workshop",           host: "DOPM",            date: "2017-08" }
+  - { title: "Summer of Hacks",                             host: "JSOxford",        date: "2016-08" }
+  - { title: "Docker Hack Wales",                           host: "North Wales Tech", date: "2016-06" }
+  - { title: "Docker Birthday hack",                        host: "DevOps Oxford",   date: "2016-03" }
+  - { title: "Summer of Hacks",                             host: "JSOxford",        date: "2015-08" }
+
+# Consultancy page (/services) content. Distinct structure from CV views:
+# friendly intro, services, case studies (referencing experience by id),
+# sector-grouped logo wall, "let's talk" CTA.
+consultancy:
+  intro: |
+    I work with founders and leadership teams of small and mid-sized
+    organisations as a fractional CTO, fractional CISO, or hands-on
+    technical lead. Engagements are usually 1–2 days a week, or a
+    time-boxed embedded piece of work over 3–6 months.
+
+    The goal is to leave you with a more capable team, clearer
+    priorities, and infrastructure that's safe to change — not to
+    make you dependent on me.
+
+  services:
+    - title: Fractional CTO
+      body: |
+        Embedded technical leadership for small engineering teams
+        who need someone in the room with the founders. Strategy,
+        hiring, coaching engineering managers, unblocking
+        architecture decisions, and being honest about what's
+        working.
+    - title: Fractional CISO / Head of Cyber Security
+      body: |
+        Build an information security capability that scales with
+        you. ISMS introduction (typically aligned to ISO/IEC 27001
+        or Cyber Essentials Plus), risk management, security
+        engineering practice, and security culture work with both
+        engineering teams and senior leadership.
+    - title: ISO/IEC 27001 implementation
+      body: |
+        End-to-end ISMS implementation for small teams who need to
+        meet a procurement bar without drowning the engineering
+        team in process. Currently studying for the PECB Lead
+        Auditor qualification — already a Lead Implementer in
+        practice.
+    - title: Infrastructure-as-code introduction
+      body: |
+        Pragmatic Terraform/AWS adoption for teams who've been
+        clicking through the console. Patterns, modules, CI wiring,
+        and the team training and review changes you'll need to
+        keep it working after I leave.
+    - title: Technical leadership coaching
+      body: |
+        1:1 coaching for engineering managers, tech leads, and new
+        CTOs — usually monthly or fortnightly. Done this informally
+        since 2014.
+
+  # Each case_study points at an experience entry by id; the layout
+  # joins them to render company, dates, and a custom angle line.
+  case_studies:
+    - id: goodbase
+      angle: "ISO/IEC 27001 implementation in a 3-person company."
+    - id: hackney_lead_seceng
+      angle: "Building a security function inside a large local authority."
+    - id: gds
+      angle: "Modernising a Critical National Infrastructure publishing platform."
+    - id: bookwhen
+      angle: "Interim CTO for a small SaaS."
+    - id: slate_horse
+      angle: "Project-based consulting and interim CTO work, 2015–2020."
+
+  logo_wall:
+    Government and public sector:
+      - name: GOV.UK / Government Digital Service
+        logo: /images/logos/gds.svg
+      - name: Ministry of Justice
+        # No logo file: Crown copyright mark, not freely redistributable.
+        # Renders as a text card.
+      - name: London Borough of Hackney
+        logo: /images/logos/hackney.svg
+      - name: Department for Education
+        logo: /images/logos/dfe.png
+    Education and charity:
+      - name: University of Oxford
+        logo: /images/logos/oxford.svg
+      - name: Oxford University Hospitals NHS Trust
+        logo: /images/logos/ouh-nhs.png
+      - name: Bodleian Library
+        logo: /images/logos/bodleian.png
+    Commercial:
+      - name: Goodbase Digital
+        logo: /images/logos/goodbase.png
+      - name: Public Group International
+        logo: /images/logos/public-group.svg
+      - name: Bookwhen
+        logo: /images/logos/bookwhen.svg
+      - name: Press Association
+        logo: /images/logos/press-association.svg
+      - name: Nimble Approach
+        logo: /images/logos/nimble-approach.png
+      - name: Kudos Innovations
+        logo: /images/logos/kudos.svg
+      - name: "NMi Metrology & Gaming"
+        logo: /images/logos/nmi.svg
+
