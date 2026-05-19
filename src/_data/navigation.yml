@@ -3,11 +3,11 @@ main:
     url: /posts-by-year
   - title: "Now"
     url: /now
-  - title: "Previously"
-    url: /prev
+  # - title: "CV"
+  #   url: /cv
+  # - title: "Services"
+  #   url: /services
   # - title: "About me"
   #   url: /about
   # - title: "Tags"
   #   url: /tags/
-  # - title: "About"
-  #   url: /about/

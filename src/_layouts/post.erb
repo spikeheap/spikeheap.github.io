@@ -6,7 +6,7 @@ layout: default
     <h1 class="p-name"><%= resource.data.title %></h1>
     <p class="post-meta">
       <a class="u-url" rel="bookmark" href="<%= resource.relative_url %>">
-        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= resource.date.strftime("%-d %B %Y") %></time>
+        <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= ordinal_date(resource.date) %></time>
       </a>
     </p>
   </header>
@@ -32,7 +32,7 @@ layout: default
 <section class="comments" data-mastodon-toot="<%= resource.data.mastodon %>" aria-labelledby="comments-heading">
   <h2 class="comments__heading" id="comments-heading">Comments</h2>
   <p class="comments__intro">
-    <a class="comments__link" href="<%= resource.data.mastodon %>" target="_blank" rel="noopener noreferrer">View the conversation on Mastodon</a>
+    <a class="comments__link" href="<%= resource.data.mastodon %>" target="_blank" rel="noopener noreferrer">Continue the discussion on Mastodon</a>
     <noscript> — replies load with JavaScript enabled.</noscript>
   </p>
   <ol class="comments__list" hidden></ol>

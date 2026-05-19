@@ -25,7 +25,6 @@ class Builders::Redirects < SiteBuilder
     # The path argument is internal and just needs to be unique.
     synthetic_path = "redirects/#{from_url.gsub(%r{[^a-z0-9]+}i, "_").gsub(%r{^_|_$}, "")}.html"
     add_resource :pages, synthetic_path do
-      layout "none"
       permalink from_url
       content html
     end

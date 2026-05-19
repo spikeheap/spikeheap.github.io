@@ -8,7 +8,9 @@ export interface PageFixture {
 // smart-quote conversion of apostrophes.
 export const TOP_LEVEL_PAGES: PageFixture[] = [
   { url: '/now', headingContains: 'doing now' },
-  { url: '/prev', headingContains: 'been up to' },
+  { url: '/cv', headingContains: 'Ryan Brooks' },
+  { url: '/cv/security', headingContains: 'Ryan Brooks' },
+  { url: '/services', headingContains: 'Working with' },
   { url: '/posts-by-year', headingContains: 'Posts by year' },
   { url: '/tags', headingContains: 'Posts by Tag' },
 ];

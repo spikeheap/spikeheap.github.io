@@ -11,6 +11,21 @@
 <% if resource&.data&.description %>
 <meta name="description" content="<%= resource.data.description.to_s.strip %>">
 <% end %>
+
+<link rel="icon" href="<%= relative_url '/favicon.ico' %>" sizes="any">
+<link rel="icon" type="image/svg+xml" href="<%= relative_url '/favicon.svg' %>">
+
+<link rel="icon" type="image/png" sizes="16x16" href="<%= relative_url '/favicon-16.png' %>">
+<link rel="icon" type="image/png" sizes="32x32" href="<%= relative_url '/favicon-32.png' %>">
+
+<link rel="apple-touch-icon" href="<%= relative_url '/apple-touch-icon-v2.png' %>">
+<link rel="apple-touch-icon" sizes="152x152" href="<%= relative_url '/apple-touch-icon-152-v2.png' %>">
+<link rel="apple-touch-icon" sizes="167x167" href="<%= relative_url '/apple-touch-icon-167-v2.png' %>">
+<link rel="apple-touch-icon" sizes="180x180" href="<%= relative_url '/apple-touch-icon-v2.png' %>">
+
+<link rel="manifest" href="<%= relative_url '/webmanifest.json' %>">
+<meta name="apple-mobile-web-app-title" content="Cookbook">
+
 <link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/syntax.css">
@@ -35,9 +50,9 @@
   <div class="site-header__inner">
     <a class="site-header__title" href="/" rel="home"><%= site.metadata.author %></a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/posts-by-year">Posts</a>
-      <a href="/now">Now</a>
-      <a href="/prev">Previously</a>
+      <% for nav in site.data.navigation.main %>
+      <a href="<%= nav.url %>"><%= nav.title%></a>
+      <% end %>
     </nav>
     <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

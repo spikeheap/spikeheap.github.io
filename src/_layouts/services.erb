@@ -1,0 +1,91 @@
+---
+layout: default
+---
+<%
+  cv      = site.data.cv
+  consult = cv["consultancy"] || {}
+%>
+
+<article class="services">
+  <header class="services__header">
+    <h1>Working with me</h1>
+    <% (consult["intro"] || "").split(/\n{2,}/).each do |para| %>
+      <p class="services__lede"><%= para.strip.gsub(/\s+/, " ") %></p>
+    <% end %>
+  </header>
+
+  <% if consult["services"]&.any? %>
+    <section class="services__list">
+      <h2>What I do</h2>
+      <% consult["services"].each do |s| %>
+        <article class="service">
+          <h3 class="service__title"><%= s["title"] %></h3>
+          <% (s["body"] || "").split(/\n{2,}/).each do |para| %>
+            <p><%= para.strip.gsub(/\s+/, " ") %></p>
+          <% end %>
+        </article>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% if consult["case_studies"]&.any? %>
+    <section class="services__case-studies">
+      <h2>A few recent engagements</h2>
+      <% consult["case_studies"].each do |cs| %>
+        <% role = (cv["experience"] || []).find { |e| e["id"] == cs["id"] } %>
+        <% next unless role %>
+        <article class="case-study">
+          <h3 class="case-study__title">
+            <% if role["company_url"] %>
+              <a href="<%= role["company_url"] %>"><%= role["company"] %></a>
+            <% else %>
+              <%= role["company"] %>
+            <% end %>
+          </h3>
+          <% if cs["angle"] %>
+            <p class="case-study__angle"><%= cs["angle"] %></p>
+          <% end %>
+          <p class="case-study__meta">
+            <% titles = role["titles"] || {} %>
+            <%= titles["consultancy"] || titles["default"] %>
+            · <%= month_year(role["start"]) %> – <%= month_year(role["end"]) %>
+          </p>
+        </article>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% if consult["logo_wall"]&.any? %>
+    <section class="services__logos">
+      <h2>People I've worked with</h2>
+      <% consult["logo_wall"].each do |sector, names| %>
+        <div class="logo-wall">
+          <h3 class="logo-wall__sector"><%= sector %></h3>
+          <ul class="logo-wall__list">
+            <% Array(names).each do |item| %>
+              <li class="logo-wall__item<%= " logo-wall__item--text" unless item["logo"] %>">
+                <% if item["logo"] %>
+                  <img src="<%= item["logo"] %>" alt="<%= item["name"] %>" loading="lazy">
+                <% else %>
+                  <span class="logo-wall__name"><%= item["name"] %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% if consult["contact"] %>
+    <section class="services__contact">
+      <h2><%= consult["contact"]["cta"] %></h2>
+      <% if consult["contact"]["email"] %>
+        <p><a class="services__cta" href="mailto:<%= consult["contact"]["email"] %>"><%= consult["contact"]["email"] %></a></p>
+      <% end %>
+      <% if consult["contact"]["note"] %>
+        <p class="services__contact-note"><%= consult["contact"]["note"] %></p>
+      <% end %>
+    </section>
+  <% end %>
+</article>

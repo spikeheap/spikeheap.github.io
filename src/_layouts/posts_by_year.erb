@@ -8,7 +8,7 @@ layout: default
   <% posts.each do |post| %>
   <li class="h-entry">
     <a class="p-name u-url" href="<%= post.relative_url %>"><%= post.data.title %></a>
-    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= post.date.strftime("%-d %B") %></time>
+    <time class="dt-published" datetime="<%= post.date.iso8601 %>"><%= ordinal_date(post.date, year: false) %></time>
   </li>
   <% end %>
 </ul>
