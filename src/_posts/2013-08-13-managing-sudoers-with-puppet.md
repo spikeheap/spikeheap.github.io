@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Managing sudoers with Puppet"
 date: 2013-08-13 21:54:00
 comments: true
 description: Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!
+tags:
+  - engineering
+  - reference
 ---
 <blockquote>
 Managing the sudoers file of the puppetmaster with Puppet is like playing with fire while drenched in petrol. If you must do it be really *really* careful!

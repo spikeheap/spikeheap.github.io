@@ -4,9 +4,9 @@ description: >-
   Earlier this year I had the pleasure of working with the Department for
   Education, Nimble and Paper.
 date: '2019-06-13T17:31:00.823Z'
-tags: 
-  - contracting
-  - engineering
+tags:
+  - leadership
+  - essay
 ---
 
 Earlier this year I had the pleasure of working with the Department for Education, Nimble and Paper on the Alpha and Beta phases of a Find & Explore tool for the National Pupil Database. Having reflected on that experience, here’s a few lessons I hope I can apply to future projects, in no particular order.

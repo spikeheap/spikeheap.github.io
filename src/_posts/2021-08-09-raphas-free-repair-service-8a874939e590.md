@@ -2,8 +2,10 @@
 title: "Rapha’s (free) repair service"
 description: >-
   Experiences of Rapha's repairs after an inconvenient crash on my bike
-tag: cycling
 
+tags:
+  - cycling
+  - writeup
 ---
 
 I was a bit dazed when I came off my bike and rolled down the road. Having got past the initial joy of “all my limbs still work, ish”, through the thankfullness of seeing the big dent in the front of my helmet, and into “ow, my face actually hurts quite a bit”, I realised this had been an expensive mistake.

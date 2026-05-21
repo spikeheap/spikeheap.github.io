@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - event
 title: "Oxford's Summer of Hacks 2014 – Code Retreat"
 date: 2014-08-06 15:58:00+00:00
 comments: true
 published: true
 description: On Sunday the 6th of July we ran the second Oxford Code Retreat, so here's a few notes I've made about the event
+tags:
+  - engineering
+  - event
 ---
 
 On Sunday the 6th of July we ran the second Oxford Code Retreat, so here's a few notes I've made about the event. <!--I also made some notes on hosting Code Retreats [here](/posts/2014-08-06-hosting-code-retreat)

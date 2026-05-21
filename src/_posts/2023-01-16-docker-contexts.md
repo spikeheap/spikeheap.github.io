@@ -2,8 +2,9 @@
 title: "Docker context switching"
 description: >-
   When you regularly connect to different Docker daemons, Docker contexts are handy.
-tags: 
-  - docker
+tags:
+  - engineering
+  - reference
 ---
 Sometimes it's useful to run multiple Docker contexts/daemons, e.g. if you're running Docker Desktop and [Lima](https://github.com/lima-vm/lima), or local Kubernetes clusters.
 

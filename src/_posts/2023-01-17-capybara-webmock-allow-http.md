@@ -2,9 +2,9 @@
 title: "Capybara, WebMock, and too many open files"
 description: >-
   Working around
-tags: 
-  - rant
-  - update
+tags:
+  - engineering
+  - reference
 ---
 
 Getting set up with a new codebase is always a fun, sometimes head-scratching experience where you have to discern whether the issues you're facing are because you missed some piece of documentation (or it was missing), or have some bug in your setup.

@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Groovy SOAP clients with ws-lite"
 comments: true
 published: true
 date: 2014-08-21
 description: "When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: 'this is perfect for Groovy, and it's DSL support will mean talking to SOAP won't require stub generation or any of that pain'. I was almost right."
+tags:
+  - engineering
+  - reference
 ---
 
 When we needed to quickly build a proof-of-concept to test a set of SOAP services I thought: "this is perfect for Groovy, and it's DSL support will mean talking to SOAP won't require stub generation or any of that pain". I was almost right.  

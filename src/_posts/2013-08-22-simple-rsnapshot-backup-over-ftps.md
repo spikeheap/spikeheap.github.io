@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Simple Rsnapshot backup over FTPS"
 date: 2013-08-22 20:39:00+00:00
 comments: true
 description: In this post I'll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.
+tags:
+  - engineering
+  - reference
 ---
 In this post I'll walk you through setting up a simple backup solution using Rsnapshot and CurlFTPfs to retrieve files from an FTP/FTPS server. The result is a flexible backup solution with multiple retrieval points.
 

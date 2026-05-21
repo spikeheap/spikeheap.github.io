@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "App-wide AngularJS alerts"
 comments: true
 date: 2015-03-17
 description: Generic alerts are a common requirement in most web applications, and as your Angular application grows in complexity the importance of a standardised way of feeding back to the user gains importance with it. Luckily it's quite straightforward to leverage Angular services as a system-wide alerting tool.
+tags:
+  - engineering
+  - reference
 ---
 Generic alerts are a common requirement in most web applications, and as your Angular application grows in complexity the importance of a standardised way of feeding back to the user gains importance with it. Luckily it's quite straightforward to leverage Angular services as a system-wide alerting tool.
 

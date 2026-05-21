@@ -5,9 +5,10 @@ date: 2013-06-10 17:12:25+00:00
 slug: setting-up-os-x-mountain-lion
 title: Setting up OS X Mountain Lion
 wordpress_id: 182
-tags: 
-  - guide
 description: Last month I installed a second internal drive on my Macbook Pro to increase the capacity to nearly a terabyte. Foolishly forgetting that every time I reinstall the OS all the little tweaks from the past n months are forgotten
+tags:
+  - engineering
+  - reference
 ---
 
 Last month I installed a second internal drive on my Macbook Pro to increase the capacity to nearly a terabyte. Foolishly forgetting that every time I reinstall the OS all the little tweaks from the past n months are forgotten.

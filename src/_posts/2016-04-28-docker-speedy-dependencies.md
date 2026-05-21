@@ -1,11 +1,11 @@
 ---
-tags:
-  - engineering
-  - guide
 title: "Faster dependencies with Docker"
 description: "This post explains how to speed up your builds by seeding your Docker image with most of your dependencies, without resorting to data volumes."
 comments: true
 date: 2016-04-28
+tags:
+  - engineering
+  - reference
 ---
 Docker is great for building portable applications, modelling complex environments locally, and helping us bridge the gap between development and production, but installing your Bundler, Bower, NPM, Maven (and so on) dependencies can make builds slow. This post explains how to speed up your builds by seeding the image with most of your dependencies, so subsequent builds aren't hampered by the 'all-or-nothing' approach to updating dependencies.
 

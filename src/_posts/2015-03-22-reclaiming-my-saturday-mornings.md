@@ -1,10 +1,11 @@
 ---
-tags: 
-  - reflection
 title: "Reclaiming my Saturday mornings"
 comments: true
 date: 2015-03-22
 description: "You hear it everywhere: 'if you want something doing well, do it yourself'. Maybe the primary source is beleaguered managers in stagnant organisations where delivering on promises is the exception rather than the rule, who knows."
+tags:
+  - life
+  - essay
 ---
 You hear it everywhere: 'if you want something doing well, do it yourself'. Maybe the primary source is beleaguered managers in stagnant organisations where delivering on promises is the exception rather than the rule, who knows. 
 

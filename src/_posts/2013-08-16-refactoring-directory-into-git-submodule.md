@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Refactoring a directory into a git submodule"
 date: 2013-08-16 18:10:00+00:00
 comments: true
 description: To release the Rsnapshot Puppet module I needed to extract the module directory from our entire Puppet configuration Git repository
+tags:
+  - engineering
+  - reference
 ---
 To release the Rsnapshot Puppet module I needed to extract the module directory from our entire Puppet configuration Git repository (we know it's wrong, but it's how we started and are moving away from it slowly). Fortunately Git has some great functionality (hint: it's submodules) to allow the directory to be pulled out into a new repository, keeping the commit history. 
 

@@ -1,11 +1,12 @@
 ---
-tags: 
-  - cycling
 title: "Cycle commuting: the good, the bad and the ugly"
 date: 2013-11-21 22:24:00+00:00
 comments: true
 published: true
 description: I've been commuting to the John Radcliffe Hospital in Oxford for the last week or so, and the hugely variable quality of cyclists, motorists and pedestrians has been a bit of a shock, so this post is a collection of my notes on transitioning from being "a cyclist" in the countryside to "a cycle commuter" in the city. 
+tags:
+  - cycling
+  - essay
 ---
 
 I've been commuting to the John Radcliffe Hospital in Oxford for the last week or so, and the hugely variable quality of cyclists, motorists and pedestrians has been a bit of a shock, so this post is a collection of my notes on transitioning from being "a cyclist" in the countryside to "a cycle commuter" in the city. 

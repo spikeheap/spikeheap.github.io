@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Testing double-click events using Geb"
 date: 2014-02-06 22:48:00+00:00
 comments: true
 published: true
 description: Testing basic interaction with Geb is easy, but the 'intuitive' way of doing double-clicks fails silently and without any real indication as to why. Fortunately there's a simple solution!
+tags:
+  - engineering
+  - reference
 ---
 Testing basic interaction with Geb is easy, but the 'intuitive' way of doing double-clicks fails silently and without any real indication as to why. Fortunately there's a simple solution!
 

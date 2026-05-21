@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Preparing a Git repository for open-sourcification"
 date: 2013-12-16 19:48:40+00:00
 comments: true
 published: true
 description: There's an easy way in Git to go through your history and remove the offending articles
+tags:
+  - engineering
+  - reference
 ---
 
 A project I'm involved with is going through the process of being open-sourced and released on GitHub. This is a great development, but of course we have had to go through and make sure that we're able to release everything. The project started out life in a single Git repository so there's plenty of bootstrap data that's owned by other groups within the University. Fortunately there's an easy way in Git to go through your history and remove the offending articles. 

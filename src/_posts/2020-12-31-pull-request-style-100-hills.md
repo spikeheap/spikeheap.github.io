@@ -3,8 +3,10 @@ title: "Pull-Request style: 100 hills to die on"
 description: >-
   Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Now it's pull requests...
 date: '2020-12-31T16:05:00.000Z'
-tag: engineering
 # slug: pull-request-style-100-hills-to-die-on-703475d36d74
+tags:
+  - engineering
+  - essay
 ---
 
 Back in the early days, once we’d whittled our keyboards from blocks of granite, we’d debate tabs vs spaces. Then we moved onto fixed display widths. Many a good friendship was lost to these worthy causes.

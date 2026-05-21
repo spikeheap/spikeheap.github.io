@@ -1,11 +1,12 @@
 ---
-tags: 
-  - cycling
 title: "Cycle safely please Oxford"
 date: 2014-02-24 23:48:00+00:00
 comments: true
 published: true
 description: Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.
+tags:
+  - cycling
+  - rant
 ---
 
 Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.

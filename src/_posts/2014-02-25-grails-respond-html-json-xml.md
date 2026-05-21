@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Using Grails respond for HTML, JSON and XML responses"
 date: 2014-02-25 17:48:00+00:00
 comments: true
 published: true
 description: This post describes a simple workaround which provides a meaningful response to a JSON/XML request as well as a user-friendly rendered 404 exception for humans
+tags:
+  - engineering
+  - reference
 ---
 
 The new(ish) support for `respond` in Grails 2.3 is great, and saves us the hassle of specifying different render/response calls depending on the content type. Surpisingly it falters when it comes to returning exceptions and errors, for example `404 NOT FOUND`. This post describes a simple workaround which provides a meaningful response to a JSON/XML request as well as a user-friendly rendered 404 exception for humans.

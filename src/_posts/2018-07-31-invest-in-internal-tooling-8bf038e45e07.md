@@ -2,7 +2,9 @@
 title: Invest in internal tooling
 description: Empower colleagues to solve their problems early to retain your development velocity
 date: '2018-07-31T10:42:15.937Z'
-tag: engineering
+tags:
+  - leadership
+  - essay
 ---
 
 > Hi Ryan, could you do me a favour and just confirm this user’s account please?

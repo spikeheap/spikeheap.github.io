@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Bower dependencies with Gradle"
 date: 2014-01-23 10:48:40+00:00
 comments: true
 published: true
 description: We all know it's important to be able to build your code in one step, but when I came to build a project I'm working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.
+tags:
+  - engineering
+  - reference
 ---
 
 We all know [it's important to be able to build your code in one step](http://www.joelonsoftware.com/articles/fog0000000043.html), but when I came to build a project I'm working on at home I found it was actually a bit of a faff. Gradle came to the rescue, and in 15 minutes we made steps towards having a 1-step setup and build.

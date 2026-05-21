@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Some notes on backup"
 date: 2013-08-18 18:18:00+00:00
 comments: true
 description: Small business backups are a minefield. Here are some thoughts on how to come up with a strategy that won't leave you at a loss.
+tags:
+  - engineering
+  - reference
 ---
 
 I've been extolling the virtues of backup a lot recently, which has led to a few interesting conversations (and a lot of people rolling their eyes and going back to talking about climbing). 

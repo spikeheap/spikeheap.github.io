@@ -2,7 +2,9 @@
 title: "FSA Non-Series gravel wheelset bearing replacement"
 description: >-
   Wheel bearing specifications for the FSA Non-Series gravel wheelset.
-tag: cycling
+tags:
+  - cycling
+  - reference
 ---
 
 <figure>

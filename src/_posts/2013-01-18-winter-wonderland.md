@@ -5,10 +5,10 @@ date: 2013-01-18 15:24:46+00:00
 slug: winter-wonderland
 title: Winter wonderland
 wordpress_id: 174
-tags:
-  - update
-  - skiing
 description: So the snow has come to North Wales! Panic ensues, as people abandon their cars all over the place
+tags:
+  - skiing
+  - writeup
 ---
 
 ![A snowy bench](/images/13-01-18-winter-wonderland-road.jpg)

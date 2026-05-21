@@ -13,10 +13,7 @@ layout: default
   <div class="e-content">
     <%= yield %>
   </div>
-  <%
-    tags = Array(resource.data.tags) + Array(resource.data.tag)
-    tags = tags.compact.uniq
-  %>
+  <% tags = Array(resource.data.tags).compact.uniq %>
   <% if tags.any? %>
   <footer>
     <ul class="tag-list" aria-label="Tags">

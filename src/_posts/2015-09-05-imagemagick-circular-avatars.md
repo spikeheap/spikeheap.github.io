@@ -1,11 +1,11 @@
 ---
 title: Migrating user avatars to circular crops, with ImageMagick
-tags: 
-- engineering
-- guide
 comments: true
 date: 2015-09-05
 description: "Picture the scene: you have a few thousand users with avatars on your site. You want to change from a boring 4x3 photo to a cool and hip circular crop. You know it'll look great for new users, but we don't want to leave the existing ones behind."
+tags:
+  - engineering
+  - reference
 ---
 <strong>Edit (2019-04-23):</strong> Updated to replace `compose_opacity` with `DstIn` to preserve source image transparency. Thanks Chen Han!
 

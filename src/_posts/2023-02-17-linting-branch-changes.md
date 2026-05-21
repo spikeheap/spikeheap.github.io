@@ -2,9 +2,9 @@
 title: "Incrementally linting a codebase with branch changes"
 description: >-
   While working on a project with a long history, we wanted to introduce a linter, incrementally improving the code as we made changes.
-tags: 
+tags:
   - engineering
-  - ruby
+  - reference
 ---
 **Update 26th February 2023:** replaced `xargs` approach because it interfered with Pry local debugging.
 

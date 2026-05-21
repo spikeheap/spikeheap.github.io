@@ -2,7 +2,9 @@
 title: "Riding the EnglanDURO route"
 description: >-
   A quiet, challenging, mostly off-road route from Liverpool to Scarborough
-tag: cycling
+tags:
+  - cycling
+  - writeup
 ---
 
 A quiet, challenging, mostly off-road route from Liverpool to Scarborough

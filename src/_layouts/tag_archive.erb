@@ -5,8 +5,7 @@ layout: default
 <%
   by_tag = Hash.new { |h, k| h[k] = [] }
   site.collections.posts.resources.each do |post|
-    tags = Array(post.data.tags) + Array(post.data.tag)
-    tags.compact.uniq.each { |t| by_tag[t.to_s] << post }
+    Array(post.data.tags).compact.uniq.each { |t| by_tag[t.to_s] << post }
   end
 
   topics = site.data.tag_taxonomy["topics"]

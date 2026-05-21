@@ -1,11 +1,11 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Rsnapshot Puppet module"
 date: 2013-08-15 19:20:00
 comments: true
 description: Over the past couple of weeks I've been building a full-fledged Rsnapshot module for Puppet. What started as a simple puppet-isation of an install turned into a labour of love to build my first publishable Puppet module.
+tags:
+  - engineering
+  - reference
 ---
 
 <blockquote>

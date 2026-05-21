@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Disqus comment threads on a docpad homepage"
 date: 2014-02-27 18:58:00+00:00
 comments: true
 published: true
 description: I really do get on well with docpad. Adding comments to the homepage blog entry was a little tricky though, so here's the workaround I applied.
+tags:
+  - engineering
+  - reference
 ---
 I really do get on well with [docpad](http://docpad.org/). Adding comments to the homepage blog entry was a little tricky though, so here's the workaround I applied.
 

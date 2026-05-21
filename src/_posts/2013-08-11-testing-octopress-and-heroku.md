@@ -1,10 +1,11 @@
 ---
-tags: 
-  - update
 title: "Testing Octopress and Heroku"
 date: 2013-08-11 18:21:25+00:00
 comments: true
 description: Octopress is a tool for building static websites and blogs from plain text files, and allows local development before pushing to your live blog. Best of all, it's designed with Git in mind.
+tags:
+  - engineering
+  - writeup
 ---
 I have vowed to move away from Wordpress. My blog there, ryanbrooks.wordpress.com, isn't exactly the epitome of regular activity (my last post was back in June) but when I do blog I want it to be easy most of the time and hackable when I'm interested. Enter [Jekyll](http://jekyllrb.com/) and [Octopress](http://octopress.org/). 
 

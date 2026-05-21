@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Testing Rhino JavaScript with Eclipse, Gradle, Groovy and Spock"
 date: 2014-03-27 15:58:00+00:00
 comments: true
 published: true
 description: "A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the Rhino JS engine. After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn't be arduous."
+tags:
+  - engineering
+  - reference
 ---
 
 A colleague was wrangling with JavaScript testing, but with an unusual constraint: the code runs on the [Rhino JS engine](https://developer.mozilla.org/en-US/docs/Rhino). After a bit of head-banging, I learned that continuously testing JavaScript written for Rhino needn't be arduous. 

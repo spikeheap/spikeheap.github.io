@@ -1,12 +1,12 @@
 ---
-tags: 
-  - engineering
-  - guide
 title: "Setting up Grails code quality tools with local Sonar"
 date: 2013-11-21 13:25:00+00:00
 comments: true
 published: true
 description: We want to be able to measure code quality for a Grails/Javascript project I've just joined. I have had good experiences with Sonar before, so set out to get the important (to me) metrics from one into the other
+tags:
+  - engineering
+  - reference
 ---
 
 We want to be able to measure code quality for a Grails/Javascript project I've just joined. I have had good experiences with Sonar before, so set out to get the important (to me) metrics from one into the other:

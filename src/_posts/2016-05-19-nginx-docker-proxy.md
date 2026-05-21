@@ -1,11 +1,11 @@
 ---
-tags:
-  - engineering
-  - guide
 title: "A simple HTTPS proxy with Nginx on Docker"
 description: "Add a lightweight nginx container to your Docker setup to test HTTPS-related things."
 comments: true
 date: 2016-05-19 17:12:25+00:00
+tags:
+  - engineering
+  - reference
 ---
 
 There are many reasons why you might need to develop behind an HTTPS proxy, for example when testing integrations which behave differently based on the security of your site. This post describes how to add an nginx proxy to your docker setup.

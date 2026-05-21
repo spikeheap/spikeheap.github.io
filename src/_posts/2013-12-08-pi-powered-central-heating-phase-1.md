@@ -1,11 +1,12 @@
 ---
-tags: 
-  - update
 title: "Pi-powered central heating phase 1"
 date: 2013-12-01 12:48:00+00:00
 comments: true
 published: true
 description: This post is a summary of what I've done and learned, in case I forget it all next week
+tags:
+  - engineering
+  - writeup
 ---
 Not that long ago I wrote about [planning to set up a basic Raspberry Pi-controlled central heating system](/posts/2013-11-20-automating-central-heating-control-with-a-raspberry-pi). A few components later, and the relatively simple proof of concept is complete. This post is a summary of what I've done and learned, in case I forget it all next week.
 

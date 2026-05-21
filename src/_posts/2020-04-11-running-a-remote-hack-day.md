@@ -4,7 +4,9 @@ description: "A couple of weeks ago we held our first Remote Hack, a free, fully
 comments: true
 published: true
 date: '2020-04-11'
-tag: event
+tags:
+  - leadership
+  - event
 ---
 A couple of weeks ago we held our first Remote Hack, a free, fully-remote hack day. Here’s what we did, how it went, and how you can run one.
 
