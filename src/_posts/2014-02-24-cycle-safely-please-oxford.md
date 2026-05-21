@@ -6,7 +6,7 @@ published: true
 description: Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.
 tags:
   - cycling
-  - rant
+  - writeup
 ---
 
 Cycling can be dangerous. Most of the time it's not, and it's a great, healthy, relaxing way to travel. This evening was not one of them, and I passed a cyclist who'd just collided with a car and was in a considerable amount of pain.

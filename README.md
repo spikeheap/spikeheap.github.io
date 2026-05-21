@@ -22,7 +22,7 @@ If you just disagree with me, let's talk about it in the comments.
 
 ## Tag ontology
 
-Posts carry two tags: one **topic** (`engineering`, `leadership`, `cycling`, `life`, `skiing`) and one **form** (`reference`, `writeup`, `essay`, `event`, `rant`). The vocabulary lives in `src/_data/tag_taxonomy.yml`; the `/tags` archive groups by topic, then by form.
+Posts carry two tags: one **topic** (`engineering`, `leadership`, `cycling`, `life`, `skiing`) and one **form** (`reference`, `writeup`, `essay`, `event`). The vocabulary lives in `src/_data/tag_taxonomy.yml`; the `/tags` archive groups by topic, then by form.
 
 ## Developing locally
 

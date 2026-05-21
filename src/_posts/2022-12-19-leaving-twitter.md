@@ -4,7 +4,7 @@ description: >-
   A short note about why I'm moving to Mastodon like a load of other people
 tags:
   - life
-  - rant
+  - writeup
 ---
 A lot of people are leaving Twitter right now, and there's a lot of hyperbole to go with it. I don't think it's going to disappear overnight, or go down in flames (there have been a lot of very talented engineers working on Twitter for quite some time after all). That said, I grew tired of the doom-scrolling and perma-anger in the circles I follow, so the furore was a gentle push to fix that. 
 

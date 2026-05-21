@@ -4,7 +4,7 @@ description: Sustainability in Open Source software development is hugely import
 date: 2018-06-01
 tags:
   - engineering
-  - rant
+  - essay
 ---
 We rely on Open Source for a huge portion of the Internet (and beyond), yet many projects still rely on goodwill and donated effort in order to survive. Sometimes that’s not enough, and organisations like Ruby Together have helped to make critical pieces of developer infrastructure more sustainable. Other projects have taken the approach of introducing premium tiers, adding enhanced functionality to libraries, tools and services in an effort to generate revenue and enable the (sometimes sole) developer to spend more time on the project.
 
