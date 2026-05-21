@@ -20,6 +20,10 @@ If you just disagree with me, let's talk about it in the comments.
 - [ ] Send outbound webmentions on publish. Avoid webmention.app — implement as a GitHub Actions step in the deploy workflow: diff the changed post files, parse each for absolute outbound `<a href>` values, discover each target's webmention endpoint (HTTP HEAD → Link header, or HTML `<link rel="webmention">`), POST `source` + `target`. The `webmention` Ruby gem handles discovery + send; the workflow step is ~30 lines. Zero third-party dependency for the sending side.
 - [ ] Set up [Bridgy](https://brid.gy) to bridge Mastodon reactions into webmention.io. Inbound only — feeds replies/likes/boosts on the toot for a post into the Webmentions section, complementing the Mastodon comments section. Sign up at brid.gy with the same domain. Eventually will need a dedupe pass between the Phase 3a Comments section (toot thread) and the Phase 3b Webmentions section (everything else).
 
+## Tag ontology
+
+Posts carry two tags: one **topic** (`engineering`, `leadership`, `cycling`, `life`, `skiing`) and one **form** (`reference`, `writeup`, `essay`, `event`, `rant`). The vocabulary lives in `src/_data/tag_taxonomy.yml`; the `/tags` archive groups by topic, then by form.
+
 ## Developing locally
 
 ```
