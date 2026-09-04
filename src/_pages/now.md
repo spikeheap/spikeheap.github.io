@@ -5,7 +5,7 @@ redirect_from:
 title: "What I'm doing now"
 layout: page
 ---
-Updated on the 15th of May 2025
+Updated on the 15th of May 2026
 
 Back in October I left the contract I'd been at for 2.5 years to look after my baby son. Parental leave was very different this time around – very worthwhile, but being an unpaid contractor who needs to find something new at the end of the leave added a degree of stress that wasn't there when I was an employee walking back into a role full of sympathetic people I already had a relationship with. Also, parental leave in summer absolutely trumps having it in winter!
 
