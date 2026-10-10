@@ -1,7 +1,8 @@
 # Ryan Brooks — CV dataset
 #
 # Single source of truth for /cv (tech leadership default), /cv/security
-# (security leadership) and /services (fractional CTO/CISO consultancy page).
+# (security leadership), and the consultancy CV PDF variant rendered by
+# typst/cv.typ. The /services page is now a standalone Markdown file.
 #
 # Filtering rule: a role/bullet renders in view X iff X is in its
 # `audiences` list. Bullets keep source order. Each view picks its
@@ -18,6 +19,12 @@ profile:
     mastodon: https://ruby.social/@spikeheap
     github: https://github.com/spikeheap
     linkedin: https://www.linkedin.com/in/ryanpbrooks/
+  # Consumed by the Typst PDF (typst/cv.typ) only. NOT rendered into HTML —
+  # the PDFs ship as private GitHub release artefacts, never via the site,
+  # so that personal contact data isn't leaked through view-source.
+  print_only:
+    phone: "07841 757984"
+    email: ryan@ryanbrooks.co.uk
 
 statements:
   tech_leadership: |
@@ -27,32 +34,25 @@ statements:
     most important, and making space for teams to do their best work.
 
     My background spans engineering, operations and security. I've led
-    teams from 3 people to 30+ across central and local government,
-    charities, and commercial software businesses. I'm equally
-    comfortable working with executive leadership on strategy and with
+    teams across central and local government, and commercial software businesses.
+    I'm equally comfortable working with executive leadership on strategy and with
     engineers in the codebase, and I use frameworks like domain-driven
     design, Team Topologies and the Government Digital Service
     Standard to ground decisions in real user needs.
 
+    Most of my roles have required effective delegation, both with and
+    without direct authority. I build structure around agreed team
+    norms and establish my technical credentials to build trust, and I
+    work closely with commercial and product colleagues to build
+    structures that enable consistent delivery without neglecting areas
+    such as technical debt and developer experience.
+
   security_leadership: |
-    I'm a pragmatic, hands-on leader with a focus on people, shared
-    goals, figuring out what's most important, and making space to
-    achieve it. My background spans operations, engineering and
-    security, which makes a hands-on Chief Information Security
-    Officer (CISO) role exciting.
+    I'm a pragmatic, hands-on leader with a focus on people, shared goals, figuring out what's most important, and making space to achieve it. My background spans operations, engineering and security, which makes a hands-on Chief Information Security Officer (CISO) role exciting.
 
-    My experience running JavaScript, Ruby and remote hack events and
-    working with executive leadership in local authorities means I'm
-    well placed to work with everyone from board level to end user,
-    meeting them where they are to foster a collaborative, positive
-    security posture. My time in central and local government has
-    given me a good understanding of vast and aging technology stacks,
-    and experience wrangling them to keep risk acceptable.
+    My experience running JavaScript, Ruby and remote hack events and working with executive leadership in local authorities means I'm well placed to work with everyone from board level to end user, meeting them where they are to foster a collaborative, positive security posture. My time in central and local government has given me a good understanding of vast and aging technology stacks, and experience wrangling them to keep risk acceptable.
 
-    I'm an advocate of modern DevSecOps, empowering teams and risk
-    owners to quantify risk and manage it effectively against other
-    priorities, using established frameworks such as the NCSC Cyber
-    Assessment Framework (CAF) and the CIS AWS Cloud Benchmark.
+    I'm an advocate of modern DevSecOps, empowering teams and risk owners to quantify risk and manage it effectively against other priorities, and am experienced with established frameworks including ISO/IEC 27001 & 27701, as the NCSC Cyber Assessment Framework (CAF)  and the CIS Cloud Benchmarks.
 
   consultancy: |
     I work with founders and leadership teams of small and mid-sized
@@ -69,29 +69,33 @@ experience:
     company: Goodbase Digital Ltd
     company_url: https://goodbase.co.uk
     location: Remote
-    type: contract
+    type: contract (consultancy)
     start: "2026-03"
     end: present
     titles:
-      default: ISO 27001 Lead Implementer, Cyber Security Lead & Principal Infrastructure Engineer
-      security_leadership: ISO/IEC 27001 Lead Implementer & Cyber Security Lead
-      tech_leadership: Principal Infrastructure Engineer
-      consultancy: Fractional Security & Infrastructure Lead
+      default: Principal Engineer & Security Lead
+      security_leadership: Cyber Security Lead & ISO/IEC 27001 Implementation Lead
+      tech_leadership: Principal Engineer & Security Lead
+      consultancy: Fractional Security & Engineering Lead
     summary: |
-      Goodbase build bespoke case management tooling for charities and
-      local authorities. I was brought in to mature their seucrity posture, introduce an Information Security Management System (ISMS) aligned to ISO/IEC 27001, and to lead the
+      Goodbase builds bespoke case management tooling for charities and
+      local authorities. I was brought in to mature their security posture, introduce an Information Security Management System (ISMS) aligned to ISO/IEC 27001, and to lead the
       infrastructure changes needed to meet the new standards.
     bullets:
-      - text: Shipped the first phase of an ISO/IEC 27001-aligned ISMS, including formal risk management.
-        audiences: [security_leadership, consultancy]
+      - text: Shipped the first phase of an ISO/IEC 27001-aligned ISMS, introducing risk-based security management and preparing for the Stage 1 certification audit.
+        audiences: [security_leadership, tech_leadership, consultancy]
       - text: Introduced infrastructure as code (IaC), retrofitting it across operational systems and adopting it as the default for new deployments.
         audiences: [tech_leadership, security_leadership, consultancy]
       - text: Hardened Google Workspace, AWS, GitHub and Slack against the new ISMS controls.
         audiences: [security_leadership, tech_leadership, consultancy]
       - text: Improved Goodbase's GDPR and data privacy posture through contractual improvements and internal review.
         audiences: [security_leadership, consultancy]
-      - text: Led cyber and information governance responses for sales conversations with prospective clients, including central government bodies.
-        audiences: [security_leadership, consultancy]
+      - text: Primary client contact for information governance and cyber security in pre-sales and ongoing compliance, including central government bodies. Closed 3 contracts as a result.
+        audiences: [security_leadership, tech_leadership, consultancy]
+      - text: Delivered a flagship client deliverable with tight deadlines while balancing hands-on infrastructure and app development with ISMS work. Surfaced all outstanding work, agreed a revised audit timeline with the directors, and re-scoped audit logging and backups to prioritise client needs.
+        audiences: [tech_leadership, consultancy]
+      - text: Introduced controls for AI coding agents, including sandboxing Claude Code from high-impact credentials on developers' devices. Ran sessions to get buy-in for the risk and paired with engineers on solutions.
+        audiences: [tech_leadership, security_leadership, consultancy]
 
   - id: public_group
     company: Public Group International Ltd
@@ -103,10 +107,10 @@ experience:
       default: Principal Architect
     summary: |
       Engaged to lead a research engagement with a central government
-      department exploring techniques for understanding extremely
-      large codebases in restricted environments.
+      department designing LLM-assisted techniques for navigating and
+      understanding extremely large codebases in restricted environments.
     bullets:
-      - text: Led the technical research aspect of the engagement end-to-end, working with the client and Public Group's internal research teams to iterate on the problem and candidate solutions.
+      - text: Led the technical research aspect of the engagement end-to-end to final delivery, working with the client and Public Group's internal research teams to iterate on the problem and candidate solutions.
         audiences: [tech_leadership, consultancy]
       - text: Produced the final written report covering the engagement, the challenge, and our recommendations to the client.
         audiences: [tech_leadership, consultancy]
@@ -195,8 +199,8 @@ experience:
     titles:
       default: Interim Chief Technology Officer (CTO)
     summary: |
-      Brought in to introduce modern software development delivery
-      practices, improving focus, transparency and velocity.
+      Brought in to a B2B SaaS to introduce modern software development
+      delivery practices, improving focus, transparency and velocity.
     bullets:
       - text: Introduced the role of Engineering Manager and modern delivery practices. Feedback in the new retrospectives was unanimously positive.
         audiences: [tech_leadership, consultancy]
@@ -229,14 +233,16 @@ experience:
           shift away from a globally-shared developer support rota.
         audiences: [tech_leadership, consultancy]
       - text: |
-          Prevented a proposed rewrite of GOV.UK publishing. Helped
-          senior leadership and the teams embrace iterative
-          improvement with smaller, scoped rewrites where necessary.
-          Commissioned an internal accessibility audit which enabled
-          sweeping accessibility improvements. By focusing on team
-          capabilities, freed teams from paralysis and empowered
-          developers to make quick, meaningful improvements that
-          benefitted users.
+          Prevented a proposed rewrite of GOV.UK publishing after 5
+          failed attempts. Helped senior leadership and the teams
+          embrace iterative improvement with smaller, scoped rewrites
+          where necessary. Commissioned an internal accessibility audit
+          which enabled sweeping accessibility improvements. By
+          focusing on team capabilities, freed teams from paralysis and
+          empowered developers to make quick, meaningful improvements
+          that benefitted users. Within 6 months the teams were
+          shipping regularly and working through a long-standing
+          technical debt backlog.
         audiences: [tech_leadership, consultancy]
       - text: Built an API-first strategy to modernise and secure an extensive suite of legacy Ruby applications ahead of GOV.UK's classification as Critical National Infrastructure (CNI).
         audiences: [security_leadership, tech_leadership, consultancy]
@@ -267,7 +273,7 @@ experience:
         audiences: [tech_leadership, security_leadership, consultancy]
       - text: Led the prisoner content hub development team, coaching developers on best practice, introducing the test pyramid and CI/CD, and working closely with product and content teams to prioritise features, fixes and technical debt.
         audiences: [tech_leadership, consultancy]
-      - text: Responsible for the hosting and infrastructure for critical offender management, risk and operational reporting systems for HM Prison and Probation Service. Introduced continuous delivery to the legacy hosting team, building and deploying infrastructure with Terraform, Ansible and Packer. Set a vision for the operations team to escape their inherited technical debt and rebuild morale and delivery velocity.
+      - text: Responsible for the hosting and infrastructure for critical offender management, risk and operational reporting systems for HM Prison and Probation Service. Introduced continuous delivery to the legacy hosting team, bringing a hand-crafted Azure estate under infrastructure as code with Terraform, Ansible and Packer. Set a vision for the operations team to escape their inherited technical debt and rebuild morale and delivery velocity.
         audiences: [tech_leadership, security_leadership, consultancy]
       - text: Onboarded prisoner transfer suppliers integrating with a new Rails API we built to book a secure move, establishing channels for communication, common language, documentation and resources.
         audiences: [tech_leadership, consultancy]
@@ -289,7 +295,7 @@ experience:
     location: Sheffield
     type: director, interim & project-based consulting
     start: "2015-01"
-    end: "2020-01"   # TODO: confirm — LinkedIn says Jan 2020, the older /prev page said Jan 2021
+    end: "2020-01"
     titles:
       default: Principal Consultant & Director
     summary: |
@@ -301,7 +307,7 @@ experience:
     bullets:
       - text: For the Department for Education, was the Technical Architect in a cross-functional team developing Find & Explore NPD Data Alpha & Beta. Defined the technical architecture with stakeholders and led a small engineering team developing a Rails 5 application using TDD, RSpec and PostgreSQL. Built CI/CD pipelines to continuously ship changes using blue/green deployments on DfE's Azure platform.
         audiences: [tech_leadership]
-      - text: For the Press Association, designed and built an authoring tool for mass-localisation of journalism, bringing together and managing a team of contract developers for the initial build. Subsequently contracted to provide hosting and ongoing maintenance for the service.
+      - text: For the Press Association, designed and built an authoring tool for mass-localisation of journalism on CKAN, writing Python modules and bringing together and managing a team of contract developers for the initial build. Subsequently contracted to operate, host and maintain the CKAN instance.
         audiences: [tech_leadership]
       - text: For Bookwhen, migrated their production Rails service from a single Linode server to managed Postgres, Redis and Kubernetes services in Google Cloud Platform, introducing a CI/CD pipeline. Increased application performance and resilience, reduced manual patching/maintenance, and allowed the service to scale.
         audiences: [tech_leadership]
@@ -319,16 +325,20 @@ experience:
     titles:
       default: Chief Technology Officer (CTO)
     summary: |
-      Recruited and led a team of 5–6 engineers, taking a Ruby/Padrino
-      proof-of-concept site and iteratively developing it into a
-      stable, scalable product, expanding into two complementary
-      product lines.
+      Recruited and led a team of 5–6 engineers at a B2B academic
+      publishing SaaS, taking a Ruby/Padrino proof-of-concept site and
+      iteratively developing it into a stable, scalable product,
+      expanding into two complementary product lines.
     bullets:
       - text: Led and managed a team of developers, recruiting and mentoring to reduce reliance on contractors.
         audiences: [tech_leadership]
       - text: Introduced Scrum with mechanisms for urgent customer support requests.
         audiences: [tech_leadership]
-      - text: Coached and mentored the development and management teams, promoting sustainable pace and long-term quality.
+      - text: Coached and mentored the development and management teams, introducing structured one-to-ones with reflection and career goals, and promoting sustainable pace and long-term quality.
+        audiences: [tech_leadership]
+      - text: Agreed a tactical strategy with the directors to ship an urgent institutional portal in a single two-week sprint, then addressed the technical debt and re-architected to deliver a customer portal on time a couple of months later.
+        audiences: [tech_leadership, consultancy]
+      - text: Found and fixed a production incident in the first week, caused by a misunderstanding of how the distributed architecture operated.
         audiences: [tech_leadership]
       - text: Led the development of a UI overhaul, migrating parts of the site to Angular, and led the re-engineering of internal statistical modelling to improve performance.
         audiences: [tech_leadership]
@@ -368,7 +378,7 @@ experience:
       as the security and integrity of NMi UK's computing resources
       and data under ISO/IEC 17025.
     bullets:
-      - text: Managed a team of 3 developers and promoted team development through coaching, training, TDD and pair-programming.
+      - text: Managed a team of 3 developers and promoted team development through coaching, training, structured one-to-ones, TDD and pair-programming.
         audiences: [tech_leadership]
       - text: Strategically developed systems, policies, procedures and training to allow the business to grow from 3 to 30 people.
         audiences: [tech_leadership, security_leadership]
@@ -391,11 +401,11 @@ career_history:
   - role: Test Engineer / Software Developer
     company: Compliance Testing Laboratory
     location: Bangor, Wales
-    start: "2008-01"   # TODO: confirm — LinkedIn shows "Jan 2009 – Mar 2009 · 1 yr 3 mos", which is internally inconsistent. Best guess: Jan 2008 – Mar 2009.
+    start: "2008-01"
     end: "2009-03"
 
 certifications:
-  - title: PECB ISO/IEC 27001 Lead Auditor
+  - title: PECB ISO/IEC 27001 Lead Implementer
     issuer: PECB
     status: in progress
     year: 2026
@@ -447,7 +457,8 @@ skills:
     - AWS, Azure, Google Cloud Platform
     - Kubernetes, Helm, Docker
     - Terraform, Ansible, Packer
-    - GitHub Actions
+    - CircleCI, GitHub Actions
+    - AI adoption & governance (LLMs)
     - Government Digital Service (GDS) Standard
 
   security_leadership:
@@ -485,7 +496,7 @@ skills:
     - Cyber Essentials
     - Information Security Management System (ISMS)
     - Infrastructure as Code (IaC)
-    - AWS, Kubernetes, Terraform
+    - AWS, Azure, Kubernetes, Terraform
     - Ruby on Rails
     - Engineering team coaching
     - Engineering hiring
@@ -504,7 +515,6 @@ community:
     name: Tech & Security Leadership Coaching
     start: "2014"
     end: present
-    note: Ad-hoc since 2022; no new clients in recent years.
   - kind: advisor
     name: CodeATT advisory board
     url: https://codeatt.org
@@ -553,99 +563,3 @@ events:
   - { title: "Docker Hack Wales",                           host: "North Wales Tech", date: "2016-06" }
   - { title: "Docker Birthday hack",                        host: "DevOps Oxford",   date: "2016-03" }
   - { title: "Summer of Hacks",                             host: "JSOxford",        date: "2015-08" }
-
-# Consultancy page (/services) content. Distinct structure from CV views:
-# friendly intro, services, case studies (referencing experience by id),
-# sector-grouped logo wall, "let's talk" CTA.
-consultancy:
-  intro: |
-    I work with founders and leadership teams of small and mid-sized
-    organisations as a fractional CTO, fractional CISO, or hands-on
-    technical lead. Engagements are usually 1–2 days a week, or a
-    time-boxed embedded piece of work over 3–6 months.
-
-    The goal is to leave you with a more capable team, clearer
-    priorities, and infrastructure that's safe to change — not to
-    make you dependent on me.
-
-  services:
-    - title: Fractional CTO
-      body: |
-        Embedded technical leadership for small engineering teams
-        who need someone in the room with the founders. Strategy,
-        hiring, coaching engineering managers, unblocking
-        architecture decisions, and being honest about what's
-        working.
-    - title: Fractional CISO / Head of Cyber Security
-      body: |
-        Build an information security capability that scales with
-        you. ISMS introduction (typically aligned to ISO/IEC 27001
-        or Cyber Essentials Plus), risk management, security
-        engineering practice, and security culture work with both
-        engineering teams and senior leadership.
-    - title: ISO/IEC 27001 implementation
-      body: |
-        End-to-end ISMS implementation for small teams who need to
-        meet a procurement bar without drowning the engineering
-        team in process. Currently studying for the PECB Lead
-        Auditor qualification — already a Lead Implementer in
-        practice.
-    - title: Infrastructure-as-code introduction
-      body: |
-        Pragmatic Terraform/AWS adoption for teams who've been
-        clicking through the console. Patterns, modules, CI wiring,
-        and the team training and review changes you'll need to
-        keep it working after I leave.
-    - title: Technical leadership coaching
-      body: |
-        1:1 coaching for engineering managers, tech leads, and new
-        CTOs — usually monthly or fortnightly. Done this informally
-        since 2014.
-
-  # Each case_study points at an experience entry by id; the layout
-  # joins them to render company, dates, and a custom angle line.
-  case_studies:
-    - id: goodbase
-      angle: "ISO/IEC 27001 implementation in a 3-person company."
-    - id: hackney_lead_seceng
-      angle: "Building a security function inside a large local authority."
-    - id: gds
-      angle: "Modernising a Critical National Infrastructure publishing platform."
-    - id: bookwhen
-      angle: "Interim CTO for a small SaaS."
-    - id: slate_horse
-      angle: "Project-based consulting and interim CTO work, 2015–2020."
-
-  logo_wall:
-    Government and public sector:
-      - name: GOV.UK / Government Digital Service
-        logo: /images/logos/gds.svg
-      - name: Ministry of Justice
-        # No logo file: Crown copyright mark, not freely redistributable.
-        # Renders as a text card.
-      - name: London Borough of Hackney
-        logo: /images/logos/hackney.svg
-      - name: Department for Education
-        logo: /images/logos/dfe.png
-    Education and charity:
-      - name: University of Oxford
-        logo: /images/logos/oxford.svg
-      - name: Oxford University Hospitals NHS Trust
-        logo: /images/logos/ouh-nhs.png
-      - name: Bodleian Library
-        logo: /images/logos/bodleian.png
-    Commercial:
-      - name: Goodbase Digital
-        logo: /images/logos/goodbase.png
-      - name: Public Group International
-        logo: /images/logos/public-group.svg
-      - name: Bookwhen
-        logo: /images/logos/bookwhen.svg
-      - name: Press Association
-        logo: /images/logos/press-association.svg
-      - name: Nimble Approach
-        logo: /images/logos/nimble-approach.png
-      - name: Kudos Innovations
-        logo: /images/logos/kudos.svg
-      - name: "NMi Metrology & Gaming"
-        logo: /images/logos/nmi.svg
