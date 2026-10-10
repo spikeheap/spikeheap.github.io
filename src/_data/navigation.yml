@@ -3,8 +3,6 @@ main:
     url: /posts-by-year
   - title: "Now"
     url: /now
-  # - title: "CV"
-  #   url: /cv
   # - title: "Services"
   #   url: /services
   # - title: "About me"
