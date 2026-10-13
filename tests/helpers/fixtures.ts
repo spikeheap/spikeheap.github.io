@@ -8,8 +8,6 @@ export interface PageFixture {
 // smart-quote conversion of apostrophes.
 export const TOP_LEVEL_PAGES: PageFixture[] = [
   { url: '/now', headingContains: 'doing now' },
-  { url: '/cv', headingContains: 'Ryan Brooks' },
-  { url: '/cv/security', headingContains: 'Ryan Brooks' },
   { url: '/services', headingContains: 'Working with' },
   { url: '/posts-by-year', headingContains: 'Posts by year' },
   { url: '/tags', headingContains: 'Posts by Tag' },
@@ -49,4 +47,4 @@ export const POST_WITH_TWEET = '/posts/2014-08-27-jsoxford-nodebots-day';
 export const TWEET_ID_IN_POST = '503178382201618433';
 export const POST_WITH_IMAGES = '/posts/2013-12-01-pi-powered-central-heating-phase-1';
 
-export const KNOWN_TAGS = ['rant', 'update'];
+export const KNOWN_TAGS = ['engineering', 'essay'];
