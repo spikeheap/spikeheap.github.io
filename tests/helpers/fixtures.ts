@@ -47,4 +47,4 @@ export const POST_WITH_TWEET = '/posts/2014-08-27-jsoxford-nodebots-day';
 export const TWEET_ID_IN_POST = '503178382201618433';
 export const POST_WITH_IMAGES = '/posts/2013-12-01-pi-powered-central-heating-phase-1';
 
-export const KNOWN_TAGS = ['rant', 'update'];
+export const KNOWN_TAGS = ['engineering', 'essay'];
