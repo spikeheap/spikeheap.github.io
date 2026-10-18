@@ -47,6 +47,12 @@ bundle exec rake page:new title="About me" permalink="/about.html"
 
 Both refuse to overwrite an existing file. Pages default to `layout: page`. Posts include a commented-out `mastodon:` line ready to uncomment once you've tooted the post URL.
 
+## Drafts
+
+Essay drafts live in my Obsidian vault (`Career/`), not here. A piece comes into this repo when I'm publishing it, and the vault copy is deleted at that point. Once published, the post here is the only copy.
+
+`src/_drafts/` is only for a piece in its final edit before publishing. Drafts aren't built (`output: false` in `bridgetown.config.yml`), but they're visible to anyone who can read the repo.
+
 ## Deploying
 
 GitHub Actions (`.github/workflows/ci.yml`) builds Bridgetown and deploys to GitHub Pages on every push to `main`. PRs run the test suite only.
@@ -73,7 +79,7 @@ npm install && npx playwright install chromium
 npm test
 ```
 
-To test production (the one that actually matters), use: 
+To test production (the one that actually matters), use:
 
 ```bash
 BASE_URL=https://ryanbrooks.co.uk npm test
