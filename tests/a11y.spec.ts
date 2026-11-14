@@ -76,6 +76,14 @@ for (const url of URLS) {
       expect(unfocusable).toBe(0);
     });
 
+    // Rouge error tokens get a wavy underline. They mean invalid code or a
+    // fence tagged with the wrong language.
+    test('code blocks have no lexer errors', async ({ page }) => {
+      await page.goto(url);
+
+      await expect(page.locator('.highlight .err')).toHaveCount(0);
+    });
+
     test('reflows at 320px without horizontal scrolling', async ({ browser }) => {
       const context = await browser.newContext({ viewport: { width: 320, height: 640 } });
       const page = await context.newPage();

@@ -122,7 +122,7 @@ class LittleFunctionSpec extends Specification{
 		File emulatorFile = fileName as File
 		context.evaluateString(scope, emulatorFile.text, emulatorFile.name, 1, null)
 	}
-    ```
+```
 
 This gives us our Rhino environment (context). Note that if you want to use `XML` objects you'll need to use a context version > 1.7. All we need to do now is add a test:
 

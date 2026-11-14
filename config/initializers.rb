@@ -19,3 +19,10 @@ Bridgetown.configure do |config|
   # Placeholder for future hand-rolled builders (sitemap, feed, redirect stubs)
   # when they need Ruby code.
 end
+
+# Rouge's Perl lexer marks regex capture variables ($1, $2…) as errors.
+# Lex them as variables so valid code isn't shown with an error underline.
+require "rouge"
+Rouge::Lexers::Perl.prepend :root do
+  rule %r/\$\d+/, Rouge::Token::Tokens::Name::Variable
+end

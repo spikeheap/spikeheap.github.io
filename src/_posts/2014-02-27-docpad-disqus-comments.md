@@ -63,7 +63,7 @@ getPostDisqus: (post, services) ->
 
 Then you can add the comments to your index page, like so:
 
-```html
+```erb
 <% latestPost = @getCollection('posts').toJSON()[0] %>
 
 <article id="latestPost">
