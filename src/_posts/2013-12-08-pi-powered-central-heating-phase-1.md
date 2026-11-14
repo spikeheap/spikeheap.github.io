@@ -74,13 +74,13 @@ The relay board uses GPIO pins 24 & 25 (as well as the 5V & ground pins). The RT
 Later this week I'll be adding the [RFM12B Pi expansion board](http://shop.openenergymonitor.com/rfm12pi-v2-raspberry-pi-expansion-board/), which will take a bit of rejigging. I'll post photos once it's working.
 
 ### Software
-Because this unit is likely to suffer from power outages (amusingly we had one just 10 minutes before writing this sentence) I've opted to use the [Industrial Perennial Environment](http://nutcom.hu/?page_id=108). It also happened that there's an [emoncms](http://emoncms.org) gateway project using IPE (see [here](http://harizanov.com/2013/08/rock-solid-rfm2pi-gateway-solution/) for more information).
+Because this unit is likely to suffer from power outages (amusingly we had one just 10 minutes before writing this sentence) I've opted to use the [Industrial Perennial Environment](http://nutcom.hu/?page_id=108). It also happened that there's an [emoncms](http://emoncms.org) gateway project using IPE (see the [rock-solid RFM2Pi gateway write-up](http://harizanov.com/2013/08/rock-solid-rfm2pi-gateway-solution/) for more information).
 
 As my intention is to run emoncms to capture historical data from the system as well as from a bunch of environmental and energy sensors, I used the pre-built "rock solid gateway" image as my base.
 
 When you're working with IPE, you just need the commands ipe-ro and ipe-rw, which remount the disk in (unsurprisingly) R/O and R/W mode respectively. Just don't forget to switch it back once you're finished editing. 
 
-I'm assuming the Pi could die at any time, so I don't keep anything on it I've not got stored somewhere else. A simple way to achieve this is to create a Github repository for the directory you're adding scripts to, but be a little careful about exposing private passwords and API keys to the world. The scripts below are in a repository [here](https://github.com/spikeheap/pi-switch-post).
+I'm assuming the Pi could die at any time, so I don't keep anything on it I've not got stored somewhere else. A simple way to achieve this is to create a Github repository for the directory you're adding scripts to, but be a little careful about exposing private passwords and API keys to the world. The scripts below are in the [pi-switch-post repository on GitHub](https://github.com/spikeheap/pi-switch-post).
 
 To get the Pi into a working state from the base SD card image I did the following:
 

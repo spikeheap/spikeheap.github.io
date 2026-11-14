@@ -18,7 +18,7 @@ It’s been a long time since my [last multi-day adventure ride](https://teamped
 
 I should mention that I didn’t bivy or ride self-supported, which is a bit against the spirit of the Racing Collective events. With my dad just round the corner and eager for a road trip, we had a great excuse for a family adventure even though he can’t cycle. I was quite grateful for this in the end — not just because I get on well with my parents, but also it was nice to have someone to chat to. Riding solo suits many people, but I found myself itching for someone to share my highs and lows with as the trip unfolded.
 
-![](/images/2021-07-30-beatles-statue.jpg)
+![Me with my gravel bike in front of the Beatles statue at Liverpool’s Pier Head in the early morning light](/images/2021-07-30-beatles-statue.jpg)
 
 The route
 ---------
@@ -36,7 +36,7 @@ We set off early to drive to Liverpool, and I was cycling along the waterfront b
 The first 80 kilometres wind peacefully along the Mersey with the terrain and views changing frequently. I’d been expecting more “industrial heartland”, but the cycle route manages to hide it away behind trees and inclines. Blips of business like John Lennon Airport were short-lived and soon forgotten. Despite the gentle gradients, I wasn’t fooled. The climb over Woodhead Pass loomed in the distance, waiting to see if I had enough energy left for the last big push. Thankfully that climb ramps up slowly, at least until you cross the A628 when you wonder when you’ll need to push. The reward is continuously amazing views (e.g. the photo at the top of this page), and friendly exchanges with other cyclists and walkers. No-one is finding that climb easy!
 
 <figure>
-<img src="/images/2021-07-30-elevation-profile.jpg" alt="An elevation profile for the Liverpool to Castlefood ride. The first half is almost flat, followed by a 400m climb over Woodhead Pass that then drops back down to the finish.">
+<img src="/images/2021-07-30-elevation-profile.jpg" alt="An elevation profile for the Liverpool to Castleford ride. The first half is almost flat, followed by a 400m climb over Woodhead Pass that then drops back down to the finish.">
 <figcaption>Elevation profile for Liverpool to Castleford</figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ The descent into Bretton Country Park
 After spending so long climbing, the long undulating descent was a playground for the energy I somehow managed to conjour in my legs. The area around Bretton Country Park and Yorkshire Sculpture Park was absolutely beautiful, with fast, flowy, open trails. A short glance at the lake at Pugneys Park was next, before joining the canal towpath that I knew would take me all the way into Castleford. There was a tiny hitch joining the canal — the last 100m of the path that joins Pugneys to the canal was closed. A bit of back-tracking (and some helpful people who’d just come the other way) led me out, and then it was just glorious, flat towpath that led to food, stretching and sleep after eleven and a half hours on the bike.
 
 <figure>
-<img src="/images/2021-07-30-methley-canal.jpg" alt="The stretch of canal before Methley">
+<img src="/images/2021-07-30-methley-canal.jpg" alt="">
 <figcaption>The stretch of canal before Methley</figcaption>
 </figure>
 
@@ -58,7 +58,7 @@ A route of two halves
 I’d been quite nervous about the second day, and cautious about how much my pace would drop with tired legs, so I set off before 7:30am. I don’t know where this fear came from — we didn’t have a deadline to arrive in Scarborough other than “before the fish & chip shops close”, but when you’ve not done the distance in a while it’s easy to assume you’ll be crawling along at a snails pace.
 
 <figure>
-<img src="/images/2021-07-30-castleford-weir.jpg" alt="A Sonder Camino gravel bike on a bridge above Castleford Wier on the River Aire">
+<img src="/images/2021-07-30-castleford-weir.jpg" alt="A Sonder Camino gravel bike on a bridge above Castleford Weir on the River Aire">
 <figcaption>Castleford weir.</figcaption>
 </figure>
 
@@ -86,7 +86,7 @@ I’d studied the elevation profile for day two, so I knew that after this climb
 
 The climb up into North Riding Forest Park was actually pretty pleasant. The road had no traffic and only the occasional walker. It’s gruellingly steep in places, but gets its steepness out of the way in the first half before trading road for track and easing off the closer you get to the top. The last gentle climb followed tracks through fields. On any other day these would have been a joy to ride, but after several days of warm sun the track was rock hard and pitted with footsteps and hoofprints. This left a knobbly trail that juddered the gravel bike and shook me to my core as I tried to build up speed after the slow climb. Things just got better and better as field led to smooth, wide forest track, and I chased a motorbike as we both sprinted down the long straight trail with tall trees either side. What a feeling. This was the last big climb of the trip, and I knew Dad was parked up at the end of the trail with snacks and cool drinks. It was only when I met Dad that I heard the bad news…
 
-![A trail barred with two gates and signs saying to keep out. They really don’t want you in there!](/images/2021-07-30-blocked-track.jpg)🤬 I thought [this track](https://www.openstreetmap.org/way/236041216#map=16/54.2717/-0.6188) was blocked
+![A trail barred with two gates and signs saying to keep out. They really don’t want you in there!](/images/2021-07-30-blocked-track.jpg)🤬 I thought [this track on OpenStreetMap](https://www.openstreetmap.org/way/236041216#map=16/54.2717/-0.6188) was blocked
 
 They _really_ don’t want anyone in there. I’d already used my “I’m normally good so it’s okay if I break the rules” card back at Fairburn Ings this morning. Fair cop. A quick look at the map showed this is the only track north. My only option seemed to be to head south to Ebberston and suck up a stretch on the busy A170 before turning north again to get back to the route. I was a bit demoralised at the thought of going in precisely the wrong direction, and doing a 15km round-trip to bypass 1km of closed path, and my mood didn’t improve as I realised the descent to Ebberston wiped out all my height gain. In Snainton I turned and re-climbed the hill, grumpy until I remembered how fortunate I was to be out there in the first place. Sure it was an unexpected hill, but it just meant I got to spend more time on the bike. I was still well on track to arrive in Scarborough in time for dinner. It was worth climbing back up for the stretch across Wykeham Forest and a steep descent on road towards Hackness.
 
@@ -96,9 +96,9 @@ The route left the road for one last hurrah, climbing up gently in woodland on e
 
 Thankfully the last stretch into Scarborough was uneventful. A surge of “almost there” energy had me racing to the seafront, where a huge number of people were making the most of what had turned out to be a warm, sunny day.
 
-![](/images/2021-07-30-scarborough-pier-thumbs.jpg)
+![A thumbs-up selfie on the pier in Scarborough, with the lighthouse behind me and the Grand Hotel across the bay](/images/2021-07-30-scarborough-pier-thumbs.jpg)
 
-![](/images/2021-07-30-scarborough-pier-bike.jpg)
+![My Sonder Camino leaning against a mooring bollard on the pier, looking across the harbour to the Grand Hotel and the seafront](/images/2021-07-30-scarborough-pier-bike.jpg)
 The pier in Scarborough. The sea is such a great place to end a ride
 
 The only thing left to do was hide the bike in the car, meet some friends on the beach, and fight off seagulls while we devoured fish and chips.
@@ -115,18 +115,18 @@ Route alterations & roadblocks
 
 If you’re riding EnglanDURO21, or just following the route sometime soon, here’s a summary of the alterations I had to make. You can see my full tracks on Strava for [day one](https://www.strava.com/activities/5691283829) and [day two](https://www.strava.com/activities/5695664642).
 
-1.  Windle Edge/Pennine Sailing Club ([Google maps](https://www.google.co.uk/maps/place/High+Hoyland/@53.6188288,-1.5863622,13z/data=!4m5!3m4!1s0x487962e2e4c8f809:0xaa545db0fd699f74!8m2!3d53.593721!4d-1.5822551)). The track is now private land, so stay on Windle Edge (don’t turn into the sailing club) into Townhead to rejoin the route.
-2.  Pugneys Park near the end of the lake ([Google maps](https://www.google.co.uk/maps/place/53°39'36.6%22N+1°30'03.4%22W/@53.6601632,-1.5031217,491m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d53.6601603!4d-1.5009331)) has fenced off the track, but if take the north fork at the point on the map (rather than north-east following the route) you can join it a little further on.
-3.  The Fairburn Ings entrance from the Aire & Calder Navigation towpath ([Google maps](https://www.google.co.uk/maps/place/53°44'07.7%22N+1°20'36.9%22W/@53.7354792,-1.3457817,490m/data=!3m2!1e3!4b1!4m13!1m6!3m5!1s0x487941e91bceea19:0xc385ec51e4499bf2!2sRSPB+Fairburn+Ings!8m2!3d53.7443881!4d-1.3173071!3m5!1s0x0:0x0!7e2!8m2!3d53.7354757!4d-1.3435928)) is [footpath-only](https://www.openstreetmap.org/way/37773996#map=16/53.7366/-1.3448). If you’re early in the morning or late in the evening this is _probably_ fine, but the path is quite narrow in places so best avoided when it’s busier. To avoid it completely, stay on the A656 and follow it into Allerton Bywater before turning right onto Newton Lane to rejoin the route ([see diversion on OpenStreetMap](https://www.openstreetmap.org/directions?engine=graphhopper_bicycle&route=53.7320%2C-1.3537%3B53.7428%2C-1.3453#map=15/53.7393/-1.3505)). This diversion only adds a couple of hundred metres to the day.
+1.  Windle Edge/Pennine Sailing Club ([Windle Edge on Google Maps](https://www.google.co.uk/maps/place/High+Hoyland/@53.6188288,-1.5863622,13z/data=!4m5!3m4!1s0x487962e2e4c8f809:0xaa545db0fd699f74!8m2!3d53.593721!4d-1.5822551)). The track is now private land, so stay on Windle Edge (don’t turn into the sailing club) into Townhead to rejoin the route.
+2.  Pugneys Park near the end of the lake ([Pugneys Park track on Google Maps](https://www.google.co.uk/maps/place/53°39'36.6%22N+1°30'03.4%22W/@53.6601632,-1.5031217,491m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d53.6601603!4d-1.5009331)) has fenced off the track, but if take the north fork at the point on the map (rather than north-east following the route) you can join it a little further on.
+3.  The Fairburn Ings entrance from the Aire & Calder Navigation towpath ([Fairburn Ings entrance on Google Maps](https://www.google.co.uk/maps/place/53°44'07.7%22N+1°20'36.9%22W/@53.7354792,-1.3457817,490m/data=!3m2!1e3!4b1!4m13!1m6!3m5!1s0x487941e91bceea19:0xc385ec51e4499bf2!2sRSPB+Fairburn+Ings!8m2!3d53.7443881!4d-1.3173071!3m5!1s0x0:0x0!7e2!8m2!3d53.7354757!4d-1.3435928)) is [footpath-only](https://www.openstreetmap.org/way/37773996#map=16/53.7366/-1.3448). If you’re early in the morning or late in the evening this is _probably_ fine, but the path is quite narrow in places so best avoided when it’s busier. To avoid it completely, stay on the A656 and follow it into Allerton Bywater before turning right onto Newton Lane to rejoin the route ([see diversion on OpenStreetMap](https://www.openstreetmap.org/directions?engine=graphhopper_bicycle&route=53.7320%2C-1.3537%3B53.7428%2C-1.3453#map=15/53.7393/-1.3505)). This diversion only adds a couple of hundred metres to the day.
 
 Links
 -----
 
-*   Huge thanks to the Racing Collective for putting the route together: [https://www.theracingcollective.com/englanduro.html](https://www.theracingcollective.com/englanduro.html)
-*   Day one track: [https://www.strava.com/activities/5691283829](https://www.strava.com/activities/5691283829)
-*   Day two track: [https://www.strava.com/activities/5695664642](https://www.strava.com/activities/5695664642)
-*   #EnglanDURO21 Spotify playlist: [https://open.spotify.com/playlist/0BgDygP557YMg5KMSsflAO?si=55af91d8c27044e6](https://open.spotify.com/playlist/0BgDygP557YMg5KMSsflAO?si=55af91d8c27044e6)
-*   The Twilight of Democracy on Audible: [https://www.audible.co.uk/pd/Twilight-of-Democracy-Audiobook/0241481821](https://www.audible.co.uk/pd/Twilight-of-Democracy-Audiobook/0241481821)
+*   Huge thanks to the Racing Collective for [putting the EnglanDURO route together](https://www.theracingcollective.com/englanduro.html)
+*   [Day one track on Strava](https://www.strava.com/activities/5691283829)
+*   [Day two track on Strava](https://www.strava.com/activities/5695664642)
+*   [#EnglanDURO21 Spotify playlist](https://open.spotify.com/playlist/0BgDygP557YMg5KMSsflAO?si=55af91d8c27044e6)
+*   [The Twilight of Democracy on Audible](https://www.audible.co.uk/pd/Twilight-of-Democracy-Audiobook/0241481821)
 
 ---
 

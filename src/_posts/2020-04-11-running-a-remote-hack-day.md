@@ -60,7 +60,7 @@ We’d planned to close up around 5pm, and came back together at 4:30 to show, t
 
 - Shorten the round-table ideas session first thing. We ended up talking about each idea fairly extensively, so I’d like to try keeping it to a 1–2 sentence summary of the idea, and then flesh the idea out in breakout groups so we can get started sooner.
 
-We’ll be running the next event on Saturday the 25th of April. You should join us: [https://remotehack.space](https://remotehack.space).
+We’ll be running the next event on Saturday the 25th of April. You should join us at [remotehack.space](https://remotehack.space).
 
 ---
 Originally posted [on Medium](https://medium.com/@spikeheap/running-a-remote-hack-day-94fc6a9b9550).

@@ -10,7 +10,7 @@ tags:
 
 Before the 2015 Full Stack Fest, I hadn't really given any thought to how accessible a conference is past whether or not it had wheelchair ramps and lifts. It turns out there's _way_ more to making an event inclusive than that.
 
-![A live-captioned talk at Full Stack Fest](/images/2015-09-11_good2.jpg) <small>A live-captioned talk at Full Stack Fest</small>
+![](/images/2015-09-11_good2.jpg) <small>A live-captioned talk at Full Stack Fest</small>
 
 For the Full Stack Fest, Kickstarter sponsored live-captioning for all the talks, transcribing the speakers' words into a space below the slides and allowing anyone to follow along with the talk in.
 

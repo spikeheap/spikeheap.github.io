@@ -8,7 +8,7 @@ tags:
 ---
 
 <figure>
-<img src="/images/2021-09-08-fsa-wheelset.jpg" alt="Rear hub on the FSA Non-Series off-road wheelset">
+<img src="/images/2021-09-08-fsa-wheelset.jpg" alt="">
 <figcaption>Rear hub on the FSA Non-Series off-road wheelset</figcaption>
 </figure>
 
@@ -24,7 +24,7 @@ Front wheel
 *   Quantity: 2
 *   Bearing code: 15267–2RS (2RS just means there are 2 rubber seals, which helps protect the bearing from grime)
 
-These can be removed with a [bearing puller](https://www.bearingprotools.com/products/bearing-puller?variant=32121629343849), and refitted with a standard bearing press with 15x26x7mm drifts, such as [this one](https://www.bearingprotools.com/collections/presses/products/bearing-press-for-bicycles-with-t-bar-handles?variant=32895187189865).
+These can be removed with a [bearing puller](https://www.bearingprotools.com/products/bearing-puller?variant=32121629343849), and refitted with a standard bearing press with 15x26x7mm drifts, such as [this bearing press with T-bar handles](https://www.bearingprotools.com/collections/presses/products/bearing-press-for-bicycles-with-t-bar-handles?variant=32895187189865).
 
 Rear wheel
 ----------
@@ -35,7 +35,7 @@ Rear wheel
 *   Bearing code: 17287–2RS (2RS just means there are 2 rubber seals, which helps protect the bearing from grime)
 *   The freehub contains a couple of the same bearings, but I couldn’t remove them, and ended up ordering [a full replacement freehub (EL298)](https://www.velozone.co.uk/products/vision-non-series-wheels-sh11-el298-freehub).
 
-As these have different dimensions, they need a slightly different-sized [bearing puller](https://www.bearingprotools.com/products/bearing-puller?variant=32121629147241).
+As these have different dimensions, they need a [slightly different-sized bearing puller](https://www.bearingprotools.com/products/bearing-puller?variant=32121629147241).
 
 To fit/refit the bearings, you’ll need [a press with over-axle drifts](https://www.bearingprotools.com/collections/presses/products/over-axle-bearing-press?variant=32243512508521) because the captive axle gets in the way of a standard press once you have the first bearing in. There’s also a cheaper alternative approach if you have a socket set — Youtube is your friend there.
 

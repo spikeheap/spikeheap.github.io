@@ -23,6 +23,6 @@ To achieve this we went through and set up a custom "user picker" field named _E
 
 A quick run through the Field Configuration pages to hide all the unwanted fields, and an additional Issue Type Screen Scheme to display things in the right order, and we're good to go:
 
-![Image](/images/2012-04-05-using-jira-to-manage-a-skills-registry-jira.jpg)
+![A JIRA issue of type Training, annotated to show the single issue type, a component for each core competency, the custom Employee field and the assignee who is actioning the training](/images/2012-04-05-using-jira-to-manage-a-skills-registry-jira.jpg)
 
 If anyone knows of an easier way to achieve the same thing I'm all ears. Total time invested in the prototype with a few different components: 20 minutes.

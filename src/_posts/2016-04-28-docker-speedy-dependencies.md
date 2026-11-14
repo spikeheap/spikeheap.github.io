@@ -112,7 +112,7 @@ https://raw.githubusercontent.com/spikeheap/spikeheap.github.io/develop/README.m
 
 #### Private repositories on BitBucket, GitLab, etc.
 
-Most other services provide token-based access to raw files, and an exercise for the reader to work out their intricacies. [This StackOverflow answer](http://stackoverflow.com/a/34499948/384693) demonstrates it working for BitBucket.
+Most other services provide token-based access to raw files, and an exercise for the reader to work out their intricacies. [A StackOverflow answer on token-based access to raw files](http://stackoverflow.com/a/34499948/384693) demonstrates it working for BitBucket.
 
 Be sure to consider where your keys/tokens may be exposed. The GitHub example uses tokens specific to each file/revision pair, so the cost of an exposed key is quite small. If you're exposing your private API key which gives write-access to your repository, things are a little different 😱😨😰.
 

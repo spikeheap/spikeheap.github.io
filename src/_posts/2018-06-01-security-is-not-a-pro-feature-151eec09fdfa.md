@@ -24,7 +24,7 @@ It would be unfair to say that the free version *prevented* you from doing autho
 
 Unfortunately this approach isn’t limited to independent library producers. Elastic hides almost all their security features behind a subscription (which [reportedly](https://www.reddit.com/r/elasticsearch/comments/62n2h6/pricing_for_xpack_gold/) costs &gt;$5k USD per node):
 
-![Elastic thinks only Gold customers should have encrypted communications…](/images/2018-06-01-security-is-not-a-pro-feature-151eec09fdfa-elastic.png)*Elastic thinks only Gold customers should have encrypted communications…*
+![](/images/2018-06-01-security-is-not-a-pro-feature-151eec09fdfa-elastic.png)*Elastic thinks only Gold customers should have encrypted communications…*
 
 For many organisations, this just means Kibana or ElasticSearch end up behind an nginx proxy or with no security at all. Considering how great Kibana is for visualising data, it’s easy to see how these unsecured applications end up accumulating more sensitive data. If Elastic provided RBAC and encrypted communications as part of their free tier, would we see smaller businesses picking up better security practices?
 

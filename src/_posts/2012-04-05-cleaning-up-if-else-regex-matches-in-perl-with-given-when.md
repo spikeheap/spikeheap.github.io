@@ -70,4 +70,4 @@ for(my $i = 0; $i &lt; 10; $i++){
 
 The above code provides a nice safeguard in that a *when* can only mean one thing, and can't be swapped out for an *if*. Breaking it down into multiple *given* blocks is more obvious and requires more effort, so it's harder to introduce and easier to fix bugs.
 
-The *when* statement uses Perl's smart matching feature, so you can use Strings, numbers, regular expressions or booleans, with some caveats about how clever it is. Read more here: [http://perldoc.perl.org/perlsyn.html](http://perldoc.perl.org/perlsyn.html) and here: [http://szabgab.com/smart-matching-in-perl-5.10.html](http://szabgab.com/smart-matching-in-perl-5.10.html)
+The *when* statement uses Perl's smart matching feature, so you can use Strings, numbers, regular expressions or booleans, with some caveats about how clever it is. Read more in the [perlsyn documentation](http://perldoc.perl.org/perlsyn.html) and this [article on smart matching in Perl 5.10](http://szabgab.com/smart-matching-in-perl-5.10.html).

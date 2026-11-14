@@ -71,7 +71,7 @@ Unfortunately our enthusiasm was stifled when we tried to use the [node client l
 
 Using [ScoutScript commands](http://support.pinocc.io/hc/en-us/articles/200250539-ScoutScript-Overview#functions) it's possible to write functions and save them on the device, which is great if a scout on the mesh needs to carry out an action when another scout on the network detects an input. We didn't find this section of the docs until after the event. Sad face.
 
-So at the moment I'm not sure how you'd go about streaming the live status of an input at a greater resolution than once per second, but I know it's possible because of [this video](http://projectable.me/post/48713397681/scout6050-i-was-asked-to-put-together-a-quick).
+So at the moment I'm not sure how you'd go about streaming the live status of an input at a greater resolution than once per second, but I know it's possible because of [this Scout demo video on projectable.me](http://projectable.me/post/48713397681/scout6050-i-was-asked-to-put-together-a-quick).
 
 It's a shame we only had the afternoon to play around with these devices, and I'll be picking up a pair soon to play with over winter.
 

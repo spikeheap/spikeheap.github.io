@@ -84,18 +84,8 @@ Have fun with it, but don't be surprised when everyone wants to see your new cre
 
 The following pages were hugely helpful for figuring out how to achieve the different portions of ImageMagic magic:
 
-* [http://daemonsandagents.tumblr.com/post/108369306151/imagemagick-ways-of-cropping-an-image-to-a
-](http://daemonsandagents.tumblr.com/post/108369306151/imagemagick-ways-of-cropping-an-image-to-a
-)
-* [http://www.imagemagick.org/Usage/resize/#space_fill
-](http://www.imagemagick.org/Usage/resize/#space_fill
-)
-* [http://www.imagemagick.org/Usage/thumbnails/#fit_summery
-](http://www.imagemagick.org/Usage/thumbnails/#fit_summery
-)
-* [http://www.imagemagick.org/Usage/crop/#crop_gravity
-](http://www.imagemagick.org/Usage/crop/#crop_gravity
-)
-* [http://www.imagemagick.org/Usage/montage/
-](http://www.imagemagick.org/Usage/montage/
-)
+* [ImageMagick: ways of cropping an image (Daemons and Agents)](http://daemonsandagents.tumblr.com/post/108369306151/imagemagick-ways-of-cropping-an-image-to-a)
+* [ImageMagick usage: resizing to fill a space](http://www.imagemagick.org/Usage/resize/#space_fill)
+* [ImageMagick usage: thumbnail fit summary](http://www.imagemagick.org/Usage/thumbnails/#fit_summery)
+* [ImageMagick usage: crop with gravity](http://www.imagemagick.org/Usage/crop/#crop_gravity)
+* [ImageMagick usage: montage](http://www.imagemagick.org/Usage/montage/)

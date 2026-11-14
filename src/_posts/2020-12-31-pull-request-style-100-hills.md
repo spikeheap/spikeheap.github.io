@@ -83,7 +83,7 @@ Now you’ve figured out how you work, you’ll want to write it down. Without w
 
 1. They’re short and concise. It feels good to write 2000 words on the primacy of meaningful commit messages, but think about your reader. A new team member doesn’t want to lose two weeks trawling a book on how they should collaborate. Brevity is key. Short documents are easier to scan, and brief (1 paragraph) points are more easily pointed to. If you *really *need to write more to explain your decision, capture this elsewhere (Decision Records are great for this).
 
-1. Each point is linkable. Being able to point at a specific rule in a pull request comment or chat makes conversations more concrete, and lowers the barrier to entry for reading and following. Most wikis and markdown renderers add IDs to headings so you can link to a point in the document, for example [this rule](https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case) in the Ruby Style Guide on GitHub.
+1. Each point is linkable. Being able to point at a specific rule in a pull request comment or chat makes conversations more concrete, and lowers the barrier to entry for reading and following. Most wikis and markdown renderers add IDs to headings so you can link to a point in the document, for example [the “indent when to case” rule](https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case) in the Ruby Style Guide on GitHub.
 
 ## Conclusion
 

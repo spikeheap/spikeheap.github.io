@@ -47,4 +47,4 @@ For another gotcha: WebMock supports passing a list of hosts to `allow`, but thi
 
 ---
 
-[^1]: Mostly thanks to [this comment](https://github.com/bblimke/webmock/issues/914#issuecomment-810134233)
+[^1]: Mostly thanks to [this comment on WebMock issue 914](https://github.com/bblimke/webmock/issues/914#issuecomment-810134233)
