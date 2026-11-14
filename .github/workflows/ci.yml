@@ -21,6 +21,9 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
+          # ubuntu-latest only carries the newest patch of each Ruby series, so
+          # track 3.3.x here and leave .tool-versions for local development.
+          ruby-version: "3.3"
           bundler-cache: true
 
       - uses: actions/setup-node@v6
@@ -86,6 +89,9 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
+          # ubuntu-latest only carries the newest patch of each Ruby series, so
+          # track 3.3.x here and leave .tool-versions for local development.
+          ruby-version: "3.3"
           bundler-cache: true
 
       - name: Build for production
