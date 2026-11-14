@@ -17,16 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: ruby/setup-ruby@v1
         with:
           # ubuntu-latest only carries the newest patch of each Ruby series, so
-          # track 3.3.x here and leave .tool-versions for local development.
-          ruby-version: "3.3"
+          # track 4.0.x here and leave .tool-versions for local development.
+          ruby-version: "4.0"
           bundler-cache: true
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm
@@ -35,7 +35,7 @@ jobs:
 
       - name: Cache Playwright browsers
         id: pw-cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -85,13 +85,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: ruby/setup-ruby@v1
         with:
           # ubuntu-latest only carries the newest patch of each Ruby series, so
-          # track 3.3.x here and leave .tool-versions for local development.
-          ruby-version: "3.3"
+          # track 4.0.x here and leave .tool-versions for local development.
+          ruby-version: "4.0"
           bundler-cache: true
 
       - name: Build for production
