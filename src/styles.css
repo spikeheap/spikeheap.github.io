@@ -439,13 +439,13 @@ figcaption {
 }
 .home-intro__text { min-width: 0; }
 .home-intro__greeting {
+  font-family: var(--font-sans);
   font-size: var(--text-lg);
-  font-weight: 500;
-  color: var(--color-muted);
+  font-weight: 600;
+  color: var(--color-text);
   letter-spacing: 0;
   margin-block-end: var(--space-2);
 }
-.home-intro__greeting .p-name { color: var(--color-text); font-weight: 600; }
 .home-intro__lede {
   font-size: var(--text-lg);
   line-height: 1.45;
