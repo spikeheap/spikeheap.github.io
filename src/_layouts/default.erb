@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="<%= relative_url '/apple-touch-icon-v2.png' %>">
 
 <link rel="manifest" href="<%= relative_url '/webmanifest.json' %>">
-<meta name="apple-mobile-web-app-title" content="Cookbook">
+<meta name="apple-mobile-web-app-title" content="<%= site.metadata.author %>">
 
 <link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
 <link rel="stylesheet" href="/styles.css">
@@ -72,7 +72,7 @@
   <div class="site-footer__links">
     <a rel="me" href="<%= site.metadata.mastodon %>">Mastodon</a>
     <a rel="me" href="<%= site.metadata.github %>">GitHub</a>
-    <a href="/feed.xml">RSS</a>
+    <a href="/feed.xml">RSS feed</a>
   </div>
 </footer>
 <script>
@@ -112,6 +112,11 @@
       if (rels.indexOf("noopener") === -1) rels.push("noopener");
       if (rels.indexOf("noreferrer") === -1) rels.push("noreferrer");
       link.setAttribute("rel", rels.join(" "));
+      /* Tell screen reader users the link leaves the current tab. */
+      var hint = document.createElement("span");
+      hint.className = "visually-hidden";
+      hint.textContent = " (opens in new tab)";
+      link.appendChild(hint);
     });
   })();
 </script>
