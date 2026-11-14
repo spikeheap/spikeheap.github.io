@@ -22,7 +22,6 @@
   --text-2xl:  2.25rem;       /* 36px */
   --text-3xl:  2.875rem;      /* 46px */
   --leading-body: 1.6;
-  --leading-tight: 1.2;
   --leading-heading: 1.25;
 
   /* Spacing (4-based) */
@@ -33,8 +32,6 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --space-16: 4rem;
-  --space-24: 6rem;
 
   /* Layout */
   --reading-column: 65ch;
@@ -52,7 +49,6 @@
   --color-bg-soft:   #f5efe7;  /* between bg and bg-muted */
   --color-text:      #1f1d1b;  /* 15.6:1 on bg — AAA */
   --color-muted:     #6b6863;  /* 5.2:1 on bg, 4.6:1 on bg-muted — AA */
-  --color-faint:     #b3aca3;  /* decorative borders only — not for text */
   --color-accent:    #b45309;  /* burnt amber, 4.7:1 on bg — AA. Fails on bg-soft and bg-muted */
   --color-accent-hover: #92400e; /* darker, 6.6:1 on bg, 5.9:1 on bg-muted */
   --color-border:    #e6dfd4;
@@ -65,7 +61,6 @@
   --color-bg-soft:   #232120;
   --color-text:      #ede6dc;  /* 14.0:1 on bg — AAA */
   --color-muted:     #98908a;  /* 5.5:1  on bg — AA */
-  --color-faint:     #4a443f;
   --color-accent:    #fb923c;  /* warm orange, 7.7:1 on bg — AAA */
   --color-accent-hover: #fdba74; /* lighter still */
   --color-border:    #2e2a26;
@@ -82,7 +77,6 @@
     --color-bg-soft:   #232120;
     --color-text:      #ede6dc;
     --color-muted:     #98908a;
-    --color-faint:     #4a443f;
     --color-accent:    #fb923c;
     --color-accent-hover: #fdba74;
     --color-border:    #2e2a26;
@@ -165,7 +159,7 @@ a:hover { color: var(--color-accent-hover); text-decoration-thickness: 0.15em; }
 strong { font-weight: 650; }
 em { font-style: italic; }
 
-small, .small { font-size: var(--text-sm); color: var(--color-muted); }
+small { font-size: var(--text-sm); color: var(--color-muted); }
 
 ul, ol {
   padding-inline-start: var(--space-6);
@@ -401,25 +395,6 @@ blockquote.tweet-archive footer {
 /* Accent on bg-soft is 4.39:1. The hover shade passes AA. */
 blockquote.tweet-archive a { color: var(--color-accent-hover); }
 blockquote.tweet-archive cite { font-style: normal; font-weight: 600; }
-
-/* Gallery — minimal flex grid */
-.gallery { margin-block: var(--space-6); }
-.gallery__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-3);
-}
-.gallery__item img {
-  border-radius: var(--radius-md);
-  width: 100%;
-  height: auto;
-}
-.gallery figcaption {
-  margin-block-start: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  text-align: center;
-}
 
 /* Tables */
 table {
@@ -720,7 +695,7 @@ figcaption {
 }
 
 /* ============================================================
-   Print (PDF generation via browser print)
+   Print
    ============================================================ */
 
 @page {
@@ -729,16 +704,13 @@ figcaption {
 }
 
 @media print {
-  /* White everywhere — saves ink and matches recruiter expectations. Keep
-     the site typography and palette as colour accents on links and
-     section dividers. */
+  /* White everywhere to save ink. */
   :root {
     --color-bg:        #ffffff;
     --color-bg-muted:  #ffffff;
     --color-bg-soft:   #ffffff;
     --color-text:      #000000;
     --color-muted:     #444444;
-    --color-faint:     #aaaaaa;
     --color-border:    #cccccc;
     --color-accent:    #000000;
     --color-accent-hover: #000000;
@@ -754,8 +726,7 @@ figcaption {
   .site-header,
   .site-footer,
   .skip-link,
-  .theme-toggle,
-  .no-print { display: none !important; }
+  .theme-toggle { display: none !important; }
 
   main {
     max-width: none;
@@ -764,10 +735,4 @@ figcaption {
 
   /* Links: keep the underline so they still read as links, but in black ink. */
   a { color: #000000; text-decoration: underline; }
-
-  /* Tighter type scale for print. */
-
-  /* Page-break behaviour: don't orphan section headings at a page bottom,
-     and keep each service and case study together. */
-
 }
