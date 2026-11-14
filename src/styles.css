@@ -37,10 +37,9 @@
   --reading-column: 65ch;
   --container-pad: var(--space-6);
 
-  /* Radius / transitions */
+  /* Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
-  --transition: 150ms ease-out;
 
   /* Colours — light theme (default). Warm-neutral palette with burnt-amber
      accent. Tested contrast ratios noted alongside. */
@@ -108,14 +107,6 @@ img, picture, svg, video { display: block; max-width: 100%; height: auto; }
   border-radius: var(--radius-sm);
 }
 
-/* Honour reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0ms !important;
-    transition-duration: 0ms !important;
-  }
-}
-
 /* ============================================================
    Typography
    ============================================================ */
@@ -152,7 +143,6 @@ a {
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.2em;
   text-decoration-skip-ink: auto;
-  transition: color var(--transition), text-decoration-color var(--transition);
 }
 a:hover { color: var(--color-accent-hover); text-decoration-thickness: 0.15em; }
 
@@ -267,7 +257,6 @@ main {
   text-decoration: none;
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
-  transition: transform var(--transition);
 }
 .skip-link:focus { transform: translateY(0); }
 
@@ -285,7 +274,6 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--transition), border-color var(--transition);
 }
 .theme-toggle:hover { color: var(--color-accent); border-color: var(--color-accent); }
 .theme-toggle svg { width: 18px; height: 18px; }
@@ -603,9 +591,7 @@ figcaption {
   height: 32px;
   border-radius: 50%;
   margin: 0;
-  transition: transform var(--transition);
 }
-.facepile__item:hover .facepile__avatar { transform: scale(1.1); }
 
 .webmentions__replies-heading {
   font-family: var(--font-sans);
