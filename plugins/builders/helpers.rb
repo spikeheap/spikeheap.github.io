@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "digest"
+
 # Template helpers available to ERB layouts.
 class Builders::Helpers < SiteBuilder
   def build
@@ -17,6 +19,15 @@ class Builders::Helpers < SiteBuilder
                end
       fmt = year ? "%B %Y" : "%B"
       "#{day}#{suffix} #{d.strftime(fmt)}"
+    end
+
+    # `versioned("/styles.css")` → "/styles.css?v=1a2b3c4d"
+    #
+    # The suffix is a hash of the source file, so browsers refetch an asset
+    # only when its content changes.
+    helper :versioned do |path|
+      file = File.join(site.source, path)
+      File.exist?(file) ? "#{path}?v=#{Digest::MD5.file(file).hexdigest[0, 8]}" : path
     end
 
     # `month_year("2026-03")` → "Mar 2026"

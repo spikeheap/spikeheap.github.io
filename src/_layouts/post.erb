@@ -35,12 +35,12 @@ layout: default
   </p>
   <ol class="comments__list" hidden></ol>
 </section>
-<script src="/comments.js" defer></script>
+<script src="<%= versioned "/comments.js" %>" defer></script>
 <% end %>
 
 <% if site.metadata.webmention_endpoint && !site.metadata.webmention_endpoint.to_s.empty? %>
 <section class="webmentions" data-webmentions data-webmentions-target="<%= site.metadata.url %><%= resource.relative_url %>">
   <div class="webmentions__content" hidden></div>
 </section>
-<script src="/webmentions.js" defer></script>
+<script src="<%= versioned "/webmentions.js" %>" defer></script>
 <% end %>

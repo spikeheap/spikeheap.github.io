@@ -27,8 +27,8 @@
 <meta name="apple-mobile-web-app-title" content="<%= site.metadata.author %>">
 
 <link rel="alternate" type="application/atom+xml" title="<%= site.metadata.title %>" href="/feed.xml">
-<link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/syntax.css">
+<link rel="stylesheet" href="<%= versioned "/styles.css" %>">
+<link rel="stylesheet" href="<%= versioned "/syntax.css" %>">
 <% if site.metadata.webmention_endpoint && !site.metadata.webmention_endpoint.to_s.empty? %>
 <link rel="webmention" href="<%= site.metadata.webmention_endpoint %>">
 <% end %>
