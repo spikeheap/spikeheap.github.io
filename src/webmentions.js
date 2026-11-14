@@ -79,7 +79,7 @@
       var img = document.createElement("img");
       img.className = "facepile__avatar";
       img.src = (entry.author && entry.author.photo) || "";
-      img.alt = (entry.author && entry.author.name) || "";
+      img.alt = ""; // The visually hidden name below labels the link.
       img.loading = "lazy";
       img.width = 32;
       img.height = 32;
