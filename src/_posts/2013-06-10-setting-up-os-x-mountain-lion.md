@@ -15,11 +15,11 @@ Last month I installed a second internal drive on my Macbook Pro to increase the
 
 To help me out next time, and for anyone who's interested, here's a quick run-down of the steps I took to go from vanilla OS X to a walking, talking personal machine capable of a bit of dev.
 
-#### Update 2019-06-28
+## Update 2019-06-28
 
 Six years later, I don't quite follow this process anymore. I now have a [bootstrap script on Github](https://github.com/spikeheap/dotfiles).
 
-### Getting things right in System Preferences
+## Getting things right in System Preferences
 	
   * Set the dock size to small with a lot of magnification & auto-hide enabled
   * Language & Text: add "British English" to the list of languages
@@ -36,13 +36,13 @@ Six years later, I don't quite follow this process anymore. I now have a [bootst
 
 
 
-### Add Google sync to Contacts app
+## Add Google sync to Contacts app
 
 
 In Contacts.app preferences -> Accounts -> On My Mac, check "Synchronize with Google" (Thanks to http://niklausgerber.com/blog/syncing-google-contacts-in-mountain-lion/ for this).
 
 
-### Fixing hostname
+## Fixing hostname
 
 
 In Terminal (and iTerm) I'd see "(null)" as my hostname. After a bit of Googling (sorry don't have the reference) I found the fix:
@@ -51,7 +51,7 @@ In Terminal (and iTerm) I'd see "(null)" as my hostname. After a bit of Googling
 
 
 
-### Homebrew
+## Homebrew
 
 
 I can't live without a package manager anymore, and have flitted between MacPorts and Homebrew. At the moment I'm liking Homebrew, so I need to install it before adding the following:
@@ -67,7 +67,7 @@ I can't live without a package manager anymore, and have flitted between MacPort
 
 
 
-### Must-have App Store apps
+## Must-have App Store apps
 
 
   * XCode
@@ -79,7 +79,7 @@ I can't live without a package manager anymore, and have flitted between MacPort
   * Skitch
   * Twitter
 
-###  Apps not in the App Store
+## Apps not in the App Store
 
   * Alfred
   * Google Chrome

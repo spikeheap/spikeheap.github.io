@@ -21,7 +21,7 @@ Our new UI requires circular images at three different sizes (icon, default and 
 
 In this case I believe option 2 gives the best outcome – no excess whitespace and wholly-filled circles, but our users didn't have any of this in mind when they uploaded their images in the dim and distant past so we need to get an idea of how these changes will affect their existing images.
 
-#### Image dimensions
+## Image dimensions
 The first thing we can do is calculate the distribution of image proportions. This is useful alongside the assumption that squarer images are more likely to crop without losing the subject in the image.
 
 ImageMagick has a set of handy command-line tools to help us with this:
@@ -40,7 +40,7 @@ You can dump this list into Excel and [generate a histogram](http://www.excel-ea
 
 This approach can help if you have a very large set of user avatar images, but it doesn't help us with the qualitative task of checking that they look 'okay' with the new circular crop.
 
-#### Creating an avatar montage for quick visual checking
+## Creating an avatar montage for quick visual checking
 
 Humans are really (really) good at recognising faces. They're not so good at monotony, so walking through 10,000 users' profile pages isn't going to work very well. A montage of all the avatars on a single image works surprisingly well – even at smaller sizes the headless avatars or dodgy crops jumped out at us.
 
@@ -80,7 +80,7 @@ After all of that you should end up with something like this:
 
 Have fun with it, but don't be surprised when everyone wants to see your new creation. For many organisations this could well be the first chance they've had to see many of their users, and a huge grid of (hopefully smiling) faces can be quite powerful.
 
-#### References
+## References
 
 The following pages were hugely helpful for figuring out how to achieve the different portions of ImageMagic magic:
 

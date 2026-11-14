@@ -30,6 +30,6 @@ Hopefully we'll see more efforts to increase the accessibility of events in the 
 
 ![A live-captioned talk at Full Stack Fest](/images/2015-09-11_good.jpg) <small>Captions are great when they work</small>
 
-### Captioning kudos
+## Captioning kudos
 
 [White Coat Captioning](http://www.whitecoatcaptioning.com/) came through at the last minute and did the live-captioning for the final days of the conference. They deserve a special mention because the captions were flawless, hitting pretty much every word and phrase, no matter how technical or obscure. They also [wrote the story up](https://storify.com/whitecoatcapxg/help-is-here).

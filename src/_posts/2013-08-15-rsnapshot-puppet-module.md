@@ -88,7 +88,7 @@ rsnapshot::client::dirs: [
 
 The module has support for all the configuration options of Rsnapshot, and I'll update the documentation shortly to explain the additional parameters.
 
-### Limitations
+## Limitations
 
 Currently the module doesn't have any tests, so use it at your peril and test it on a staging environment first. This has also been developed entirely on an Ubuntu platform so your mileage may vary on other systems, though there's no reason it won't work with the right paths passed to it.
 

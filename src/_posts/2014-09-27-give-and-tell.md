@@ -15,11 +15,11 @@ The Ice Bucket Challenge has been a tour-de-force for charitable donations, and 
 
 It seems like a no-brainer, right? Not quite. Yesterday I was nominated and all of my misgivings were brought to the fore. Do I just do it and get on with life, or do I look like uncharitable douche and shun the craze. Luckily, thanks to [Dan James](http://www.ceoblues.com/archive/2014/august/giveandtell) and [Paul Boag](https://medium.com/@boagworld/the-ice-bucket-challenge-e0663fbf6544) there's a third option, just giving (no trademark infringement intended).
 
-### Why am I uncomfortable with it
+## Why am I uncomfortable with it
 
 I don't want to dwell on the negatives, because after all this campaign has done a lot of good and helped to raise awareness about Motor Neurone Disease. There are also a number of people who have described my misgivings in far more eloquent terms (feel free to check out the links in the notes section at the bottom). Mostly I dislike the focus on dumping ice on your head rather than regularly supporting a charity and understanding the work it's doing. It also feels very wrong to be wasting water and energy when [884 million people lack access to safe water](https://www.dosomething.org/facts/11-facts-about-water-developing-world).
 
-### My cause, the MS Trust
+## My cause, the MS Trust
 
 Multiple sclerosis is a disease which affects [over 100,000](http://www.mstrust.org.uk/information/aboutms/keyfacts.jsp) people in the UK alone, and has no known cure. It's a degenerative disease of the nervous system and affects people in a myriad different ways but often affects vision, sleep and mobility.
 
@@ -29,11 +29,11 @@ The [MS Trust](https://www.mstrust.org.uk/donate-online/) is a charity focussed 
 
 So today I have donated to them again, and reminded myself that I need to do more.
 
-### Just give
+## Just give
 
 So my message is really this: find a cause you care about and think about what you can do to help. Maybe it's donating money, in which case remember that regular small donations have a much more positive effect than one-off larger donations. Maybe it's a more hands-on approach offering pro-bono work or heading to a local centre to help out. If you feel comfortable evangelising your goodwill in the hope of raising awareness that's fine too. If you're not and want to keep your charitable donations under wraps, that's fine too. After all, it's not about us really.
 
-### Nominating others
+## Nominating others
 
 So it's my turn to hand on the baton and nominate three more people to highlight a charity they care about or give to a charity and tell us about them. But why stop at three? Three's to few. 
 

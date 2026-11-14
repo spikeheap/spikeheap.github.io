@@ -21,7 +21,7 @@ As a technical lead, delivery manager, or just someone hoping for a quiet life, 
 
 Once we’ve captured our baseline, we can apply some agile goodness and iteratively improve the way we work. Retrospectives are a great place to reflect on how your ways of working help or hinder you, agree experiments to try, and evaluate their effectiveness.
 
-### The list
+## The list
 
 There’s nuance to many things on this list, and there may be objectively “better” options, but often they’re marginal gains rather than the only way to avoid catastrophe.
 
@@ -77,7 +77,7 @@ Merging:
 
 * Who merges the PR (again: author or reviewer)?
 
-### Record your ways of working
+## Record your ways of working
 
 Now you’ve figured out how you work, you’ll want to write it down. Without wanting to open another can of worms, there are a couple of qualities common to team charters which are actually read, honoured and evolved by teams I’ve worked with:
 
@@ -85,7 +85,7 @@ Now you’ve figured out how you work, you’ll want to write it down. Without w
 
 1. Each point is linkable. Being able to point at a specific rule in a pull request comment or chat makes conversations more concrete, and lowers the barrier to entry for reading and following. Most wikis and markdown renderers add IDs to headings so you can link to a point in the document, for example [this rule](https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case) in the Ruby Style Guide on GitHub.
 
-### Conclusion
+## Conclusion
 
 Create a style guide for your ways of working, and encourage slow, thoughtful evolution over time. And don’t assume that what works well for your team is inherently the One True Way.
 

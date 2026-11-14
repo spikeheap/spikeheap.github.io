@@ -68,7 +68,7 @@ In the `Run > Run Configurations` configuration, add a JUnit run configuration s
 
 You can now run the tests (even Spock tests) just like normal!
 
-# Testable JavaScript
+## Testable JavaScript
 
 We'll create a sample JavaScript file to test in `src/main/js/littleFunction.js`, containing the following:
 
@@ -80,7 +80,7 @@ function addTogether(a, b, c){
 
 That code isn't likely to win any awards, but we can check that it works by writing a specification.
 
-## Writing tests
+### Writing tests
 
 Create a Groovy class named `LittleFunctionSpec.groovy` in `src/test/groovy/my/package/`, containing the following:
 
@@ -172,11 +172,11 @@ def "check addTogether behaves for #a, #b, #c"(){
 }
 ```
 
-## Running tests
+### Running tests
 
 Running the tests is as easy as `gradle check`, or pushing the `run` button in Eclipse. Doing the former, your test results will be output into an easy-to-read HTML file as well as JUnit XML.
 
-# Conclusion
+## Conclusion
 
 Using a few simple steps we've set up a Gradle project to run Spock tests over Rhino JavaScript, with the added bonus of being able to use Eclipse. 
 

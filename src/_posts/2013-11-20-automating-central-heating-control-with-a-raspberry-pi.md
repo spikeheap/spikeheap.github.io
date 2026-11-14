@@ -25,7 +25,7 @@ Of course once you've got control of the heating system and a connection to the 
 
 A couple of friends founded the amazing [OpenEnergyMonitor project](http://openenergymonitor.org/emon/) in North Wales, and Glyn's enthusiasm for this sort of thing is infectious. Once I've got a basic system up and running the next logical step is to collect usage data for the other parts of the house, and tie it all together with things like outside temperature and humidity. There's (almost) nothing I love more than stats, so this project will be like Christmas!
 
-# Why am I doing this? Why not just buy a Nest? 
+## Why am I doing this? Why not just buy a Nest? 
 
 Okay, I'm sure this project will end up being like my first foray into building a MythTV media server 8 years ago and will take more time and money than buying an off-the-shelf solution, but that's not my motivation. My primary reason for doing this is that there's something really cool (pun intended) about interacting with the real-world with software, and the (hopefully) satisfaction of hearing the heating click to life because of a piece of code I've written is pretty inspiring.
 
@@ -33,7 +33,7 @@ Secondly, information is king. I want to be able to get at everything later and 
 
 Finally, if I can complete this and package it into something that's useful enough for someone else to hack on, all the better. The Pi-powered thermostat interface problem seems to have been solved many times, but the software to sit on top of it seems less readily available.
 
-# Phase 1: hacking into the existing system
+## Phase 1: hacking into the existing system
 My background is in software engineering and networking, so because I see the electronics and physical side of this as the biggest challenge I'm tackling that first. Fortunately there's a wealth of information about this exact use-case on the Internet (if only I had internet at home!).
 
 The first thing I did was to open up the thermostat to find out what terminals were available. Mine has 4, including 1 earth and 1 live. I'll kno a bit more once my multimeter comes back from storage in a week or so.

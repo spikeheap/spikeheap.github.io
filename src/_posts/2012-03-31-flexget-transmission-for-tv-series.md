@@ -25,7 +25,7 @@ No problem (I thought), Comedy Central is available on Sky, which we joined arou
 
 
 
-# Pre-requisites
+## Pre-requisites
 
 
 
@@ -44,7 +44,7 @@ MediaTomb is a uPNP media server which can very easily watch the directories con
  
 
 
-# Configuring Flexget
+## Configuring Flexget
 
 
 
@@ -138,7 +138,7 @@ I would also recommend removing old episodes so they don’t just fill up your h
 	
 
 
-# Configuring Transmission
+## Configuring Transmission
 
 
 

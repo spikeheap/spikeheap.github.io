@@ -326,7 +326,7 @@ The following were useful to me, and may be useful to you:
 * Pi python wiring https://github.com/Gadgetoid/WiringPi2-Python
 * Ciseco slice of relay demo: https://github.com/CisecoPlc/B047-Slice-of-Relay
 
-#### NodeJS Raspberry Pi resources
+### NodeJS Raspberry Pi resources
 I initially wanted to use NodeJS, so I've left those links in just in case I come back to it later.
 
 * Setting up nodejs on Raspberry Pi http://blog.rueedlinger.ch/2013/03/raspberry-pi-and-nodejs-basic-setup/

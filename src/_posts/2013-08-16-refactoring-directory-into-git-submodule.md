@@ -53,7 +53,7 @@ PATH_TO_SUBMODULE = modules/rsnapshot
 ```
 
 
-# References
+## References
 
 1. http://git-scm.com/book/en/Git-Tools-Submodules
 2.  http://stackoverflow.com/questions/12514197/convert-a-git-folder-to-a-submodule-retrospectively

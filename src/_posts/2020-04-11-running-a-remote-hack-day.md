@@ -40,7 +40,7 @@ Around 1pm we rejoined the Zoom call and hung out for half an hour, chatting awa
 
 We’d planned to close up around 5pm, and came back together at 4:30 to show, tell and chat a bit more. Mike and I were so close to adding machine learning to the sentiment-bot (well, except for me having a .dev domain problem preventing any dependencies from downloading, and Mike not having ngrok set up). By 5:30 we’d been around the groups, chatted a bit more, and closed up to go our separate ways. I headed straight downstairs for a cocktail and a call with the family.
 
-### What worked?
+## What worked?
 
 - A communal group call worked well for a small number of people, but could quickly become unwieldy with larger numbers. We managed to avoid the webinar-style call with everyone except the presenter muted, and really wanted to highlight the social aspect of the event.
 
@@ -52,11 +52,11 @@ We’d planned to close up around 5pm, and came back together at 4:30 to show, t
 
 - It didn’t feel like work. Even though we were coding, it felt fun, sociable, and there was no pressure to deliver anything.
 
-### What didn’t work so well?
+## What didn’t work so well?
 
 - Distributed lunch orders. I forgot! It’s also quite nice to jump back into home life — I went to catch up with Nev and have a quick lunch, but felt I should be back to be part of the day. When you’re all on-site there isn’t that contention, but I’m not sure which way I’d want it to go.
 
-### What would I try next time?
+## What would I try next time?
 
 - Shorten the round-table ideas session first thing. We ended up talking about each idea fairly extensively, so I’d like to try keeping it to a 1–2 sentence summary of the idea, and then flesh the idea out in breakout groups so we can get started sooner.
 

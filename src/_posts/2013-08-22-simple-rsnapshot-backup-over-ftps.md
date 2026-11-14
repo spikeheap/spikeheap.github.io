@@ -17,7 +17,7 @@ I have tested this on a clean installation of Ubuntu 13.04, but let me know if a
 
 **Many of the commands within this tutorial must be executed as root. You can always just add "sudo" in front of it if you have problems.**
 
-# A simple FTP server for testing
+## A simple FTP server for testing
 
 While not technically part of the setup, I didn't have ready access to an FTP server to test these notes. Installing an FTP server for testing is as simple as:
 
@@ -29,7 +29,7 @@ Out of the box, vsftpd serves your home directory and can be connected to using 
 
 **Installing an FTP server with access to your home directory is a pretty bad idea without [configuring it properly](https://help.ubuntu.com/community/vsftpd#TLS.2BAC8-SSL.2BAC8-FTPS)**
 
-# Users and groups
+## Users and groups
 
 We don't want the backup to run as root because it's always a good idea to restrict things as much as possible, so let's create a backup user and group:
 
@@ -38,7 +38,7 @@ addgroup backup
 adduser rsnapshot --ingroup backup --disabled-password
 ```
 
-# Mounting an FTP folder locally
+## Mounting an FTP folder locally
 
 [CurlFTPfs](http://curlftpfs.sourceforge.net/) presents the FTP server as a local directory using FUSE. It's trivial to install it:
 
@@ -81,7 +81,7 @@ fusermount -u /media/remote_server
 
 Now you have the remote folder mounted locally we can move on to the backup solution.
 
-# Rsnapshot configuration
+## Rsnapshot configuration
 Right, we'll need to install Rsnapshot first.
 
 ```bash
@@ -213,7 +213,7 @@ chmod 755 /var/rsnapshot/doftpsync.sh
 ```
 
 And finally run the script to test it. Check the contents of /var/rsnapshot/private/snapshots to check it worked as expected.
-# Running regularly with cron
+## Running regularly with cron
 
 As the backup user, let's execute the Rsnapshot command at the relevant intervals using cron. To edit the user's crontab just use:
 
@@ -239,7 +239,7 @@ And add in the following commands (feel free to change the intervals to meet you
 ```
 
 
-# Mounting a read-only backup for recovery (optional)
+## Mounting a read-only backup for recovery (optional)
 
 Having a read-only copy of your backup is a great idea. Having one that even root can't write to is even better. How much less stressful is it when you never have to think "damn, I copied that the wrong way and overwrote the backup". Fortunately it's easy to do with NFS (this is largely adapted and taken from the [Rsnapshot HOWTO](http://www.rsnapshot.org/howto/1.2/rsnapshot-HOWTO.en.pdf)). 
 
@@ -276,7 +276,7 @@ mount /var/rsnapshot/readonly/
 
 And of course, to test! Try creating a file inside the */var/rsnapshot/readonly/* directory and watch it fail.
 
-# Summary
+## Summary
 
 You should now have a fully fledged enterprise-grade backup system making a backup of your hosted data, but there's no time to rest! Encrypting your external drive is a great idea, just in case it gets stolen. 
 

@@ -26,7 +26,7 @@ I may be painting a bleak picture, but over the past few weeks a couple of thing
 1. Delegating as much as possible, and anything that doesn't get me closer to my goal.
 2. Working through tiny tasks in time that I'd usually just lose.
 
-#### Delegate it all
+## Delegate it all
 
 How many things do you do because you have to, but which don't directly contribute to your happiness or professional development? Cleaning, laundry, DIY, fixing the vacuum cleaner. Assuming you live in any reasonably built up area, there's probably a host of companies specialising in these tasks, waiting to take them off your plate. How much is that 30-60 minutes a day worth to you? Could you swap out these tasks for paid employment for the same amount of time and end up *better off*, or swap them out for time spent in the countryside or doing something you enjoy?
 
@@ -34,7 +34,7 @@ The problem is that sounds very extravagant, right? I can't imagine paying someo
 
 Second-guessing each thing in my to-do list has been quite helpful, even though it's hard work for me. Do I really need to learn how to repair wetsuits, research and purchase the best materials for it, then spend a couple of hours painstakingly gluing and stitching it, or could I just send it off to [a wetsuit repair company](http://www.bodylinewetsuitrepairs.co.uk/) (who'll certainly do a much better job) for £15 or so? 
 
-#### Making dead time work
+## Making dead time work
 
 I used to spend Saturday mornings working through a list of small, 5-minute jobs I'd built up during the week. Then I realised how many times I pulled out my phone and read BBC News for 5-10 minutes: on the bus, waiting for a meeting. I'd got to a point where anything less than a clear hour free and it didn't seem worth starting something. 
 
@@ -42,6 +42,6 @@ Creating a new to-do list, containing only things that can be done in 5-30 minut
 
 These have helped me reclaim my Saturday mornings, and generally feel like I'm getting more done.
 
-#### The big caveat
+## The big caveat
 
 These two approaches have helped me feel like I'm making better progress. If you've found this while searching for how to get more done then hopefully it'll help you too, but it comes with a caveat: __there's only a finite amount of time available to each of us__. Perhaps a better, third tip is to learn to say 'no', and to try not to take on too much, rather than trying to fit more in. Slowing things down can help you achieve more in the long run. I'm sure there's a fable about that.

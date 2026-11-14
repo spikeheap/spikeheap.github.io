@@ -55,7 +55,7 @@ One limitation of johnny-five is that you need a connection to a laptop to run t
 
 ![Tessel board](/images/2014-08-27_07.jpg)
 
-### Pinoccio and the Dension WiRC
+## Pinoccio and the Dension WiRC
 
 [Chris](https://twitter.com/intent/follow?screen_name=paradigm_tee) and I wanted to hack on the JSOxford RC cars, a trio of [Dension WiRC](http://www.dension.com/product/wirc-wifi-rc-receiver) cars which can be controlled using JavaScript over WiFi and have a webcam onboard. The is a [node library](https://github.com/jsoxford/node-wirc) from a previous hack-day to communicate with the car.
 
@@ -75,7 +75,7 @@ So at the moment I'm not sure how you'd go about streaming the live status of an
 
 It's a shame we only had the afternoon to play around with these devices, and I'll be picking up a pair soon to play with over winter.
 
-### Summary
+## Summary
 
 ![Group hacking on hardware and laptops](/images/2014-08-27_15.jpg)
 

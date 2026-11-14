@@ -75,7 +75,7 @@ def memberCount = returnVal.results.list.size()
 println "There are ${memberCount} members initially"
 ```
 
-### The full script
+## The full script
 
 I've abstracted the SOAP call away into its own method and then created a method for each SOAP call to give me a quick and easy interface to demo the SOAP calls from the console. Feel free to copy and adapt to your own needs.
 

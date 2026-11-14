@@ -17,11 +17,11 @@ In our case, we’d gone as far as to create an issue to track adding a user con
 
 It took a couple of hours to change this from something only a developer could do to a task that can be resolved by any member of the team. Not only did this empower the support team, it also reduced the amount of urgent interruptions the dev team was getting.
 
-#### Value non-developers
+## Value non-developers
 
 Developer time often takes precedence because it’s so easily tied to the delivery of new features. When there’s a push for features and pressure from investors it’s easy to sideline other functions of the business. Sales and Support often benefit from being able to get insights into the system, flip check-boxes, and set up new accounts. Spending time to make their lives easier reaps dividends (if you’ll excuse the pun) not just in their productivity but also in engagement with the developers. Small businesses really need to fight to keep everyone on the same side, and it’s easy for boundaries to emerge when people feel hard-done-by.
 
-#### What do you tackle?
+## What do you tackle?
 
 Good candidates for enhancement fall into two categories:
 
@@ -40,13 +40,13 @@ The development team can weigh in on the complexity of the fixes. Value isn’t 
 
 ![XKCD comic: how long can you work on making a routine task more efficient?](/images/2018-07-31_Invest-in-internal-tooling_xkcd.png)
 
-#### Quick fix ideas
+## Quick fix ideas
 
 One of the most common quick-fixes is to add an admin dashboard, such as [RailsAdmin](https://github.com/sferik/rails_admin). With very little custom code, your non-technical internal users can add, edit, and maybe delete records from your application. This (obviously) requires a degree of caution, but resolves a host of tiny support requests.
 
 It’s also very common to see the business requesting simple reports from the developers, e.g. the number of registrations by month for the past quarter. Maybe these rear their heads for investor meetings or quarterly all-hands, but they always point to a more subtle problem — the business lacks Business Intelligence tools. Spending half a day installing [Metabase](https://www.metabase.com) may not only prevent these requests coming through, but also empower other parts of the business to investigate your data and start making more informed decisions. One of our clients still raves about the impact Metabase had on the whole business over a year and a half later!
 
-#### So, when do you enhance?
+## So, when do you enhance?
 
 “Soon, when we have a bit more time” is a popular response. The future always feels like it’ll be a little less busy, a little more structured. The truth is that future never comes; once the imminent hurdle is overcome the next challenge comes into view.
 

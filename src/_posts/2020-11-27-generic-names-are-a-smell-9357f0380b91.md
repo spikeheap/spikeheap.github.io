@@ -19,7 +19,7 @@ One reason for this is that software development exists in an abstract world, wh
 
 These intentions are noble, but I think this leads us to prematurely over-generalise. When we do it too soon, it’s all too easy to make poor design decisions because the ambiguity is hidden behind names which mean little to us.
 
-#### Whose backend are we talking about?
+## Whose backend are we talking about?
 
 This is most obvious when we’re talking about architectural components. I want to single out “Backend” and “Frontend” as pervasive examples of overly generic names. If you see these in the wild, beware! If they come up in conversation, there’s a high likelihood that what people think these terms mean will differ within the group.
 
@@ -27,7 +27,7 @@ As an example, a recent Hacker News [article](https://kartick.substack.com/p/mak
 
 I know what you’re thinking: “frontend” isn’t ambiguous, and it doesn’t mean what you just wrote. But this is a real example. I know real live people, good engineers, who refer to a Node app as a “frontend” and at the same time have React components in the browser making API calls to that app. This might sound crazy, but it’s a simple and straightforward evolution, where the names “backend” and “frontend” were used on day one, and stuck.
 
-#### Great, but what does “better” look like?
+## Great, but what does “better” look like?
 
 Figuring out what’s better is hard. Naming is one of the hardest problems in software engineering. Rather than offering a prescription for naming that can’t fit everyone’s needs, instead there’s two questions I ask when I see any name:
 
@@ -36,7 +36,7 @@ Figuring out what’s better is hard. Naming is one of the hardest problems in s
 
 With these two tests, we can validate potential names. Sometimes all our options will fail one or both of these tests, so we’ve got the option to pick the least-bad one, or rethink the problem entirely. If we can’t find names that pass these tests I treat that as a smell. Are we trying to wedge something into an abstraction that doesn’t fit? As with all smells, it’s not definitive proof that you’re doing something wrong. It’s just a hint, a thread to pull.
 
-#### A practical example
+## A practical example
 
 Let’s assume we have a headless content management system (CMS), with a lightweight application which uses the CMS content (among other things) to serve HTML, CSS, etc. to the browser. We _could_ call the lightweight application the “frontend”, and the CMS the “backend”, but this doesn’t convey any meaning to a new engineer. These names fail the first test. At first glance it _looks_ like the names convey some standard meaning, but as we’ve already covered, they don’t even tell us how it works or where it might live in our stack — a backend could be an API or a something serving HTML. So, these names fail the second test as well.
 
@@ -51,7 +51,7 @@ A few options come to mind for the CMS component (there are myriad more, and tha
 
 Even in this simple example, a whole bunch of questions come up. You know you’re on the right path when those questions are specific to your teams, organisation, and users.
 
-#### Summing up
+## Summing up
 
 Next time you’re naming a service, application, or component in your code, validate them against these two tests.
 

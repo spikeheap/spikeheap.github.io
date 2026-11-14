@@ -38,7 +38,7 @@ Step three closes the loop on this suprisingly vicious circle. A few days prior 
 
 I was a couple of minutes too late to prevent the disaster. Locking myself out of the puppetmaster was a little embarrassing, but did give me the opportunity to build the puppetmaster from scratch using Puppet. Oh how a technology can redeem itself.
 
-##### Rebuilding the puppetmaster from scratch
+## Rebuilding the puppetmaster from scratch
 
 Building the puppetmaster from only the /etc/puppet configuration is actually suprisingly easy. After pushing a change to the puppet repository which would prevent the problem above from being deployed to the new instance, the full steps to provision a new VM and go from zero to a full installation were:
 
@@ -49,7 +49,7 @@ Building the puppetmaster from only the /etc/puppet configuration is actually su
 * Use *puppet apply* on *site.pp*. I expected this to fail (and it did raise a couple of errors) but it did a significant enough job to then allow puppetmaster to start and a *puppet agent -t* to be run. <code>bash puppet apply /etc/puppet/manifests/site.pp </code>
 * Make a cup of tea and bask in the reflected glory. 
 
-##### Lessons learned 
+## Lessons learned 
 
 So the lessons to be learned from this exercise are many and obvious:
 

@@ -15,10 +15,10 @@ __Update 18/12/2013__ For those who don't want to re-clone their project, I've a
 
 There are many ways to achieve the same goal, and we could arguably have retained the same repository, however it's a nice opportunity to clear out the 300Mb which magically worked its way into the repository at some point and generally streamline our code.
 
-##### A word of warning
+## A word of warning
 The following will go through your entire tree and remove all references to the files you're removing, rewriting commits where necessary. As a result your local repository will likely wildly differ from the remote repository, so you'll need to coordinate this with your fellow team members. If your repository is already in the wild is there much point in causing this much pain? You can probably just get away with removing it from your tags and branches, which is far less invasive.
 
-##### A second word of warning
+## A second word of warning
 This is a destructive process that rewrites history. __Make sure you've got a backup__ before attempting this, just in case things go pear-shaped.
 
 __Update 18/12/2013__ GitHub's documentation is pretty thorough, so it wasn't surprising to find [a page on removing sensitive data](https://help.github.com/articles/remove-sensitive-data). I've updated this post to reflect some of the suggestions in that page.

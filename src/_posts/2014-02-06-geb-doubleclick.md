@@ -64,7 +64,7 @@ class passingSpec extends GebReportingSpec {
 
 Great, on to the next test!
 
-### Update (7/2/2014)
+## Update (7/2/2014)
 
 Here's another example, this time using interactions to do a context-click (right-click to you an me!):
 
