@@ -17,7 +17,7 @@ test.describe('dark mode toggle', () => {
     const bg = await page.evaluate(() =>
       getComputedStyle(document.body).getPropertyValue('background-color').trim()
     );
-    expect(bg).toBe('rgb(28, 26, 24)'); // #1c1a18
+    expect(bg).toBe('rgb(16, 15, 15)'); // #100F0F
 
     await context.close();
   });
@@ -62,6 +62,6 @@ test.describe('dark mode toggle', () => {
     const bg = await page.evaluate(() =>
       getComputedStyle(document.body).getPropertyValue('background-color').trim()
     );
-    expect(bg).toBe('rgb(28, 26, 24)');
+    expect(bg).toBe('rgb(16, 15, 15)');
   });
 });
