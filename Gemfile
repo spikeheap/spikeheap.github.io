@@ -6,4 +6,4 @@ git_source(:github) { |repo| "https://github.com/#{repo}" }
 gem "bridgetown", "~> 2.0"
 
 # Bridgetown's local dev server.
-gem "puma", "~> 6.0"
+gem "puma", "~> 8.0"
