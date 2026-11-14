@@ -50,11 +50,11 @@
   --color-bg:        #faf6f0;  /* warm off-white */
   --color-bg-muted:  #f0eae3;  /* tinted bg for code, callouts */
   --color-bg-soft:   #f5efe7;  /* between bg and bg-muted */
-  --color-text:      #1f1d1b;  /* 14.6:1 on bg — AAA */
-  --color-muted:     #6b6863;  /* 5.5:1  on bg — AA */
+  --color-text:      #1f1d1b;  /* 15.6:1 on bg — AAA */
+  --color-muted:     #6b6863;  /* 5.2:1 on bg, 4.6:1 on bg-muted — AA */
   --color-faint:     #b3aca3;  /* decorative borders only — not for text */
-  --color-accent:    #b45309;  /* burnt amber, 5.7:1 on bg — AA */
-  --color-accent-hover: #92400e; /* darker, 7.6:1 */
+  --color-accent:    #b45309;  /* burnt amber, 4.7:1 on bg — AA. Fails on bg-soft and bg-muted */
+  --color-accent-hover: #92400e; /* darker, 6.6:1 on bg, 5.9:1 on bg-muted */
   --color-border:    #e6dfd4;
   --color-selection: #f6d8a4;
 }
@@ -63,10 +63,10 @@
   --color-bg:        #1c1a18;  /* warm charcoal */
   --color-bg-muted:  #2a2724;
   --color-bg-soft:   #232120;
-  --color-text:      #ede6dc;  /* 14.1:1 on bg — AAA */
+  --color-text:      #ede6dc;  /* 14.0:1 on bg — AAA */
   --color-muted:     #98908a;  /* 5.5:1  on bg — AA */
   --color-faint:     #4a443f;
-  --color-accent:    #fb923c;  /* warm orange, 9.1:1 on bg — AAA */
+  --color-accent:    #fb923c;  /* warm orange, 7.7:1 on bg — AAA */
   --color-accent-hover: #fdba74; /* lighter still */
   --color-border:    #2e2a26;
   --color-selection: #5a3c1e;
@@ -702,7 +702,8 @@ figcaption {
   text-decoration: none;
   font-size: var(--text-sm);
 }
-.tag-list a:hover { color: var(--color-accent); }
+/* Accent on bg-muted is 4.2:1 in light mode, so use the darker shade. */
+.tag-list a:hover { color: var(--color-accent-hover); }
 
 /* ============================================================
    Utilities
