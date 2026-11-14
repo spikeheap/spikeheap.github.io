@@ -5,9 +5,10 @@ layout: default
   <header>
     <h1 class="p-name"><%= resource.data.title %></h1>
     <p class="post-meta">
-      <a class="u-url" rel="bookmark" href="<%= resource.relative_url %>">
+      <%# The permalink stays as microformats metadata without a visible link. %>
+      <data class="u-url" value="<%= site.metadata.url %><%= resource.relative_url %>">
         <time class="dt-published" datetime="<%= resource.date.iso8601 %>"><%= ordinal_date(resource.date) %></time>
-      </a>
+      </data>
     </p>
   </header>
   <div class="e-content">
