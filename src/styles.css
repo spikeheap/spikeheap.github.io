@@ -419,10 +419,8 @@ figcaption {
   font-style: italic;
 }
 
-/* Home intro — avatar + greeting + lede + cadence.
-   Lede carries the positioning, so it's the visual anchor. Greeting is a
-   quiet label above; cadence is metadata below. Avatar shrunk so the eye
-   lands on the text first. */
+/* Home intro: avatar beside a greeting and two lines of text, all in one
+   text style. */
 .home-intro {
   display: flex;
   align-items: center;
@@ -446,18 +444,15 @@ figcaption {
   letter-spacing: 0;
   margin-block-end: var(--space-2);
 }
-.home-intro__lede {
+.home-intro__lede,
+.home-intro__cadence {
   font-size: var(--text-lg);
   line-height: 1.45;
   color: var(--color-text);
   text-wrap: pretty;
   margin: 0 0 var(--space-3);
 }
-.home-intro__cadence {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  margin: 0;
-}
+.home-intro__cadence { margin: 0; }
 @media (max-width: 520px) {
   .home-intro {
     flex-direction: column;
