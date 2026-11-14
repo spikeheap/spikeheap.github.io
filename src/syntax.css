@@ -1,351 +1,92 @@
-/* Syntax highlighting — custom palette tuned for our warm-cream / warm-charcoal
- * backgrounds. CB-safe (no red/green pairings; the only desaturated red is the
- * error token, which is also italic + wavy-underlined so colour isn't the only
- * cue). Diff additions/deletions use different chromas AND have +/- glyphs
- * already in the source.
- *
- * Contrast targets, against `--color-bg-muted`:
- *   light (#f0eae3): every token colour ≥ 4.5:1 (AA)
- *   dark  (#2a2724): every token colour ≥ 4.5:1 (AA)
- *
- * Token classes mapped: comments (.c.*), keywords (.k.*), strings (.s.*),
- * names (.n.*, .nb/.nf/.nc/.nd/.nt/.na/.nv), numbers (.m.*), operators (.o/.ow),
- * generic diff (.gi/.gd/.gh/.gs/.ge), errors (.err).
+/* Syntax highlighting with Flexoki's standard palette (600 accents on light,
+ * 400 on dark). Only the accents that reach 4.5:1 on the code background
+ * (--color-bg-muted) are used, so the two themes map tokens to different hues.
+ * Errors and diffs never rely on colour alone: errors are italic with a wavy
+ * underline, and diff lines keep their +/- glyphs.
  */
 
-/* ============================================================
-   Light — applies under [data-theme="light"] and the no-preference root.
-   ============================================================ */
-
-[data-theme="light"] .highlight,
-:root:not([data-theme]) .highlight {
-  color: #2a2520;
+:root,
+[data-theme="light"] {
+  --syn-text:     #100F0F; /* tx */
+  --syn-comment:  #575653; /* base-700, 6.4:1 */
+  --syn-keyword:  #205EA6; /* blue-600, 5.7:1 */
+  --syn-string:   #AF3029; /* red-600, 5.6:1 */
+  --syn-function: #A02F6F; /* magenta-600, 5.9:1 */
+  --syn-variable: #100F0F; /* tx */
+  --syn-number:   #5E409D; /* purple-600, 6.8:1 */
+  --syn-inserted: #205EA6; /* blue-600 */
+  --syn-deleted:  #AF3029; /* red-600 */
+  --syn-error:    #AF3029; /* red-600 */
 }
 
-/* Comments — warm brown-grey, italic */
-[data-theme="light"] .highlight .c,
-[data-theme="light"] .highlight .c1,
-[data-theme="light"] .highlight .cm,
-[data-theme="light"] .highlight .ch,
-[data-theme="light"] .highlight .cd,
-[data-theme="light"] .highlight .cs,
-[data-theme="light"] .highlight .cpf,
-[data-theme="light"] .highlight .cp,
-:root:not([data-theme]) .highlight .c,
-:root:not([data-theme]) .highlight .c1,
-:root:not([data-theme]) .highlight .cm,
-:root:not([data-theme]) .highlight .ch,
-:root:not([data-theme]) .highlight .cd,
-:root:not([data-theme]) .highlight .cs,
-:root:not([data-theme]) .highlight .cpf,
-:root:not([data-theme]) .highlight .cp {
-  color: #6e5f4e;
-  font-style: italic;
+[data-theme="dark"] {
+  --syn-text:     #CECDC3; /* tx */
+  --syn-comment:  #878580; /* tx-2, 4.7:1 */
+  --syn-keyword:  #879A39; /* green-400, 5.5:1 */
+  --syn-string:   #3AA99F; /* cyan-400, 6.0:1 */
+  --syn-function: #DA702C; /* orange-400, 5.2:1 */
+  --syn-variable: #CE5D97; /* magenta-400, 4.6:1 */
+  --syn-number:   #8B7EC8; /* purple-400, 4.9:1 */
+  --syn-inserted: #3AA99F; /* cyan-400 */
+  --syn-deleted:  #DA702C; /* orange-400 */
+  --syn-error:    #DA702C; /* orange-400 */
 }
 
-/* Keywords + HTML/XML tags — deep blue, bold */
-[data-theme="light"] .highlight .k,
-[data-theme="light"] .highlight .kc,
-[data-theme="light"] .highlight .kd,
-[data-theme="light"] .highlight .kn,
-[data-theme="light"] .highlight .kp,
-[data-theme="light"] .highlight .kr,
-[data-theme="light"] .highlight .kt,
-[data-theme="light"] .highlight .kv,
-[data-theme="light"] .highlight .nt,
-:root:not([data-theme]) .highlight .k,
-:root:not([data-theme]) .highlight .kc,
-:root:not([data-theme]) .highlight .kd,
-:root:not([data-theme]) .highlight .kn,
-:root:not([data-theme]) .highlight .kp,
-:root:not([data-theme]) .highlight .kr,
-:root:not([data-theme]) .highlight .kt,
-:root:not([data-theme]) .highlight .kv,
-:root:not([data-theme]) .highlight .nt {
-  color: #1f3f6b;
-  font-weight: 600;
-}
-
-/* Strings — dark olive */
-[data-theme="light"] .highlight .s,
-[data-theme="light"] .highlight .s1,
-[data-theme="light"] .highlight .s2,
-[data-theme="light"] .highlight .sb,
-[data-theme="light"] .highlight .sc,
-[data-theme="light"] .highlight .sd,
-[data-theme="light"] .highlight .sh,
-[data-theme="light"] .highlight .si,
-[data-theme="light"] .highlight .sr,
-[data-theme="light"] .highlight .ss,
-[data-theme="light"] .highlight .sx,
-[data-theme="light"] .highlight .dl,
-:root:not([data-theme]) .highlight .s,
-:root:not([data-theme]) .highlight .s1,
-:root:not([data-theme]) .highlight .s2,
-:root:not([data-theme]) .highlight .sb,
-:root:not([data-theme]) .highlight .sc,
-:root:not([data-theme]) .highlight .sd,
-:root:not([data-theme]) .highlight .sh,
-:root:not([data-theme]) .highlight .si,
-:root:not([data-theme]) .highlight .sr,
-:root:not([data-theme]) .highlight .ss,
-:root:not([data-theme]) .highlight .sx,
-:root:not([data-theme]) .highlight .dl {
-  color: #4d5a26;
-}
-
-/* Built-ins, functions, classes, decorators — dark warm orange */
-[data-theme="light"] .highlight .nb,
-[data-theme="light"] .highlight .nf,
-[data-theme="light"] .highlight .nc,
-[data-theme="light"] .highlight .nd,
-[data-theme="light"] .highlight .nn,
-[data-theme="light"] .highlight .fm,
-:root:not([data-theme]) .highlight .nb,
-:root:not([data-theme]) .highlight .nf,
-:root:not([data-theme]) .highlight .nc,
-:root:not([data-theme]) .highlight .nd,
-:root:not([data-theme]) .highlight .nn,
-:root:not([data-theme]) .highlight .fm {
-  color: #92400e;
-}
-
-/* Attributes / variables */
-[data-theme="light"] .highlight .na,
-[data-theme="light"] .highlight .nv,
-[data-theme="light"] .highlight .vc,
-[data-theme="light"] .highlight .vg,
-[data-theme="light"] .highlight .vi,
-:root:not([data-theme]) .highlight .na,
-:root:not([data-theme]) .highlight .nv,
-:root:not([data-theme]) .highlight .vc,
-:root:not([data-theme]) .highlight .vg,
-:root:not([data-theme]) .highlight .vi {
-  color: #7a4f1f;
-}
-
-/* Numbers — muted purple */
-[data-theme="light"] .highlight .m,
-[data-theme="light"] .highlight .mb,
-[data-theme="light"] .highlight .mf,
-[data-theme="light"] .highlight .mh,
-[data-theme="light"] .highlight .mi,
-[data-theme="light"] .highlight .mo,
-[data-theme="light"] .highlight .il,
-:root:not([data-theme]) .highlight .m,
-:root:not([data-theme]) .highlight .mb,
-:root:not([data-theme]) .highlight .mf,
-:root:not([data-theme]) .highlight .mh,
-:root:not([data-theme]) .highlight .mi,
-:root:not([data-theme]) .highlight .mo,
-:root:not([data-theme]) .highlight .il {
-  color: #5b3f8c;
-}
-
-/* Operators + punctuation — body colour */
-[data-theme="light"] .highlight .o,
-[data-theme="light"] .highlight .ow,
-[data-theme="light"] .highlight .p,
-[data-theme="light"] .highlight .pi,
-:root:not([data-theme]) .highlight .o,
-:root:not([data-theme]) .highlight .ow,
-:root:not([data-theme]) .highlight .p,
-:root:not([data-theme]) .highlight .pi {
-  color: #2a2520;
-}
-
-/* Diff additions / deletions — colour + background tint AND +/- glyphs */
-[data-theme="light"] .highlight .gi,
-:root:not([data-theme]) .highlight .gi {
-  color: #2f5a1f;
-  background: #e3efd6;
-}
-[data-theme="light"] .highlight .gd,
-:root:not([data-theme]) .highlight .gd {
-  color: #7a2a1f;
-  background: #f3dcd4;
-}
-[data-theme="light"] .highlight .gh,
-[data-theme="light"] .highlight .gs,
-:root:not([data-theme]) .highlight .gh,
-:root:not([data-theme]) .highlight .gs {
-  font-weight: 600;
-}
-[data-theme="light"] .highlight .ge,
-[data-theme="light"] .highlight .ges,
-:root:not([data-theme]) .highlight .ge,
-:root:not([data-theme]) .highlight .ges {
-  font-style: italic;
-}
-
-/* Errors — italic + wavy underline so colour isn't the sole signal */
-[data-theme="light"] .highlight .err,
-:root:not([data-theme]) .highlight .err {
-  color: #7a2a1f;
-  font-style: italic;
-  text-decoration: underline wavy;
-}
-
-/* ============================================================
-   Dark — under [data-theme="dark"] and prefers-color-scheme: dark.
-   ============================================================ */
-
-[data-theme="dark"] .highlight { color: #ded6c8; }
-[data-theme="dark"] .highlight .c,
-[data-theme="dark"] .highlight .c1,
-[data-theme="dark"] .highlight .cm,
-[data-theme="dark"] .highlight .ch,
-[data-theme="dark"] .highlight .cd,
-[data-theme="dark"] .highlight .cs,
-[data-theme="dark"] .highlight .cpf,
-[data-theme="dark"] .highlight .cp {
-  color: #a08d75;
-  font-style: italic;
-}
-[data-theme="dark"] .highlight .k,
-[data-theme="dark"] .highlight .kc,
-[data-theme="dark"] .highlight .kd,
-[data-theme="dark"] .highlight .kn,
-[data-theme="dark"] .highlight .kp,
-[data-theme="dark"] .highlight .kr,
-[data-theme="dark"] .highlight .kt,
-[data-theme="dark"] .highlight .kv,
-[data-theme="dark"] .highlight .nt {
-  color: #82b5d6;
-  font-weight: 600;
-}
-[data-theme="dark"] .highlight .s,
-[data-theme="dark"] .highlight .s1,
-[data-theme="dark"] .highlight .s2,
-[data-theme="dark"] .highlight .sb,
-[data-theme="dark"] .highlight .sc,
-[data-theme="dark"] .highlight .sd,
-[data-theme="dark"] .highlight .sh,
-[data-theme="dark"] .highlight .si,
-[data-theme="dark"] .highlight .sr,
-[data-theme="dark"] .highlight .ss,
-[data-theme="dark"] .highlight .sx,
-[data-theme="dark"] .highlight .dl {
-  color: #b8c97a;
-}
-[data-theme="dark"] .highlight .nb,
-[data-theme="dark"] .highlight .nf,
-[data-theme="dark"] .highlight .nc,
-[data-theme="dark"] .highlight .nd,
-[data-theme="dark"] .highlight .nn,
-[data-theme="dark"] .highlight .fm {
-  color: #fbbf83;
-}
-[data-theme="dark"] .highlight .na,
-[data-theme="dark"] .highlight .nv,
-[data-theme="dark"] .highlight .vc,
-[data-theme="dark"] .highlight .vg,
-[data-theme="dark"] .highlight .vi {
-  color: #d4a574;
-}
-[data-theme="dark"] .highlight .m,
-[data-theme="dark"] .highlight .mb,
-[data-theme="dark"] .highlight .mf,
-[data-theme="dark"] .highlight .mh,
-[data-theme="dark"] .highlight .mi,
-[data-theme="dark"] .highlight .mo,
-[data-theme="dark"] .highlight .il {
-  color: #c4a8e0;
-}
-[data-theme="dark"] .highlight .o,
-[data-theme="dark"] .highlight .ow,
-[data-theme="dark"] .highlight .p,
-[data-theme="dark"] .highlight .pi {
-  color: #ded6c8;
-}
-[data-theme="dark"] .highlight .gi { color: #a8d088; background: #2a3a22; }
-[data-theme="dark"] .highlight .gd { color: #e3a098; background: #3a2622; }
-[data-theme="dark"] .highlight .gh,
-[data-theme="dark"] .highlight .gs { font-weight: 600; }
-[data-theme="dark"] .highlight .ge,
-[data-theme="dark"] .highlight .ges { font-style: italic; }
-[data-theme="dark"] .highlight .err {
-  color: #e3a098;
-  font-style: italic;
-  text-decoration: underline wavy;
-}
-
-/* No-preference root + OS prefers dark */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .highlight { color: #ded6c8; }
-  :root:not([data-theme]) .highlight .c,
-  :root:not([data-theme]) .highlight .c1,
-  :root:not([data-theme]) .highlight .cm,
-  :root:not([data-theme]) .highlight .ch,
-  :root:not([data-theme]) .highlight .cd,
-  :root:not([data-theme]) .highlight .cs,
-  :root:not([data-theme]) .highlight .cpf,
-  :root:not([data-theme]) .highlight .cp {
-    color: #a08d75;
-    font-style: italic;
-  }
-  :root:not([data-theme]) .highlight .k,
-  :root:not([data-theme]) .highlight .kc,
-  :root:not([data-theme]) .highlight .kd,
-  :root:not([data-theme]) .highlight .kn,
-  :root:not([data-theme]) .highlight .kp,
-  :root:not([data-theme]) .highlight .kr,
-  :root:not([data-theme]) .highlight .kt,
-  :root:not([data-theme]) .highlight .kv,
-  :root:not([data-theme]) .highlight .nt {
-    color: #82b5d6;
-    font-weight: 600;
-  }
-  :root:not([data-theme]) .highlight .s,
-  :root:not([data-theme]) .highlight .s1,
-  :root:not([data-theme]) .highlight .s2,
-  :root:not([data-theme]) .highlight .sb,
-  :root:not([data-theme]) .highlight .sc,
-  :root:not([data-theme]) .highlight .sd,
-  :root:not([data-theme]) .highlight .sh,
-  :root:not([data-theme]) .highlight .si,
-  :root:not([data-theme]) .highlight .sr,
-  :root:not([data-theme]) .highlight .ss,
-  :root:not([data-theme]) .highlight .sx,
-  :root:not([data-theme]) .highlight .dl {
-    color: #b8c97a;
-  }
-  :root:not([data-theme]) .highlight .nb,
-  :root:not([data-theme]) .highlight .nf,
-  :root:not([data-theme]) .highlight .nc,
-  :root:not([data-theme]) .highlight .nd,
-  :root:not([data-theme]) .highlight .nn,
-  :root:not([data-theme]) .highlight .fm {
-    color: #fbbf83;
-  }
-  :root:not([data-theme]) .highlight .na,
-  :root:not([data-theme]) .highlight .nv,
-  :root:not([data-theme]) .highlight .vc,
-  :root:not([data-theme]) .highlight .vg,
-  :root:not([data-theme]) .highlight .vi {
-    color: #d4a574;
-  }
-  :root:not([data-theme]) .highlight .m,
-  :root:not([data-theme]) .highlight .mb,
-  :root:not([data-theme]) .highlight .mf,
-  :root:not([data-theme]) .highlight .mh,
-  :root:not([data-theme]) .highlight .mi,
-  :root:not([data-theme]) .highlight .mo,
-  :root:not([data-theme]) .highlight .il {
-    color: #c4a8e0;
-  }
-  :root:not([data-theme]) .highlight .o,
-  :root:not([data-theme]) .highlight .ow,
-  :root:not([data-theme]) .highlight .p,
-  :root:not([data-theme]) .highlight .pi {
-    color: #ded6c8;
-  }
-  :root:not([data-theme]) .highlight .gi { color: #a8d088; background: #2a3a22; }
-  :root:not([data-theme]) .highlight .gd { color: #e3a098; background: #3a2622; }
-  :root:not([data-theme]) .highlight .err {
-    color: #e3a098;
-    font-style: italic;
-    text-decoration: underline wavy;
+  :root:not([data-theme]) {
+    --syn-text:     #CECDC3;
+    --syn-comment:  #878580;
+    --syn-keyword:  #879A39;
+    --syn-string:   #3AA99F;
+    --syn-function: #DA702C;
+    --syn-variable: #CE5D97;
+    --syn-number:   #8B7EC8;
+    --syn-inserted: #3AA99F;
+    --syn-deleted:  #DA702C;
+    --syn-error:    #DA702C;
   }
 }
 
+.highlight { color: var(--syn-text); }
+
+/* Comments */
+.highlight :is(.c, .c1, .cm, .ch, .cd, .cs, .cpf, .cp) {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+
+/* Keywords and HTML/XML tags */
+.highlight :is(.k, .kc, .kd, .kn, .kp, .kr, .kt, .kv, .nt) {
+  color: var(--syn-keyword);
+  font-weight: 600;
+}
+
+/* Strings */
+.highlight :is(.s, .s1, .s2, .sb, .sc, .sd, .sh, .si, .sr, .ss, .sx, .dl) {
+  color: var(--syn-string);
+}
+
+/* Built-ins, functions, classes, decorators */
+.highlight :is(.nb, .nf, .nc, .nd, .nn, .fm) { color: var(--syn-function); }
+
+/* Attributes and variables */
+.highlight :is(.na, .nv, .vc, .vg, .vi) { color: var(--syn-variable); }
+
+/* Numbers */
+.highlight :is(.m, .mb, .mf, .mh, .mi, .mo, .il) { color: var(--syn-number); }
+
+/* Operators and punctuation */
+.highlight :is(.o, .ow, .p, .pi) { color: var(--syn-text); }
+
+/* Diffs */
+.highlight .gi { color: var(--syn-inserted); }
+.highlight .gd { color: var(--syn-deleted); }
+.highlight :is(.gh, .gs) { font-weight: 600; }
+.highlight :is(.ge, .ges) { font-style: italic; }
+
+/* Errors */
+.highlight .err {
+  color: var(--syn-error);
+  font-style: italic;
+  text-decoration: underline wavy;
+}

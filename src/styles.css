@@ -41,29 +41,30 @@
   --radius-sm: 4px;
   --radius-md: 8px;
 
-  /* Colours — light theme (default). Warm-neutral palette with burnt-amber
-     accent. Tested contrast ratios noted alongside. */
-  --color-bg:        #faf6f0;  /* warm off-white */
-  --color-bg-muted:  #f0eae3;  /* tinted bg for code, callouts */
-  --color-bg-soft:   #f5efe7;  /* between bg and bg-muted */
-  --color-text:      #1f1d1b;  /* 15.6:1 on bg — AAA */
-  --color-muted:     #6b6863;  /* 5.2:1 on bg, 4.6:1 on bg-muted — AA */
-  --color-accent:    #b45309;  /* burnt amber, 4.7:1 on bg — AA. Fails on bg-soft and bg-muted */
-  --color-accent-hover: #92400e; /* darker, 6.6:1 on bg, 5.9:1 on bg-muted */
-  --color-border:    #e6dfd4;
-  --color-selection: #f6d8a4;
+  /* Colours: Flexoki by Steph Ango (https://stephango.com/flexoki), using
+     only its standard palette. Light theme is the default. Ratios are WCAG
+     contrast against bg, then against bg-soft/bg-muted. */
+  --color-bg:        #FFFCF0;  /* paper */
+  --color-bg-muted:  #F2F0E5;  /* bg-2 (base-50): code, tag chips */
+  --color-bg-soft:   #F2F0E5;  /* bg-2 (base-50): blockquotes */
+  --color-text:      #100F0F;  /* tx (black): 18.6:1, 16.7:1 */
+  --color-muted:     #575653;  /* base-700: 7.1:1, 6.4:1. Flexoki's tx-2 is 4.47:1 on bg-2 */
+  --color-accent:    #BC5215;  /* orange-600: 4.7:1 on bg only. Fails AA on bg-2 */
+  --color-accent-hover: #100F0F; /* tx. Also used for links on bg-2 */
+  --color-border:    #E6E4D9;  /* ui (base-100) */
+  --color-selection: #DAD8CE;  /* ui-2 (base-150) */
 }
 
 [data-theme="dark"] {
-  --color-bg:        #1c1a18;  /* warm charcoal */
-  --color-bg-muted:  #2a2724;
-  --color-bg-soft:   #232120;
-  --color-text:      #ede6dc;  /* 14.0:1 on bg — AAA */
-  --color-muted:     #98908a;  /* 5.5:1  on bg — AA */
-  --color-accent:    #fb923c;  /* warm orange, 7.7:1 on bg — AAA */
-  --color-accent-hover: #fdba74; /* lighter still */
-  --color-border:    #2e2a26;
-  --color-selection: #5a3c1e;
+  --color-bg:        #100F0F;  /* black */
+  --color-bg-muted:  #1C1B1A;  /* bg-2 (base-950) */
+  --color-bg-soft:   #1C1B1A;  /* bg-2 (base-950) */
+  --color-text:      #CECDC3;  /* tx (base-200): 12.0:1, 10.8:1 */
+  --color-muted:     #878580;  /* tx-2 (base-500): 5.2:1, 4.7:1 */
+  --color-accent:    #DA702C;  /* orange-400: 5.8:1, 5.2:1 */
+  --color-accent-hover: #CECDC3; /* tx */
+  --color-border:    #282726;  /* ui (base-900) */
+  --color-selection: #343331;  /* ui-2 (base-850) */
 }
 
 /* If no manual preference set and OS prefers dark, apply dark tokens. The
@@ -71,15 +72,15 @@
    so this is the "no JS / no preference" fallback. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --color-bg:        #1c1a18;
-    --color-bg-muted:  #2a2724;
-    --color-bg-soft:   #232120;
-    --color-text:      #ede6dc;
-    --color-muted:     #98908a;
-    --color-accent:    #fb923c;
-    --color-accent-hover: #fdba74;
-    --color-border:    #2e2a26;
-    --color-selection: #5a3c1e;
+    --color-bg:        #100F0F;
+    --color-bg-muted:  #1C1B1A;
+    --color-bg-soft:   #1C1B1A;
+    --color-text:      #CECDC3;
+    --color-muted:     #878580;
+    --color-accent:    #DA702C;
+    --color-accent-hover: #CECDC3;
+    --color-border:    #282726;
+    --color-selection: #343331;
   }
 }
 
@@ -239,6 +240,7 @@ main {
 }
 .site-footer a { color: var(--color-muted); }
 .site-footer a:hover { color: var(--color-accent); }
+.site-footer__note { margin-block-start: var(--space-3); }
 .site-footer__links {
   display: flex;
   gap: var(--space-4);
@@ -362,7 +364,8 @@ blockquote {
   margin-block: var(--space-6);
 }
 blockquote p:last-child { margin-block-end: 0; }
-/* Accent on bg-soft is 4.4:1 in light mode. The hover shade passes AA. */
+/* The accent fails AA on bg-soft in light mode, so quoted links use the text
+   colour and rely on the underline. */
 blockquote a { color: var(--color-accent-hover); }
 
 /* Archived tweet */
@@ -650,7 +653,7 @@ figcaption {
   text-decoration: none;
   font-size: var(--text-sm);
 }
-/* Accent on bg-muted is 4.2:1 in light mode, so use the darker shade. */
+/* The accent fails AA on bg-muted in light mode, so hover uses the text colour. */
 .tag-list a:hover { color: var(--color-accent-hover); }
 
 /* ============================================================

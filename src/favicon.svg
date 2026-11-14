@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    .disc { fill: #b45309; }
+    .disc { fill: #BC5215; }
     @media (prefers-color-scheme: dark) {
-      .disc { fill: #fb923c; }
+      .disc { fill: #DA702C; }
     }
   </style>
   <defs>
